@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Phinder\PHPParser;
+
+foreach (PHPParser::parse(__FILE__) as $xml) {
+    var_dump($xml->xpath('//parts[count(*)=2]'));
+}

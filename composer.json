@@ -1,0 +1,15 @@
+{
+  "name": "tomokinakamaru/phinder",
+  "license": ["MIT"],
+  "bin": [
+    "bin/phinder"
+  ],
+  "autoload": {
+    "psr-4": {
+      "Phinder\\": ["src/"]
+    }
+  },
+  "require": {
+    "nikic/php-parser": "^4.0"
+  }
+}

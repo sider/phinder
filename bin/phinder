@@ -4,7 +4,12 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Phinder\QueryParser;
+use Phinder\QueryParser\Error;
+use Phinder\QueryParser\NodeDumper;
+use Phinder\QueryParser\ParserFactory;
 
-foreach (QueryParser::parse(__FILE__) as $xml) {
-    var_dump($xml->xpath('//parts[count(*)=2]'));
+$dumper = new NodeDumper;
+
+foreach (QueryParser::parse(__DIR__ . '/../sample.php') as $ast) {
+    echo $dumper->dump($ast) . "\n";
 }

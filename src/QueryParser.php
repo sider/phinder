@@ -30,36 +30,11 @@ final class QueryParser {
         $code = @file_get_contents($path) or die("Failed to get contents of $path");
 
         try {
-            $ast = static::$parser->parse($code);
-            $xml = new \SimpleXMLElement("<file path='$path'/>");
-            static::buildXML($xml, $ast);
-            return $xml;
+            return static::$parser->parse($code);
 
         } catch (Error $error) {
             die($error->getMessage());
 
         }
     }
-
-    private static function buildXML($xml, $ast) {
-        if (\is_array($ast)) {
-            foreach ($ast as $k => $v) {
-                $e = $xml->addChild("item$k");
-                static::buildXML($e, $v);
-            }
-
-        } else if (\is_subclass_of($ast, '\Phinder\QueryParser\NodeAbstract')) {
-            $xml['start'] = $ast->getStartLine();
-            $xml['end'] = $ast->getEndLine();
-            foreach ($ast->getSubNodeNames() as $name) {
-                $e = $xml->addChild($name);
-                static::buildXML($e, $ast->$name);
-            }
-
-        } else {
-            $xml[0] = (string)$ast;
-
-        }
-    }
-
 }

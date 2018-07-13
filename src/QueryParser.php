@@ -30,7 +30,7 @@ final class QueryParser {
         $code = @file_get_contents($path) or die("Failed to get contents of $path");
 
         try {
-            return static::$parser->parse($code);
+            return static::$parser->parse('<?php ' . $code);
 
         } catch (Error $error) {
             die($error->getMessage());

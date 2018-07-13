@@ -10,7 +10,7 @@ $tokensTemplate = __DIR__ . '/tokens.template';
 $skeletonFile   = __DIR__ . '/parser.template';
 $tmpGrammarFile = __DIR__ . '/tmp_parser.phpy';
 $tmpResultFile  = __DIR__ . '/tmp_parser.php';
-$resultDir = __DIR__ . '/../lib/QueryParser/Parser';
+$resultDir = __DIR__ . '/../src/QueryParser/Parser';
 $tokensResultsFile = $resultDir . '/Tokens.php';
 
 // check for kmyacc.exe binary in this directory, otherwise fall back to global name

@@ -5,7 +5,7 @@ $meta #
 #semval(%n) $this->stackPos-(%l-%n)
 #semval(%n,%t) $this->stackPos-(%l-%n)
 
-namespace QueryParser\Parser;
+namespace Phinder\QueryParser\Parser;
 #include;
 
 /* GENERATED file based on grammar/tokens.y */

@@ -1,25 +1,25 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser;
+namespace Phinder\QueryParser;
 
 /*
  * This parser is based on a skeleton written by Moriyoshi Koizumi, which in
  * turn is based on work by Masato Bito.
  */
-use QueryParser\Node\Expr;
-use QueryParser\Node\Name;
-use QueryParser\Node\Param;
-use QueryParser\Node\Scalar\LNumber;
-use QueryParser\Node\Scalar\String_;
-use QueryParser\Node\Stmt\Class_;
-use QueryParser\Node\Stmt\ClassConst;
-use QueryParser\Node\Stmt\ClassMethod;
-use QueryParser\Node\Stmt\Interface_;
-use QueryParser\Node\Stmt\Namespace_;
-use QueryParser\Node\Stmt\Property;
-use QueryParser\Node\Stmt\TryCatch;
-use QueryParser\Node\Stmt\UseUse;
-use QueryParser\Node\VarLikeIdentifier;
+use Phinder\QueryParser\Node\Expr;
+use Phinder\QueryParser\Node\Name;
+use Phinder\QueryParser\Node\Param;
+use Phinder\QueryParser\Node\Scalar\LNumber;
+use Phinder\QueryParser\Node\Scalar\String_;
+use Phinder\QueryParser\Node\Stmt\Class_;
+use Phinder\QueryParser\Node\Stmt\ClassConst;
+use Phinder\QueryParser\Node\Stmt\ClassMethod;
+use Phinder\QueryParser\Node\Stmt\Interface_;
+use Phinder\QueryParser\Node\Stmt\Namespace_;
+use Phinder\QueryParser\Node\Stmt\Property;
+use Phinder\QueryParser\Node\Stmt\TryCatch;
+use Phinder\QueryParser\Node\Stmt\UseUse;
+use Phinder\QueryParser\Node\VarLikeIdentifier;
 
 abstract class ParserAbstract implements Parser
 {

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node\Name;
+namespace Phinder\QueryParser\Node\Name;
 
-class Relative extends \QueryParser\Node\Name
+class Relative extends \Phinder\QueryParser\Node\Name
 {
     /**
      * Checks whether the name is unqualified. (E.g. Name)

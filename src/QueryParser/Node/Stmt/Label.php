@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node\Stmt;
+namespace Phinder\QueryParser\Node\Stmt;
 
-use QueryParser\Node\Identifier;
-use QueryParser\Node\Stmt;
+use Phinder\QueryParser\Node\Identifier;
+use Phinder\QueryParser\Node\Stmt;
 
 class Label extends Stmt
 {

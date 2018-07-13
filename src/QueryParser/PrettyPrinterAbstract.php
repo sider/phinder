@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser;
+namespace Phinder\QueryParser;
 
-use QueryParser\Internal\DiffElem;
-use QueryParser\Internal\PrintableNewAnonClassNode;
-use QueryParser\Internal\TokenStream;
-use QueryParser\Node\Expr;
-use QueryParser\Node\Expr\AssignOp;
-use QueryParser\Node\Expr\BinaryOp;
-use QueryParser\Node\Expr\Cast;
-use QueryParser\Node\Name;
-use QueryParser\Node\Scalar;
-use QueryParser\Node\Stmt;
+use Phinder\QueryParser\Internal\DiffElem;
+use Phinder\QueryParser\Internal\PrintableNewAnonClassNode;
+use Phinder\QueryParser\Internal\TokenStream;
+use Phinder\QueryParser\Node\Expr;
+use Phinder\QueryParser\Node\Expr\AssignOp;
+use Phinder\QueryParser\Node\Expr\BinaryOp;
+use Phinder\QueryParser\Node\Expr\Cast;
+use Phinder\QueryParser\Node\Name;
+use Phinder\QueryParser\Node\Scalar;
+use Phinder\QueryParser\Node\Stmt;
 
 abstract class PrettyPrinterAbstract
 {

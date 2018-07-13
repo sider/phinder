@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\NodeVisitor;
+namespace Phinder\QueryParser\NodeVisitor;
 
-use QueryParser\Node;
-use QueryParser\NodeTraverser;
-use QueryParser\NodeVisitorAbstract;
+use Phinder\QueryParser\Node;
+use Phinder\QueryParser\NodeTraverser;
+use Phinder\QueryParser\NodeVisitorAbstract;
 
 /**
  * This visitor can be used to find the first node satisfying some criterion determined by

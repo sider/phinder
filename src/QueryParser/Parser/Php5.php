@@ -1,13 +1,13 @@
 <?php
 
-namespace QueryParser\Parser;
+namespace Phinder\QueryParser\Parser;
 
-use QueryParser\Error;
-use QueryParser\Node;
-use QueryParser\Node\Expr;
-use QueryParser\Node\Name;
-use QueryParser\Node\Scalar;
-use QueryParser\Node\Stmt;
+use Phinder\QueryParser\Error;
+use Phinder\QueryParser\Node;
+use Phinder\QueryParser\Node\Expr;
+use Phinder\QueryParser\Node\Name;
+use Phinder\QueryParser\Node\Scalar;
+use Phinder\QueryParser\Node\Stmt;
 
 /* This is an automatically GENERATED file, which should not be manually edited.
  * Instead edit one of the following:
@@ -15,7 +15,7 @@ use QueryParser\Node\Stmt;
  *  * the skeleton file grammar/parser.template
  *  * the preprocessing script grammar/rebuildParsers.php
  */
-class Php5 extends \QueryParser\ParserAbstract
+class Php5 extends \Phinder\QueryParser\ParserAbstract
 {
     protected $tokenToSymbolMapSize = 392;
     protected $actionTableSize = 1075;

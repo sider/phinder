@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node\Stmt;
+namespace Phinder\QueryParser\Node\Stmt;
 
-use QueryParser\Node;
-use QueryParser\Node\Expr;
+use Phinder\QueryParser\Node;
+use Phinder\QueryParser\Node\Expr;
 
 class StaticVar extends Node\Stmt
 {

@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Comment;
+namespace Phinder\QueryParser\Comment;
 
-class Doc extends \QueryParser\Comment
+class Doc extends \Phinder\QueryParser\Comment
 {
 }

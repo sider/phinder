@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Internal;
+namespace Phinder\QueryParser\Internal;
 
-use QueryParser\Node;
-use QueryParser\Node\Expr;
+use Phinder\QueryParser\Node;
+use Phinder\QueryParser\Node\Expr;
 
 /**
  * This node is used internally by the format-preserving pretty printer to print anonymous classes.

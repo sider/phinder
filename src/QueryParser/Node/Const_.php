@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node;
+namespace Phinder\QueryParser\Node;
 
-use QueryParser\NodeAbstract;
+use Phinder\QueryParser\NodeAbstract;
 
 /**
  * @property Name $namespacedName Namespaced name (for class constants, if using NameResolver)

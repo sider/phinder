@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node\Expr;
+namespace Phinder\QueryParser\Node\Expr;
 
-use QueryParser\Node\Expr;
-use QueryParser\Node\Identifier;
-use QueryParser\Node\Name;
+use Phinder\QueryParser\Node\Expr;
+use Phinder\QueryParser\Node\Identifier;
+use Phinder\QueryParser\Node\Name;
 
 class ClassConstFetch extends Expr
 {

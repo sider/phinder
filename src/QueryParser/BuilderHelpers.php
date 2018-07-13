@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser;
+namespace Phinder\QueryParser;
 
-use QueryParser\Node\Expr;
-use QueryParser\Node\Identifier;
-use QueryParser\Node\Name;
-use QueryParser\Node\NullableType;
-use QueryParser\Node\Scalar;
-use QueryParser\Node\Stmt;
+use Phinder\QueryParser\Node\Expr;
+use Phinder\QueryParser\Node\Identifier;
+use Phinder\QueryParser\Node\Name;
+use Phinder\QueryParser\Node\NullableType;
+use Phinder\QueryParser\Node\Scalar;
+use Phinder\QueryParser\Node\Stmt;
 
 /**
  * This class defines helpers used in the implementation of builders. Don't use it directly.

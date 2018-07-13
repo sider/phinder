@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node\Expr\BinaryOp;
+namespace Phinder\QueryParser\Node\Expr\BinaryOp;
 
-use QueryParser\Node\Expr\BinaryOp;
+use Phinder\QueryParser\Node\Expr\BinaryOp;
 
 class Concat extends BinaryOp
 {

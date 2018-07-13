@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node\Expr;
+namespace Phinder\QueryParser\Node\Expr;
 
-use QueryParser\Node;
-use QueryParser\Node\Expr;
+use Phinder\QueryParser\Node;
+use Phinder\QueryParser\Node\Expr;
 
 class New_ extends Expr
 {

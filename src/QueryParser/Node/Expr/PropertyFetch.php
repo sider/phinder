@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node\Expr;
+namespace Phinder\QueryParser\Node\Expr;
 
-use QueryParser\Node\Expr;
-use QueryParser\Node\Identifier;
+use Phinder\QueryParser\Node\Expr;
+use Phinder\QueryParser\Node\Identifier;
 
 class PropertyFetch extends Expr
 {

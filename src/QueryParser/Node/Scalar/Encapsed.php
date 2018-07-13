@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node\Scalar;
+namespace Phinder\QueryParser\Node\Scalar;
 
-use QueryParser\Node\Expr;
-use QueryParser\Node\Scalar;
+use Phinder\QueryParser\Node\Expr;
+use Phinder\QueryParser\Node\Scalar;
 
 class Encapsed extends Scalar
 {

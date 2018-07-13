@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Builder;
+namespace Phinder\QueryParser\Builder;
 
-use QueryParser\Builder;
-use QueryParser\BuilderHelpers;
-use QueryParser\Node;
-use QueryParser\Node\Stmt;
+use Phinder\QueryParser\Builder;
+use Phinder\QueryParser\BuilderHelpers;
+use Phinder\QueryParser\Node;
+use Phinder\QueryParser\Node\Stmt;
 
 class Use_ implements Builder
 {

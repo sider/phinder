@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Internal;
+namespace Phinder\QueryParser\Internal;
 
 /**
  * Provides operations on token streams, for use by pretty printer.

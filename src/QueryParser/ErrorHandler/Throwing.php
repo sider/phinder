@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\ErrorHandler;
+namespace Phinder\QueryParser\ErrorHandler;
 
-use QueryParser\Error;
-use QueryParser\ErrorHandler;
+use Phinder\QueryParser\Error;
+use Phinder\QueryParser\ErrorHandler;
 
 /**
  * Error handler that handles all errors by throwing them.

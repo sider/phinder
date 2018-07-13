@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser;
+namespace Phinder\QueryParser;
 
-use QueryParser\Node\Arg;
-use QueryParser\Node\Expr;
-use QueryParser\Node\Expr\BinaryOp\Concat;
-use QueryParser\Node\Identifier;
-use QueryParser\Node\Name;
-use QueryParser\Node\Scalar\String_;
-use QueryParser\Node\Stmt;
-use QueryParser\Node\Stmt\Use_;
+use Phinder\QueryParser\Node\Arg;
+use Phinder\QueryParser\Node\Expr;
+use Phinder\QueryParser\Node\Expr\BinaryOp\Concat;
+use Phinder\QueryParser\Node\Identifier;
+use Phinder\QueryParser\Node\Name;
+use Phinder\QueryParser\Node\Scalar\String_;
+use Phinder\QueryParser\Node\Stmt;
+use Phinder\QueryParser\Node\Stmt\Use_;
 
 class BuilderFactory
 {

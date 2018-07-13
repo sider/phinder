@@ -1,9 +1,9 @@
 <?php
 
-namespace QueryParser;
+namespace Phinder\QueryParser;
 
-use QueryParser\Node\Expr;
-use QueryParser\Node\Scalar;
+use Phinder\QueryParser\Node\Expr;
+use Phinder\QueryParser\Node\Scalar;
 
 /**
  * Evaluates constant expressions.

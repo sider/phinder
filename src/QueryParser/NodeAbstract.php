@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser;
+namespace Phinder\QueryParser;
 
-use QueryParser\Node;
+use Phinder\QueryParser\Node;
 
 abstract class NodeAbstract implements Node, \JsonSerializable
 {

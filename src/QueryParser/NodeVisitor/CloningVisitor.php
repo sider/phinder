@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\NodeVisitor;
+namespace Phinder\QueryParser\NodeVisitor;
 
-use QueryParser\Node;
-use QueryParser\NodeVisitorAbstract;
+use Phinder\QueryParser\Node;
+use Phinder\QueryParser\NodeVisitorAbstract;
 
 /**
  * Visitor cloning all nodes and linking to the original nodes using an attribute.

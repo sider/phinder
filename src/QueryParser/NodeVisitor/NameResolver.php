@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\NodeVisitor;
+namespace Phinder\QueryParser\NodeVisitor;
 
-use QueryParser\Error;
-use QueryParser\ErrorHandler;
-use QueryParser\NameContext;
-use QueryParser\Node;
-use QueryParser\Node\Expr;
-use QueryParser\Node\Name;
-use QueryParser\Node\Name\FullyQualified;
-use QueryParser\Node\Stmt;
-use QueryParser\NodeVisitorAbstract;
+use Phinder\QueryParser\Error;
+use Phinder\QueryParser\ErrorHandler;
+use Phinder\QueryParser\NameContext;
+use Phinder\QueryParser\Node;
+use Phinder\QueryParser\Node\Expr;
+use Phinder\QueryParser\Node\Name;
+use Phinder\QueryParser\Node\Name\FullyQualified;
+use Phinder\QueryParser\Node\Stmt;
+use Phinder\QueryParser\NodeVisitorAbstract;
 
 class NameResolver extends NodeVisitorAbstract
 {

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node\Stmt;
+namespace Phinder\QueryParser\Node\Stmt;
 
-use QueryParser\Node\Name;
-use QueryParser\Node\Stmt;
+use Phinder\QueryParser\Node\Name;
+use Phinder\QueryParser\Node\Stmt;
 
 class GroupUse extends Stmt
 {

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node\Stmt;
+namespace Phinder\QueryParser\Node\Stmt;
 
-use QueryParser\Error;
-use QueryParser\Node;
+use Phinder\QueryParser\Error;
+use Phinder\QueryParser\Node;
 
 class Class_ extends ClassLike
 {

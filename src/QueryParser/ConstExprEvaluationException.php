@@ -1,6 +1,6 @@
 <?php
 
-namespace QueryParser;
+namespace Phinder\QueryParser;
 
 class ConstExprEvaluationException extends \Exception
 {}

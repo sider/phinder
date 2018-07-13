@@ -1,6 +1,6 @@
 <?php
 
-namespace QueryParser\Parser;
+namespace Phinder\QueryParser\Parser;
 
 /* GENERATED file based on grammar/tokens.y */
 final class Tokens

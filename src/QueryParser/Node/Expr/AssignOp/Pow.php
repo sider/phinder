@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node\Expr\AssignOp;
+namespace Phinder\QueryParser\Node\Expr\AssignOp;
 
-use QueryParser\Node\Expr\AssignOp;
+use Phinder\QueryParser\Node\Expr\AssignOp;
 
 class Pow extends AssignOp
 {

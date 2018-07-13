@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Builder;
+namespace Phinder\QueryParser\Builder;
 
-use QueryParser;
-use QueryParser\BuilderHelpers;
-use QueryParser\Node\Name;
-use QueryParser\Node\Stmt;
+use Phinder\QueryParser;
+use Phinder\QueryParser\BuilderHelpers;
+use Phinder\QueryParser\Node\Name;
+use Phinder\QueryParser\Node\Stmt;
 
 class Class_ extends Declaration
 {

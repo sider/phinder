@@ -3,8 +3,8 @@
 namespace Phinder;
 
 use Phinder\Utility;
-use QueryParser\Error;
-use QueryParser\ParserFactory;
+use Phinder\QueryParser\Error;
+use Phinder\QueryParser\ParserFactory;
 
 final class QueryParser {
 
@@ -48,7 +48,7 @@ final class QueryParser {
                 static::buildXML($e, $v);
             }
 
-        } else if (\is_subclass_of($ast, '\PhpParser\NodeAbstract')) {
+        } else if (\is_subclass_of($ast, '\Phinder\QueryParser\NodeAbstract')) {
             $xml['start'] = $ast->getStartLine();
             $xml['end'] = $ast->getEndLine();
             foreach ($ast->getSubNodeNames() as $name) {

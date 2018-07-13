@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Builder;
+namespace Phinder\QueryParser\Builder;
 
-use QueryParser\BuilderHelpers;
-use QueryParser\Node;
+use Phinder\QueryParser\BuilderHelpers;
+use Phinder\QueryParser\Node;
 
 abstract class FunctionLike extends Declaration
 {

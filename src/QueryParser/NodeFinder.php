@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser;
+namespace Phinder\QueryParser;
 
-use QueryParser\NodeVisitor\FindingVisitor;
-use QueryParser\NodeVisitor\FirstFindingVisitor;
+use Phinder\QueryParser\NodeVisitor\FindingVisitor;
+use Phinder\QueryParser\NodeVisitor\FirstFindingVisitor;
 
 class NodeFinder
 {

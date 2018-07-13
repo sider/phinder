@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Node;
+namespace Phinder\QueryParser\Node;
 
-use QueryParser\Node;
+use Phinder\QueryParser\Node;
 
 interface FunctionLike extends Node
 {

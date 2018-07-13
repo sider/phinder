@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser;
+namespace Phinder\QueryParser;
 
 class Error extends \RuntimeException
 {

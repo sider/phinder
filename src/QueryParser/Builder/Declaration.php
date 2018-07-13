@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser\Builder;
+namespace Phinder\QueryParser\Builder;
 
-use QueryParser;
-use QueryParser\BuilderHelpers;
+use Phinder\QueryParser;
+use Phinder\QueryParser\BuilderHelpers;
 
 abstract class Declaration implements QueryParser\Builder
 {

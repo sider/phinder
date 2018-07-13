@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace QueryParser;
+namespace Phinder\QueryParser;
 
-use QueryParser\Parser\Tokens;
+use Phinder\QueryParser\Parser\Tokens;
 
 class Lexer
 {

@@ -10,6 +10,6 @@ use Phinder\QueryParser\ParserFactory;
 
 $dumper = new NodeDumper;
 
-foreach (QueryParser::parse(__DIR__ . '/../sample.php') as $ast) {
+foreach (QueryParser::parse('echo 1 + 1;') as $ast) {
     echo $dumper->dump($ast) . "\n";
 }

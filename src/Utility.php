@@ -1,6 +1,6 @@
 <?php
 
-namespace GrePHP;
+namespace Phinder;
 
 final class Utility {
     public static function findByExt($dir_path, $ext) {

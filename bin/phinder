@@ -3,8 +3,8 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Phinder\PHPParser;
+use Phinder\QueryParser;
 
-foreach (PHPParser::parse(__FILE__) as $xml) {
+foreach (QueryParser::parse(__FILE__) as $xml) {
     var_dump($xml->xpath('//parts[count(*)=2]'));
 }

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser\Comment\Doc;
-use PhpParser\Node;
-use PhpParser\Node\Stmt;
+use QueryParser\Comment\Doc;
+use QueryParser\Node;
+use QueryParser\Node\Stmt;
 use PHPUnit\Framework\TestCase;
 
 class NamespaceTest extends TestCase

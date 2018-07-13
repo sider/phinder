@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\NodeVisitor;
+namespace QueryParser\NodeVisitor;
 
-use PhpParser;
-use PhpParser\Node;
-use PhpParser\Node\Expr;
-use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
+use QueryParser;
+use QueryParser\Node;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Name;
+use QueryParser\Node\Stmt;
 use PHPUnit\Framework\TestCase;
 
 class NameResolverTest extends TestCase
@@ -16,7 +16,7 @@ class NameResolverTest extends TestCase
     }
 
     /**
-     * @covers PhpParser\NodeVisitor\NameResolver
+     * @covers QueryParser\NodeVisitor\NameResolver
      */
     public function testResolveNames() {
         $code = <<<'EOC'
@@ -166,9 +166,9 @@ namespace Baz {
 }
 EOC;
 
-        $parser        = new PhpParser\Parser\Php7(new PhpParser\Lexer\Emulative);
-        $prettyPrinter = new PhpParser\PrettyPrinter\Standard;
-        $traverser     = new PhpParser\NodeTraverser;
+        $parser        = new QueryParser\Parser\Php7(new QueryParser\Lexer\Emulative);
+        $prettyPrinter = new QueryParser\PrettyPrinter\Standard;
+        $traverser     = new QueryParser\NodeTraverser;
         $traverser->addVisitor(new NameResolver);
 
         $stmts = $parser->parse($code);
@@ -181,7 +181,7 @@ EOC;
     }
 
     /**
-     * @covers PhpParser\NodeVisitor\NameResolver
+     * @covers QueryParser\NodeVisitor\NameResolver
      */
     public function testResolveLocations() {
         $code = <<<'EOC'
@@ -265,9 +265,9 @@ try {
 }
 EOC;
 
-        $parser        = new PhpParser\Parser\Php7(new PhpParser\Lexer\Emulative);
-        $prettyPrinter = new PhpParser\PrettyPrinter\Standard;
-        $traverser     = new PhpParser\NodeTraverser;
+        $parser        = new QueryParser\Parser\Php7(new QueryParser\Lexer\Emulative);
+        $prettyPrinter = new QueryParser\PrettyPrinter\Standard;
+        $traverser     = new QueryParser\NodeTraverser;
         $traverser->addVisitor(new NameResolver);
 
         $stmts = $parser->parse($code);
@@ -282,7 +282,7 @@ EOC;
     public function testNoResolveSpecialName() {
         $stmts = [new Node\Expr\New_(new Name('self'))];
 
-        $traverser = new PhpParser\NodeTraverser;
+        $traverser = new QueryParser\NodeTraverser;
         $traverser->addVisitor(new NameResolver);
 
         $this->assertEquals($stmts, $traverser->traverse($stmts));
@@ -300,7 +300,7 @@ EOC;
             new Expr\New_(new Stmt\Class_(null)),
         ];
 
-        $traverser = new PhpParser\NodeTraverser;
+        $traverser = new QueryParser\NodeTraverser;
         $traverser->addVisitor(new NameResolver);
 
         $stmts = $traverser->traverse([new Stmt\Namespace_(new Name('NS'), $nsStmts)]);
@@ -332,7 +332,7 @@ EOC;
             ]),
         ];
 
-        $traverser = new PhpParser\NodeTraverser;
+        $traverser = new QueryParser\NodeTraverser;
         $traverser->addVisitor(new NameResolver);
         $stmts = $traverser->traverse($stmts);
 
@@ -347,10 +347,10 @@ EOC;
      * @dataProvider provideTestError
      */
     public function testError(Node $stmt, $errorMsg) {
-        $this->expectException(\PhpParser\Error::class);
+        $this->expectException(\QueryParser\Error::class);
         $this->expectExceptionMessage($errorMsg);
 
-        $traverser = new PhpParser\NodeTraverser;
+        $traverser = new QueryParser\NodeTraverser;
         $traverser->addVisitor(new NameResolver);
         $traverser->traverse([$stmt]);
     }
@@ -406,10 +406,10 @@ use Bar\Baz;
 $test = new baz();
 EOC;
 
-        $parser = new PhpParser\Parser\Php7(new PhpParser\Lexer\Emulative);
+        $parser = new QueryParser\Parser\Php7(new QueryParser\Lexer\Emulative);
         $stmts = $parser->parse($source);
 
-        $traverser = new PhpParser\NodeTraverser;
+        $traverser = new QueryParser\NodeTraverser;
         $traverser->addVisitor(new NameResolver);
 
         $stmts = $traverser->traverse($stmts);
@@ -435,10 +435,10 @@ class Bar
 }
 EOC;
 
-        $parser = new PhpParser\Parser\Php7(new PhpParser\Lexer\Emulative);
+        $parser = new QueryParser\Parser\Php7(new QueryParser\Lexer\Emulative);
         $stmts = $parser->parse($source);
 
-        $traverser = new PhpParser\NodeTraverser;
+        $traverser = new QueryParser\NodeTraverser;
         $traverser->addVisitor(new NameResolver);
 
         $stmts = $traverser->traverse($stmts);
@@ -451,7 +451,7 @@ EOC;
     }
 
     public function testAddOriginalNames() {
-        $traverser = new PhpParser\NodeTraverser;
+        $traverser = new QueryParser\NodeTraverser;
         $traverser->addVisitor(new NameResolver(null, ['preserveOriginalNames' => true]));
 
         $n1 = new Name('Bar');
@@ -470,7 +470,7 @@ EOC;
     }
 
     public function testAttributeOnlyMode() {
-        $traverser = new PhpParser\NodeTraverser;
+        $traverser = new QueryParser\NodeTraverser;
         $traverser->addVisitor(new NameResolver(null, ['replaceNodes' => false]));
 
         $n1 = new Name('Bar');

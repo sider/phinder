@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Expr;
+namespace QueryParser\Node\Expr;
 
-use PhpParser\Node;
-use PhpParser\Node\Expr;
-use PhpParser\Node\FunctionLike;
+use QueryParser\Node;
+use QueryParser\Node\Expr;
+use QueryParser\Node\FunctionLike;
 
 class Closure extends Expr implements FunctionLike
 {

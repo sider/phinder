@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\PrettyPrinter;
+namespace QueryParser\PrettyPrinter;
 
-use PhpParser\Node;
-use PhpParser\Node\Expr;
-use PhpParser\Node\Expr\AssignOp;
-use PhpParser\Node\Expr\BinaryOp;
-use PhpParser\Node\Expr\Cast;
-use PhpParser\Node\Name;
-use PhpParser\Node\Scalar;
-use PhpParser\Node\Scalar\MagicConst;
-use PhpParser\Node\Stmt;
-use PhpParser\PrettyPrinterAbstract;
+use QueryParser\Node;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Expr\AssignOp;
+use QueryParser\Node\Expr\BinaryOp;
+use QueryParser\Node\Expr\Cast;
+use QueryParser\Node\Name;
+use QueryParser\Node\Scalar;
+use QueryParser\Node\Scalar\MagicConst;
+use QueryParser\Node\Stmt;
+use QueryParser\PrettyPrinterAbstract;
 
 class Standard extends PrettyPrinterAbstract
 {

@@ -455,7 +455,7 @@ Version 2.1.0 (2016-04-19)
 * The pretty printer takes all the new attributes mentioned in the previous section into account.
 * The protected `AbstractPrettyPrinter::pComments()` method no longer returns a trailing newline.
 * The bundled autoloader supports library files being stored in a different directory than
-  `PhpParser` for easier downstream distribution.
+  `QueryParser` for easier downstream distribution.
 
 ### Deprecated
 
@@ -536,15 +536,15 @@ A more detailed description of backwards incompatible changes can be found in th
   * Scalar type declarations. These are presented using `'bool'`, `'int'`, `'float'` and `'string'`
     as the type. The PHP 5 parser also accepts these, however they'll be `Name` instances there.
   * Unicode escape sequences.
-* Added `PhpParser\ParserFactory` class, which should be used to create parser instances.
+* Added `QueryParser\ParserFactory` class, which should be used to create parser instances.
 * Added `Name::concat()` which concatenates two names.
 * Added `Name->slice()` which takes a subslice of a name.
 
 ### Changed
 
-* `PhpParser\Parser` is now an interface, implemented by `Parser\Php5`, `Parser\Php7` and
+* `QueryParser\Parser` is now an interface, implemented by `Parser\Php5`, `Parser\Php7` and
   `Parser\Multiple`. The `Multiple` parser will try multiple parsers, until one succeeds.
-* Token constants are now defined on `PhpParser\Parser\Tokens` rather than `PhpParser\Parser`.
+* Token constants are now defined on `QueryParser\Parser\Tokens` rather than `QueryParser\Parser`.
 * The `Name->set()`, `Name->append()`, `Name->prepend()` and `Name->setFirst()` methods are
   deprecated in favor of `Name::concat()` and `Name->slice()`.
 * The `NodeTraverser` no longer clones nodes by default. The old behavior can be restored by

@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser;
+namespace QueryParser;
 
-use PhpParser\Internal\DiffElem;
-use PhpParser\Internal\PrintableNewAnonClassNode;
-use PhpParser\Internal\TokenStream;
-use PhpParser\Node\Expr;
-use PhpParser\Node\Expr\AssignOp;
-use PhpParser\Node\Expr\BinaryOp;
-use PhpParser\Node\Expr\Cast;
-use PhpParser\Node\Name;
-use PhpParser\Node\Scalar;
-use PhpParser\Node\Stmt;
+use QueryParser\Internal\DiffElem;
+use QueryParser\Internal\PrintableNewAnonClassNode;
+use QueryParser\Internal\TokenStream;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Expr\AssignOp;
+use QueryParser\Node\Expr\BinaryOp;
+use QueryParser\Node\Expr\Cast;
+use QueryParser\Node\Name;
+use QueryParser\Node\Scalar;
+use QueryParser\Node\Stmt;
 
 abstract class PrettyPrinterAbstract
 {

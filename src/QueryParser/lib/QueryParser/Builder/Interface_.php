@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser;
-use PhpParser\BuilderHelpers;
-use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
+use QueryParser;
+use QueryParser\BuilderHelpers;
+use QueryParser\Node\Name;
+use QueryParser\Node\Stmt;
 
 class Interface_ extends Declaration
 {
@@ -41,7 +41,7 @@ class Interface_ extends Declaration
     /**
      * Adds a statement.
      *
-     * @param Stmt|PhpParser\Builder $stmt The statement to add
+     * @param Stmt|QueryParser\Builder $stmt The statement to add
      *
      * @return $this The builder instance (for fluid interface)
      */
@@ -66,7 +66,7 @@ class Interface_ extends Declaration
      *
      * @return Stmt\Interface_ The built interface node
      */
-    public function getNode() : PhpParser\Node {
+    public function getNode() : QueryParser\Node {
         return new Stmt\Interface_($this->name, [
             'extends' => $this->extends,
             'stmts' => array_merge($this->constants, $this->methods),

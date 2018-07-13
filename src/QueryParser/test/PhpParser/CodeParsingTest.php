@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser;
+namespace QueryParser;
 
-use PhpParser\Node\Expr;
-use PhpParser\Node\Stmt;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Stmt;
 
 require_once __DIR__ . '/CodeTestAbstract.php';
 

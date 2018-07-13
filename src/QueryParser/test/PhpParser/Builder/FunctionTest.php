@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser\Comment;
-use PhpParser\Node;
-use PhpParser\Node\Expr\Print_;
-use PhpParser\Node\Expr\Variable;
-use PhpParser\Node\Scalar\String_;
-use PhpParser\Node\Stmt;
+use QueryParser\Comment;
+use QueryParser\Node;
+use QueryParser\Node\Expr\Print_;
+use QueryParser\Node\Expr\Variable;
+use QueryParser\Node\Scalar\String_;
+use QueryParser\Node\Stmt;
 use PHPUnit\Framework\TestCase;
 
 class FunctionTest extends TestCase

@@ -1,13 +1,13 @@
 <?php
 
-namespace PhpParser\Parser;
+namespace QueryParser\Parser;
 
-use PhpParser\Error;
-use PhpParser\Node;
-use PhpParser\Node\Expr;
-use PhpParser\Node\Name;
-use PhpParser\Node\Scalar;
-use PhpParser\Node\Stmt;
+use QueryParser\Error;
+use QueryParser\Node;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Name;
+use QueryParser\Node\Scalar;
+use QueryParser\Node\Stmt;
 
 /* This is an automatically GENERATED file, which should not be manually edited.
  * Instead edit one of the following:
@@ -15,7 +15,7 @@ use PhpParser\Node\Stmt;
  *  * the skeleton file grammar/parser.template
  *  * the preprocessing script grammar/rebuildParsers.php
  */
-class Php5 extends \PhpParser\ParserAbstract
+class Php5 extends \QueryParser\ParserAbstract
 {
     protected $tokenToSymbolMapSize = 392;
     protected $actionTableSize = 1075;

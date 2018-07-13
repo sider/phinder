@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Stmt;
+namespace QueryParser\Node\Stmt;
 
-use PhpParser\Node;
+use QueryParser\Node;
 
 /**
  * @property Node\Name $namespacedName Namespaced name (if using NameResolver)

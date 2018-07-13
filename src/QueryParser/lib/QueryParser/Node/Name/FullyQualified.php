@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Name;
+namespace QueryParser\Node\Name;
 
-class FullyQualified extends \PhpParser\Node\Name
+class FullyQualified extends \QueryParser\Node\Name
 {
     /**
      * Checks whether the name is unqualified. (E.g. Name)

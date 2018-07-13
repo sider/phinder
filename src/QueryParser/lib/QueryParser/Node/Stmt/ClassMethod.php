@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Stmt;
+namespace QueryParser\Node\Stmt;
 
-use PhpParser\Node;
-use PhpParser\Node\FunctionLike;
+use QueryParser\Node;
+use QueryParser\Node\FunctionLike;
 
 class ClassMethod extends Node\Stmt implements FunctionLike
 {

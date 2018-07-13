@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser\Comment;
-use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
+use QueryParser\Comment;
+use QueryParser\Node\Name;
+use QueryParser\Node\Stmt;
 use PHPUnit\Framework\TestCase;
 
 class TraitTest extends TestCase

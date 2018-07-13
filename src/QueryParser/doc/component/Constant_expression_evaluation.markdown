@@ -17,7 +17,7 @@ PHP-Parser supports evaluation of such constant expressions through the `ConstEx
 ```php
 <?php
 
-use PhpParser\{ConstExprEvaluator, ConstExprEvaluationException};
+use QueryParser\{ConstExprEvaluator, ConstExprEvaluationException};
 
 $evalutator = new ConstExprEvaluator();
 try {
@@ -39,8 +39,8 @@ a `ConstExprEvaluationException`. For example:
 ```php
 <?php
 
-use PhpParser\{ConstExprEvaluator, ConstExprEvaluationException};
-use PhpParser\Node\{Expr, Scalar};
+use QueryParser\{ConstExprEvaluator, ConstExprEvaluationException};
+use QueryParser\Node\{Expr, Scalar};
 
 $evaluator = new ConstExprEvaluator();
 
@@ -80,8 +80,8 @@ specifying an evaluation fallback function:
 ```php
 <?php
 
-use PhpParser\{ConstExprEvaluator, ConstExprEvaluationException};
-use PhpParser\Node\Expr;
+use QueryParser\{ConstExprEvaluator, ConstExprEvaluationException};
+use QueryParser\Node\Expr;
 
 $evalutator = new ConstExprEvaluator(function(Expr $expr) {
     if ($expr instanceof Expr\ConstFetch) {

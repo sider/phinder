@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\NodeVisitor;
+namespace QueryParser\NodeVisitor;
 
-use PhpParser\Node;
-use PhpParser\Node\Expr;
-use PhpParser\NodeTraverser;
+use QueryParser\Node;
+use QueryParser\Node\Expr;
+use QueryParser\NodeTraverser;
 use PHPUnit\Framework\TestCase;
 
 class FindingVisitorTest extends TestCase

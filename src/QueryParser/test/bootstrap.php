@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpParser;
+namespace QueryParser;
 
 require __DIR__ . '/../vendor/autoload.php';
 

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node;
+namespace QueryParser\Node;
 
 /**
  * Represents a name that is written in source code with a leading dollar,

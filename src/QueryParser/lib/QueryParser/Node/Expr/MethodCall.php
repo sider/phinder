@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Expr;
+namespace QueryParser\Node\Expr;
 
-use PhpParser\Node\Arg;
-use PhpParser\Node\Expr;
-use PhpParser\Node\Identifier;
+use QueryParser\Node\Arg;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Identifier;
 
 class MethodCall extends Expr
 {

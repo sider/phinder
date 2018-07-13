@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Expr\BinaryOp;
+namespace QueryParser\Node\Expr\BinaryOp;
 
-use PhpParser\Node\Expr\BinaryOp;
+use QueryParser\Node\Expr\BinaryOp;
 
 class NotEqual extends BinaryOp
 {

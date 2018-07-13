@@ -1,10 +1,10 @@
 <?php
 
-namespace PhpParser;
+namespace QueryParser;
 
 require __DIR__ . '/bootstrap.php';
-require __DIR__ . '/PhpParser/CodeTestParser.php';
-require __DIR__ . '/PhpParser/CodeParsingTest.php';
+require __DIR__ . '/QueryParser/CodeTestParser.php';
+require __DIR__ . '/QueryParser/CodeParsingTest.php';
 
 $dir = __DIR__ . '/code/parser';
 

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser;
+namespace QueryParser;
 
 class JsonDecoder
 {
@@ -86,7 +86,7 @@ class JsonDecoder
     }
 
     private function classNameFromNodeType(string $nodeType) : string {
-        $className = 'PhpParser\\Node\\' . strtr($nodeType, '_', '\\');
+        $className = 'QueryParser\\Node\\' . strtr($nodeType, '_', '\\');
         if (class_exists($className)) {
             return $className;
         }

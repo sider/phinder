@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser;
+namespace QueryParser;
 
-use PhpParser\Node\Expr;
-use PhpParser\Node\Scalar\String_;
-use PhpParser\NodeVisitor;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Scalar\String_;
+use QueryParser\NodeVisitor;
 use PHPUnit\Framework\TestCase;
 
 class NodeTraverserTest extends TestCase

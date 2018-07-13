@@ -7,7 +7,7 @@ encode the AST directly using `json_encode()`:
 ```php
 <?php
 
-use PhpParser\ParserFactory;
+use QueryParser\ParserFactory;
 
 $code = <<<'CODE'
 <?php
@@ -24,7 +24,7 @@ try {
     $stmts = $parser->parse($code);
 
     echo json_encode($stmts, JSON_PRETTY_PRINT), "\n";
-} catch (PhpParser\Error $e) {
+} catch (QueryParser\Error $e) {
     echo 'Parse Error: ', $e->getMessage();
 }
 ```
@@ -116,7 +116,7 @@ The JSON representation may be converted back into an AST using the `JsonDecoder
 ```php
 <?php
 
-$nodeDecoder = new PhpParser\NodeDecoder();
+$nodeDecoder = new QueryParser\NodeDecoder();
 $ast = $nodeDecoder->decode($json);
 ```
 

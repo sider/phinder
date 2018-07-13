@@ -1,8 +1,8 @@
 Lexer component documentation
 =============================
 
-The lexer is responsible for providing tokens to the parser. The project comes with two lexers: `PhpParser\Lexer` and
-`PhpParser\Lexer\Emulative`. The latter is an extension of the former, which adds the ability to emulate tokens of
+The lexer is responsible for providing tokens to the parser. The project comes with two lexers: `QueryParser\Lexer` and
+`QueryParser\Lexer\Emulative`. The latter is an extension of the former, which adds the ability to emulate tokens of
 newer PHP versions and thus allows parsing of new code on older versions.
 
 This documentation discusses options available for the default lexers and explains how lexers can be extended.
@@ -16,7 +16,7 @@ accessed using `$node->getAttribute()`, `$node->setAttribute()`, `$node->hasAttr
 methods. A sample options array:
 
 ```php
-$lexer = new PhpParser\Lexer(array(
+$lexer = new QueryParser\Lexer(array(
     'usedAttributes' => array(
         'comments', 'startLine', 'endLine'
     )
@@ -25,7 +25,7 @@ $lexer = new PhpParser\Lexer(array(
 
 The attributes used in this example match the default behavior of the lexer. The following attributes are supported:
 
- * `comments`: Array of `PhpParser\Comment` or `PhpParser\Comment\Doc` instances, representing all comments that occurred
+ * `comments`: Array of `QueryParser\Comment` or `QueryParser\Comment\Doc` instances, representing all comments that occurred
    between the previous non-discarded token and the current one. Use of this attribute is required for the
    `$node->getComments()` and `$node->getDocComment()` methods to work. The attribute is also needed if you wish the pretty
    printer to retain comments present in the original code.
@@ -49,7 +49,7 @@ does not distinguish whether a property was declared using `public` or using `va
 information based on the token position:
 
 ```php
-function isDeclaredUsingVar(array $tokens, PhpParser\Node\Stmt\Property $prop) {
+function isDeclaredUsingVar(array $tokens, QueryParser\Node\Stmt\Property $prop) {
     $i = $prop->getAttribute('startTokenPos');
     return $tokens[$i][0] === T_VAR;
 }
@@ -59,35 +59,35 @@ In order to make use of this function, you will have to provide the tokens from 
 code similar to the following:
 
 ```php
-class MyNodeVisitor extends PhpParser\NodeVisitorAbstract {
+class MyNodeVisitor extends QueryParser\NodeVisitorAbstract {
     private $tokens;
     public function setTokens(array $tokens) {
         $this->tokens = $tokens;
     }
 
-    public function leaveNode(PhpParser\Node $node) {
-        if ($node instanceof PhpParser\Node\Stmt\Property) {
+    public function leaveNode(QueryParser\Node $node) {
+        if ($node instanceof QueryParser\Node\Stmt\Property) {
             var_dump(isDeclaredUsingVar($this->tokens, $node));
         }
     }
 }
 
-$lexer = new PhpParser\Lexer(array(
+$lexer = new QueryParser\Lexer(array(
     'usedAttributes' => array(
         'comments', 'startLine', 'endLine', 'startTokenPos', 'endTokenPos'
     )
 ));
-$parser = (new PhpParser\ParserFactory)->create(PhpParser\ParserFactory::ONLY_PHP7, $lexer);
+$parser = (new QueryParser\ParserFactory)->create(QueryParser\ParserFactory::ONLY_PHP7, $lexer);
 
 $visitor = new MyNodeVisitor();
-$traverser = new PhpParser\NodeTraverser();
+$traverser = new QueryParser\NodeTraverser();
 $traverser->addVisitor($visitor);
 
 try {
     $stmts = $parser->parse($code);
     $visitor->setTokens($lexer->getTokens());
     $stmts = $traverser->traverse($stmts);
-} catch (PhpParser\Error $e) {
+} catch (QueryParser\Error $e) {
     echo 'Parse Error: ', $e->getMessage();
 }
 ```
@@ -136,8 +136,8 @@ does not preserve the exact original formatting (e.g. leading zeros for integers
 can be remedied by storing the original value in an attribute:
 
 ```php
-use PhpParser\Lexer;
-use PhpParser\Parser\Tokens;
+use QueryParser\Lexer;
+use QueryParser\Parser\Tokens;
 
 class KeepOriginalValueLexer extends Lexer // or Lexer\Emulative
 {

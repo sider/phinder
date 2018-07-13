@@ -1,25 +1,25 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser;
+namespace QueryParser;
 
 /*
  * This parser is based on a skeleton written by Moriyoshi Koizumi, which in
  * turn is based on work by Masato Bito.
  */
-use PhpParser\Node\Expr;
-use PhpParser\Node\Name;
-use PhpParser\Node\Param;
-use PhpParser\Node\Scalar\LNumber;
-use PhpParser\Node\Scalar\String_;
-use PhpParser\Node\Stmt\Class_;
-use PhpParser\Node\Stmt\ClassConst;
-use PhpParser\Node\Stmt\ClassMethod;
-use PhpParser\Node\Stmt\Interface_;
-use PhpParser\Node\Stmt\Namespace_;
-use PhpParser\Node\Stmt\Property;
-use PhpParser\Node\Stmt\TryCatch;
-use PhpParser\Node\Stmt\UseUse;
-use PhpParser\Node\VarLikeIdentifier;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Name;
+use QueryParser\Node\Param;
+use QueryParser\Node\Scalar\LNumber;
+use QueryParser\Node\Scalar\String_;
+use QueryParser\Node\Stmt\Class_;
+use QueryParser\Node\Stmt\ClassConst;
+use QueryParser\Node\Stmt\ClassMethod;
+use QueryParser\Node\Stmt\Interface_;
+use QueryParser\Node\Stmt\Namespace_;
+use QueryParser\Node\Stmt\Property;
+use QueryParser\Node\Stmt\TryCatch;
+use QueryParser\Node\Stmt\UseUse;
+use QueryParser\Node\VarLikeIdentifier;
 
 abstract class ParserAbstract implements Parser
 {

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Expr;
+namespace QueryParser\Node\Expr;
 
-use PhpParser\Node\Expr;
-use PhpParser\Node\Name;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Name;
 
 class ConstFetch extends Expr
 {

@@ -14,8 +14,8 @@ The `NameResolver` visitor can (and for nearly all uses of the AST, is) be appli
 to their fully-qualified form, to the degree that this is possible.
 
 ```php
-$nameResolver = new PhpParser\NodeVisitor\NameResolver;
-$nodeTraverser = new PhpParser\NodeTraverser;
+$nameResolver = new QueryParser\NodeVisitor\NameResolver;
+$nodeTraverser = new QueryParser\NodeTraverser;
 $nodeTraverser->addVisitor($nameResolver);
 
 // Resolve names
@@ -38,7 +38,7 @@ In the default configuration, the name resolver will perform three actions:
 The name resolver accepts an option array as the second argument, with the following default values:
 
 ```php
-$nameResolver = new PhpParser\NodeVisitor\NameResolver(null, [
+$nameResolver = new QueryParser\NodeVisitor\NameResolver(null, [
     'preserveOriginalNames' => false,
     'replaceNodes' => true,
 ]);

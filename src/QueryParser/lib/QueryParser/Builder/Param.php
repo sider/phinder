@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser;
-use PhpParser\BuilderHelpers;
-use PhpParser\Node;
+use QueryParser;
+use QueryParser\BuilderHelpers;
+use QueryParser\Node;
 
-class Param implements PhpParser\Builder
+class Param implements QueryParser\Builder
 {
     protected $name;
 

@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser;
-use PhpParser\BuilderHelpers;
-use PhpParser\Node\Stmt;
+use QueryParser;
+use QueryParser\BuilderHelpers;
+use QueryParser\Node\Stmt;
 
-class Property implements PhpParser\Builder
+class Property implements QueryParser\Builder
 {
     protected $name;
 
@@ -83,7 +83,7 @@ class Property implements PhpParser\Builder
     /**
      * Sets doc comment for the property.
      *
-     * @param PhpParser\Comment\Doc|string $docComment Doc comment to set
+     * @param QueryParser\Comment\Doc|string $docComment Doc comment to set
      *
      * @return $this The builder instance (for fluid interface)
      */
@@ -100,7 +100,7 @@ class Property implements PhpParser\Builder
      *
      * @return Stmt\Property The built property node
      */
-    public function getNode() : PhpParser\Node {
+    public function getNode() : QueryParser\Node {
         return new Stmt\Property(
             $this->flags !== 0 ? $this->flags : Stmt\Class_::MODIFIER_PUBLIC,
             [

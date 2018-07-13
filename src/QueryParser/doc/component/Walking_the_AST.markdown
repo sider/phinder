@@ -6,7 +6,7 @@ As a basic example, the following code changes all literal integers in the AST i
 `42` becomes `'42'`.)
 
 ```php
-use PhpParser\{Node, NodeTraverser, NodeVisitorAbstract};
+use QueryParser\{Node, NodeTraverser, NodeVisitorAbstract};
 
 $traverser = new NodeTraverser;
 $traverser->addVisitor(new class extends NodeVisitorAbstract {
@@ -297,7 +297,7 @@ satisfy a certain callback, or which are instanced of a certain node type. A cou
 shown in the following:
 
 ```php
-use PhpParser\{Node, NodeFinder};
+use QueryParser\{Node, NodeFinder};
 
 $nodeFinder = new NodeFinder;
 

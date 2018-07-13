@@ -26,21 +26,21 @@ if (empty($files)) {
     showHelp("Must specify at least one file.");
 }
 
-$lexer = new PhpParser\Lexer\Emulative(['usedAttributes' => [
+$lexer = new QueryParser\Lexer\Emulative(['usedAttributes' => [
     'startLine', 'endLine', 'startFilePos', 'endFilePos', 'comments'
 ]]);
-$parser = (new PhpParser\ParserFactory)->create(
-    PhpParser\ParserFactory::PREFER_PHP7,
+$parser = (new QueryParser\ParserFactory)->create(
+    QueryParser\ParserFactory::PREFER_PHP7,
     $lexer
 );
-$dumper = new PhpParser\NodeDumper([
+$dumper = new QueryParser\NodeDumper([
     'dumpComments' => true,
     'dumpPositions' => $attributes['with-positions'],
 ]);
-$prettyPrinter = new PhpParser\PrettyPrinter\Standard;
+$prettyPrinter = new QueryParser\PrettyPrinter\Standard;
 
-$traverser = new PhpParser\NodeTraverser();
-$traverser->addVisitor(new PhpParser\NodeVisitor\NameResolver);
+$traverser = new QueryParser\NodeTraverser();
+$traverser->addVisitor(new QueryParser\NodeVisitor\NameResolver);
 
 foreach ($files as $file) {
     if (strpos($file, '<?php') === 0) {
@@ -56,7 +56,7 @@ foreach ($files as $file) {
     }
 
     if ($attributes['with-recovery']) {
-        $errorHandler = new PhpParser\ErrorHandler\Collecting;
+        $errorHandler = new QueryParser\ErrorHandler\Collecting;
         $stmts = $parser->parse($code, $errorHandler);
         foreach ($errorHandler->getErrors() as $error) {
             $message = formatErrorMessage($error, $code, $attributes['with-column-info']);
@@ -68,7 +68,7 @@ foreach ($files as $file) {
     } else {
         try {
             $stmts = $parser->parse($code);
-        } catch (PhpParser\Error $error) {
+        } catch (QueryParser\Error $error) {
             $message = formatErrorMessage($error, $code, $attributes['with-column-info']);
             die($message . "\n");
         }
@@ -94,7 +94,7 @@ foreach ($files as $file) {
     }
 }
 
-function formatErrorMessage(PhpParser\Error $e, $code, $withColumnInfo) {
+function formatErrorMessage(QueryParser\Error $e, $code, $withColumnInfo) {
     if ($withColumnInfo && $e->hasColumnInfo()) {
         return $e->getMessageWithColumnInfo($code);
     } else {

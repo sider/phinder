@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser;
-use PhpParser\BuilderHelpers;
-use PhpParser\Node\Stmt;
+use QueryParser;
+use QueryParser\BuilderHelpers;
+use QueryParser\Node\Stmt;
 
 class Trait_ extends Declaration
 {
@@ -25,7 +25,7 @@ class Trait_ extends Declaration
     /**
      * Adds a statement.
      *
-     * @param Stmt|PhpParser\Builder $stmt The statement to add
+     * @param Stmt|QueryParser\Builder $stmt The statement to add
      *
      * @return $this The builder instance (for fluid interface)
      */
@@ -50,7 +50,7 @@ class Trait_ extends Declaration
      *
      * @return Stmt\Trait_ The built interface node
      */
-    public function getNode() : PhpParser\Node {
+    public function getNode() : QueryParser\Node {
         return new Stmt\Trait_(
             $this->name, [
                 'stmts' => array_merge($this->uses, $this->properties, $this->methods)

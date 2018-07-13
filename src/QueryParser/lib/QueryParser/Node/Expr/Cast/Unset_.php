@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Expr\Cast;
+namespace QueryParser\Node\Expr\Cast;
 
-use PhpParser\Node\Expr\Cast;
+use QueryParser\Node\Expr\Cast;
 
 class Unset_ extends Cast
 {

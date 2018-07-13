@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-use PhpParser\Builder;
-use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
+use QueryParser\Builder;
+use QueryParser\Node\Name;
+use QueryParser\Node\Stmt;
 use PHPUnit\Framework\TestCase;
 
 class UseTest extends TestCase

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Scalar;
+namespace QueryParser\Node\Scalar;
 
-use PhpParser\Error;
-use PhpParser\Node\Scalar;
+use QueryParser\Error;
+use QueryParser\Node\Scalar;
 
 class LNumber extends Scalar
 {

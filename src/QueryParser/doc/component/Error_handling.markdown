@@ -1,7 +1,7 @@
 Error handling
 ==============
 
-Errors during parsing or analysis are represented using the `PhpParser\Error` exception class. In addition to an error
+Errors during parsing or analysis are represented using the `QueryParser\Error` exception class. In addition to an error
 message, an error can also store additional information about the location the error occurred at.
 
 How much location information is available depends on the origin of the error and how many lexer attributes have been
@@ -14,15 +14,15 @@ In order to receive information about not only the line, but also the column spa
 position attributes in the lexer need to be enabled:
 
 ```php
-$lexer = new PhpParser\Lexer(array(
+$lexer = new QueryParser\Lexer(array(
     'usedAttributes' => array('comments', 'startLine', 'endLine', 'startFilePos', 'endFilePos'),
 ));
-$parser = (new PhpParser\ParserFactory)->create(PhpParser\ParserFactory::PREFER_PHP7, $lexer);
+$parser = (new QueryParser\ParserFactory)->create(QueryParser\ParserFactory::PREFER_PHP7, $lexer);
 
 try {
     $stmts = $parser->parse($code);
     // ...
-} catch (PhpParser\Error $e) {
+} catch (QueryParser\Error $e) {
     // ...
 }
 ```
@@ -56,14 +56,14 @@ To instead collect all encountered errors into an array, while trying to continu
 an instance of `ErrorHandler\Collecting` can be passed to the `Parser::parse()` method. A usage example:
 
 ```php
-$parser = (new PhpParser\ParserFactory)->create(PhpParser\ParserFactory::ONLY_PHP7);
-$errorHandler = new PhpParser\ErrorHandler\Collecting;
+$parser = (new QueryParser\ParserFactory)->create(QueryParser\ParserFactory::ONLY_PHP7);
+$errorHandler = new QueryParser\ErrorHandler\Collecting;
 
 $stmts = $parser->parse($code, $errorHandler);
 
 if ($errorHandler->hasErrors()) {
     foreach ($errorHandler->getErrors() as $error) {
-        // $error is an ordinary PhpParser\Error
+        // $error is an ordinary QueryParser\Error
     }
 }
 

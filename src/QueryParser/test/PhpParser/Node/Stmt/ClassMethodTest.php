@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Stmt;
+namespace QueryParser\Node\Stmt;
 
-use PhpParser\Node\Expr\Variable;
-use PhpParser\Node\Name;
-use PhpParser\Node\Param;
+use QueryParser\Node\Expr\Variable;
+use QueryParser\Node\Name;
+use QueryParser\Node\Param;
 use PHPUnit\Framework\TestCase;
 
 class ClassMethodTest extends TestCase
@@ -14,7 +14,7 @@ class ClassMethodTest extends TestCase
      */
     public function testModifiers($modifier) {
         $node = new ClassMethod('foo', [
-            'type' => constant('PhpParser\Node\Stmt\Class_::MODIFIER_' . strtoupper($modifier))
+            'type' => constant('QueryParser\Node\Stmt\Class_::MODIFIER_' . strtoupper($modifier))
         ]);
 
         $this->assertTrue($node->{'is' . $modifier}());
@@ -53,7 +53,7 @@ class ClassMethodTest extends TestCase
     public function testImplicitPublic(string $modifier)
     {
         $node = new ClassMethod('foo', [
-            'type' => constant('PhpParser\Node\Stmt\Class_::MODIFIER_' . strtoupper($modifier))
+            'type' => constant('QueryParser\Node\Stmt\Class_::MODIFIER_' . strtoupper($modifier))
         ]);
 
         $this->assertTrue($node->isPublic(), 'Node should be implicitly public');

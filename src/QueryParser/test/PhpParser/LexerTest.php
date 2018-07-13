@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser;
+namespace QueryParser;
 
-use PhpParser\Parser\Tokens;
+use QueryParser\Parser\Tokens;
 use PHPUnit\Framework\TestCase;
 
 class LexerTest extends TestCase
@@ -236,7 +236,7 @@ class LexerTest extends TestCase
     }
 
     /**
-     * @expectedException \PhpParser\Error
+     * @expectedException \QueryParser\Error
      * @expectedExceptionMessage __HALT_COMPILER must be followed by "();"
      */
     public function testHandleHaltCompilerError() {

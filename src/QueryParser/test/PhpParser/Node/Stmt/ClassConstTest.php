@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Stmt;
+namespace QueryParser\Node\Stmt;
 
 use PHPUnit\Framework\TestCase;
 
@@ -12,7 +12,7 @@ class ClassConstTest extends TestCase
     public function testModifiers($modifier) {
         $node = new ClassConst(
             [], // invalid
-            constant('PhpParser\Node\Stmt\Class_::MODIFIER_' . strtoupper($modifier))
+            constant('QueryParser\Node\Stmt\Class_::MODIFIER_' . strtoupper($modifier))
         );
 
         $this->assertTrue($node->{'is' . $modifier}());

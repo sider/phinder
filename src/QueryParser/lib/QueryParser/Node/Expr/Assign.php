@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Expr;
+namespace QueryParser\Node\Expr;
 
-use PhpParser\Node\Expr;
+use QueryParser\Node\Expr;
 
 class Assign extends Expr
 {

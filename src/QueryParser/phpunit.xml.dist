@@ -19,7 +19,7 @@
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./lib/PhpParser/</directory>
+            <directory suffix=".php">./lib/QueryParser/</directory>
         </whitelist>
     </filter>
 </phpunit>

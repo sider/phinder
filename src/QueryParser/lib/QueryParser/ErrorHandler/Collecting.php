@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\ErrorHandler;
+namespace QueryParser\ErrorHandler;
 
-use PhpParser\Error;
-use PhpParser\ErrorHandler;
+use QueryParser\Error;
+use QueryParser\ErrorHandler;
 
 /**
  * Error handler that collects all errors into an array.

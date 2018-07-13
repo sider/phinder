@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser;
+namespace QueryParser;
 
-use PhpParser\Node\Expr;
-use PhpParser\Node\Scalar;
-use PhpParser\Node\Scalar\String_;
-use PhpParser\Node\Stmt;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Scalar;
+use QueryParser\Node\Scalar\String_;
+use QueryParser\Node\Stmt;
 use PHPUnit\Framework\TestCase;
 
 abstract class ParserTest extends TestCase
@@ -14,7 +14,7 @@ abstract class ParserTest extends TestCase
     abstract protected function getParser(Lexer $lexer);
 
     /**
-     * @expectedException \PhpParser\Error
+     * @expectedException \QueryParser\Error
      * @expectedExceptionMessage Syntax error, unexpected EOF on line 1
      */
     public function testParserThrowsSyntaxError() {
@@ -23,7 +23,7 @@ abstract class ParserTest extends TestCase
     }
 
     /**
-     * @expectedException \PhpParser\Error
+     * @expectedException \QueryParser\Error
      * @expectedExceptionMessage Cannot use foo as self because 'self' is a special class name on line 1
      */
     public function testParserThrowsSpecialError() {
@@ -32,7 +32,7 @@ abstract class ParserTest extends TestCase
     }
 
     /**
-     * @expectedException \PhpParser\Error
+     * @expectedException \QueryParser\Error
      * @expectedExceptionMessage Unterminated comment on line 1
      */
     public function testParserThrowsLexerError() {
@@ -98,7 +98,7 @@ EOC;
             'endTokenPos' => 19,
         ], $echo->getAttributes());
 
-        /** @var \PhpParser\Node\Expr\Variable $var */
+        /** @var \QueryParser\Node\Expr\Variable $var */
         $var = $echo->exprs[0];
         $this->assertInstanceOf(Expr\Variable::class, $var);
         $this->assertEquals([

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Lexer;
+namespace QueryParser\Lexer;
 
-use PhpParser\LexerTest;
-use PhpParser\Parser\Tokens;
+use QueryParser\LexerTest;
+use QueryParser\Parser\Tokens;
 
 require_once __DIR__ . '/../LexerTest.php';
 

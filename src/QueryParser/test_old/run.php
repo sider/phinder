@@ -112,17 +112,17 @@ switch ($testType) {
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$lexer = new PhpParser\Lexer\Emulative(['usedAttributes' => [
+$lexer = new QueryParser\Lexer\Emulative(['usedAttributes' => [
     'comments', 'startLine', 'endLine', 'startTokenPos', 'endTokenPos',
 ]]);
-$parserName = 'PhpParser\Parser\\' . $version;
-/** @var PhpParser\Parser $parser */
+$parserName = 'QueryParser\Parser\\' . $version;
+/** @var QueryParser\Parser $parser */
 $parser = new $parserName($lexer);
-$prettyPrinter = new PhpParser\PrettyPrinter\Standard;
-$nodeDumper = new PhpParser\NodeDumper;
+$prettyPrinter = new QueryParser\PrettyPrinter\Standard;
+$nodeDumper = new QueryParser\NodeDumper;
 
-$cloningTraverser = new PhpParser\NodeTraverser;
-$cloningTraverser->addVisitor(new PhpParser\NodeVisitor\CloningVisitor);
+$cloningTraverser = new QueryParser\NodeTraverser;
+$cloningTraverser->addVisitor(new QueryParser\NodeVisitor\CloningVisitor);
 
 $parseFail = $fpppFail = $ppFail = $compareFail = $count = 0;
 
@@ -199,7 +199,7 @@ foreach (new RecursiveIteratorIterator(
 
                 ++$compareFail;
             }
-        } catch (PhpParser\Error $e) {
+        } catch (QueryParser\Error $e) {
             echo $file, ":\n    Parse of pretty print failed with message: {$e->getMessage()}\n";
             if ($verbose) {
                 echo "Pretty printer output:\n=====\n$code\n=====\n\n";
@@ -207,7 +207,7 @@ foreach (new RecursiveIteratorIterator(
 
             ++$ppFail;
         }
-    } catch (PhpParser\Error $e) {
+    } catch (QueryParser\Error $e) {
         echo $file, ":\n    Parse failed with message: {$e->getMessage()}\n";
 
         ++$parseFail;

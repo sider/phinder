@@ -14,14 +14,14 @@ will not work, because the parser class was renamed.
 Old:
 
 ```php
-use PhpParser\Parser, PhpParser\Lexer;
+use QueryParser\Parser, QueryParser\Lexer;
 $parser = new Parser(new Lexer\Emulative);
 ```
 
 New:
 
 ```php
-use PhpParser\ParserFactory;
+use QueryParser\ParserFactory;
 $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
 ```
 
@@ -40,14 +40,14 @@ a scalar type hint like `string` will be stored as `'string'` (PHP 7) or as `new
 To use a custom lexer, pass it as the second argument to the `create()` method:
 
 ```php
-use PhpParser\ParserFactory;
+use QueryParser\ParserFactory;
 $lexer = new MyLexer;
 $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7, $lexer);
 ```
 
-### Rename of the `PhpParser\Parser` class
+### Rename of the `QueryParser\Parser` class
 
-`PhpParser\Parser` is now an interface, which is implemented by `Parser\Php5`, `Parser\Php7` and
+`QueryParser\Parser` is now an interface, which is implemented by `Parser\Php5`, `Parser\Php7` and
 `Parser\Multiple`. Parser tokens are now defined in `Parser\Tokens`. If you use the `ParserFactory`
 described above to create your parser instance, these changes should have no further impact on you.
 

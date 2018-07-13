@@ -8,7 +8,7 @@ running on a newer version.
 
 ### Move to namespaced names
 
-The library has been moved to use namespaces with the `PhpParser` vendor prefix. However, the old names using
+The library has been moved to use namespaces with the `QueryParser` vendor prefix. However, the old names using
 underscores are still available as aliases, as such most code should continue running on the new version without
 further changes.
 
@@ -22,15 +22,15 @@ $prettyPrinter = new \PHPParser_PrettyPrinter_Default;
 New:
 
 ```php
-$parser = new \PhpParser\Parser(new PhpParser\Lexer\Emulative);
-$prettyPrinter = new \PhpParser\PrettyPrinter\Standard;
+$parser = new \QueryParser\Parser(new QueryParser\Lexer\Emulative);
+$prettyPrinter = new \QueryParser\PrettyPrinter\Standard;
 ```
 
-Note that the `PHPParser` prefix was changed to `PhpParser`. While PHP class names are technically case-insensitive,
+Note that the `PHPParser` prefix was changed to `QueryParser`. While PHP class names are technically case-insensitive,
 the autoloader will not be able to load `PHPParser\Parser` or other case variants.
 
 Due to conflicts with reserved keywords, some class names now end with an underscore, e.g. `PHPParser_Node_Stmt_Class`
-is now `PhpParser\Node\Stmt\Class_`. (But as usual, the old name is still available.)
+is now `QueryParser\Node\Stmt\Class_`. (But as usual, the old name is still available.)
 
 ### Changes to `Node::getType()`
 

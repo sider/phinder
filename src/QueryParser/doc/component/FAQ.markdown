@@ -11,8 +11,8 @@ The AST does not store parent nodes by default. However, it is easy to add a cus
 attribute using a custom node visitor:
 
 ```php
-use PhpParser\Node;
-use PhpParser\NodeVisitorAbstract;
+use QueryParser\Node;
+use QueryParser\NodeVisitorAbstract;
 
 class ParentConnector extends NodeVisitorAbstract {
     private $stack;
@@ -40,8 +40,8 @@ Again, siblings are not stored by default, but the visitor from the previous ent
 extended to store the previous / next node with a common parent as well:
 
 ```php
-use PhpParser\Node;
-use PhpParser\NodeVisitorAbstract;
+use QueryParser\Node;
+use QueryParser\NodeVisitorAbstract;
 
 class NodeConnector extends NodeVisitorAbstract {
     private $stack;

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser;
+namespace QueryParser;
 
-use PhpParser\Node\Expr;
+use QueryParser\Node\Expr;
 use PHPUnit\Framework\TestCase;
 
 class NodeFinderTest extends TestCase

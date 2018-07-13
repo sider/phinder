@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\NodeVisitor;
+namespace QueryParser\NodeVisitor;
 
-use PhpParser\Node;
-use PhpParser\NodeVisitorAbstract;
+use QueryParser\Node;
+use QueryParser\NodeVisitorAbstract;
 
 /**
  * Visitor cloning all nodes and linking to the original nodes using an attribute.

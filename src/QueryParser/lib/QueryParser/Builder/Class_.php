@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser;
-use PhpParser\BuilderHelpers;
-use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
+use QueryParser;
+use QueryParser\BuilderHelpers;
+use QueryParser\Node\Name;
+use QueryParser\Node\Stmt;
 
 class Class_ extends Declaration
 {
@@ -82,7 +82,7 @@ class Class_ extends Declaration
     /**
      * Adds a statement.
      *
-     * @param Stmt|PhpParser\Builder $stmt The statement to add
+     * @param Stmt|QueryParser\Builder $stmt The statement to add
      *
      * @return $this The builder instance (for fluid interface)
      */
@@ -111,7 +111,7 @@ class Class_ extends Declaration
      *
      * @return Stmt\Class_ The built class node
      */
-    public function getNode() : PhpParser\Node {
+    public function getNode() : QueryParser\Node {
         return new Stmt\Class_($this->name, [
             'flags' => $this->flags,
             'extends' => $this->extends,

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Internal;
+namespace QueryParser\Internal;
 
 /**
  * Implements the Myers diff algorithm.

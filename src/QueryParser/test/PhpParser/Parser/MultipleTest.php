@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Parser;
+namespace QueryParser\Parser;
 
-use PhpParser\Error;
-use PhpParser\Lexer;
-use PhpParser\Node\Expr;
-use PhpParser\Node\Scalar\LNumber;
-use PhpParser\Node\Stmt;
-use PhpParser\ParserTest;
+use QueryParser\Error;
+use QueryParser\Lexer;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Scalar\LNumber;
+use QueryParser\Node\Stmt;
+use QueryParser\ParserTest;
 
 require_once __DIR__ . '/../ParserTest.php';
 
@@ -82,11 +82,11 @@ class MultipleTest extends ParserTest
         $this->expectException(Error::class);
         $this->expectExceptionMessage('FAIL A');
 
-        $parserA = $this->getMockBuilder(\PhpParser\Parser::class)->getMock();
+        $parserA = $this->getMockBuilder(\QueryParser\Parser::class)->getMock();
         $parserA->expects($this->at(0))
             ->method('parse')->will($this->throwException(new Error('FAIL A')));
 
-        $parserB = $this->getMockBuilder(\PhpParser\Parser::class)->getMock();
+        $parserB = $this->getMockBuilder(\QueryParser\Parser::class)->getMock();
         $parserB->expects($this->at(0))
             ->method('parse')->will($this->throwException(new Error('FAIL B')));
 

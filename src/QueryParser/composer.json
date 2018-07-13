@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "PhpParser\\": "lib/PhpParser"
+            "QueryParser\\": "lib/QueryParser"
         }
     },
     "bin": ["bin/php-parse"],

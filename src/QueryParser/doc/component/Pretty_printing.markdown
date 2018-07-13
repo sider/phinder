@@ -16,7 +16,7 @@ $stmts = $parser->parse($code);
 
 // MODIFY $stmts here
 
-$prettyPrinter = new PhpParser\PrettyPrinter\Standard;
+$prettyPrinter = new QueryParser\PrettyPrinter\Standard;
 $newCode = $prettyPrinter->prettyPrintFile($stmts);
 ```
 
@@ -59,7 +59,7 @@ code which has been modified or newly inserted.
 Use of the formatting-preservation functionality requires some additional preparatory steps:
 
 ```php
-use PhpParser\{Lexer, NodeTraverser, NodeVisitor, Parser, PrettyPrinter};
+use QueryParser\{Lexer, NodeTraverser, NodeVisitor, Parser, PrettyPrinter};
 
 $lexer = new Lexer\Emulative([
     'usedAttributes' => [

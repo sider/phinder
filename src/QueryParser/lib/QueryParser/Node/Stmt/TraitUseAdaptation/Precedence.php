@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Stmt\TraitUseAdaptation;
+namespace QueryParser\Node\Stmt\TraitUseAdaptation;
 
-use PhpParser\Node;
+use QueryParser\Node;
 
 class Precedence extends Node\Stmt\TraitUseAdaptation
 {

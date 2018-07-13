@@ -1,9 +1,9 @@
 <?php
 
-namespace PhpParser;
+namespace QueryParser;
 
-use PhpParser\Node\Expr;
-use PhpParser\Node\Scalar;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Scalar;
 
 /**
  * Evaluates constant expressions.

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Scalar;
+namespace QueryParser\Node\Scalar;
 
-use PhpParser\Node\Scalar;
+use QueryParser\Node\Scalar;
 
 class DNumber extends Scalar
 {

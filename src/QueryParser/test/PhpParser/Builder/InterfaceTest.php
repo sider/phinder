@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser\Comment;
-use PhpParser\Node;
-use PhpParser\Node\Scalar\DNumber;
-use PhpParser\Node\Stmt;
+use QueryParser\Comment;
+use QueryParser\Node;
+use QueryParser\Node\Scalar\DNumber;
+use QueryParser\Node\Stmt;
 use PHPUnit\Framework\TestCase;
 
 class InterfaceTest extends TestCase
@@ -18,7 +18,7 @@ class InterfaceTest extends TestCase
     }
 
     private function dump($node) {
-        $pp = new \PhpParser\PrettyPrinter\Standard;
+        $pp = new \QueryParser\PrettyPrinter\Standard;
         return $pp->prettyPrint([$node]);
     }
 

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node;
+namespace QueryParser\Node;
 
-use PhpParser\NodeAbstract;
+use QueryParser\NodeAbstract;
 
 class Name extends NodeAbstract
 {

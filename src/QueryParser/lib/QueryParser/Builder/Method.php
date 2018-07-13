@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser;
-use PhpParser\BuilderHelpers;
-use PhpParser\Node;
-use PhpParser\Node\Stmt;
+use QueryParser;
+use QueryParser\BuilderHelpers;
+use QueryParser\Node;
+use QueryParser\Node\Stmt;
 
 class Method extends FunctionLike
 {
@@ -98,7 +98,7 @@ class Method extends FunctionLike
     /**
      * Adds a statement.
      *
-     * @param Node|PhpParser\Builder $stmt The statement to add
+     * @param Node|QueryParser\Builder $stmt The statement to add
      *
      * @return $this The builder instance (for fluid interface)
      */

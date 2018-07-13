@@ -38,9 +38,9 @@ Parse some PHP code into an AST and dump the result in human-readable form:
 
 ```php
 <?php
-use PhpParser\Error;
-use PhpParser\NodeDumper;
-use PhpParser\ParserFactory;
+use QueryParser\Error;
+use QueryParser\NodeDumper;
+use QueryParser\ParserFactory;
 
 $code = <<<'CODE'
 <?php
@@ -111,10 +111,10 @@ array(
 Let's traverse the AST and perform some kind of modification. For example, drop all function bodies:
 
 ```php
-use PhpParser\Node;
-use PhpParser\Node\Stmt\Function_;
-use PhpParser\NodeTraverser;
-use PhpParser\NodeVisitorAbstract;
+use QueryParser\Node;
+use QueryParser\Node\Stmt\Function_;
+use QueryParser\NodeTraverser;
+use QueryParser\NodeVisitorAbstract;
 
 $traverser = new NodeTraverser();
 $traverser->addVisitor(new class extends NodeVisitorAbstract {
@@ -160,7 +160,7 @@ array(
 Finally, we can convert the new AST back to PHP code:
 
 ```php
-use PhpParser\PrettyPrinter;
+use QueryParser\PrettyPrinter;
 
 $prettyPrinter = new PrettyPrinter\Standard;
 echo $prettyPrinter->prettyPrintFile($ast);

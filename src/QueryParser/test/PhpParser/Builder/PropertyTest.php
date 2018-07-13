@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser\Comment;
-use PhpParser\Node\Expr;
-use PhpParser\Node\Name;
-use PhpParser\Node\Scalar;
-use PhpParser\Node\Stmt;
+use QueryParser\Comment;
+use QueryParser\Node\Expr;
+use QueryParser\Node\Name;
+use QueryParser\Node\Scalar;
+use QueryParser\Node\Stmt;
 use PHPUnit\Framework\TestCase;
 
 class PropertyTest extends TestCase

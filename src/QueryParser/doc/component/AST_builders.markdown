@@ -22,9 +22,9 @@ the following syntactic elements:
 Here is an example:
 
 ```php
-use PhpParser\BuilderFactory;
-use PhpParser\PrettyPrinter;
-use PhpParser\Node;
+use QueryParser\BuilderFactory;
+use QueryParser\PrettyPrinter;
+use QueryParser\Node;
 
 $factory = new BuilderFactory;
 $node = $factory->namespace('Name\Space')

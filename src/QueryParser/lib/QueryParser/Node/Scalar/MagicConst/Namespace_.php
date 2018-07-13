@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Node\Scalar\MagicConst;
+namespace QueryParser\Node\Scalar\MagicConst;
 
-use PhpParser\Node\Scalar\MagicConst;
+use QueryParser\Node\Scalar\MagicConst;
 
 class Namespace_ extends MagicConst
 {

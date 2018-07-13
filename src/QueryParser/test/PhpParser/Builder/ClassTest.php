@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace PhpParser\Builder;
+namespace QueryParser\Builder;
 
-use PhpParser\Comment;
-use PhpParser\Node;
-use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
+use QueryParser\Comment;
+use QueryParser\Node;
+use QueryParser\Node\Name;
+use QueryParser\Node\Stmt;
 use PHPUnit\Framework\TestCase;
 
 class ClassTest extends TestCase
@@ -135,7 +135,7 @@ DOC;
 
     /**
      * @expectedException \LogicException
-     * @expectedExceptionMessage Doc comment must be a string or an instance of PhpParser\Comment\Doc
+     * @expectedExceptionMessage Doc comment must be a string or an instance of QueryParser\Comment\Doc
      */
     public function testInvalidDocComment() {
         $this->createClassBuilder('Test')

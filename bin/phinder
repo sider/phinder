@@ -4,12 +4,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Phinder\QueryParser;
-use Phinder\QueryParser\Error;
 use Phinder\QueryParser\NodeDumper;
-use Phinder\QueryParser\ParserFactory;
 
-$dumper = new NodeDumper;
-
-foreach (QueryParser::parse('echo 1 + 1;') as $ast) {
-    echo $dumper->dump($ast) . "\n";
-}
+$ast = QueryParser::parse('echo 1 + 1;');
+echo (new NodeDumper)->dump($ast) . "\n";

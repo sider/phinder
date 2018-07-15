@@ -5,8 +5,14 @@
 
 %%
 
+/*
 start:
     top_statement_list                                      { $$ = $this->handleNamespaces($1); }
+;
+*/
+
+start:
+  expr { $$ = $1; }
 ;
 
 top_statement_list_ex:
@@ -554,7 +560,8 @@ for_expr:
 ;
 
 expr:
-      variable                                              { $$ = $1; }
+      T_ELLIPSIS                                            { $$ = Expr\WildcardN[]; }
+    | variable                                              { $$ = $1; }
     | list_expr '=' expr                                    { $$ = Expr\Assign[$1, $3]; }
     | variable '=' expr                                     { $$ = Expr\Assign[$1, $3]; }
     | variable '=' '&' variable                             { $$ = Expr\AssignRef[$1, $4]; }
@@ -795,7 +802,7 @@ common_scalar:
 static_scalar:
       common_scalar                                         { $$ = $1; }
     | class_name T_PAAMAYIM_NEKUDOTAYIM identifier_ex       { $$ = Expr\ClassConstFetch[$1, $3]; }
-    | name                                                  { $$ = Expr\ConstFetch[$1]; }
+    | name                                                  { $$ = ($1 == '_') ? Expr\Wildcard[] : Expr\ConstFetch[$1]; }
     | T_ARRAY '(' static_array_pair_list ')'                { $$ = Expr\Array_[$3]; }
     | '[' static_array_pair_list ']'                        { $$ = Expr\Array_[$2]; }
     | static_operation                                      { $$ = $1; }
@@ -838,7 +845,7 @@ static_operation:
 ;
 
 constant:
-      name                                                  { $$ = Expr\ConstFetch[$1]; }
+      name                                                  { $$ = ($1 == '_') ? Expr\Wildcard[] : Expr\ConstFetch[$1]; }
     | class_name_or_var T_PAAMAYIM_NEKUDOTAYIM identifier_ex
           { $$ = Expr\ClassConstFetch[$1, $3]; }
 ;

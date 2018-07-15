@@ -5,8 +5,14 @@
 
 %%
 
+/*
 start:
     top_statement_list                                      { $$ = $this->handleNamespaces($1); }
+;
+*/
+
+start:
+  expr { $$ = $1; }
 ;
 
 top_statement_list_ex:
@@ -633,7 +639,8 @@ for_expr:
 ;
 
 expr:
-      variable                                              { $$ = $1; }
+      T_ELLIPSIS                                            { $$ = Expr\WildcardN[]; }
+    | variable                                              { $$ = $1; }
     | list_expr '=' expr                                    { $$ = Expr\Assign[$1, $3]; }
     | array_short_syntax '=' expr                           { $$ = Expr\Assign[$1, $3]; }
     | variable '=' expr                                     { $$ = Expr\Assign[$1, $3]; }
@@ -802,7 +809,7 @@ ctor_arguments:
 ;
 
 constant:
-      name                                                  { $$ = Expr\ConstFetch[$1]; }
+      name                                                  { $$ = ($1 == '_') ? Expr\Wildcard[] : Expr\ConstFetch[$1]; }
     | class_name_or_var T_PAAMAYIM_NEKUDOTAYIM identifier_ex
           { $$ = Expr\ClassConstFetch[$1, $3]; }
     /* We interpret and isolated FOO:: as an unfinished class constant fetch. It could also be

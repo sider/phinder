@@ -51,6 +51,7 @@ final class PHPParser {
         } else if (\is_subclass_of($ast, '\PhpParser\NodeAbstract')) {
             $xml['start'] = $ast->getStartLine();
             $xml['end'] = $ast->getEndLine();
+            $xml['class'] = $ast->getType();
             foreach ($ast->getSubNodeNames() as $name) {
                 $e = $xml->addChild($name);
                 static::buildXML($e, $ast->$name);

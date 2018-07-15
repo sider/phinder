@@ -4,7 +4,29 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Phinder\QueryParser;
+use Phinder\PHPParser;
 use Phinder\QueryParser\NodeDumper;
 
-$ast = QueryParser::parse('1 + _');
-echo (new NodeDumper)->dump($ast) . "\n";
+if (count($argv) != 3) {
+    die();
+}
+
+$rule_file = $argv[1];
+$php_file = $argv[2];
+
+$rules = require $rule_file;
+$pattern = $rules[0]['pattern'];
+$message = $rules[0]['message'];
+
+$xpath = QueryParser::parse($pattern);
+echo "$xpath\n\n";
+
+foreach (PHPParser::parse($php_file) as $xml) {
+    echo $xml->asXML() . "\n\n";
+    $file = $xml['path'];
+
+    foreach ($xml->xpath($xpath) as $r) {
+        $line = $r['start'];
+        echo "Line $line in File $file: $message\n";
+    }
+}

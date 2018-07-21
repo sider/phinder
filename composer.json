@@ -1,8 +1,13 @@
 {
-  "name": "tomokinakamaru/Phinder",
+  "name": "tomokinakamaru/phinder",
+  "description": "PHP code piece finder",
+  "type": "library",
   "license": ["MIT"],
-  "bin": [
-    "bin/phinder"
+  "authors": [
+      {
+          "name": "TomokiNakamaru",
+          "email": "tomoki.nakamaru@gmail.com"
+      }
   ],
   "autoload": {
     "psr-4": {
@@ -12,6 +17,9 @@
       "src/lib/Phinder.php"
     ]
   },
+  "bin": [
+    "bin/phinder"
+  ],
   "require": {
     "nikic/php-parser": "4.0.3",
     "funct/funct": "^1.4",

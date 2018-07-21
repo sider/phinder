@@ -1,1 +1,1 @@
-# Phinder
+# Phinder: PHP code piece finder

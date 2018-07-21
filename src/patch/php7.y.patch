@@ -1,0 +1,45 @@
+--- ../vendor/nikic/php-parser/grammar/php7.y	2018-07-16 02:25:16.000000000 +0900
++++ grammar/php7.y	2018-07-21 21:09:49.000000000 +0900
+@@ -6,7 +6,7 @@
+ %%
+ 
+ start:
+-    top_statement_list                                      { $$ = $this->handleNamespaces($1); }
++      expr                                               { $$ = $1; }
+ ;
+ 
+ top_statement_list_ex:
+@@ -234,7 +234,6 @@
+     | T_STATIC static_var_list semi                         { $$ = Stmt\Static_[$2]; }
+     | T_ECHO expr_list semi                                 { $$ = Stmt\Echo_[$2]; }
+     | T_INLINE_HTML                                         { $$ = Stmt\InlineHTML[$1]; }
+-    | expr semi                                             { $$ = Stmt\Expression[$1]; }
+     | T_UNSET '(' variables_list ')' semi                   { $$ = Stmt\Unset_[$3]; }
+     | T_FOREACH '(' expr T_AS foreach_variable ')' foreach_statement
+           { $$ = Stmt\Foreach_[$3, $5[0], ['keyVar' => null, 'byRef' => $5[1], 'stmts' => $7]]; }
+@@ -492,6 +491,7 @@
+ argument:
+       expr                                                  { $$ = Node\Arg[$1, false, false]; }
+     | '&' variable                                          { $$ = Node\Arg[$2, true, false]; }
++    | T_ELLIPSIS                                            { $$ = Node\Arg[WildcardN[], false, false]; }
+     | T_ELLIPSIS expr                                       { $$ = Node\Arg[$2, false, true]; }
+ ;
+ 
+@@ -639,7 +639,8 @@
+ ;
+ 
+ expr:
+-      variable                                              { $$ = $1; }
++      '?'                                                   { $$ = Wildcard[]; }
++    | variable                                              { $$ = $1; }
+     | list_expr '=' expr                                    { $$ = Expr\Assign[$1, $3]; }
+     | array_short_syntax '=' expr                           { $$ = Expr\Assign[$1, $3]; }
+     | variable '=' expr                                     { $$ = Expr\Assign[$1, $3]; }
+@@ -971,6 +972,7 @@
+ array_pair:
+       expr T_DOUBLE_ARROW expr                              { $$ = Expr\ArrayItem[$3, $1,   false]; }
+     | expr                                                  { $$ = Expr\ArrayItem[$1, null, false]; }
++    | T_ELLIPSIS                                            { $$ = Expr\ArrayItem[WildcardN[], null, false]; }
+     | expr T_DOUBLE_ARROW '&' variable                      { $$ = Expr\ArrayItem[$4, $1,   true]; }
+     | '&' variable                                          { $$ = Expr\ArrayItem[$2, null, true]; }
+     | /* empty */                                           { $$ = null; }

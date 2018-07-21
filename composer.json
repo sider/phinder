@@ -1,0 +1,20 @@
+{
+  "name": "tomokinakamaru/Phinder",
+  "license": ["MIT"],
+  "bin": [
+    "bin/phinder"
+  ],
+  "autoload": {
+    "psr-4": {
+      "Phinder\\": "src/lib"
+    },
+    "files": [
+      "src/lib/Phinder.php"
+    ]
+  },
+  "require": {
+    "nikic/php-parser": "4.0.3",
+    "funct/funct": "^1.4",
+    "symfony/yaml": "^4.1"
+  }
+}

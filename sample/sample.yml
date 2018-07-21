@@ -1,0 +1,22 @@
+- id: sample.a
+  pattern: wp_check_php_mysql_versions()
+  message: Found wp_check_php_mysql_versions call
+
+- id: sample.b
+  pattern:
+    - array(...)
+    - array(?, ...)
+    - array(?, ?, ...)
+  message: B
+
+- id: sample.c
+  pattern:
+    - func(?, ?)
+    - (?)->func(?, ?)
+  message: C
+
+- id: sample.d
+  pattern:
+    - func(?, ?, ...)
+    - (?)->func(?, ?, ...)
+  message: D

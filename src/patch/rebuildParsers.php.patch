@@ -1,0 +1,22 @@
+--- ../vendor/nikic/php-parser/grammar/rebuildParsers.php	2018-07-16 02:25:16.000000000 +0900
++++ grammar/rebuildParsers.php	2018-07-21 21:09:49.000000000 +0900
+@@ -1,8 +1,8 @@
+ <?php
+ 
+ $grammarFileToName = [
+-    __DIR__ . '/php5.y' => 'Php5',
+-    __DIR__ . '/php7.y' => 'Php7',
++    __DIR__ . '/php5.y' => 'Pattern5',
++    __DIR__ . '/php7.y' => 'Pattern7',
+ ];
+ 
+ $tokensFile     = __DIR__ . '/tokens.y';
+@@ -10,7 +10,7 @@
+ $skeletonFile   = __DIR__ . '/parser.template';
+ $tmpGrammarFile = __DIR__ . '/tmp_parser.phpy';
+ $tmpResultFile  = __DIR__ . '/tmp_parser.php';
+-$resultDir = __DIR__ . '/../lib/PhpParser/Parser';
++$resultDir = __DIR__ . '/../lib/Parser/PatternParser';
+ $tokensResultsFile = $resultDir . '/Tokens.php';
+ 
+ // check for kmyacc.exe binary in this directory, otherwise fall back to global name

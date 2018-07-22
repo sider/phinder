@@ -1,12 +1,13 @@
 <?php
-$a->func(1);
-func(1);
 
-$a->func(1, 2);
-func(1, 2);
+function myfunc($arg) {
+    // Do something in a naive way.
+}
 
-$a->func(1, 2, 3);
-func(1, 2, 3);
+function myfunc_100_times_faster($arg, $flag = null) {
+    // Do something in a newly developed way.
+}
 
-$a->func(1, 2, 3, 4);
-func(1, 2, 3, 4);
+myfunc($obj);
+
+myfunc_100_times_faster($obj);

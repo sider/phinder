@@ -1,22 +1,7 @@
-- id: sample.a
-  pattern: wp_check_php_mysql_versions()
-  message: Found wp_check_php_mysql_versions call
+- id: sample.myfunc
+  pattern: myfunc(?)
+  message: Use myfunc_100_times_faster, which is newly implemented myfunc.
 
-- id: sample.b
-  pattern:
-    - array(...)
-    - array(?, ...)
-    - array(?, ?, ...)
-  message: B
-
-- id: sample.c
-  pattern:
-    - func(?, ?)
-    - (?)->func(?, ?)
-  message: C
-
-- id: sample.d
-  pattern:
-    - func(?, ?, ...)
-    - (?)->func(?, ?, ...)
-  message: D
+- id: sample.myfunc_100_times_faster
+  pattern: myfunc_100_times_faster(?)
+  message: myfunc_100_times_faster runs even faster by specifying its second argument.

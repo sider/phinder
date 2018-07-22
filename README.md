@@ -14,7 +14,18 @@ composer require tomokinakamaru/phinder
 composer global require tomokinakamaru/phinder
 ```
 
-## Use Case
+## Usage
+
+```bash
+phinder -r <path-to-rule-defs> -p <path-to-php-code>
+```
+
+For example, `phinder -r `[`sample/sample.yml`](./sample/sample.yml)` -p`[`sample/sample.php`](./sample/sample.php) will output the following:
+
+```bash
+sample/sample.php:11	Use myfunc_100_times_faster, which is newly implemented myfunc.
+sample/sample.php:13	myfunc_100_times_faster runs even faster by specifying its second argument.
+```
 
 ## Pattern Syntax
 

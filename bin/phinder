@@ -12,13 +12,9 @@ use function Phinder\phind;
 use Phinder\Error\{FileNotFound, InvalidPattern, InvalidRule, InvalidYaml};
 
 
-$defaults = ['r' => getcwd(), 'p' => getcwd()];
-
-$options = getopt("r:p:");
-$options = array_merge($defaults, $options);
-
 try {
-    foreach (phind($options['r'], $options['p']) as $match) {
+    $phpPath = 1 < count($argv)? $argv[1] : '.';
+    foreach (phind('phinder.yml', $phpPath) as $match) {
         $start = (int)$match->xml['startFilePosition'];
         $end = (int)$match->xml['endFilePosition'];
         $code = @file_get_contents($match->path, NULL, NULL, $start, $end-$start+1);

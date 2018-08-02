@@ -20,9 +20,7 @@ abstract class FileParser {
                 }
             }
         } else if (\is_file($path)) {
-            if ($this->support($path)) {
-                yield from $this->parseFile($path);
-            }
+            yield from $this->parseFile($path);
         } else {
             throw new FileNotFound($path);
         }

@@ -12,10 +12,7 @@
   "autoload": {
     "psr-4": {
       "Phinder\\": "src/lib"
-    },
-    "files": [
-      "src/lib/Phinder.php"
-    ]
+    }
   },
   "bin": [
     "bin/phinder"

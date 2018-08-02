@@ -8,7 +8,7 @@ foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php
     }
 }
 
-use function Phinder\phind;
+use Phinder\API;
 use Phinder\Error\{FileNotFound, InvalidPattern, InvalidRule, InvalidYaml};
 use PhpParser\Error;
 
@@ -19,7 +19,13 @@ $jsonOutput = false;
 $outputBuffer = ['issues' => [], 'errors' => []];
 $command = null;
 
-function showHelp() {
+function showHelpAndDie($msg) {
+    fwrite(STDERR, <<<EOS
+$msg
+Usage  : [-j|--json] [-r|--rule <rule-path>]  [-p|--php <php-path>] [-q|--quicktest <pattern>]
+
+EOS
+);
     exit(1);
 }
 
@@ -30,7 +36,7 @@ while ($argv) {
         case '-q':
         case '--quicktest':
             $command = array_shift($argv);
-            if ($command === null) showHelp();
+            if ($command === null) showHelpAndDie('No pattern provided.');
             break;
 
         case '-j':
@@ -41,17 +47,17 @@ while ($argv) {
         case '-p':
         case '--php':
             $phpPath = array_shift($argv);
-            if ($phpPath === null) showHelp();
+            if ($phpPath === null) showHelpAndDie('No php path provided.');
             break;
 
         case '-r':
         case '--rule':
             $rulePath = array_shift($argv);
-            if ($rulePath === null) showHelp();
+            if ($rulePath === null) showHelpAndDie('No rule path provided.');
             break;
 
         default:
-            showHelp();
+            showHelpAndDie("Unknown argument: $a");
     }
 }
 
@@ -62,7 +68,7 @@ if ($command !== null) {
 }
 
 try {
-    foreach (phind($rulePath, $phpPath) as $match) {
+    foreach (API::phind($rulePath, $phpPath) as $match) {
         $path = (string)$match->path;
         $id = $match->rule->id;
         $message  = $match->rule->message;

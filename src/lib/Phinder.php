@@ -14,23 +14,22 @@ function phind($rulePath, $phpPath) {
     foreach ($phpParser->parse($phpPath) as $xml) {
         foreach ($rules as $rule) {
             foreach ($xml->xpath($rule->xpath) as $match) {
-                $line = getLine($match);
-                yield new Match($xml['path'], $line, $rule);
+                yield new Match($xml['path'], getActualElement($match), $rule);
             }
         }
     }
 }
 
-function getLine($xml) {
-    if ($xml['start'] === null) {
-        foreach ($xml->children() as $e) {
-            $line = getLine($e);
-            if ($line !== null) {
-                return $line;
+function getActualElement($xml) {
+    if ($xml['startLine'] === null) {
+        foreach ($xml->children() as $child) {
+            $elem = getActualElement($child);
+            if ($elem !== null) {
+                return $elem;
             }
         }
         return null;
     } else {
-        return $xml['start'];
+        return $xml;
     }
 }

@@ -7,13 +7,13 @@ final class Match {
 
     public $path;
 
-    public $line;
+    public $xml;
 
     public $rule;
 
-    public function __construct($path, $line, $rule) {
+    public function __construct($path, $xml, $rule) {
         $this->path = $path;
-        $this->line = $line;
+        $this->xml = $xml;
         $this->rule = $rule;
     }
 

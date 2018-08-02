@@ -19,8 +19,11 @@ $options = array_merge($defaults, $options);
 
 try {
     foreach (phind($options['r'], $options['p']) as $match) {
-        $msg = $match->rule->message;
-        echo "$match->path:$match->line\t$msg\n";
+        $start = (int)$match->xml['startFilePosition'];
+        $end = (int)$match->xml['endFilePosition'];
+        $code = @file_get_contents($match->path, NULL, NULL, $start, $end-$start+1);
+        $code = str_replace("\n", '\n', $code);
+        echo "{$match->path}:{$match->xml['startLine']}:{$match->xml['startLinePosition']}\t\033[31m$code\033[0m\t{$match->rule->message} ({$match->rule->id})\n";
     }
 
 } catch (FileNotFound $e) {

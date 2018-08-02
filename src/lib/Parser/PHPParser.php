@@ -2,7 +2,7 @@
 
 namespace Phinder\Parser;
 
-use PhpParser\{Error,ParserFactory};
+use PhpParser\{Error,Lexer,ParserFactory};
 use function Funct\Strings\endsWith;
 
 
@@ -11,7 +11,15 @@ final class PHPParser extends FileParser {
     private $phpParser = null;
 
     public function __construct() {
-        $this->phpParser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
+        $lexer = new Lexer(['usedAttributes' => [
+            'startLine',
+            'endLine',
+            'startTokenPos',
+            'endTokenPos',
+            'startFilePos',
+            'endFilePos'
+        ]]);
+        $this->phpParser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7, $lexer);
     }
 
     protected function support($path) {
@@ -34,7 +42,12 @@ final class PHPParser extends FileParser {
             }
 
         } else if (\is_subclass_of($ast, '\PhpParser\NodeAbstract')) {
-            $xml['start'] = $ast->getStartLine();
+            $xml['startLine'] = $ast->getStartLine();
+            $xml['endLine'] = $ast->getEndLine();
+            $xml['startLinePosition'] = $ast->getStartTokenPos();
+            $xml['endLinePosition'] = $ast->getEndTokenPos();
+            $xml['startFilePosition'] = $ast->getStartFilePos();
+            $xml['endFilePosition'] = $ast->getEndFilePos();
             $xml['class'] = $ast->getType();
             foreach ($ast->getSubNodeNames() as $name) {
                 $e = $xml->addChild($name);

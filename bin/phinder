@@ -9,13 +9,36 @@ foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php
 }
 
 use function Phinder\phind;
+use Phinder\Error\{FileNotFound, InvalidPattern, InvalidRule, InvalidYaml};
+
 
 $defaults = ['r' => getcwd(), 'p' => getcwd()];
 
 $options = getopt("r:p:");
 $options = array_merge($defaults, $options);
 
-foreach (phind($options['r'], $options['p']) as $match) {
-    $msg = $match->rule->message;
-    echo "$match->path:$match->line\t$msg\n";
+try {
+    foreach (phind($options['r'], $options['p']) as $match) {
+        $msg = $match->rule->message;
+        echo "$match->path:$match->line\t$msg\n";
+    }
+
+} catch (FileNotFound $e) {
+    fwrite(STDERR, "File not found: {$e->path}\n");
+    exit(1);
+
+} catch (InvalidPattern $e) {
+    fwrite(STDERR, "Invalid pattern found in {$e->id} in {$e->path}: {$e->pattern}\n");
+    exit(1);
+
+} catch (InvalidRule $e) {
+    $sufs = ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
+    $ord = "{$e->index}{$sufs[$e->index % 10 - 1]}";
+    fwrite(STDERR, "Invalid {$e->key} value found in {$ord} rule in {$e->path}\n");
+    exit(1);
+
+} catch (InvalidYaml $e) {
+    fwrite(STDERR, "Invalid yml file: {$e->path}\n");
+    exit(1);
+
 }

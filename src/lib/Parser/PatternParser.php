@@ -24,7 +24,7 @@ final class PatternParser {
                 $ast = $this->patternParser->parse("<?php $p");
                 yield '//*' . static::buildXPath($ast);
             } catch (Error $e) {
-                throw new InvalidPattern;
+                throw new InvalidPattern($p, $e);
             }
         }
     }

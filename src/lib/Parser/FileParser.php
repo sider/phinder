@@ -15,17 +15,23 @@ abstract class FileParser {
         if (\is_dir($path)) {
             foreach (new RecItrItr (new RecDirItr ($path)) as $itr) {
                 $p = $itr->getPathname();
-                if ($this->support($p)) yield from $this->parseFile($p);
+                if ($this->support($p)) {
+                    yield from $this->parseFile($p);
+                }
             }
         } else if (\is_file($path)) {
-            if ($this->support($path)) yield from $this->parseFile($path);
+            if ($this->support($path)) {
+                yield from $this->parseFile($path);
+            }
+        } else {
+            throw new FileNotFound($path);
         }
     }
 
     protected function getContent($path) {
         $code = @\file_get_contents($path);
         if ($code === false) {
-            throw new FileNotFound;
+            throw new FileNotFound($path);
         }
         return $code;
     }

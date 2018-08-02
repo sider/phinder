@@ -23,8 +23,10 @@ phinder -r <path-to-rule-defs> -p <path-to-php-code>
 For example, `phinder -r `[`sample/sample.yml`](./sample/sample.yml)` -p`[`sample/sample.php`](./sample/sample.php) will output the following:
 
 ```bash
-sample/sample.php:11	Use myfunc_100_times_faster, which is newly implemented myfunc.
-sample/sample.php:13	myfunc_100_times_faster runs even faster by specifying its second argument.
+sample/sample.php:11	Do not use native var_dump!
+sample/sample.php:10	Do not use in_array without specifying the 3rd parameter!
+sample/sample.php:15	Do not use in_array without specifying the 3rd parameter!
+sample/sample.php:3	Do not use array(...), use [...]!
 ```
 
 ## Pattern Syntax

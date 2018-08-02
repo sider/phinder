@@ -1,13 +1,17 @@
 <?php
 
-function myfunc($arg) {
-    // Do something in a naive way.
+$arr = array(
+    '123foo',
+    'bar'
+);
+
+$needle = 123;
+
+if (in_array($needle, $arr)) {
+    var_dump($arr);
+    echo "Found $needle in \$arr\n";
 }
 
-function myfunc_100_times_faster($arg, $flag = null) {
-    // Do something in a newly developed way.
+if (in_array(123, $arr)) {
+    echo "Found $needle in \$arr\n";
 }
-
-myfunc($obj);
-
-myfunc_100_times_faster($obj);

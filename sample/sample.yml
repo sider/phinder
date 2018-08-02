@@ -1,7 +1,11 @@
-- id: sample.myfunc
-  pattern: myfunc(?)
-  message: Use myfunc_100_times_faster, which is newly implemented myfunc.
+- id: sample.no_native_var_dump
+  pattern: var_dump(...)
+  message: Do not use native var_dump!
 
-- id: sample.myfunc_100_times_faster
-  pattern: myfunc_100_times_faster(?)
-  message: myfunc_100_times_faster runs even faster by specifying its second argument.
+- id: sample.in_array_without_3rd_param
+  pattern: in_array(?, ?)
+  message: Do not use in_array without specifying the 3rd parameter!
+
+- id: sample.array_short_syntax
+  pattern: array(...)
+  message: Do not use array(...), use [...]!

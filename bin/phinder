@@ -16,7 +16,7 @@ use PhpParser\Error;
 $phpPath = '.';
 $rulePath = 'phinder.yml';
 $jsonOutput = false;
-$outputBuffer = ['issues' => [], 'errors' => []];
+$outputBuffer = ['result' => [], 'errors' => []];
 $command = null;
 
 function showHelpAndDie($msg=null) {
@@ -87,7 +87,7 @@ try {
         $code = str_replace("\n", '\n', $code);
 
         if ($jsonOutput) {
-            $outputBuffer['issues'][] = [
+            $outputBuffer['result'][] = [
                 'path' => $path,
                 'rule' => [
                     'id' => $id,

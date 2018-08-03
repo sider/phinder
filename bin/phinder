@@ -19,10 +19,10 @@ $jsonOutput = false;
 $outputBuffer = ['issues' => [], 'errors' => []];
 $command = null;
 
-function showHelpAndDie($msg) {
+function showHelpAndDie($msg=null) {
+    if ($mst !== null) fwrite(STDERR, $msg . "\n");
     fwrite(STDERR, <<<EOS
-$msg
-Usage  : [-j|--json] [-r|--rule <rule-path>]  [-p|--php <php-path>] [-q|--quicktest <pattern>]
+Usage  : phinder [-j|--json] [-r|--rule <rule-path>]  [-p|--php <php-path>] [-q|--quicktest <pattern>]
 
 EOS
 );
@@ -55,6 +55,10 @@ while ($argv) {
             $rulePath = array_shift($argv);
             if ($rulePath === null) showHelpAndDie('No rule path provided.');
             break;
+
+        case '-h':
+        case '--help':
+            showHelpAndDie('');
 
         default:
             showHelpAndDie("Unknown argument: $a");

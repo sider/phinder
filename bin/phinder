@@ -77,14 +77,20 @@ try {
         $id = $match->rule->id;
         $message  = $match->rule->message;
         $startLine = (int)$match->xml['startLine'];
-        $startLinePos = (int)$match->xml['startLinePosition'];
         $startFilePos = (int)$match->xml['startFilePosition'];
         $endLine = (int)$match->xml['endLine'];
-        $endLinePos = (int)$match->xml['endLinePosition'];
         $endFilePos = (int)$match->xml['endFilePosition'];
 
         $code = @file_get_contents($match->path, NULL, NULL, $startFilePos, $endFilePos-$startFilePos+1);
         $code = str_replace("\n", '\n', $code);
+
+        // Start position
+        $lines = explode("\n", @file_get_contents($match->path, NULL, NULL, 0, $startFilePos));
+        $startPos = strlen($lines[count($lines) - 1]) + 1;
+
+        // End position
+        $lines = explode("\n", @file_get_contents($match->path, NULL, NULL, 0, $endFilePos+1));
+        $endPos = strlen($lines[count($lines) - 1]) + 1;
 
         if ($jsonOutput) {
             $outputBuffer['result'][] = [
@@ -94,12 +100,12 @@ try {
                     'message' => $message,
                 ],
                 'location' => [
-                    'start' => [$startLine, $startLinePos],
-                    'end' => [$endLine, $endLinePos]
+                    'start' => [$startLine, $startPos],
+                    'end' => [$endLine, $endPos]
                 ]
             ];
         } else {
-            echo "$path:$startLine:$startLinePos\t\033[31m$code\033[0m\t";
+            echo "$path:$startLine:$startPos\t\033[31m$code\033[0m\t";
             echo ($id === '')? "\n" : "$message ($id)\n";
         }
     }

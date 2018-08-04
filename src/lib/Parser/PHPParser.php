@@ -44,8 +44,6 @@ final class PHPParser extends FileParser {
         } else if (\is_subclass_of($ast, '\PhpParser\NodeAbstract')) {
             $xml['startLine'] = $ast->getStartLine();
             $xml['endLine'] = $ast->getEndLine();
-            $xml['startLinePosition'] = $ast->getStartTokenPos();
-            $xml['endLinePosition'] = $ast->getEndTokenPos();
             $xml['startFilePosition'] = $ast->getStartFilePos();
             $xml['endFilePosition'] = $ast->getEndFilePos();
             $xml['class'] = $ast->getType();

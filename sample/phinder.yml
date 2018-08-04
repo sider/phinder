@@ -1,0 +1,3 @@
+- id: sample.var_dump
+  pattern: var_dump(...)
+  message: Do not use var_dump

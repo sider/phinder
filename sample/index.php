@@ -1,13 +1,5 @@
 <?php
 
-var_dump(
-    $a
-);
-
-var_dump($a, $b);
-
-var_dump(1, 2);
-
-function f() {
+if (in_array($needle, $haystack)) {
     var_dump($a, $b);
 }

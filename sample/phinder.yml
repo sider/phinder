@@ -1,3 +1,7 @@
 - id: sample.var_dump
   pattern: var_dump(...)
-  message: Do not use var_dump
+  message: Do not use var_dump.
+
+- id: sample.in_array_without_3rd_param
+  pattern: in_array(?, ?)
+  message: Specify 3rd parameter explicitly when calling in_array to avoid unexpected comparison results.

@@ -62,20 +62,20 @@ phinder --json
 
 ```json
 {
-  "result":[
+  "result": [
     {
-      "path":"./sample.php",
-      "rule":{
-        "id":"sample.var_dump",
-        "message":"Do not use var_dump!"
+      "path": "./index.php",
+      "rule": {
+        "id": "sample.var_dump",
+        "message": "Do not use var_dump."
       },
-      "location":{
-        "start":[3, 2],
-        "end":[3, 5]
+      "location": {
+        "start": [4, 5],
+        "end": [4, 21]
       }
     }
   ],
-  "errors":[]
+  "errors": []
 }
 ```
 

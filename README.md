@@ -7,16 +7,16 @@ This tool aims mainly at speeding up your code review process, not static bug de
 
 Suppose that your project has the following local rule:
 
-- Specify 3rd parameter explicitly when calling `in_array` to avoid unexpected comparison results.
+- Specify the 3rd parameter explicitly when calling `in_array` to avoid unexpected comparison results.
 
-Your project code follows this rule if you don't forget to check it in code review process. But what if you forget? What if you have ten rules? You probably want machines to do such low-level checking.
+Your project code follows this rule if you don't forget to check it in code review. But what if you forget? What if your project has ten rules? You probably want machines to do such low-level checking.
 
-Phinder is a command line tool for checking such low-level things automatically. By saving the following yml as `phinder.yml` and running `phinder .` from your terminal, Phinder finds the violations for you:
+Phinder is a command line tool for checking such low-level things automatically. By saving the following yml as `phinder.yml` and running `phinder` from your terminal, Phinder finds the violations for you:
 
 ```yml
 - id: in_array_without_3rd_param
   pattern: in_array(?, ?)
-  message: Specify 3rd parameter explicitly when calling `in_array` to avoid unexpected comparison results.
+  message: Specify the 3rd parameter explicitly when calling `in_array` to avoid unexpected comparison results.
 ```
 
 ## Installation

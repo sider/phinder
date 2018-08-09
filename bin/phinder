@@ -60,6 +60,11 @@ while ($argv) {
         case '--help':
             showHelpAndDie('');
 
+        case '-v':
+        case '--version':
+            fwrite(STDERR, "phinder version 0.3.0\n");
+            exit();
+
         default:
             showHelpAndDie("Unknown argument: $a");
     }

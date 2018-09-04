@@ -101,7 +101,7 @@ while (true) {
         $endPos = strlen($lines[count($lines) - 1]) + 1;
 
         if ($jsonOutput) {
-            $outputBuffer['result'][] = [
+            $obj = [
                 'path' => $path,
                 'rule' => [
                     'id' => $id,
@@ -112,6 +112,13 @@ while (true) {
                     'end' => [$endLine, $endPos]
                 ]
             ];
+
+            if (count($match->rule->exceptions)) {
+                $obj['exceptions'] = $match->rule->exceptions;
+            }
+
+            $outputBuffer['result'][] = $obj;
+
         } else {
             echo "$path:$startLine:$startPos\t\033[31m$code\033[0m\t";
             echo ($id === '')? "\n" : "$message ($id)\n";

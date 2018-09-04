@@ -13,10 +13,13 @@ final class Rule {
 
     public $message;
 
-    public function __construct($id, $xpath, $message) {
+    public $exceptions;
+
+    public function __construct($id, $xpath, $message, $exceptions) {
         $this->id = $id;
         $this->xpath = $xpath;
         $this->message = $message;
+        $this->exceptions = $exceptions;
     }
 
 }

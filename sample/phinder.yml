@@ -6,3 +6,9 @@
 - id: sample.in_array_without_3rd_param
   pattern: in_array(?, ?)
   message: Specify 3rd parameter explicitly when calling in_array to avoid unexpected comparison results.
+  before:
+    - in_array(1, $arr)
+    - in_array(2, $arr)
+  after:
+    - in_array(3, $arr, true)
+    - in_array(4, $arr, false)

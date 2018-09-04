@@ -2,6 +2,7 @@
 
 namespace Phinder\Parser;
 
+use Phinder\Error\InvalidPHP;
 use PhpParser\{Error,Lexer,ParserFactory};
 use function Funct\Strings\endsWith;
 
@@ -28,7 +29,11 @@ final class PHPParser extends FileParser {
 
     protected function parseFile($path) {
         $code = $this->getContent($path);
-        $ast = $this->phpParser->parse($code);
+        try {
+            $ast = $this->phpParser->parse($code);
+        } catch (Error $e) {
+            throw new InvalidPHP($path, $e);
+        }
         $xml = new \SimpleXMLElement("<file path='$path'/>");
         static::fillXML($xml, $ast);
         yield $xml;

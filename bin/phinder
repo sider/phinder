@@ -9,9 +9,7 @@ foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php
 }
 
 use Phinder\API;
-use Phinder\Error\{FileNotFound, InvalidPattern, InvalidRule, InvalidYaml};
-use PhpParser\Error;
-
+use Phinder\Error\{FileNotFound, InvalidPHP, InvalidPattern, InvalidRule, InvalidYaml};
 
 $phpPath = '.';
 $rulePath = 'phinder.yml';
@@ -71,8 +69,13 @@ if ($command !== null) {
     fwrite($tmp, "- id: ''\n  pattern: $command\n  message: ''");
 }
 
-try {
-    foreach (API::phind($rulePath, $phpPath) as $match) {
+$generator = API::phind($rulePath, $phpPath);
+while (true) {
+    try {
+        if (!$generator->valid()) { break; }
+        $match = $generator->current();
+        $generator->next();
+
         $path = (string)$match->path;
         $id = $match->rule->id;
         $message  = $match->rule->message;
@@ -108,60 +111,71 @@ try {
             echo "$path:$startLine:$startPos\t\033[31m$code\033[0m\t";
             echo ($id === '')? "\n" : "$message ($id)\n";
         }
+
+    } catch (FileNotFound $e) {
+        $msg = "File not found: {$e->path}";
+        if ($jsonOutput) {
+            $outputBuffer['errors'][] = [
+                'type' => 'FileNotFound',
+                'message' => $msg
+            ];
+        } else {
+            fwrite(STDERR, "$msg\n");
+            exit(1);
+        }
+
+    } catch (InvalidPattern $e) {
+        $msg = "Invalid pattern found in {$e->id} in {$e->path}: {$e->pattern}";
+        if ($jsonOutput) {
+            $outputBuffer['errors'][] = [
+                'type' => 'InvalidPattern',
+                'message' => $msg
+            ];
+        } else {
+            fwrite(STDERR, "$msg\n");
+            exit(1);
+        }
+
+    } catch (InvalidRule $e) {
+        $sufs = ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
+        $ord = "{$e->index}{$sufs[$e->index % 10 - 1]}";
+        $msg = "Invalid {$e->key} value found in {$ord} rule in {$e->path}";
+
+        if ($jsonOutput) {
+            $outputBuffer['errors'][] = [
+                'type' => 'InvalidRule',
+                'message' => $msg
+            ];
+        } else {
+            fwrite(STDERR, "$msg\n");
+            exit(1);
+        }
+
+    } catch (InvalidYaml $e) {
+        $msg = "Invalid yml file: {$e->path}";
+
+        if ($jsonOutput) {
+            $outputBuffer['errors'][] = [
+                'type' => 'InvalidYaml',
+                'message' => $msg
+            ];
+        } else {
+            fwrite(STDERR, "$msg\n");
+            exit(1);
+        }
+
+    } catch (InvalidPHP $e) {
+        $msg = "PHP parse error in {$e->path}: {$e->error->getRawMessage()}";
+        if ($jsonOutput) {
+            $outputBuffer['errors'][] = [
+                'type' => 'InvalidPHP',
+                'message' => $msg
+            ];
+        } else {
+            fwrite(STDERR, "$msg\n");
+            exit(1);
+        }
     }
-
-} catch (FileNotFound $e) {
-    $msg = "File not found: {$e->path}";
-    if ($jsonOutput) {
-        $outputBuffer['errors'][] = [
-            'type' => 'FileNotFound',
-            'message' => $msg
-        ];
-    } else {
-        fwrite(STDERR, "$msg\n");
-        exit(1);
-    }
-
-} catch (InvalidPattern $e) {
-    $msg = "Invalid pattern found in {$e->id} in {$e->path}: {$e->pattern}";
-    if ($jsonOutput) {
-        $outputBuffer['errors'][] = [
-            'type' => 'InvalidPattern',
-            'message' => $msg
-        ];
-    } else {
-        fwrite(STDERR, "$msg\n");
-        exit(1);
-    }
-
-} catch (InvalidRule $e) {
-    $sufs = ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
-    $ord = "{$e->index}{$sufs[$e->index % 10 - 1]}";
-    $msg = "Invalid {$e->key} value found in {$ord} rule in {$e->path}";
-
-    if ($jsonOutput) {
-        $outputBuffer['errors'][] = [
-            'type' => 'InvalidRule',
-            'message' => $msg
-        ];
-    } else {
-        fwrite(STDERR, "$msg\n");
-        exit(1);
-    }
-
-} catch (InvalidYaml $e) {
-    $msg = "Invalid yml file: {$e->path}";
-
-    if ($jsonOutput) {
-        $outputBuffer['errors'][] = [
-            'type' => 'InvalidYaml',
-            'message' => $msg
-        ];
-    } else {
-        fwrite(STDERR, "$msg\n");
-        exit(1);
-    }
-
 }
 
 if ($jsonOutput) {

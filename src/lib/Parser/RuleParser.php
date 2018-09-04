@@ -54,7 +54,7 @@ final class RuleParser extends FileParser {
         $id = $arr['id'];
         $pattern = $arr['pattern'];
         $message = $arr['message'];
-        $exception = $arr['exception'];
+        $justification = $arr['justification'];
 
         if (!\is_string($id)) {
             throw new InvalidRule('id');
@@ -68,26 +68,26 @@ final class RuleParser extends FileParser {
             throw new InvalidRule('pattern');
         }
 
-        if ($exception !== NULL && !\is_string($exception) && !\is_array($exception)) {
-            throw new InvalidRule('exception');
+        if ($justification !== NULL && !\is_string($justification) && !\is_array($justification)) {
+            throw new InvalidRule('justification');
         }
 
         $pats = \is_array($pattern)? $pattern : [$pattern];
 
-        $excs = NULL;
-        if ($exception === NULL) {
-            $excs = [];
+        $jsts = NULL;
+        if ($justification === NULL) {
+            $jsts = [];
         } else {
-            if (is_array($exception)) {
-                $excs = $exception;
+            if (is_array($justification)) {
+                $jsts = $justification;
             } else {
-                $excs = [$exception];
+                $jsts = [$justification];
             }
         }
 
         try {
             foreach ($this->patternParser->parse($pats) as $xpath) {
-                yield new Rule($id, $xpath, $message, $excs);
+                yield new Rule($id, $xpath, $message, $jsts);
             }
         } catch (InvalidPattern $e) {
             $e->id = $id;

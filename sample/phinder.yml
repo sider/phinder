@@ -1,7 +1,7 @@
 - id: sample.var_dump
   pattern: var_dump(...)
   message: Do not use var_dump.
-  exception: Allowed when debugging
+  justification: Allowed when debugging
 
 - id: sample.in_array_without_3rd_param
   pattern: in_array(?, ?)

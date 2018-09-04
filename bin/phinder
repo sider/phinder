@@ -113,8 +113,8 @@ while (true) {
                 ]
             ];
 
-            if (count($match->rule->exceptions)) {
-                $obj['exceptions'] = $match->rule->exceptions;
+            if (count($match->rule->justifications)) {
+                $obj['justifications'] = $match->rule->justifications;
             }
 
             $outputBuffer['result'][] = $obj;

@@ -10,12 +10,14 @@ foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php
 
 use Phinder\API;
 use Phinder\Error\{FileNotFound, InvalidPHP, InvalidPattern, InvalidRule, InvalidYaml};
+use Phinder\Parser\PHPParser;
 
 $phpPath = '.';
 $rulePath = 'phinder.yml';
 $jsonOutput = false;
 $outputBuffer = ['result' => [], 'errors' => []];
 $command = null;
+$test = false;
 
 function showHelpAndDie($msg=null) {
     if ($mst !== null) fwrite(STDERR, $msg . "\n");
@@ -28,9 +30,14 @@ EOS
 }
 
 array_shift($argv);
+
 while ($argv) {
     $a = array_shift($argv);
     switch ($a) {
+        case 'test':
+            $test = true;
+            break;
+
         case '-q':
         case '--quicktest':
             $command = array_shift($argv);
@@ -66,6 +73,32 @@ while ($argv) {
         default:
             showHelpAndDie("Unknown argument: $a");
     }
+}
+
+if ($test === true) {
+    $phpParser = new PHPParser;
+    $error_count = 0;
+    foreach (API::parseRule($rulePath) as $r) {
+        foreach ($r->befores as $p) {
+            $xml = $phpParser->parseStr("<?php $p;");
+            if (0 === count($xml->xpath($r->xpath))) {
+                echo "`$p` does not match the rule {$r->id} but should match that rule.\n";
+                $error_count++;
+            }
+        }
+
+        foreach ($r->afters as $p) {
+            $xml = $phpParser->parseStr("<?php $p;");
+            if (0 < count($xml->xpath($r->xpath))) {
+                echo "`$p` matches the rule {$r->id} but should not match that rule.\n";
+                $error_count++;
+            }
+        }
+    }
+    if ($error_count === 0) {
+        fwrite(STDERR, "No error\n");
+    }
+    exit();
 }
 
 if ($command !== null) {

@@ -23,6 +23,17 @@ final class PHPParser extends FileParser {
         $this->phpParser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7, $lexer);
     }
 
+    public function parseStr($code) {
+        try {
+            $ast = $this->phpParser->parse($code);
+        } catch (Error $e) {
+            throw new InvalidPHP($path, $e);
+        }
+        $xml = new \SimpleXMLElement("<file path=''/>");
+        static::fillXML($xml, $ast);
+        return $xml;
+    }
+
     protected function support($path) {
         return endsWith($path, '.php');
     }

@@ -99,6 +99,12 @@ phinder --php <dir>   # Find pieces in all php files in <dir>
 phinder --help
 ```
 
+## Test
+
+```console
+phinder test
+```
+
 ## Pattern Syntax
 
 Any PHP expression is a valid Phinder pattern.

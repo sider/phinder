@@ -54,7 +54,7 @@ final class RuleParser extends FileParser {
         $id = $arr['id'];
         $pattern = $arr['pattern'];
         $message = $arr['message'];
-        $exception = $arr['exceptions'];
+        $exception = $arr['exception'];
 
         if (!\is_string($id)) {
             throw new InvalidRule('id');

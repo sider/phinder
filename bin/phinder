@@ -20,7 +20,7 @@ $command = null;
 $test = false;
 
 function showHelpAndDie($msg=null) {
-    if ($mst !== null) fwrite(STDERR, $msg . "\n");
+    if ($msg !== null) fwrite(STDERR, $msg . "\n");
     fwrite(STDERR, <<<EOS
 Usage  : phinder [-j|--json] [-r|--rule <rule-path>]  [-p|--php <php-path>] [-q|--quicktest <pattern>]
 

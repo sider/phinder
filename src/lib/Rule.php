@@ -15,17 +15,17 @@ final class Rule {
 
     public $justifications;
 
-    public $befores;
+    public $fail_patterns;
 
-    public $afters;
+    public $pass_patterns;
 
-    public function __construct($id, $xpath, $message, $justifications, $befores, $afters) {
+    public function __construct($id, $xpath, $message, $justifications, $pass_patterns, $fail_patterns) {
         $this->id = $id;
         $this->xpath = $xpath;
         $this->message = $message;
         $this->justifications = $justifications;
-        $this->befores = $befores;
-        $this->afters = $afters;
+        $this->pass_patterns = $pass_patterns;
+        $this->fail_patterns = $fail_patterns;
     }
 
 }

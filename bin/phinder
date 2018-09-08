@@ -97,8 +97,10 @@ if ($test === true) {
     }
     if ($error_count === 0) {
         fwrite(STDERR, "No error\n");
+        exit(0);
+    } else {
+        exit(1);
     }
-    exit();
 }
 
 if ($command !== null) {

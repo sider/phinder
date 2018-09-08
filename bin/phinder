@@ -79,7 +79,7 @@ if ($test === true) {
     $phpParser = new PHPParser;
     $error_count = 0;
     foreach (API::parseRule($rulePath) as $r) {
-        foreach ($r->befores as $p) {
+        foreach ($r->fail_patterns as $p) {
             $xml = $phpParser->parseStr("<?php $p;");
             if (0 === count($xml->xpath($r->xpath))) {
                 echo "`$p` does not match the rule {$r->id} but should match that rule.\n";
@@ -87,7 +87,7 @@ if ($test === true) {
             }
         }
 
-        foreach ($r->afters as $p) {
+        foreach ($r->pass_patterns as $p) {
             $xml = $phpParser->parseStr("<?php $p;");
             if (0 < count($xml->xpath($r->xpath))) {
                 echo "`$p` matches the rule {$r->id} but should not match that rule.\n";

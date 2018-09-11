@@ -22,7 +22,7 @@ $test = false;
 function showHelpAndDie($msg=null) {
     if ($msg !== null) fwrite(STDERR, $msg . "\n");
     fwrite(STDERR, <<<EOS
-Usage  : phinder [-j|--json] [-r|--rule <rule-path>]  [-p|--php <php-path>] [-q|--quicktest <pattern>]
+usage  : phinder [-h] [test] [-j|--json] [-r|--rule <rule-path>]  [-p|--php <php-path>] [-q|--quicktest <pattern>]
 
 EOS
 );

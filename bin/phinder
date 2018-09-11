@@ -63,7 +63,7 @@ while ($argv) {
 
         case '-h':
         case '--help':
-            showHelpAndDie('');
+            showHelpAndDie(null);
 
         case '-v':
         case '--version':

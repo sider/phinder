@@ -23,7 +23,11 @@ class API
     public static function parseRule($path)
     {
         $ruleParser = new RuleParser;
-        return \iterator_to_array($ruleParser->parse($path));
+        $rules = [];
+        foreach ($ruleParser->parse($path) as $r) {
+            $rules[] = $r;
+        }
+        return $rules;
     }
 
     private static function getActualElement($xml)

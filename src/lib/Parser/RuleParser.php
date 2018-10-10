@@ -9,19 +9,23 @@ use Phinder\Rule;
 use function Funct\Strings\endsWith;
 
 
-final class RuleParser extends FileParser {
+final class RuleParser extends FileParser
+{
 
     private $patternParser;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->patternParser = new PatternParser;
     }
 
-    protected function support($path) {
+    protected function support($path)
+    {
         return endsWith($path, '.yml');
     }
 
-    protected function parseFile($path) {
+    protected function parseFile($path)
+    {
         $code = $this->getContent($path);
         try {
             $rules = Yaml::parse($code);
@@ -50,7 +54,8 @@ final class RuleParser extends FileParser {
         }
     }
 
-    private function parseArray($arr) {
+    private function parseArray($arr)
+    {
         $id = $arr['id'];
         $pattern = $arr['pattern'];
         $message = $arr['message'];

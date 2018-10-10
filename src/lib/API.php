@@ -4,8 +4,10 @@ namespace Phinder;
 
 use Phinder\Parser\{PHPParser,RuleParser};
 
-class API {
-    public static function phind($rulePath, $phpPath) {
+class API
+{
+    public static function phind($rulePath, $phpPath)
+    {
         $phpParser = new PHPParser;
         $rules = static::parseRule($rulePath);
         foreach ($phpParser->parse($phpPath) as $xml) {
@@ -18,12 +20,14 @@ class API {
         }
     }
 
-    public static function parseRule($path) {
+    public static function parseRule($path)
+    {
         $ruleParser = new RuleParser;
         return \iterator_to_array($ruleParser->parse($path));
     }
 
-    private static function getActualElement($xml) {
+    private static function getActualElement($xml)
+    {
         if ($xml['startLine'] === null) {
             foreach ($xml->children() as $child) {
                 $elem = getActualElement($child);

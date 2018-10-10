@@ -10,15 +10,18 @@ use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\ArrayItem;
 
 
-final class PatternParser {
+final class PatternParser
+{
 
     private $patternParser = null;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->patternParser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
     }
 
-    public function parse($arr) {
+    public function parse($arr)
+    {
         foreach ($arr as $p) {
             try {
                 $ast = $this->patternParser->parse("<?php $p");
@@ -29,7 +32,8 @@ final class PatternParser {
         }
     }
 
-    private static function buildXPath($ast) {
+    private static function buildXPath($ast)
+    {
         if (\is_array($ast)) {
             $len = count($ast);
             if (0 < $len) {

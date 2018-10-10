@@ -7,23 +7,28 @@ use PhpParser\{Error,Lexer,ParserFactory};
 use function Funct\Strings\endsWith;
 
 
-final class PHPParser extends FileParser {
+final class PHPParser extends FileParser
+{
 
     private $phpParser = null;
 
-    public function __construct() {
-        $lexer = new Lexer(['usedAttributes' => [
+    public function __construct()
+    {
+        $lexer = new Lexer(
+            ['usedAttributes' => [
             'startLine',
             'endLine',
             'startTokenPos',
             'endTokenPos',
             'startFilePos',
             'endFilePos'
-        ]]);
+            ]]
+        );
         $this->phpParser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7, $lexer);
     }
 
-    public function parseStr($code) {
+    public function parseStr($code)
+    {
         try {
             $ast = $this->phpParser->parse($code);
         } catch (Error $e) {
@@ -34,11 +39,13 @@ final class PHPParser extends FileParser {
         return $xml;
     }
 
-    protected function support($path) {
+    protected function support($path)
+    {
         return endsWith($path, '.php');
     }
 
-    protected function parseFile($path) {
+    protected function parseFile($path)
+    {
         $code = $this->getContent($path);
         try {
             $ast = $this->phpParser->parse($code);
@@ -50,7 +57,8 @@ final class PHPParser extends FileParser {
         yield $xml;
     }
 
-    private static function fillXML($xml, $ast) {
+    private static function fillXML($xml, $ast)
+    {
         if (\is_array($ast)) {
             foreach ($ast as $k => $v) {
                 $e = $xml->addChild("item$k");

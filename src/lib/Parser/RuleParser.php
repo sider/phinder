@@ -56,9 +56,9 @@ final class RuleParser extends FileParser
 
     private function parseArray($arr)
     {
-        $id = $arr['id'];
-        $pattern = $arr['pattern'];
-        $message = $arr['message'];
+        $id = $arr['id'] ?? null;
+        $pattern = $arr['pattern'] ?? null;
+        $message = $arr['message'] ?? null;
 
         $justification = $arr['justification'] ?? [];
 

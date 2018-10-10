@@ -1,0 +1,11 @@
+- id: sample1
+  pattern: func(...)
+  message: message
+
+- id: sample2
+  pattern: array(...)
+  message: message
+
+- id: sample3
+  pattern: array()
+  message: message

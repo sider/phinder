@@ -31,9 +31,6 @@ abstract class FileParser
     protected function getContent($path)
     {
         $code = @\file_get_contents($path);
-        if ($code === false) {
-            throw new FileNotFound($path);
-        }
         return $code;
     }
 

@@ -3,4 +3,15 @@
   <testsuite name="sample tests">
     <directory>./test</directory>
   </testsuite>
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">./src/lib</directory>
+      <exclude>
+        <directory suffix=".php">./src/lib/Parser/PatternParser</directory>
+      </exclude>
+    </whitelist>
+  </filter>
+  <logging>
+    <log type="coverage-html" target="./cov" lowUpperBound="35" highLowerBound="70"/>
+  </logging>
 </phpunit>

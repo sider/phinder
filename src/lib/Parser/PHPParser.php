@@ -32,7 +32,7 @@ final class PHPParser extends FileParser
         try {
             $ast = $this->phpParser->parse($code);
         } catch (Error $e) {
-            throw new InvalidPHP($path, $e);
+            throw new InvalidPHP("", $e);
         }
         $xml = new \SimpleXMLElement("<file path=''/>");
         static::fillXML($xml, $ast);

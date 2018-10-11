@@ -5,7 +5,8 @@ namespace Phinder\Error;
 use Phinder\Error;
 
 
-class InvalidRule extends Error {
+class InvalidRule extends Error
+{
 
     public $key;
 
@@ -13,7 +14,8 @@ class InvalidRule extends Error {
 
     public $path;
 
-    public function __construct($key) {
+    public function __construct($key)
+    {
         $this->key = $key;
     }
 

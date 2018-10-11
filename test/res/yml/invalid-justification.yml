@@ -1,0 +1,4 @@
+- id: sample
+  pattern: func(?)
+  message: message
+  justification: 100

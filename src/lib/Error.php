@@ -3,4 +3,6 @@
 namespace Phinder;
 
 
-class Error extends \RuntimeException {}
+class Error extends \RuntimeException
+{
+}

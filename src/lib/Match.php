@@ -3,7 +3,8 @@
 namespace Phinder;
 
 
-final class Match {
+final class Match
+{
 
     public $path;
 
@@ -11,7 +12,8 @@ final class Match {
 
     public $rule;
 
-    public function __construct($path, $xml, $rule) {
+    public function __construct($path, $xml, $rule)
+    {
         $this->path = $path;
         $this->xml = $xml;
         $this->rule = $rule;

@@ -10,26 +10,32 @@ use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\ArrayItem;
 
 
-final class PatternParser {
+final class PatternParser
+{
 
-    private $patternParser = null;
+    private $_patternParser = null;
 
-    public function __construct() {
-        $this->patternParser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
+    public function __construct()
+    {
+        $this->patternParser = (new ParserFactory)->create(
+            ParserFactory::PREFER_PHP7
+        );
     }
 
-    public function parse($arr) {
+    public function parse($arr)
+    {
         foreach ($arr as $p) {
             try {
                 $ast = $this->patternParser->parse("<?php $p");
-                yield '//*' . static::buildXPath($ast);
+                yield '//*' . static::_buildXPath($ast);
             } catch (Error $e) {
                 throw new InvalidPattern($p, $e);
             }
         }
     }
 
-    private static function buildXPath($ast) {
+    private static function _buildXPath($ast)
+    {
         if (\is_array($ast)) {
             $len = count($ast);
             if (0 < $len) {
@@ -38,7 +44,7 @@ final class PatternParser {
 
                 $xp = '';
                 foreach ($ast as $i => $a) {
-                    $xp .= "/item$i" . static::buildXPath($a) . "/..";
+                    $xp .= "/item$i" . static::_buildXPath($a) . "/..";
 
                     if ($a instanceof Arg) {
                         if ($a->value instanceof WildcardN) {
@@ -72,7 +78,7 @@ final class PatternParser {
 
             $xp = null;
             foreach ($ast->getSubNodeNames() as $n) {
-                $x = static::buildXPath($ast->$n);
+                $x = static::_buildXPath($ast->$n);
                 $xp .= "/$n$x/..";
             }
             return $xp;

@@ -9,19 +9,23 @@ use Phinder\Rule;
 use function Funct\Strings\endsWith;
 
 
-final class RuleParser extends FileParser {
+final class RuleParser extends FileParser
+{
 
-    private $patternParser;
+    private $_patternParser;
 
-    public function __construct() {
-        $this->patternParser = new PatternParser;
+    public function __construct()
+    {
+        $this->_patternParser = new PatternParser;
     }
 
-    protected function support($path) {
+    protected function support($path)
+    {
         return endsWith($path, '.yml');
     }
 
-    protected function parseFile($path) {
+    protected function parseFile($path)
+    {
         $code = $this->getContent($path);
         try {
             $rules = Yaml::parse($code);
@@ -36,7 +40,7 @@ final class RuleParser extends FileParser {
             $arr = $rules[$i];
 
             try {
-                foreach (static::parseArray($arr, $i, $path) as $r) {
+                foreach (static::_parseArray($arr, $i, $path) as $r) {
                     yield $r;
                 }
             } catch (InvalidPattern $e) {
@@ -50,10 +54,11 @@ final class RuleParser extends FileParser {
         }
     }
 
-    private function parseArray($arr) {
-        $id = $arr['id'];
-        $pattern = $arr['pattern'];
-        $message = $arr['message'];
+    private function _parseArray($arr)
+    {
+        $id = $arr['id'] ?? null;
+        $pattern = $arr['pattern'] ?? null;
+        $message = $arr['message'] ?? null;
 
         $justification = $arr['justification'] ?? [];
 
@@ -91,7 +96,7 @@ final class RuleParser extends FileParser {
         $fpats = \is_array($fail)? $fail : [$fail];
 
         try {
-            foreach ($this->patternParser->parse($pats) as $xpath) {
+            foreach ($this->_patternParser->parse($pats) as $xpath) {
                 yield new Rule($id, $xpath, $message, $jsts, $ppats, $fpats);
             }
         } catch (InvalidPattern $e) {

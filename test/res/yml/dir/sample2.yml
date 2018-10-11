@@ -1,0 +1,3 @@
+- id: sample2
+  pattern: func(?)
+  message: message

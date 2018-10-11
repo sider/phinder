@@ -5,7 +5,8 @@ namespace Phinder\Error;
 use Phinder\Error;
 
 
-class InvalidPattern extends Error {
+class InvalidPattern extends Error
+{
 
     public $pattern;
 
@@ -15,7 +16,8 @@ class InvalidPattern extends Error {
 
     public $path;
 
-    public function __construct($pattern, $error) {
+    public function __construct($pattern, $error)
+    {
         $this->pattern = $pattern;
         $this->error = $error;
     }

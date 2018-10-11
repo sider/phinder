@@ -3,13 +3,16 @@
 namespace Phinder;
 
 
-final class WildcardN extends \PhpParser\Node\Expr {
+final class WildcardN extends \PhpParser\Node\Expr
+{
 
-    public function getSubNodeNames() : array {
+    public function getSubNodeNames() : array
+    {
         return [];
     }
 
-    public function getType() : string {
+    public function getType() : string
+    {
         return 'Expr_WildcardN';
     }
 

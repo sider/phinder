@@ -7,13 +7,15 @@ use RecursiveDirectoryIterator as RecDirItr;
 use Phinder\Error\FileNotFound;
 
 
-abstract class FileParser {
+abstract class FileParser
+{
 
     protected $extensions = [];
 
-    public function parse($path) {
+    public function parse($path)
+    {
         if (\is_dir($path)) {
-            foreach (new RecItrItr (new RecDirItr ($path)) as $itr) {
+            foreach (new RecItrItr(new RecDirItr($path)) as $itr) {
                 $p = $itr->getPathname();
                 if ($this->support($p)) {
                     yield from $this->parseFile($p);
@@ -26,11 +28,9 @@ abstract class FileParser {
         }
     }
 
-    protected function getContent($path) {
+    protected function getContent($path)
+    {
         $code = @\file_get_contents($path);
-        if ($code === false) {
-            throw new FileNotFound($path);
-        }
         return $code;
     }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="Phinder Coding Standards">
-  <arg name="ignore" value="src/lib/Parser/PatternParser/*" />
+  <arg name="ignore" value="src/lib/Parser/PatternParser/*,test/res/php/*" />
   <file>src/lib</file>
   <file>test</file>
   <rule ref="PEAR">

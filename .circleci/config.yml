@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.2.5-apache-node-browsers
+      - image: circleci/php
     steps:
       - checkout
       - run: sudo composer self-update

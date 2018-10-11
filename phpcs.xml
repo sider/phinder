@@ -2,7 +2,7 @@
 <ruleset name="Phinder Coding Standards">
   <arg name="ignore" value="src/lib/Parser/PatternParser/*" />
   <file>src/lib</file>
-  <file>src/test</file>
+  <file>test</file>
   <rule ref="PEAR">
     <exclude name="PEAR.Commenting.ClassComment.Missing" />
     <exclude name="PEAR.Commenting.FileComment.Missing" />

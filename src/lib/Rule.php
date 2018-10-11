@@ -20,8 +20,14 @@ final class Rule
 
     public $pass_patterns;
 
-    public function __construct($id, $xpath, $message, $justifications, $pass_patterns, $fail_patterns)
-    {
+    public function __construct(
+        $id,
+        $xpath,
+        $message,
+        $justifications,
+        $pass_patterns,
+        $fail_patterns
+    ) {
         $this->id = $id;
         $this->xpath = $xpath;
         $this->message = $message;

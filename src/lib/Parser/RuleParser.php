@@ -12,11 +12,11 @@ use function Funct\Strings\endsWith;
 final class RuleParser extends FileParser
 {
 
-    private $patternParser;
+    private $_patternParser;
 
     public function __construct()
     {
-        $this->patternParser = new PatternParser;
+        $this->_patternParser = new PatternParser;
     }
 
     protected function support($path)
@@ -40,7 +40,7 @@ final class RuleParser extends FileParser
             $arr = $rules[$i];
 
             try {
-                foreach (static::parseArray($arr, $i, $path) as $r) {
+                foreach (static::_parseArray($arr, $i, $path) as $r) {
                     yield $r;
                 }
             } catch (InvalidPattern $e) {
@@ -54,7 +54,7 @@ final class RuleParser extends FileParser
         }
     }
 
-    private function parseArray($arr)
+    private function _parseArray($arr)
     {
         $id = $arr['id'] ?? null;
         $pattern = $arr['pattern'] ?? null;
@@ -96,7 +96,7 @@ final class RuleParser extends FileParser
         $fpats = \is_array($fail)? $fail : [$fail];
 
         try {
-            foreach ($this->patternParser->parse($pats) as $xpath) {
+            foreach ($this->_patternParser->parse($pats) as $xpath) {
                 yield new Rule($id, $xpath, $message, $jsts, $ppats, $fpats);
             }
         } catch (InvalidPattern $e) {

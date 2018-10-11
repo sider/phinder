@@ -13,7 +13,7 @@ class API
         foreach ($phpParser->parse($phpPath) as $xml) {
             foreach ($rules as $rule) {
                 foreach ($xml->xpath($rule->xpath) as $match) {
-                    $elem = static::getActualElement($match);
+                    $elem = static::_getActualElement($match);
                     yield new Match($xml['path'], $elem, $rule);
                 }
             }
@@ -30,7 +30,7 @@ class API
         return $rules;
     }
 
-    private static function getActualElement($xml)
+    private static function _getActualElement($xml)
     {
         if ($xml['startLine'] === null) {
             foreach ($xml->children() as $child) {

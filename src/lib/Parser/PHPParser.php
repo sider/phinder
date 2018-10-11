@@ -10,7 +10,7 @@ use function Funct\Strings\endsWith;
 final class PHPParser extends FileParser
 {
 
-    private $phpParser = null;
+    private $_phpParser = null;
 
     public function __construct()
     {
@@ -24,18 +24,21 @@ final class PHPParser extends FileParser
             'endFilePos'
             ]]
         );
-        $this->phpParser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7, $lexer);
+        $this->_phpParser = (new ParserFactory)->create(
+            ParserFactory::PREFER_PHP7,
+            $lexer
+        );
     }
 
     public function parseStr($code)
     {
         try {
-            $ast = $this->phpParser->parse($code);
+            $ast = $this->_phpParser->parse($code);
         } catch (Error $e) {
             throw new InvalidPHP("", $e);
         }
         $xml = new \SimpleXMLElement("<file path=''/>");
-        static::fillXML($xml, $ast);
+        static::_fillXML($xml, $ast);
         return $xml;
     }
 
@@ -48,21 +51,21 @@ final class PHPParser extends FileParser
     {
         $code = $this->getContent($path);
         try {
-            $ast = $this->phpParser->parse($code);
+            $ast = $this->_phpParser->parse($code);
         } catch (Error $e) {
             throw new InvalidPHP($path, $e);
         }
         $xml = new \SimpleXMLElement("<file path='$path'/>");
-        static::fillXML($xml, $ast);
+        static::_fillXML($xml, $ast);
         yield $xml;
     }
 
-    private static function fillXML($xml, $ast)
+    private static function _fillXML($xml, $ast)
     {
         if (\is_array($ast)) {
             foreach ($ast as $k => $v) {
                 $e = $xml->addChild("item$k");
-                static::fillXML($e, $v);
+                static::_fillXML($e, $v);
             }
 
         } else if (\is_subclass_of($ast, '\PhpParser\NodeAbstract')) {
@@ -73,7 +76,7 @@ final class PHPParser extends FileParser
             $xml['class'] = $ast->getType();
             foreach ($ast->getSubNodeNames() as $name) {
                 $e = $xml->addChild($name);
-                static::fillXML($e, $ast->$name);
+                static::_fillXML($e, $ast->$name);
             }
 
         } else {

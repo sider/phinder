@@ -8,16 +8,16 @@ use Phinder\Parser\RuleParser;
 class RuleParserTest extends TestCase
 {
 
-    private $parser;
+    private $_parser;
 
     function setUp()
     {
-        $this->parser = new RuleParser;
+        $this->_parser = new RuleParser;
     }
 
     function testMin()
     {
-        $r = $this->parser->parse('./test/res/yml/min.yml')->current();
+        $r = $this->_parser->parse('./test/res/yml/min.yml')->current();
         $this->assertEquals($r->id, "sample");
         $this->assertEquals($r->message, "message");
     }
@@ -25,7 +25,7 @@ class RuleParserTest extends TestCase
     function testVarArgs()
     {
         $i=1;
-        foreach ($this->parser->parse('./test/res/yml/misc.yml') as $r) {
+        foreach ($this->_parser->parse('./test/res/yml/misc.yml') as $r) {
             $this->assertEquals($r->id, "sample$i");
             $this->assertEquals($r->message, "message");
             $i++;
@@ -35,66 +35,66 @@ class RuleParserTest extends TestCase
     function testInvaldYaml1()
     {
         $this->expectException(InvalidYaml::class);
-        $this->parser->parse('./test/res/yml/invalid.yml')->current();
+        $this->_parser->parse('./test/res/yml/invalid.yml')->current();
     }
 
     function testInvalidYaml2()
     {
         $this->expectException(InvalidYaml::class);
-        $this->parser->parse(__FILE__)->current();
+        $this->_parser->parse(__FILE__)->current();
     }
 
     function testInvalidPattern()
     {
         $this->expectException(InvalidPattern::class);
-        $this->parser->parse('./test/res/yml/invalid-pattern.yml')->current();
+        $this->_parser->parse('./test/res/yml/invalid-pattern.yml')->current();
     }
 
     function testNoPattern()
     {
         $this->expectException(InvalidRule::class);
-        $this->parser->parse('./test/res/yml/no-pattern.yml')->current();
+        $this->_parser->parse('./test/res/yml/no-pattern.yml')->current();
     }
 
     function testInvalidId()
     {
         $this->expectException(InvalidRule::class);
-        $this->parser->parse('./test/res/yml/invalid-id.yml')->current();
+        $this->_parser->parse('./test/res/yml/invalid-id.yml')->current();
     }
 
     function testNoId()
     {
         $this->expectException(InvalidRule::class);
-        $this->parser->parse('./test/res/yml/no-id.yml')->current();
+        $this->_parser->parse('./test/res/yml/no-id.yml')->current();
     }
 
     function testInvalidMessage()
     {
         $this->expectException(InvalidRule::class);
-        $this->parser->parse('./test/res/yml/invalid-message.yml')->current();
+        $this->_parser->parse('./test/res/yml/invalid-message.yml')->current();
     }
 
     function testNoMessage()
     {
         $this->expectException(InvalidRule::class);
-        $this->parser->parse('./test/res/yml/no-message.yml')->current();
+        $this->_parser->parse('./test/res/yml/no-message.yml')->current();
     }
 
     function testInvalidJustification()
     {
         $this->expectException(InvalidRule::class);
-        $this->parser->parse('./test/res/yml/invalid-justification.yml')->current();
+        $this->_parser->parse('./test/res/yml/invalid-justification.yml')->current();
     }
 
     function testInvalidTestPass()
     {
         $this->expectException(InvalidRule::class);
-        $this->parser->parse('./test/res/yml/invalid-test-pass.yml')->current();
+        $this->_parser->parse('./test/res/yml/invalid-test-pass.yml')->current();
     }
 
     function testInvalidTestFail()
     {
         $this->expectException(InvalidRule::class);
-        $this->parser->parse('./test/res/yml/invalid-test-fail.yml')->current();
+        $this->_parser->parse('./test/res/yml/invalid-test-fail.yml')->current();
     }
 }

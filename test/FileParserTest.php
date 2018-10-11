@@ -8,19 +8,19 @@ use Phinder\Parser\{PHPParser, RuleParser};
 class FileParserTest extends TestCase
 {
 
-    private $phpParser;
+    private $_phpParser;
 
-    private $ruleParser;
+    private $_ruleParser;
 
     function setUp()
     {
-        $this->phpParser = new PHPParser;
-        $this->ruleParser = new RuleParser;
+        $this->_phpParser = new PHPParser;
+        $this->_ruleParser = new RuleParser;
     }
 
     function testValidPHPDir()
     {
-        foreach ($this->phpParser->parse('./test/res/php/valid') as $xml) {
+        foreach ($this->_phpParser->parse('./test/res/php/valid') as $xml) {
             $res = $xml->xpath('//*[@class="Stmt_Echo"]');
             $this->assertSame(count($res), 1);
         }
@@ -29,14 +29,14 @@ class FileParserTest extends TestCase
     function testInvalidPHPDir()
     {
         $this->expectException(InvalidPHP::class);
-        foreach ($this->phpParser->parse('./test/res/php/invalid') as $xml) {
+        foreach ($this->_phpParser->parse('./test/res/php/invalid') as $xml) {
         }
     }
 
     function testValidRuleDir()
     {
         $i = 0;
-        foreach ($this->ruleParser->parse('./test/res/yml/dir') as $r) {
+        foreach ($this->_ruleParser->parse('./test/res/yml/dir') as $r) {
             $i++;
         }
         $this->assertSame($i, 2);
@@ -45,6 +45,6 @@ class FileParserTest extends TestCase
     function testNonExistent()
     {
         $this->expectException(FileNotFound::class);
-        $this->phpParser->parse('./test/res/nonexistent.php')->current();
+        $this->_phpParser->parse('./test/res/nonexistent.php')->current();
     }
 }

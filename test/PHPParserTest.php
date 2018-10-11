@@ -8,16 +8,16 @@ use Phinder\Parser\PHPParser;
 class PHPParserTest extends TestCase
 {
 
-    private $parser;
+    private $_parser;
 
     function setUp()
     {
-        $this->parser = new PHPParser;
+        $this->_parser = new PHPParser;
     }
 
     function testStr()
     {
-        $xml = $this->parser->parseStr('<?php echo 1; echo 2;');
+        $xml = $this->_parser->parseStr('<?php echo 1; echo 2;');
         $res = $xml->xpath('//*[@class="Stmt_Echo"]');
         $this->assertSame(count($res), 2);
     }
@@ -25,6 +25,6 @@ class PHPParserTest extends TestCase
     function testInvalidStr()
     {
         $this->expectException(InvalidPHP::class);
-        $this->parser->parseStr('<?php if {');
+        $this->_parser->parseStr('<?php if {');
     }
 }

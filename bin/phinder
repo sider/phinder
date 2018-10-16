@@ -155,8 +155,9 @@ while (true) {
             $outputBuffer['result'][] = $obj;
 
         } else {
+            $m = trim(str_replace(["\n", "\r"], ' ', $message));
             echo "$path:$startLine:$startPos\t\033[31m$code\033[0m\t";
-            echo ($id === '')? "\n" : "$message ($id)\n";
+            echo ($id === '')? "\n" : "$m ($id)\n";
         }
 
     } catch (FileNotFound $e) {

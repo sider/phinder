@@ -7,6 +7,7 @@ use Phinder\Parser\PatternParser\ParserFactory;
 use Phinder\{Wildcard, WildcardN};
 use PhpParser\Error;
 use PhpParser\Node\Arg;
+use PhpParser\Node\Expr\ConstFetch;
 use PhpParser\Node\Expr\ArrayItem;
 
 
@@ -72,6 +73,10 @@ final class PatternParser
 
         } else if ($ast instanceof Wildcard) {
             return '';
+
+        } else if ($ast instanceof ConstFetch) {
+            $xp = static::_buildXPath($ast->name);
+            return "/*[local-name()='class' or local-name()='name']" . $xp . '/..';
 
         } else if (\is_subclass_of($ast, '\PhpParser\NodeAbstract')) {
             $t = $ast->getType();

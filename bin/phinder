@@ -219,8 +219,7 @@ while (true) {
                 'message' => $msg
             ];
         } else {
-            fwrite(STDERR, "$msg\n");
-            exit(1);
+            fwrite(STDERR, "\033[31m$msg\033[0m\n");
         }
     }
 }

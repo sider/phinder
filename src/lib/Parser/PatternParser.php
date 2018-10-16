@@ -25,7 +25,6 @@ final class PatternParser
     public function parse($arr)
     {
         foreach ($arr as $p) {
-            $p = preg_replace("/\?([^\?])/", '(?)\1', $p);
             try {
                 $ast = $this->patternParser->parse("<?php $p");
                 yield '//*' . static::_buildXPath($ast);

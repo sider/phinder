@@ -64,7 +64,11 @@ final class PatternParser
 
                 }
 
-                return ($vlen? "[count(*)>=$cnt]" : "[count(*)=$cnt]") . $xp;
+                if ($cnt == 0) {
+                    return "[count(*)>=0]";
+                } else {
+                    return ($vlen? "[count(*)>=$cnt]" : "[count(*)=$cnt]") . $xp;
+                }
 
             } else {
                 return "[count(*)=0]";

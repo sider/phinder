@@ -32,8 +32,13 @@ final class RuleParser extends FileParser
         } catch (ParseException $e) {
             throw new InvalidYaml($path);
         }
+
         if (!\is_array($rules)) {
             throw new InvalidYaml($path);
+        }
+
+        if (\array_key_exists('rule', $rules)) {
+            $rules = $rules['rule'];
         }
 
         for ($i=0; $i<\count($rules); $i++) {

@@ -85,12 +85,12 @@ final class PatternParser
         } else if (\is_subclass_of($ast, '\PhpParser\NodeAbstract')) {
             $t = $ast->getType();
 
-            $xp = null;
+            $xp = '';
             foreach ($ast->getSubNodeNames() as $n) {
                 $x = static::_buildXPath($ast->$n);
                 $xp .= "/$n$x/..";
             }
-            return $xp;
+            return "[@class='$t']" . $xp;
 
         } else {
             return "[.='$ast']";

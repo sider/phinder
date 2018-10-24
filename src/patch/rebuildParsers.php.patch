@@ -1,5 +1,5 @@
 --- ../vendor/nikic/php-parser/grammar/rebuildParsers.php	2018-09-18 16:03:24.000000000 +0900
-+++ grammar/rebuildParsers.php	2018-10-16 10:31:00.000000000 +0900
++++ grammar/rebuildParsers.php	2018-10-24 18:33:41.000000000 +0900
 @@ -1,8 +1,8 @@
  <?php
  

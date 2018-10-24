@@ -1,5 +1,5 @@
 --- ../vendor/nikic/php-parser/grammar/php5.y	2018-09-18 16:03:24.000000000 +0900
-+++ grammar/php5.y	2018-10-16 10:59:26.000000000 +0900
++++ grammar/php5.y	2018-10-24 18:33:41.000000000 +0900
 @@ -6,7 +6,7 @@
  %%
  
@@ -25,7 +25,15 @@
      | T_ELLIPSIS expr                                       { $$ = Node\Arg[$2, false, true]; }
  ;
  
-@@ -885,6 +885,7 @@
+@@ -625,6 +625,7 @@
+     | T_INCLUDE expr                                        { $$ = Expr\Include_[$2, Expr\Include_::TYPE_INCLUDE]; }
+     | T_INCLUDE_ONCE expr                                   { $$ = Expr\Include_[$2, Expr\Include_::TYPE_INCLUDE_ONCE]; }
+     | T_EVAL parentheses_expr                               { $$ = Expr\Eval_[$2]; }
++    | T_EVAL                                                { $$ = Expr\Eval_[Wildcard[]]; }
+     | T_REQUIRE expr                                        { $$ = Expr\Include_[$2, Expr\Include_::TYPE_REQUIRE]; }
+     | T_REQUIRE_ONCE expr                                   { $$ = Expr\Include_[$2, Expr\Include_::TYPE_REQUIRE_ONCE]; }
+     | T_INT_CAST expr                                       { $$ = Expr\Cast\Int_    [$2]; }
+@@ -885,6 +886,7 @@
      | base_variable                                         { $$ = $1; }
      | function_call                                         { $$ = $1; }
      | new_expr_array_deref                                  { $$ = $1; }
@@ -33,7 +41,7 @@
  ;
  
  new_expr_array_deref:
-@@ -985,6 +986,7 @@
+@@ -985,6 +987,7 @@
  array_pair:
        expr T_DOUBLE_ARROW expr                              { $$ = Expr\ArrayItem[$3, $1,   false]; }
      | expr                                                  { $$ = Expr\ArrayItem[$1, null, false]; }

@@ -1,5 +1,5 @@
 --- ../vendor/nikic/php-parser/grammar/parser.template	2018-09-18 16:03:24.000000000 +0900
-+++ grammar/parser.template	2018-10-16 10:31:00.000000000 +0900
++++ grammar/parser.template	2018-10-24 18:33:41.000000000 +0900
 @@ -5,14 +5,16 @@
  #semval(%n) $stackPos-(%l-%n)
  #semval(%n,%t) $stackPos-(%l-%n)

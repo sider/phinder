@@ -68,7 +68,9 @@ final class PHPParser extends FileParser
                 static::_fillXML($e, $v);
             }
 
-        } else if (\is_subclass_of($ast, '\PhpParser\NodeAbstract')) {
+        } else if (\is_object($ast)
+            && \is_subclass_of($ast, '\PhpParser\NodeAbstract')
+        ) {
             $xml['startLine'] = $ast->getStartLine();
             $xml['endLine'] = $ast->getEndLine();
             $xml['startFilePosition'] = $ast->getStartFilePos();

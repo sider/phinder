@@ -235,8 +235,8 @@ class Pattern7 extends \PhpParser\ParserAbstract
     );
 
     protected $action = array(
-          537,  538,  539,  540,  541, 1030,  542,  543,  544,  580,
-          581, 1029,   18,   83,   84,   85,   86,   87,   88,   89,
+          537,  538,  539,  540,  541, 1031,  542,  543,  544,  580,
+          581, 1030,   18,   83,   84,   85,   86,   87,   88,   89,
            90,   91,   92,   93,   94,-32766,-32766,-32766,  832,  833,
           834,  831,  830,  829,    0,-32766,-32766,-32766,-32766,-32766,
         -32766,  614,  226,   98,  774,-32766,  325,-32766,-32766,-32766,
@@ -250,49 +250,49 @@ class Pattern7 extends \PhpParser\ParserAbstract
           604,  595,  593,  594,  590,  591,  215,  582,  588,  589,
           596,  597,  599,  598,  600,  601,   31,   32,  371,   33,
            34,  592,  603,  602,  621,   35,   36,  226,   37,  454,
-          616, -216, -216, -216,  101,  114, -496,  355, -496,  784,
-          495,  496,  998,-32766,-32766,-32766,  778,  779,  445,  446,
-          948,  228,   79,   80,   81, 1035,  238,  672,  719,  356,
+          616, -216, -216, -216,  101,  114, -497,  355, -497,  784,
+          495,  496,  999,-32766,-32766,-32766,  778,  779,  445,  446,
+          949,  228,   79,   80,   81, 1036,  238,  672,  719,  356,
           357,   38,   39,-32766,  714,-32766,-32766,   40,   82,   41,
           220,  221,   42,   43,   44,   45,   46,   47,   48,   49,
-           25,   10,  231,   50,  328, -216, -217, -217, -217,  965,
-          966,  616,  355,  999,  239,  455,  377,  964,  330,  330,
+           25,   10,  231,   50,  328, -216, -217, -217, -217,  966,
+          967,  616,  355, 1000,  239,  455,  377,  965,  330,  330,
           261,  808,  810,  445,  446,-32766,-32766,-32766,  750,-32766,
         -32766,-32766,  672,  719,  356,  357,  329,-32767,-32767,-32767,
-        -32767,   74,   75,   76,   77,   78,  372,  999,  999,-32766,
+        -32767,   74,   75,   76,   77,   78,  372, 1000, 1000,-32766,
           696,-32766,-32766,-32766,  373,  374,-32766,-32766,-32766,  101,
-         -217,  245,  948,  375,  376, -232,  970,  971,  972,  973,
-          967,  968,  242,   56,   57,   58,-32766,  377,  974,  969,
-          330,  941,   97,  247,  283,   51, 1002,  253,  960,  258,
-          263,  620,  323,   17, -453,   59,   60,   61,   62,   63,
+         -217,  245,  949,  375,  376, -232,  971,  972,  973,  974,
+          968,  969,  242,   56,   57,   58,-32766,  377,  975,  970,
+          330,  942,   97,  247,  283,   51, 1003,  253,  961,  258,
+          263,  620,  323,   17, -454,   59,   60,   61,   62,   63,
            64,   65,   66,   67,   68,   69,   70,   71,   72,   73,
            74,   75,   76,   77,   78,   79,   80,   81, -175,  238,
           438,  284, -293, -293,  263,  263,  614,  423, -176,  255,
-          686,   82,  509,   23,  196,  439,  998,  440,  824,  441,
-          999,  442,  368,  229,  443, -489, -257,  751,   28,   29,
-          354,  998,  247,   30,  444, -453, 1052,  108,  230, 1053,
-          280,  321, -136, -136, -136, 1017,  999, -490,  447, -453,
-         -271,-32766,  262,  941,  326,   10, -453, -136, -456, -136,
-           16, -136,  516, -136, -492,  778,  779,  999, -493,  468,
-           10,  964,  355,  998,   76,   77,   78,  698,  510,-32766,
-        -32766,-32766,  999,  445,  446, -451,  964,  -91,  352,    4,
-         -452, -451,  672,  719,  356,  357,  327,  263,  401,-32766,
-          941,-32766,-32766,-32766,-32766,-32766,-32766,-32767,-32767,-32767,
-        -32767,-32767,   10,  336,   55,  941,  102,  375,  376,  216,
-         -136,  614,   27,  263,  999,-32766,-32766,-32766,  964,  118,
+          686,   82,  509,   23,  196,  439,  999,  440,  824,  441,
+         1000,  442,  368,  229,  443, -490, -257,  751,   28,   29,
+          354,  999,  247,   30,  444, -454, 1053,  108,  230, 1054,
+          280,  321, -136, -136, -136, 1018, 1000, -491,  447, -454,
+         -271,-32766,  262,  942,  326,   10, -454, -136, -457, -136,
+           16, -136,  516, -136, -493,  778,  779, 1000, -494,  468,
+           10,  965,  355,  999,   76,   77,   78,  698,  510,-32766,
+        -32766,-32766, 1000,  445,  446, -452,  965,  -91,  352,    4,
+         -453, -452,  672,  719,  356,  357,  327,  263,  401,-32766,
+          942,-32766,-32766,-32766,-32766,-32766,-32766,-32767,-32767,-32767,
+        -32767,-32767,   10,  336,   55,  942,  102,  375,  376,  216,
+         -136,  614,   27,  263, 1000,-32766,-32766,-32766,  965,  118,
           302,   19,  375,  376,  778,  779,  106,  619,  107,   53,
-         1043,  109,  369, -175,  263,-32766, -451,-32766,-32766,-32766,
-        -32766, -452, -451, -176,   53,  978, -237,  941,  115,  263,
-         -451,  117,  214,  487,  197, -452, -451, -451,  484,  485,
-         -489, -257, -452, -451, -455,  376,  778,  779,  809,  524,
+         1044,  109,  369, -175,  263,-32766, -452,-32766,-32766,-32766,
+        -32766, -453, -452, -176,   53,  979, -237,  942,  115,  263,
+         -452,  117,  214,  487,  197, -453, -452, -452,  484,  485,
+         -490, -257, -453, -452, -456,  376,  778,  779,  809,  524,
            95,  736,   96,  246,  520,  241,  523,  695,  105,  100,
-          514,  515, -490,  103,  238,  518,   53,  282,   15,  223,
-          521,  263,  274,  224,   99, 1018,  104,  225,  710, -492,
-          227,   82,  501, -493,   26,  411, 1054,  403,  616,  617,
+          514,  515, -491,  103,  238,  518,   53,  282,   15,  223,
+          521,  263,  274,  224,   99, 1019,  104,  225,  710, -493,
+          227,   82,  501, -494,   26,  411, 1055,  403,  616,  617,
           459,  614,  506,  498,  493,  499,  494,  838, -291,  619,
-          332,  428,  941,-32766,  257,  721,  720,  256,  980,  488,
-          260,  977,  254, -410,  405,    8,    1,  -80,    6,  281,
-          929,  333,  979,    0,    0,  712,    0,  737,  732,    0,
+          332,  428,  942,-32766,  257,  721,  720,  256,  981,  488,
+          260,  978,  254, -411,  405,    8,    1,  -80,    6,  281,
+          930,  333,  980,    0,    0,  712,    0,  737,  732,    0,
             0,    0,    0,    0,  675,    0,    0,  745,    0,    0,
             0,    0,    0,  734,    0,  744,    0,    0,    0,    0,
             0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -301,16 +301,16 @@ class Pattern7 extends \PhpParser\ParserAbstract
             0,  753,  677,    0,    0,    0,    0,    0,  814,    0,
             0,    0,  817,    0,  816,  813,  805,  804,  529,  528,
            22,   21,  821,  815,    0,  513,  517,  519,  522,  512,
-          511,  508,    0, 1050, 1051, 1049,  525,  703,  743, 1000,
-         1015, 1048, 1012, 1007,  992,  742,  705,  716,  717,  718,
-          673,  713,    0, -455,  322,  319,  271,  237,  236,  235,
+          511,  508,    0, 1051, 1052, 1050,  525,  703,  743, 1001,
+         1016, 1049, 1013, 1008,  993,  742,  705,  716,  717,  718,
+          673,  713,    0, -456,  322,  319,  271,  237,  236,  235,
           234,  219,  218,  120,  119,  116,  113,  112,  111,  110,
-           54,   52,   24,   20,   14,   11,    9, -454, -456, -479,
-         -481,    0,  908,  -91,  505,  192,  191,  190,  198,  189,
-         -232, -233, -235,  193,  188,  480,  420,  933,  785,  300,
-          962,  904,  249,  952,  504,  370,  367,  905,  347,  343,
-          301,  194,    0,  921, -422,    0,  961,  990, 1006, 1046,
-          991,  429
+           54,   52,   24,   20,   14,   11,    9, -455, -457, -480,
+         -482,    0,  908,  -91,  505,  192,  191,  190,  198,  189,
+         -232, -233, -235,  193,  188,  480,  420,  934,  785,  300,
+          963,  904,  249,  953,  504,  370,  367,  905,  347,  343,
+          301,  194,    0,  922, -423,    0,  962,  991, 1007, 1047,
+          992,  429
     );
 
     protected $actionCheck = array(
@@ -482,9 +482,9 @@ class Pattern7 extends \PhpParser\ParserAbstract
 
     protected $actionDefault = array(
         32767,32767,32767,32767,32767,   91,32767,32767,32767,32767,
-          506,  506,  506,   93,  495,32767,  495,32767,32767,32767,
-          312,  312,  312,32767,  449,  449,  449,  449,  449,  449,
-          449,32767,32767,32767,32767,32767,  391,32767,32767,32767,
+          507,  507,  507,   93,  496,32767,  496,32767,32767,32767,
+          312,  312,  312,32767,  450,  450,  450,  450,  450,  450,
+          450,32767,32767,32767,32767,32767,  392,32767,32767,32767,
         32767,32767,32767,32767,32767,32767,32767,32767,32767,32767,
         32767,32767,32767,32767,32767,32767,32767,32767,32767,32767,
         32767,32767,32767,32767,32767,32767,32767,32767,32767,32767,
@@ -493,44 +493,44 @@ class Pattern7 extends \PhpParser\ParserAbstract
         32767,32767,32767,32767,32767,32767,32767,32767,32767,32767,
         32767,  258,32767,32767,32767,32767,32767,32767,32767,32767,
         32767,32767,32767,32767,   91,32767,32767,32767,32767,32767,
-        32767,32767,32767,32767,32767,32767,32767,  502,32767,32767,
+        32767,32767,32767,32767,32767,32767,32767,  503,32767,32767,
         32767,32767,32767,32767,32767,32767,32767,32767,32767,32767,
         32767,32767,32767,32767,32767,32767,32767,    1,  374,  375,
-          377,  378,  450,  256,  501,  259,  241,  308,  311,  133,
-          310,  268,  209,  339,  392,  341,  390,  394,  340,  317,
+          378,  379,  451,  256,  502,  259,  241,  308,  311,  133,
+          310,  268,  209,  339,  393,  341,  391,  395,  340,  317,
           321,  322,  323,  324,  325,  326,  327,  328,  329,  330,
-          331,  332,  315,  316,  393,  371,  370,  369,32767,32767,
+          331,  332,  315,  316,  394,  371,  370,  369,32767,32767,
         32767,32767,32767,32767,32767,  337,32767,32767,32767,  338,
           314,  342,  344,  314,  343,  360,  361,  358,  359,  362,
           363,  364,  365,  366,32767,32767,32767,32767,32767,32767,
         32767,32767,32767,32767,32767,32767,32767,32767,   93,32767,
         32767,32767,  351,  352,  248,  248,  248,  248,32767,  248,
-          294,32767,32767,32767,32767,32767,32767,32767,  443,  368,
-          346,  347,  345,  421,32767,32767,32767,32767,32767,  423,
-        32767,   91,32767,32767,32767,  334,  336,  415,  505,  318,
-          504,32767,32767,32767,32767,32767,32767,32767,32767,  418,
-        32767,32767,32767,  177,   91,  172,  228,  230,  426,32767,
+          294,32767,32767,32767,32767,32767,32767,32767,  444,  368,
+          346,  347,  345,  422,32767,32767,32767,32767,32767,  424,
+        32767,   91,32767,32767,32767,  334,  336,  416,  506,  318,
+          505,32767,32767,32767,32767,32767,32767,32767,32767,  419,
+        32767,32767,32767,  177,   91,  172,  228,  230,  427,32767,
         32767,32767,32767,32767,32767,32767,32767,32767,32767,32767,
-        32767,32767,32767,32767,32767,  356,  513,  451,32767,  348,
-          349,  350,  451,  451,  451,  451,  451,32767,  451,  177,
-        32767,32767,32767,  424,  424,   91,   91,   91,  419,  177,
-        32767,32767,  177,32767,  190,   92,32767,   92,32767,  465,
-          194,   90,  177,  400,  179,   90,  250,  400,  250,32767,
+        32767,32767,32767,32767,32767,  356,  514,  452,32767,  348,
+          349,  350,  452,  452,  452,  452,  452,32767,  452,  177,
+        32767,32767,32767,  425,  425,   91,   91,   91,  420,  177,
+        32767,32767,  177,32767,  190,   92,32767,   92,32767,  466,
+          194,   90,  177,  401,  179,   90,  250,  401,  250,32767,
            90,   90,  177,   90,32767,  177,32767,32767,32767,   90,
         32767,   90,   90,  192,  190,   90,  194,  250,  214,  214,
-          250,32767,  409,32767,32767,32767,32767,32767,32767,  411,
-        32767,  431,32767,  444,  463,  354,  355,  357,32767,  453,
-          379,  380,  381,  382,  383,  384,  385,  387,32767,  414,
-        32767,  511,  412,  511,32767,32767,32767,32767,32767,  491,
-        32767,  512,32767,  451,  413,  353,  427,  471,32767,32767,
-          452,32767,32767,32767,32767,32767,32767,32767,32767,32767,
+          250,  377,  410,32767,32767,32767,32767,32767,32767,  412,
+        32767,  432,32767,  445,  464,  354,  355,  357,32767,  454,
+          380,  381,  382,  383,  384,  385,  386,  388,32767,  415,
+        32767,  512,  413,  512,32767,32767,32767,32767,32767,  492,
+        32767,  513,32767,  452,  414,  353,  428,  472,32767,32767,
+          453,32767,32767,32767,32767,32767,32767,32767,32767,32767,
         32767,  240,32767,32767,  307,32767,32767,32767,32767,32767,
         32767,32767,32767,32767,32767,32767,32767,32767,32767,32767,
         32767,  267,32767,32767,   84,   60,32767,  287,32767,32767,
         32767,32767,32767,32767,32767,32767,32767,32767,32767,32767,
-        32767,32767,32767,32767,32767,32767,  431,32767,32767,32767,
-        32767,32767,  451,32767,32767,32767,32767,32767,32767,32767,
-        32767,32767,  451,32767,32767,32767,32767,32767,32767,32767,
+        32767,32767,32767,32767,32767,32767,  432,32767,32767,32767,
+        32767,32767,  452,32767,32767,32767,32767,32767,32767,32767,
+        32767,32767,  452,32767,32767,32767,32767,32767,32767,32767,
         32767,32767,32767,32767,32767,32767,32767,32767,  270,  135,
           135,  135,  270,  270,  135,  135,  135,  270,  135,  135,
           135,  135,  135,  135,  279,  167,  222,  225,  214,  214,
@@ -550,35 +550,35 @@ class Pattern7 extends \PhpParser\ParserAbstract
           176,  177,  178,  179,  180,  181,  182,  183,  136,  184,
           137,  186,  155,  138,  139,  140,  187,  156,  157,  124,
           159,  141,  142,  126,  143,  160,  161,  144,  162,  125,
-          145,  146,  476,  476,  963,  615,  963,  963,  963,  963,
-          963,  963,  963,  963,  963,  963,  963,  963,  963,  388,
-          388,  388, 1031,  388,  388,  388,  388,  388,  388,  388,
+          145,  146,  476,  476,  964,  615,  964,  964,  964,  964,
+          964,  964,  964,  964,  964,  964,  964,  964,  964,  388,
+          388,  388, 1032,  388,  388,  388,  388,  388,  388,  388,
           388,  388,  388,  388,  388,  388,  389,  389,  389,  787,
           389,  389,  389,  389,  389,  389,  389,  389,  389,  389,
-          389,  389,  389,  453,  464,  276, 1019,  527,  481,  483,
+          389,  389,  389,  453,  464,  276, 1020,  527,  481,  483,
           293,  490,  500,  763,  503,  507,  759,  752,  733,  733,
           731,  733,  526,  474,  489,  450,  761,  756,  399,  409,
           735,  409,  318,  492,  315,  399,  307,  307,  265,  266,
-          268,  413,  312,  269,  313,  270,  314,  316,  482, 1009,
-         1010,  729,  729,  729,  729, 1040, 1040,  723,  730,  942,
-          122,  123,  777,  777,  777,  777,  942,  777,  827,  777,
-         1055, 1040, 1014, 1014,  491,  777,  418,  419,  421,  294,
-          295,  297,  942,  942,  942,  942, 1005,  259,  942,  942,
-          728,  828,  244, 1005,  465,  934,  835,  431,  662,  701,
-         1016, 1016,  702,  688,  841,  689,  792,  796,  938,  899,
-          738,  783,  502,  927,  928, 1039, 1039,  771, 1001,  685,
-          680,  681,  694,  682,  683,  684,  715,  687, 1008,  451,
-          400, 1039,  776,  407,  451,  795, 1003, 1003,  793,  795,
-          416,  820,  479,  344, 1042,  402,  449,  818,  414,  461,
-          530,  939,  935,    7,  461,  366,  360,  937,  940,  994,
-          837,  469,  478, 1047,  277,  278,  486,  930,  797,  425,
+          268,  413,  312,  269,  313,  270,  314,  316,  482, 1010,
+         1011,  729,  729,  729,  729, 1041, 1041,  723,  730,  943,
+          122,  123,  777,  777,  777,  777,  943,  777,  827,  777,
+         1056, 1041, 1015, 1015,  491,  777,  418,  419,  421,  294,
+          295,  297,  943,  943,  943,  943, 1006,  259,  943,  943,
+          728,  828,  244, 1006,  465,  935,  835,  431,  662,  701,
+         1017, 1017,  702,  688,  841,  689,  792,  796,  939,  899,
+          738,  783,  502,  928,  929, 1040, 1040,  771, 1002,  685,
+          680,  681,  694,  682,  683,  684,  715,  687, 1009,  451,
+          400, 1040,  776,  407,  451,  795, 1004, 1004,  793,  795,
+          416,  820,  479,  344, 1043,  402,  449,  818,  414,  461,
+          530,  940,  936,    7,  461,  366,  360,  938,  941,  995,
+          837,  469,  478, 1048,  277,  278,  486,  931,  797,  425,
           470,  740,  348,    0,    0,    0,    0,    0,    0,    0,
             0,  296,    0,  452,  363,  364,    0,  463,    0,    0,
             0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
             0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
             0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
             0,    0,    0,    0,    0,    0,    0,    0,    0,  766,
-          766, 1026
+          766, 1027
     );
 
     protected $gotoCheck = array(
@@ -652,14 +652,14 @@ class Pattern7 extends \PhpParser\ParserAbstract
           697,  286,  674,  287,  497,  676,  460,  678,  679,  406,
           298,  299,  845,  408,  475,  690,  203,  462,  691,  285,
           692,  700,  304,  288,  335,  349,  289,  822,  422,  290,
-          358,  340,  426,  430,  466,  949,  727,  345,  365,  739,
+          358,  340,  426,  430,  466,  950,  727,  345,  365,  739,
           275,  747,  531,  755,  758,  380,  381,  341,  770,  342,
-          781,  775,  957,  337,  786,  361,  794,  989,  362,  798,
+          781,  775,  958,  337,  786,  361,  794,  990,  362,  798,
           217,  801,  320,  433,  317,  806,  807,    2,  812,  457,
-          458,    3,  240,  351,  836,  434,  359,  851,  324,  918,
-          920,  404,  346,  931,  334,  432,  350,  936,  993,  331,
+          458,    3,  240,  351,  836,  434,  359,  851,  324,  919,
+          921,  404,  346,  932,  334,  432,  350,  937,  994,  331,
           382,  338,  267,  279,  243,  383,  398,  248,  384,  339,
-          996, 1004,  308, 1020,  264,   12, 1032, 1041,  272,  412,
+          997, 1005,  308, 1021,  264,   12, 1033, 1042,  272,  412,
           424
     );
 
@@ -703,20 +703,20 @@ class Pattern7 extends \PhpParser\ParserAbstract
             2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
             2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
             2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
-            2,    2,    2,    2,    2,    2,    2,  123,  117,  117,
-          122,  122,  125,  126,  126,  127,  128,  128,  128,   75,
-           75,   63,   63,   63,  118,  118,  118,  130,  130,  119,
-          119,  121,  121,  121,  124,  124,  135,  135,  135,   86,
-          137,  137,  137,  120,  120,  120,  120,  120,  120,  120,
-          120,  120,  120,  120,  120,  120,  120,  120,  120,   49,
-           49,  133,  133,  133,  129,  129,  129,  138,  138,  138,
-          138,  138,  138,   56,   56,   56,   56,   97,   97,   97,
-           97,  141,  140,  132,  132,  132,  132,  132,  132,  131,
-          131,  131,  139,  139,  139,  139,   85,  142,  142,  143,
-          143,  143,  143,  143,  143,  143,  136,  145,  145,  144,
-          144,  146,  146,  146,  146,  146,  146,  134,  134,  134,
-          134,  148,  149,  147,  147,  147,  147,  147,  147,  147,
-          150,  150,  150,  150
+            2,    2,    2,    2,    2,    2,    2,    2,  123,  117,
+          117,  122,  122,  125,  126,  126,  127,  128,  128,  128,
+           75,   75,   63,   63,   63,  118,  118,  118,  130,  130,
+          119,  119,  121,  121,  121,  124,  124,  135,  135,  135,
+           86,  137,  137,  137,  120,  120,  120,  120,  120,  120,
+          120,  120,  120,  120,  120,  120,  120,  120,  120,  120,
+           49,   49,  133,  133,  133,  129,  129,  129,  138,  138,
+          138,  138,  138,  138,   56,   56,   56,   56,   97,   97,
+           97,   97,  141,  140,  132,  132,  132,  132,  132,  132,
+          131,  131,  131,  139,  139,  139,  139,   85,  142,  142,
+          143,  143,  143,  143,  143,  143,  143,  136,  145,  145,
+          144,  144,  146,  146,  146,  146,  146,  146,  134,  134,
+          134,  134,  148,  149,  147,  147,  147,  147,  147,  147,
+          147,  150,  150,  150,  150
     );
 
     protected $ruleToLength = array(
@@ -757,22 +757,22 @@ class Pattern7 extends \PhpParser\ParserAbstract
             3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
             3,    3,    3,    3,    2,    2,    2,    2,    3,    3,
             3,    3,    3,    3,    3,    3,    3,    3,    3,    5,
-            4,    3,    4,    4,    2,    2,    4,    2,    2,    2,
-            2,    2,    2,    2,    2,    2,    2,    2,    1,    3,
-            2,    1,    2,    4,    2,    8,    9,    7,    3,    2,
-            0,    4,    2,    1,    3,    2,    2,    2,    4,    1,
-            1,    1,    2,    3,    1,    1,    1,    1,    1,    0,
-            3,    0,    1,    1,    0,    1,    1,    3,    3,    3,
-            4,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-            1,    1,    1,    1,    1,    3,    2,    3,    3,    0,
-            1,    1,    3,    1,    1,    3,    1,    1,    4,    4,
-            4,    1,    4,    1,    1,    3,    1,    1,    4,    2,
-            2,    1,    3,    1,    4,    4,    3,    3,    3,    1,
-            3,    1,    1,    3,    1,    1,    4,    3,    1,    1,
-            2,    1,    3,    4,    3,    0,    1,    1,    1,    3,
-            1,    3,    1,    1,    4,    2,    0,    2,    2,    1,
-            2,    1,    1,    1,    4,    3,    3,    3,    6,    3,
-            1,    1,    2,    1
+            4,    3,    4,    4,    2,    2,    4,    1,    2,    2,
+            2,    2,    2,    2,    2,    2,    2,    2,    2,    1,
+            3,    2,    1,    2,    4,    2,    8,    9,    7,    3,
+            2,    0,    4,    2,    1,    3,    2,    2,    2,    4,
+            1,    1,    1,    2,    3,    1,    1,    1,    1,    1,
+            0,    3,    0,    1,    1,    0,    1,    1,    3,    3,
+            3,    4,    1,    1,    1,    1,    1,    1,    1,    1,
+            1,    1,    1,    1,    1,    1,    3,    2,    3,    3,
+            0,    1,    1,    3,    1,    1,    3,    1,    1,    4,
+            4,    4,    1,    4,    1,    1,    3,    1,    1,    4,
+            2,    2,    1,    3,    1,    4,    4,    3,    3,    3,
+            1,    3,    1,    1,    3,    1,    1,    4,    3,    1,
+            1,    2,    1,    3,    4,    3,    0,    1,    1,    1,
+            3,    1,    3,    1,    1,    4,    2,    0,    2,    2,
+            1,    2,    1,    1,    1,    4,    3,    3,    3,    6,
+            3,    1,    1,    2,    1
     );
 
     protected function initReduceCallbacks() {
@@ -1929,260 +1929,260 @@ class Pattern7 extends \PhpParser\ParserAbstract
                  $this->semValue = new Expr\Eval_($this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
             377 => function ($stackPos) {
-                 $this->semValue = new Expr\Include_($this->semStack[$stackPos-(2-2)], Expr\Include_::TYPE_REQUIRE, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Eval_(new Wildcard($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes), $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             378 => function ($stackPos) {
-                 $this->semValue = new Expr\Include_($this->semStack[$stackPos-(2-2)], Expr\Include_::TYPE_REQUIRE_ONCE, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Include_($this->semStack[$stackPos-(2-2)], Expr\Include_::TYPE_REQUIRE, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             379 => function ($stackPos) {
-                 $this->semValue = new Expr\Cast\Int_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Include_($this->semStack[$stackPos-(2-2)], Expr\Include_::TYPE_REQUIRE_ONCE, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             380 => function ($stackPos) {
-                 $this->semValue = new Expr\Cast\Double($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Cast\Int_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             381 => function ($stackPos) {
-                 $this->semValue = new Expr\Cast\String_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Cast\Double($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             382 => function ($stackPos) {
-                 $this->semValue = new Expr\Cast\Array_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Cast\String_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             383 => function ($stackPos) {
-                 $this->semValue = new Expr\Cast\Object_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Cast\Array_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             384 => function ($stackPos) {
-                 $this->semValue = new Expr\Cast\Bool_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Cast\Object_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             385 => function ($stackPos) {
-                 $this->semValue = new Expr\Cast\Unset_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Cast\Bool_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             386 => function ($stackPos) {
+                 $this->semValue = new Expr\Cast\Unset_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+            },
+            387 => function ($stackPos) {
                  $attrs = $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes;
             $attrs['kind'] = strtolower($this->semStack[$stackPos-(2-1)]) === 'exit' ? Expr\Exit_::KIND_EXIT : Expr\Exit_::KIND_DIE;
             $this->semValue = new Expr\Exit_($this->semStack[$stackPos-(2-2)], $attrs);
             },
-            387 => function ($stackPos) {
+            388 => function ($stackPos) {
                  $this->semValue = new Expr\ErrorSuppress($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
-            388 => function ($stackPos) {
+            389 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
-            389 => function ($stackPos) {
+            390 => function ($stackPos) {
                  $this->semValue = new Expr\ShellExec($this->semStack[$stackPos-(3-2)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
-            390 => function ($stackPos) {
+            391 => function ($stackPos) {
                  $this->semValue = new Expr\Print_($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
-            391 => function ($stackPos) {
+            392 => function ($stackPos) {
                  $this->semValue = new Expr\Yield_(null, null, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
-            392 => function ($stackPos) {
+            393 => function ($stackPos) {
                  $this->semValue = new Expr\Yield_($this->semStack[$stackPos-(2-2)], null, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
-            393 => function ($stackPos) {
+            394 => function ($stackPos) {
                  $this->semValue = new Expr\Yield_($this->semStack[$stackPos-(4-4)], $this->semStack[$stackPos-(4-2)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
-            394 => function ($stackPos) {
+            395 => function ($stackPos) {
                  $this->semValue = new Expr\YieldFrom($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
-            395 => function ($stackPos) {
+            396 => function ($stackPos) {
                  $this->semValue = new Expr\Closure(['static' => false, 'byRef' => $this->semStack[$stackPos-(8-2)], 'params' => $this->semStack[$stackPos-(8-4)], 'uses' => $this->semStack[$stackPos-(8-6)], 'returnType' => $this->semStack[$stackPos-(8-7)], 'stmts' => $this->semStack[$stackPos-(8-8)]], $this->startAttributeStack[$stackPos-(8-1)] + $this->endAttributes);
             },
-            396 => function ($stackPos) {
+            397 => function ($stackPos) {
                  $this->semValue = new Expr\Closure(['static' => true, 'byRef' => $this->semStack[$stackPos-(9-3)], 'params' => $this->semStack[$stackPos-(9-5)], 'uses' => $this->semStack[$stackPos-(9-7)], 'returnType' => $this->semStack[$stackPos-(9-8)], 'stmts' => $this->semStack[$stackPos-(9-9)]], $this->startAttributeStack[$stackPos-(9-1)] + $this->endAttributes);
             },
-            397 => function ($stackPos) {
+            398 => function ($stackPos) {
                  $this->semValue = array(new Stmt\Class_(null, ['type' => 0, 'extends' => $this->semStack[$stackPos-(7-3)], 'implements' => $this->semStack[$stackPos-(7-4)], 'stmts' => $this->semStack[$stackPos-(7-6)]], $this->startAttributeStack[$stackPos-(7-1)] + $this->endAttributes), $this->semStack[$stackPos-(7-2)]);
             $this->checkClass($this->semValue[0], -1);
             },
-            398 => function ($stackPos) {
+            399 => function ($stackPos) {
                  $this->semValue = new Expr\New_($this->semStack[$stackPos-(3-2)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
-            399 => function ($stackPos) {
+            400 => function ($stackPos) {
                  list($class, $ctorArgs) = $this->semStack[$stackPos-(2-2)]; $this->semValue = new Expr\New_($class, $ctorArgs, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
-            400 => function ($stackPos) {
+            401 => function ($stackPos) {
                  $this->semValue = array();
             },
-            401 => function ($stackPos) {
+            402 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(4-3)];
             },
-            402 => function ($stackPos) {
+            403 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(2-1)];
             },
-            403 => function ($stackPos) {
+            404 => function ($stackPos) {
                  $this->semValue = array($this->semStack[$stackPos-(1-1)]);
             },
-            404 => function ($stackPos) {
+            405 => function ($stackPos) {
                  $this->semStack[$stackPos-(3-1)][] = $this->semStack[$stackPos-(3-3)]; $this->semValue = $this->semStack[$stackPos-(3-1)];
             },
-            405 => function ($stackPos) {
-                 $this->semValue = new Expr\ClosureUse($this->semStack[$stackPos-(2-2)], $this->semStack[$stackPos-(2-1)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
-            },
             406 => function ($stackPos) {
-                 $this->semValue = new Expr\FuncCall($this->semStack[$stackPos-(2-1)], $this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\ClosureUse($this->semStack[$stackPos-(2-2)], $this->semStack[$stackPos-(2-1)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             407 => function ($stackPos) {
                  $this->semValue = new Expr\FuncCall($this->semStack[$stackPos-(2-1)], $this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             408 => function ($stackPos) {
-                 $this->semValue = new Expr\StaticCall($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->semStack[$stackPos-(4-4)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\FuncCall($this->semStack[$stackPos-(2-1)], $this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             409 => function ($stackPos) {
-                 $this->semValue = new Name($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\StaticCall($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->semStack[$stackPos-(4-4)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
             410 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(1-1)];
-            },
-            411 => function ($stackPos) {
                  $this->semValue = new Name($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
+            411 => function ($stackPos) {
+                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+            },
             412 => function ($stackPos) {
-                 $this->semValue = new Name\FullyQualified($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Name($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             413 => function ($stackPos) {
-                 $this->semValue = new Name\Relative($this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $this->semValue = new Name\FullyQualified($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             414 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+                 $this->semValue = new Name\Relative($this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             415 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             416 => function ($stackPos) {
-                 $this->semValue = new Expr\Error($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes); $this->errorState = 2;
+                 $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             417 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+                 $this->semValue = new Expr\Error($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes); $this->errorState = 2;
             },
             418 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             419 => function ($stackPos) {
-                 $this->semValue = null;
-            },
-            420 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(3-2)];
-            },
-            421 => function ($stackPos) {
-                 $this->semValue = array();
-            },
-            422 => function ($stackPos) {
-                 $this->semValue = array(new Scalar\EncapsedStringPart(Scalar\String_::parseEscapeSequences($this->semStack[$stackPos-(1-1)], '`'), $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes));
-            },
-            423 => function ($stackPos) {
-                 foreach ($this->semStack[$stackPos-(1-1)] as $s) { if ($s instanceof Node\Scalar\EncapsedStringPart) { $s->value = Node\Scalar\String_::parseEscapeSequences($s->value, '`', true); } }; $this->semValue = $this->semStack[$stackPos-(1-1)];
-            },
-            424 => function ($stackPos) {
-                 $this->semValue = array();
-            },
-            425 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
+            420 => function ($stackPos) {
+                 $this->semValue = null;
+            },
+            421 => function ($stackPos) {
+                 $this->semValue = $this->semStack[$stackPos-(3-2)];
+            },
+            422 => function ($stackPos) {
+                 $this->semValue = array();
+            },
+            423 => function ($stackPos) {
+                 $this->semValue = array(new Scalar\EncapsedStringPart(Scalar\String_::parseEscapeSequences($this->semStack[$stackPos-(1-1)], '`'), $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes));
+            },
+            424 => function ($stackPos) {
+                 foreach ($this->semStack[$stackPos-(1-1)] as $s) { if ($s instanceof Node\Scalar\EncapsedStringPart) { $s->value = Node\Scalar\String_::parseEscapeSequences($s->value, '`', true); } }; $this->semValue = $this->semStack[$stackPos-(1-1)];
+            },
+            425 => function ($stackPos) {
+                 $this->semValue = array();
+            },
             426 => function ($stackPos) {
-                 $this->semValue = new Expr\ConstFetch($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             427 => function ($stackPos) {
-                 $this->semValue = new Expr\ClassConstFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\ConstFetch($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             428 => function ($stackPos) {
-                 $this->semValue = new Expr\ClassConstFetch($this->semStack[$stackPos-(3-1)], new Expr\Error($this->startAttributeStack[$stackPos-(3-3)] + $this->endAttributeStack[$stackPos-(3-3)]), $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes); $this->errorState = 2;
+                 $this->semValue = new Expr\ClassConstFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             429 => function ($stackPos) {
+                 $this->semValue = new Expr\ClassConstFetch($this->semStack[$stackPos-(3-1)], new Expr\Error($this->startAttributeStack[$stackPos-(3-3)] + $this->endAttributeStack[$stackPos-(3-3)]), $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes); $this->errorState = 2;
+            },
+            430 => function ($stackPos) {
                  $attrs = $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes; $attrs['kind'] = Expr\Array_::KIND_SHORT;
             $this->semValue = new Expr\Array_($this->semStack[$stackPos-(3-2)], $attrs);
             },
-            430 => function ($stackPos) {
+            431 => function ($stackPos) {
                  $attrs = $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes; $attrs['kind'] = Expr\Array_::KIND_LONG;
             $this->semValue = new Expr\Array_($this->semStack[$stackPos-(4-3)], $attrs);
             },
-            431 => function ($stackPos) {
+            432 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
-            432 => function ($stackPos) {
+            433 => function ($stackPos) {
                  $attrs = $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes; $attrs['kind'] = ($this->semStack[$stackPos-(1-1)][0] === "'" || ($this->semStack[$stackPos-(1-1)][1] === "'" && ($this->semStack[$stackPos-(1-1)][0] === 'b' || $this->semStack[$stackPos-(1-1)][0] === 'B')) ? Scalar\String_::KIND_SINGLE_QUOTED : Scalar\String_::KIND_DOUBLE_QUOTED);
             $this->semValue = new Scalar\String_(Scalar\String_::parse($this->semStack[$stackPos-(1-1)]), $attrs);
             },
-            433 => function ($stackPos) {
+            434 => function ($stackPos) {
                  $this->semValue = $this->parseLNumber($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
-            434 => function ($stackPos) {
+            435 => function ($stackPos) {
                  $this->semValue = new Scalar\DNumber(Scalar\DNumber::parse($this->semStack[$stackPos-(1-1)]), $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
-            435 => function ($stackPos) {
+            436 => function ($stackPos) {
                  $this->semValue = new Scalar\MagicConst\Line($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
-            436 => function ($stackPos) {
+            437 => function ($stackPos) {
                  $this->semValue = new Scalar\MagicConst\File($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
-            437 => function ($stackPos) {
+            438 => function ($stackPos) {
                  $this->semValue = new Scalar\MagicConst\Dir($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
-            438 => function ($stackPos) {
+            439 => function ($stackPos) {
                  $this->semValue = new Scalar\MagicConst\Class_($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
-            439 => function ($stackPos) {
+            440 => function ($stackPos) {
                  $this->semValue = new Scalar\MagicConst\Trait_($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
-            440 => function ($stackPos) {
+            441 => function ($stackPos) {
                  $this->semValue = new Scalar\MagicConst\Method($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
-            441 => function ($stackPos) {
+            442 => function ($stackPos) {
                  $this->semValue = new Scalar\MagicConst\Function_($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
-            442 => function ($stackPos) {
-                 $this->semValue = new Scalar\MagicConst\Namespace_($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
-            },
             443 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+                 $this->semValue = new Scalar\MagicConst\Namespace_($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             444 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             445 => function ($stackPos) {
+                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+            },
+            446 => function ($stackPos) {
                  $attrs = $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes; $attrs['kind'] = strpos($this->semStack[$stackPos-(3-1)], "'") === false ? Scalar\String_::KIND_HEREDOC : Scalar\String_::KIND_NOWDOC; preg_match('/\A[bB]?<<<[ \t]*[\'"]?([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)[\'"]?(?:\r\n|\n|\r)\z/', $this->semStack[$stackPos-(3-1)], $matches); $attrs['docLabel'] = $matches[1];;
             $this->semValue = new Scalar\String_(Scalar\String_::parseDocString($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-2)]), $attrs);
             },
-            446 => function ($stackPos) {
+            447 => function ($stackPos) {
                  $attrs = $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes; $attrs['kind'] = strpos($this->semStack[$stackPos-(2-1)], "'") === false ? Scalar\String_::KIND_HEREDOC : Scalar\String_::KIND_NOWDOC; preg_match('/\A[bB]?<<<[ \t]*[\'"]?([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)[\'"]?(?:\r\n|\n|\r)\z/', $this->semStack[$stackPos-(2-1)], $matches); $attrs['docLabel'] = $matches[1];;
             $this->semValue = new Scalar\String_('', $attrs);
             },
-            447 => function ($stackPos) {
+            448 => function ($stackPos) {
                  $attrs = $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes; $attrs['kind'] = Scalar\String_::KIND_DOUBLE_QUOTED;
             foreach ($this->semStack[$stackPos-(3-2)] as $s) { if ($s instanceof Node\Scalar\EncapsedStringPart) { $s->value = Node\Scalar\String_::parseEscapeSequences($s->value, '"', true); } }; $this->semValue = new Scalar\Encapsed($this->semStack[$stackPos-(3-2)], $attrs);
             },
-            448 => function ($stackPos) {
+            449 => function ($stackPos) {
                  $attrs = $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes; $attrs['kind'] = strpos($this->semStack[$stackPos-(3-1)], "'") === false ? Scalar\String_::KIND_HEREDOC : Scalar\String_::KIND_NOWDOC; preg_match('/\A[bB]?<<<[ \t]*[\'"]?([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)[\'"]?(?:\r\n|\n|\r)\z/', $this->semStack[$stackPos-(3-1)], $matches); $attrs['docLabel'] = $matches[1];;
             foreach ($this->semStack[$stackPos-(3-2)] as $s) { if ($s instanceof Node\Scalar\EncapsedStringPart) { $s->value = Node\Scalar\String_::parseEscapeSequences($s->value, null, true); } } $s->value = preg_replace('~(\r\n|\n|\r)\z~', '', $s->value); if ('' === $s->value) array_pop($this->semStack[$stackPos-(3-2)]);; $this->semValue = new Scalar\Encapsed($this->semStack[$stackPos-(3-2)], $attrs);
             },
-            449 => function ($stackPos) {
-                 $this->semValue = null;
-            },
             450 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+                 $this->semValue = null;
             },
             451 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             452 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(3-2)];
+                 $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             453 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+                 $this->semValue = $this->semStack[$stackPos-(3-2)];
             },
             454 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             455 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(3-2)];
-            },
-            456 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
+            456 => function ($stackPos) {
+                 $this->semValue = $this->semStack[$stackPos-(3-2)];
+            },
             457 => function ($stackPos) {
-                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             458 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayDimFetch($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             459 => function ($stackPos) {
                  $this->semValue = new Expr\ArrayDimFetch($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
@@ -2191,192 +2191,195 @@ class Pattern7 extends \PhpParser\ParserAbstract
                  $this->semValue = new Expr\ArrayDimFetch($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
             461 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+                 $this->semValue = new Expr\ArrayDimFetch($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
             462 => function ($stackPos) {
-                 $this->semValue = new Expr\MethodCall($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->semStack[$stackPos-(4-4)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
+                 $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             463 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+                 $this->semValue = new Expr\MethodCall($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->semStack[$stackPos-(4-4)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
             464 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             465 => function ($stackPos) {
-                 $this->semValue = new Expr\PropertyFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             466 => function ($stackPos) {
-                 $this->semValue = new Wildcard($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\PropertyFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             467 => function ($stackPos) {
-                 $this->semValue = substr($this->semStack[$stackPos-(1-1)], 1);
+                 $this->semValue = new Wildcard($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             468 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(4-3)];
+                 $this->semValue = substr($this->semStack[$stackPos-(1-1)], 1);
             },
             469 => function ($stackPos) {
-                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = $this->semStack[$stackPos-(4-3)];
             },
             470 => function ($stackPos) {
-                 $this->semValue = new Expr\Error($this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes); $this->errorState = 2;
+                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             471 => function ($stackPos) {
-                 $var = $this->semStack[$stackPos-(1-1)]; $this->semValue = \is_string($var) ? new Node\VarLikeIdentifier($var, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes) : $var;
+                 $this->semValue = new Expr\Error($this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes); $this->errorState = 2;
             },
             472 => function ($stackPos) {
-                 $this->semValue = new Expr\StaticPropertyFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $var = $this->semStack[$stackPos-(1-1)]; $this->semValue = \is_string($var) ? new Node\VarLikeIdentifier($var, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes) : $var;
             },
             473 => function ($stackPos) {
-                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\StaticPropertyFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             474 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayDimFetch($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             475 => function ($stackPos) {
                  $this->semValue = new Expr\ArrayDimFetch($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
             476 => function ($stackPos) {
-                 $this->semValue = new Expr\PropertyFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\ArrayDimFetch($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
             477 => function ($stackPos) {
-                 $this->semValue = new Expr\StaticPropertyFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\PropertyFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             478 => function ($stackPos) {
                  $this->semValue = new Expr\StaticPropertyFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             479 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+                 $this->semValue = new Expr\StaticPropertyFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             480 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(3-2)];
-            },
-            481 => function ($stackPos) {
-                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
-            },
-            482 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
-            483 => function ($stackPos) {
+            481 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(3-2)];
             },
-            484 => function ($stackPos) {
+            482 => function ($stackPos) {
                  $this->semValue = new Expr\Variable($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
+            483 => function ($stackPos) {
+                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+            },
+            484 => function ($stackPos) {
+                 $this->semValue = $this->semStack[$stackPos-(3-2)];
+            },
             485 => function ($stackPos) {
-                 $this->semValue = new Expr\Error($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes); $this->errorState = 2;
+                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             486 => function ($stackPos) {
-                 $this->semValue = new Expr\List_($this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Error($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes); $this->errorState = 2;
             },
             487 => function ($stackPos) {
-                 $this->semStack[$stackPos-(3-1)][] = $this->semStack[$stackPos-(3-3)]; $this->semValue = $this->semStack[$stackPos-(3-1)];
+                 $this->semValue = new Expr\List_($this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
             488 => function ($stackPos) {
-                 $this->semValue = array($this->semStack[$stackPos-(1-1)]);
+                 $this->semStack[$stackPos-(3-1)][] = $this->semStack[$stackPos-(3-3)]; $this->semValue = $this->semStack[$stackPos-(3-1)];
             },
             489 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = array($this->semStack[$stackPos-(1-1)]);
             },
             490 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(2-2)], null, true, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
-            },
-            491 => function ($stackPos) {
                  $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
+            491 => function ($stackPos) {
+                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(2-2)], null, true, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+            },
             492 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(3-3)], $this->semStack[$stackPos-(3-1)], false, $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             493 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(4-4)], $this->semStack[$stackPos-(4-1)], true, $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
-            },
-            494 => function ($stackPos) {
                  $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(3-3)], $this->semStack[$stackPos-(3-1)], false, $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
+            494 => function ($stackPos) {
+                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(4-4)], $this->semStack[$stackPos-(4-1)], true, $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
+            },
             495 => function ($stackPos) {
-                 $this->semValue = null;
+                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(3-3)], $this->semStack[$stackPos-(3-1)], false, $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             496 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(1-1)]; $end = count($this->semValue)-1; if ($this->semValue[$end] === null) array_pop($this->semValue);
+                 $this->semValue = null;
             },
             497 => function ($stackPos) {
-                $this->semValue = $this->semStack[$stackPos];
+                 $this->semValue = $this->semStack[$stackPos-(1-1)]; $end = count($this->semValue)-1; if ($this->semValue[$end] === null) array_pop($this->semValue);
             },
             498 => function ($stackPos) {
                 $this->semValue = $this->semStack[$stackPos];
             },
             499 => function ($stackPos) {
-                 $this->semStack[$stackPos-(3-1)][] = $this->semStack[$stackPos-(3-3)]; $this->semValue = $this->semStack[$stackPos-(3-1)];
+                $this->semValue = $this->semStack[$stackPos];
             },
             500 => function ($stackPos) {
-                 $this->semValue = array($this->semStack[$stackPos-(1-1)]);
+                 $this->semStack[$stackPos-(3-1)][] = $this->semStack[$stackPos-(3-3)]; $this->semValue = $this->semStack[$stackPos-(3-1)];
             },
             501 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(3-3)], $this->semStack[$stackPos-(3-1)], false, $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $this->semValue = array($this->semStack[$stackPos-(1-1)]);
             },
             502 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(3-3)], $this->semStack[$stackPos-(3-1)], false, $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             503 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem(new WildcardN($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes), null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             504 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(4-4)], $this->semStack[$stackPos-(4-1)], true, $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\ArrayItem(new WildcardN($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes), null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             505 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(2-2)], null, true, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(4-4)], $this->semStack[$stackPos-(4-1)], true, $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
             506 => function ($stackPos) {
-                 $this->semValue = null;
+                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(2-2)], null, true, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             507 => function ($stackPos) {
-                 $this->semStack[$stackPos-(2-1)][] = $this->semStack[$stackPos-(2-2)]; $this->semValue = $this->semStack[$stackPos-(2-1)];
+                 $this->semValue = null;
             },
             508 => function ($stackPos) {
                  $this->semStack[$stackPos-(2-1)][] = $this->semStack[$stackPos-(2-2)]; $this->semValue = $this->semStack[$stackPos-(2-1)];
             },
             509 => function ($stackPos) {
-                 $this->semValue = array($this->semStack[$stackPos-(1-1)]);
+                 $this->semStack[$stackPos-(2-1)][] = $this->semStack[$stackPos-(2-2)]; $this->semValue = $this->semStack[$stackPos-(2-1)];
             },
             510 => function ($stackPos) {
-                 $this->semValue = array($this->semStack[$stackPos-(2-1)], $this->semStack[$stackPos-(2-2)]);
+                 $this->semValue = array($this->semStack[$stackPos-(1-1)]);
             },
             511 => function ($stackPos) {
-                 $this->semValue = new Scalar\EncapsedStringPart($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = array($this->semStack[$stackPos-(2-1)], $this->semStack[$stackPos-(2-2)]);
             },
             512 => function ($stackPos) {
-                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new Scalar\EncapsedStringPart($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             513 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(1-1)];
+                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             514 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayDimFetch($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
+                 $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
             515 => function ($stackPos) {
-                 $this->semValue = new Expr\PropertyFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\ArrayDimFetch($this->semStack[$stackPos-(4-1)], $this->semStack[$stackPos-(4-3)], $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
             516 => function ($stackPos) {
-                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(3-2)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\PropertyFetch($this->semStack[$stackPos-(3-1)], $this->semStack[$stackPos-(3-3)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             517 => function ($stackPos) {
                  $this->semValue = new Expr\Variable($this->semStack[$stackPos-(3-2)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             518 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayDimFetch($this->semStack[$stackPos-(6-2)], $this->semStack[$stackPos-(6-4)], $this->startAttributeStack[$stackPos-(6-1)] + $this->endAttributes);
+                 $this->semValue = new Expr\Variable($this->semStack[$stackPos-(3-2)], $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             519 => function ($stackPos) {
-                 $this->semValue = $this->semStack[$stackPos-(3-2)];
+                 $this->semValue = new Expr\ArrayDimFetch($this->semStack[$stackPos-(6-2)], $this->semStack[$stackPos-(6-4)], $this->startAttributeStack[$stackPos-(6-1)] + $this->endAttributes);
             },
             520 => function ($stackPos) {
-                 $this->semValue = new Scalar\String_($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = $this->semStack[$stackPos-(3-2)];
             },
             521 => function ($stackPos) {
-                 $this->semValue = $this->parseNumString($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new Scalar\String_($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             522 => function ($stackPos) {
-                 $this->semValue = $this->parseNumString('-' . $this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = $this->parseNumString($this->semStack[$stackPos-(1-1)], $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             523 => function ($stackPos) {
+                 $this->semValue = $this->parseNumString('-' . $this->semStack[$stackPos-(2-2)], $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+            },
+            524 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
             },
         ];

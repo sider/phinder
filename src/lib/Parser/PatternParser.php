@@ -79,8 +79,14 @@ final class PatternParser
             return '';
 
         } else if ($ast instanceof ConstFetch) {
-            $xp = static::_buildXPath($ast->name);
-            return "/*[local-name()='class' or local-name()='name']" . $xp . '/..';
+            if ($ast->name->parts[0] == "_") {
+                return '';
+
+            } else {
+                $xp = static::_buildXPath($ast->name);
+                $prefix = "/*[local-name()='class' or local-name()='name']";
+                return $prefix . $xp . '/..';
+            }
 
         } else if (\is_subclass_of($ast, '\PhpParser\NodeAbstract')) {
             $t = $ast->getType();

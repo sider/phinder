@@ -15,7 +15,7 @@ Phinder is a command line tool for checking such low-level things automatically.
 
 ```yml
 - id: in_array_without_3rd_param
-  pattern: in_array(?, ?)
+  pattern: in_array(_, _)
   message: Specify the 3rd parameter explicitly when calling `in_array` to avoid unexpected comparison results.
 ```
 
@@ -48,7 +48,7 @@ phinder --quicktest <pattern>
 **Sample Usage:**
 
 ```bash
-phinder --quicktest 'in_array(?, ?)'
+phinder --quicktest 'in_array(_, _)'
 phinder --quicktest 'var_dump(...)'
 ```
 
@@ -110,11 +110,11 @@ phinder test
 Any PHP expression is a valid Phinder pattern.
 Phinder currently supports two kinds of wildcards:
 
-- `?`: any single expression
+- `_`: any single expression
 - `...`: variable length arguments or array pairs
 
-For example, `foo(?)` means an invocation of `foo` with one argument.
-`bar(?, ?, ...)` means an invocation of `bar` with two or more arguments.
+For example, `foo(_)` means an invocation of `foo` with one argument.
+`bar(_, _, ...)` means an invocation of `bar` with two or more arguments.
 More features will be added such as statement search.
 
 ## Contributing

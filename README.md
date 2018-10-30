@@ -22,7 +22,7 @@ Phinder is a command line tool for checking such low-level things automatically.
 ## Installation
 
 ```bash
-composer global require tomokinakamaru/phinder
+composer global require sider/phinder
 ```
 
 You can check your installation by the following command:
@@ -119,7 +119,7 @@ More features will be added such as statement search.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at [https://github.com/tomokinakamaru/phinder](https://github.com/tomokinakamaru/phinder).
+Bug reports and pull requests are welcome on GitHub at [https://github.com/sider/phinder](https://github.com/sider/phinder).
 
 ## Acknowledgements
 

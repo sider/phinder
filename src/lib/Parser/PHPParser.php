@@ -44,7 +44,7 @@ final class PHPParser extends FileParser
 
     protected function support($path)
     {
-        return endsWith($path, '.php');
+        return endsWith($path, '.php') || endsWith($path, '.ctp');
     }
 
     protected function parseFile($path)

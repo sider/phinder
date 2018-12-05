@@ -18,7 +18,7 @@
     "bin/phinder"
   ],
   "require": {
-    "nikic/php-parser": "4.0.4",
+    "nikic/php-parser": "4.1.0",
     "funct/funct": "^1.4",
     "symfony/yaml": "^4.1"
   },

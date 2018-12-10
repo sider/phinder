@@ -18,6 +18,8 @@ $jsonOutput = false;
 $outputBuffer = ['result' => [], 'errors' => []];
 $command = null;
 $test = false;
+$violationCount = 0;
+$errorCount = 0;
 
 function showHelpAndDie($msg=null) {
     if ($msg !== null) fwrite(STDERR, $msg . "\n");
@@ -77,13 +79,12 @@ while ($argv) {
 
 if ($test === true) {
     $phpParser = new PHPParser;
-    $error_count = 0;
     foreach (API::parseRule($rulePath) as $r) {
         foreach ($r->fail_patterns as $p) {
             $xml = $phpParser->parseStr("<?php $p;");
             if (0 === count($xml->xpath($r->xpath))) {
                 echo "`$p` does not match the rule {$r->id} but should match that rule.\n";
-                $error_count++;
+                $errorCount++;
             }
         }
 
@@ -91,11 +92,12 @@ if ($test === true) {
             $xml = $phpParser->parseStr("<?php $p;");
             if (0 < count($xml->xpath($r->xpath))) {
                 echo "`$p` matches the rule {$r->id} but should not match that rule.\n";
-                $error_count++;
+                $errorCount++;
             }
         }
     }
-    if ($error_count === 0) {
+    
+    if ($errorCount === 0) {
         fwrite(STDERR, "No error\n");
         exit(0);
     } else {
@@ -116,6 +118,8 @@ while (true) {
         $match = $generator->current();
         $generator->next();
 
+        $violationCount++;
+        
         $path = (string)$match->path;
         $id = $match->rule->id;
         $message  = $match->rule->message;
@@ -161,6 +165,8 @@ while (true) {
         }
 
     } catch (FileNotFound $e) {
+        $errorCount ++;
+        
         $msg = "File not found: {$e->path}";
         if ($jsonOutput) {
             $outputBuffer['errors'][] = [
@@ -173,6 +179,8 @@ while (true) {
         }
 
     } catch (InvalidPattern $e) {
+        $errorCount ++;
+        
         $msg = "Invalid pattern found in {$e->id} in {$e->path}: {$e->pattern}";
         if ($jsonOutput) {
             $outputBuffer['errors'][] = [
@@ -185,6 +193,8 @@ while (true) {
         }
 
     } catch (InvalidRule $e) {
+        $errorCount ++;
+        
         $sufs = ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
         $ord = "{$e->index}{$sufs[$e->index % 10 - 1]}";
         $msg = "Invalid {$e->key} value found in {$ord} rule in {$e->path}";
@@ -200,6 +210,8 @@ while (true) {
         }
 
     } catch (InvalidYaml $e) {
+        $errorCount ++;
+        
         $msg = "Invalid yml file: {$e->path}";
 
         if ($jsonOutput) {
@@ -211,9 +223,12 @@ while (true) {
             fwrite(STDERR, "$msg\n");
             exit(1);
         }
-
+        
     } catch (InvalidPHP $e) {
+        $errorCount ++;
+        
         $msg = "PHP parse error in {$e->path}: {$e->error->getRawMessage()}";
+        
         if ($jsonOutput) {
             $outputBuffer['errors'][] = [
                 'type' => 'InvalidPHP',
@@ -222,9 +237,14 @@ while (true) {
         } else {
             fwrite(STDERR, "\033[31m$msg\033[0m\n");
         }
+        
     }
 }
 
 if ($jsonOutput) {
     echo json_encode($outputBuffer, JSON_UNESCAPED_SLASHES);
+}
+
+if ($errorCount !== 0 || $violationCount !== 0) {
+    exit(1);
 }

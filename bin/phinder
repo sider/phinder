@@ -248,3 +248,4 @@ if ($jsonOutput) {
 if ($errorCount !== 0 || $violationCount !== 0) {
     exit(1);
 }
+

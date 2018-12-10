@@ -165,7 +165,7 @@ while (true) {
         }
 
     } catch (FileNotFound $e) {
-        $errorCount ++;
+        $errorCount++;
         
         $msg = "File not found: {$e->path}";
         if ($jsonOutput) {
@@ -179,7 +179,7 @@ while (true) {
         }
 
     } catch (InvalidPattern $e) {
-        $errorCount ++;
+        $errorCount++;
         
         $msg = "Invalid pattern found in {$e->id} in {$e->path}: {$e->pattern}";
         if ($jsonOutput) {
@@ -193,7 +193,7 @@ while (true) {
         }
 
     } catch (InvalidRule $e) {
-        $errorCount ++;
+        $errorCount++;
         
         $sufs = ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
         $ord = "{$e->index}{$sufs[$e->index % 10 - 1]}";
@@ -210,7 +210,7 @@ while (true) {
         }
 
     } catch (InvalidYaml $e) {
-        $errorCount ++;
+        $errorCount++;
         
         $msg = "Invalid yml file: {$e->path}";
 
@@ -225,7 +225,7 @@ while (true) {
         }
         
     } catch (InvalidPHP $e) {
-        $errorCount ++;
+        $errorCount++;
         
         $msg = "PHP parse error in {$e->path}: {$e->error->getRawMessage()}";
         

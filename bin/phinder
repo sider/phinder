@@ -24,7 +24,18 @@ $errorCount = 0;
 function showHelpAndDie($msg=null) {
     if ($msg !== null) fwrite(STDERR, $msg . "\n");
     fwrite(STDERR, <<<EOS
-usage  : phinder [-h] [test] [-j|--json] [-r|--rule <rule-path>]  [-p|--php <php-path>] [-q|--quicktest <pattern>]
+Usage: phinder [options] [command]
+
+Command:
+  test                       Verify phinder.yml
+
+Options:
+  -q, --quicktest <pattern>  Run quick test for <pattern>
+  -p, --php <file>|<dir>     Find pieces in <file> or in all PHP files in <div>
+  -r, --rule <file>|<dir>    Use <file> or all YAML files in <dir> instead of phinder.yml
+  -j, --json                 Output JSON format
+  -h, --help                 Show help
+  -v, --version              Print version number
 
 EOS
 );

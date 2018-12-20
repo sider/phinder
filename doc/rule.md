@@ -12,10 +12,10 @@ The following is an example of `phinder.yml` that prints `Do not use var_dump.` 
   test:                         # optional
 
     fail:                       # optional, string or list of string
-        - var_dump($var);
+      - var_dump($var);
 
     pass:                       # optional, string or list of string
-        - echo $var;
+      - echo $var;
 ```
 
 - `id`: The id of the rule

@@ -8,7 +8,23 @@ Usage: phinder [options]
 Options:
   -p, --php <file>|<dir>   Find pieces in <file> or in all PHP files in <dir>
   -r, --rule <file>|<dir>  Use <file> or all YAML files in <dir> instead of phinder.yml
-  -j. --json               Output JSON format
+  -j, --json               Output JSON format
+```
+
+The following block lists example commands:
+
+```sh
+# Analyze 'foo.php'
+phinder -p foo.php
+
+# Analyze 'foo.php' using the rules defined in 'sample.yml'
+phinder -p foo.php -r sample.yml
+
+# Analyze all PHP files in the directory 'src/'
+phinder -p src/
+
+# Analyze 'foo.php' and output the result in JSON format
+phinder -p foo.php -j
 ```
 
 ## Test your patterns
@@ -22,7 +38,7 @@ Usage: phinder test [options]
 
 Options:
   -r, --rule <file>|<dir>  Use <file> or all YAML files in <dir> instead of phinder.yml
-  -j. --json               Output JSON format
+  -j, --json               Output JSON format
 ```
 
 This command checks each pattern in `phinder.yml` matches its fail/success tests. Tests can be written in `phinder.yml` as follows:
@@ -46,11 +62,15 @@ Phinde provides a way to check your patterns without adding tests to `phinder.ym
 
 ```
 Usage: phinder -q <pattern> [options]
-   or: phinder --quicktest <pattern> [options]
+       phinder --quicktest <pattern> [options]
 
 Options:
   -p, --php <file>|<dir> Find pieces in <file> or in all PHP files in <dir>
   -j, --json             Output JSON format
 ```
 
-For example, `phinder -q 'in_array(...)' -p sample.php` reports all the calls to `in_array` in `sample.php`.
+For example, the command below reports all the calls to `in_array` in `sample.php`.
+
+```
+phinder -q 'in_array(...)' -p sample.php
+```

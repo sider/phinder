@@ -37,13 +37,13 @@ If you have `$HOME/.composer/vendor/bin` in your PATH, you can also check it by 
 phinder --help
 ```
 
-## Further information
+## Documentation
 
-**Rule yml** → [Sample rule and its description](./doc/rule.md)
+- [Sample rule and its description](./doc/rule.md)
 
-**Pattern syntax** → [Pattern syntax](./doc/pattern-syntax.md)
+- [Pattern syntax](./doc/pattern-syntax.md)
 
-**Command line options** → [Command line options](./doc/command-line-options.md)
+- [Command line options](./doc/command-line-options.md)
 
 ## Contributing
 

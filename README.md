@@ -39,7 +39,7 @@ phinder --help
 
 ## Further information
 
-**Rule yml** → [Rule](./doc/rule.md)
+**Rule yml** → [Sample rule and its description](./doc/rule.md)
 
 **Pattern syntax** → [Pattern syntax](./doc/pattern-syntax.md)
 

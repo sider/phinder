@@ -39,9 +39,11 @@ phinder --help
 
 ## Further information
 
-**Pattern syntax** → [doc/pattern-syntax.md](./doc/pattern-syntax.md)
+**Rule yml** → [Rule](./doc/rule.md)
 
-**Command line options** → [doc/command-line-options.md](./doc/command-line-options.md)
+**Pattern syntax** → [Pattern syntax](./doc/pattern-syntax.md)
+
+**Command line options** → [Command line options](./doc/command-line-options.md)
 
 ## Contributing
 

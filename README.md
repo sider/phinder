@@ -9,7 +9,7 @@ Suppose that your project has the following local rule:
 
 - Specify the 3rd parameter explicitly when calling `in_array` to avoid unexpected comparison results.
 
-Your project code follows this rule if you don't forget to check it in code review. But what if you forget? What if your project has ten rules? You probably want machines to do such low-level checking.
+Your project code follows this rule if you check it in code review. But what if you forget to check it? What if your project has tens of rules? You probably want machines to do such low-level checking.
 
 Phinder is a command line tool for checking such low-level things automatically. By saving the following yml as `phinder.yml` and running `phinder` from your terminal, Phinder finds the violations for you:
 
@@ -37,91 +37,21 @@ If you have `$HOME/.composer/vendor/bin` in your PATH, you can also check it by 
 phinder --help
 ```
 
-## Command Line Options
+## Documentation
 
-### Quick Test
+- [Sample rule and its description](./doc/rule.md)
 
-```bash
-phinder --quicktest <pattern>
-```
+- [Pattern syntax](./doc/pattern-syntax.md)
 
-**Sample Usage:**
-
-```bash
-phinder --quicktest 'in_array(_, _)'
-phinder --quicktest 'var_dump(...)'
-```
-
-### JSON Output
-
-```bash
-phinder --json
-```
-
-**Sample Output:**
-
-```json
-{
-  "result": [
-    {
-      "path": "./index.php",
-      "rule": {
-        "id": "sample.var_dump",
-        "message": "Do not use var_dump."
-      },
-      "location": {
-        "start": [4, 5],
-        "end": [4, 21]
-      }
-    }
-  ],
-  "errors": []
-}
-```
-
-### Rule Path
-
-```bash
-phinder --rule <file>  # Use <file> instead of phinder.yml
-phinder --rule <dir>   # Use all yml files in <dir>
-```
-
-### PHP Path
-
-```bash
-phinder --php <file>  # Find pieces in <file>
-phinder --php <dir>   # Find pieces in all php files in <dir>
-```
-
-### Help
-
-```bash
-phinder --help
-```
-
-## Test
-
-```console
-phinder test
-```
-
-## Pattern Syntax
-
-Any PHP expression is a valid Phinder pattern.
-Phinder currently supports two kinds of wildcards:
-
-- `_`: any single expression
-- `...`: variable length arguments or array pairs
-
-For example, `foo(_)` means an invocation of `foo` with one argument.
-`bar(_, _, ...)` means an invocation of `bar` with two or more arguments.
-More features will be added such as statement search.
+- [Command line options](./doc/command-line-options.md)
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at [https://github.com/sider/phinder](https://github.com/sider/phinder).
+Bug reports, feature request, and pull requests are welcome on GitHub at [https://github.com/sider/phinder](https://github.com/sider/phinder).
 
-## Acknowledgements
+---
+
+**Acknowledgements**
 
 Phinder is inspired by [Querly](https://github.com/soutaro/querly/), [ast-grep](https://github.com/azz/ast-grep), and [ASTsearch](https://github.com/takluyver/astsearch).
 The implementation depends largely on [PHP-Parser](https://github.com/nikic/PHP-Parser) and [kmyacc-forked](https://github.com/moriyoshi/kmyacc-forked/).

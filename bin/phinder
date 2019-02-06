@@ -17,6 +17,7 @@ $rulePath = 'phinder.yml';
 $jsonOutput = false;
 $outputBuffer = ['result' => [], 'errors' => []];
 $command = null;
+$init = false;
 $test = false;
 $violationCount = 0;
 $errorCount = 0;
@@ -27,6 +28,7 @@ function showHelpAndDie($msg=null) {
 Usage: phinder [options] [command]
 
 Command:
+  init                       Create example phinder.yml
   test                       Verify phinder.yml
 
 Options:
@@ -47,6 +49,10 @@ array_shift($argv);
 while ($argv) {
     $a = array_shift($argv);
     switch ($a) {
+        case 'init':
+            $init = true;
+            break;
+
         case 'test':
             $test = true;
             break;
@@ -86,6 +92,21 @@ while ($argv) {
         default:
             showHelpAndDie("Unknown argument: $a");
     }
+}
+
+if ($init === true) {
+    if(file_exists($rulePath)) {
+        fwrite(STDERR, "Cannot generate $rulePath: file already exists".PHP_EOL);
+        exit(1);
+    }
+
+    if(!copy(__DIR__ . '/../sample/phinder.yml', $rulePath)) {
+        fwrite(STDERR, "Cannot generate $rulePath: failed to copy".PHP_EOL);
+        exit(1);
+    }
+
+    fwrite(STDOUT, "`$rulePath` has been created successfully".PHP_EOL);
+    exit(0);
 }
 
 if ($test === true) {

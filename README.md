@@ -37,6 +37,55 @@ If you have `$HOME/.composer/vendor/bin` in your PATH, you can also check it by 
 phinder --help
 ```
 
+## Quick start
+
+As a first step, you can run `phinder init` command to create an example `phinder.yml`:
+
+```bash
+$ phinder init
+`phinder.yml` has been created successfully
+$ cat phinder.yaml
+# Feel free to add your own project rules to this YAML file.
+# The following example describes the rule syntax.
+# See the documentation for more details: https://github.com/sider/phinder/tree/master/doc
+
+- # The rule identifier. It must be unique in the YAML file.
+  id: sample.var_dump
+  # Pattern syntax. The `...` pattern matches variable length arguments or array pairs.
+  # As a result, this pattern matches `var_dump` function call with any arguments.
+  pattern: var_dump(...)
+  # The message to display when code pieces are matched with the pattern.
+  message: Do not use var_dump.
+  # Exceptions that can ignore this violation.
+  justification: Allowed when debugging
+
+- id: sample.in_array_without_3rd_param
+  # `_` pattern mattches any single expression.
+  # This means the pattern always matches `in_array` function call with any two arguments.
+  pattern: in_array(_, _)
+  message: Specify 3rd parameter explicitly when calling in_array to avoid unexpected comparison results.
+  # You can test whether your pattern works as expected with `phinder test`.
+  test:
+    # Code pieces that will match your pattern.
+    # This means the following codes are bad as you expected.
+    fail:
+      - in_array(1, $arr)
+      - in_array(2, $arr)
+    # Code pieces that will NOT match your pattern.
+    # This means the following codes are good as you expected.
+    pass:
+      - in_array(3, $arr, true)
+      - in_array(4, $arr, false)
+```
+
+Next you can run `phinder` command to *phind* patterns against your code base.
+
+```bash
+$ phinder
+```
+
+After understanding how a pattern matches your code, let's add more useful rules for a real your project. The possibilities are infinite!
+
 ## Documentation
 
 - [Sample rule and its description](./doc/rule.md)

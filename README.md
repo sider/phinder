@@ -1,4 +1,7 @@
 # Phinder: PHP Code Piece Finder
+[![CircleCI](https://circleci.com/gh/sider/phinder/tree/master.svg?style=svg)](https://circleci.com/gh/sider/phinder/tree/master)
+[![Latest Stable Version](https://poser.pugx.org/sider/phinder/v/stable)](https://packagist.org/packages/sider/phinder)
+[![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/sider/phinder/)
 
 Phinder is a tool to find code pieces (technically PHP expressions).
 This tool aims mainly at speeding up your code review process, not static bug detection.
@@ -21,20 +24,17 @@ Phinder is a command line tool for checking such low-level things automatically.
 
 ## Installation
 
+Phinder requires PHP >= 7.0. You can install with [Composer](https://getcomposer.org/):
+
 ```bash
-composer global require sider/phinder
+composer require --dev sider/phinder
+vendor/bin/phinder -v
 ```
 
-You can check your installation by the following command:
+You can also use [Docker](https://hub.docker.com/r/sider/phinder/):
 
 ```bash
-~/.composer/vendor/bin/phinder --help
-```
-
-If you have `$HOME/.composer/vendor/bin` in your PATH, you can also check it by the following:
-
-```bash
-phinder --help
+docker run --rm -t -v $(pwd):/workdir sider/phinder
 ```
 
 ## Documentation

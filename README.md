@@ -1,3 +1,4 @@
+![phinder logo](https://github.com/sider/phinder/blob/master/logo/Phinder%20horizontal.png?raw=true)
 # Phinder: PHP Code Piece Finder
 [![CircleCI](https://circleci.com/gh/sider/phinder/tree/master.svg?style=svg)](https://circleci.com/gh/sider/phinder/tree/master)
 [![Latest Stable Version](https://poser.pugx.org/sider/phinder/v/stable)](https://packagist.org/packages/sider/phinder)

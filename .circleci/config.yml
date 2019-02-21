@@ -1,18 +1,79 @@
 version: 2
+
+steps: &steps
+  - checkout
+  - run: sudo composer self-update
+  - run: if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --no-interaction; fi
+  - run: if [ "$dependencies" = "highest" ]; then composer update --no-interaction; fi
+  - run: vendor/bin/phpunit
+
 jobs:
-  build:
+  php7.0-lowest-dependencies:
     docker:
-      - image: circleci/php
+      - image: circleci/php:7.0
+    environment:
+      dependencies: lowest
     steps:
-      - checkout
-      - run: sudo composer self-update
-      - restore_cache:
-          keys:
-            - composer-v1-{{ checksum "composer.lock" }}
-            - composer-v1-
-      - run: composer install
-      - save_cache:
-          key: composer-v1-{{ checksum "composer.lock" }}
-          paths:
-            - vendor
-      - run: ./vendor/bin/phpunit
+      *steps
+  php7.0-highest-dependencies:
+    docker:
+      - image: circleci/php:7.0
+    environment:
+      dependencies: highest
+    steps:
+      *steps
+  php7.1-lowest-dependencies:
+    docker:
+      - image: circleci/php:7.1
+    environment:
+      dependencies: lowest
+    steps:
+      *steps
+  php7.1-highest-dependencies:
+    docker:
+      - image: circleci/php:7.1
+    environment:
+      dependencies: highest
+    steps:
+      *steps
+  php7.2-lowest-dependencies:
+    docker:
+      - image: circleci/php:7.2
+    environment:
+      dependencies: lowest
+    steps:
+      *steps
+  php7.2-highest-dependencies:
+    docker:
+      - image: circleci/php:7.2
+    environment:
+      dependencies: highest
+    steps:
+      *steps
+  php7.3-lowest-dependencies:
+    docker:
+      - image: circleci/php:7.3
+    environment:
+      dependencies: lowest
+    steps:
+      *steps
+  php7.3-highest-dependencies:
+    docker:
+      - image: circleci/php:7.3
+    environment:
+      dependencies: highest
+    steps:
+      *steps
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - php7.0-lowest-dependencies
+      - php7.0-highest-dependencies
+      - php7.1-lowest-dependencies
+      - php7.1-highest-dependencies
+      - php7.2-lowest-dependencies
+      - php7.2-highest-dependencies
+      - php7.3-lowest-dependencies
+      - php7.3-highest-dependencies

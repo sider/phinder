@@ -20,7 +20,7 @@ class ParserFactory
      */
     public function create(int $kind, Lexer $lexer = null, array $parserOptions = []) {
         if (null === $lexer) {
-            $lexer = new \PhpParser\Lexer\Emulative();
+            $lexer = new Lexer();
         }
         switch ($kind) {
             case self::PREFER_PHP7:

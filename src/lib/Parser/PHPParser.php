@@ -3,13 +3,13 @@
 namespace Phinder\Parser;
 
 use Phinder\Error\InvalidPHP;
-use PhpParser\{Error,Lexer,ParserFactory};
+use PhpParser\Error;
+use PhpParser\Lexer;
+use PhpParser\ParserFactory;
 use function Funct\Strings\endsWith;
-
 
 final class PHPParser extends FileParser
 {
-
     private $_phpParser = null;
 
     public function __construct()
@@ -21,10 +21,10 @@ final class PHPParser extends FileParser
             'startTokenPos',
             'endTokenPos',
             'startFilePos',
-            'endFilePos'
+            'endFilePos',
             ]]
         );
-        $this->_phpParser = (new ParserFactory)->create(
+        $this->_phpParser = (new ParserFactory())->create(
             ParserFactory::PREFER_PHP7,
             $lexer
         );
@@ -35,10 +35,11 @@ final class PHPParser extends FileParser
         try {
             $ast = $this->_phpParser->parse($code);
         } catch (Error $e) {
-            throw new InvalidPHP("", $e);
+            throw new InvalidPHP('', $e);
         }
         $xml = new \SimpleXMLElement("<file path=''/>");
         static::_fillXML($xml, $ast);
+
         return $xml;
     }
 
@@ -67,8 +68,7 @@ final class PHPParser extends FileParser
                 $e = $xml->addChild("item$k");
                 static::_fillXML($e, $v);
             }
-
-        } else if (\is_object($ast)
+        } elseif (\is_object($ast)
             && \is_subclass_of($ast, '\PhpParser\NodeAbstract')
         ) {
             $xml['startLine'] = $ast->getStartLine();
@@ -80,11 +80,8 @@ final class PHPParser extends FileParser
                 $e = $xml->addChild($name);
                 static::_fillXML($e, $ast->$name);
             }
-
         } else {
-            $xml[0] = \mb_convert_encoding((string)$ast, 'utf8');
-
+            $xml[0] = \mb_convert_encoding((string) $ast, 'utf8');
         }
     }
-
 }

@@ -2,12 +2,8 @@
 
 namespace Phinder;
 
-use Phinder\Error\InvalidRule;
-
-
 final class Rule
 {
-
     public $id;
 
     public $xpath;
@@ -35,5 +31,4 @@ final class Rule
         $this->pass_patterns = $pass_patterns;
         $this->fail_patterns = $fail_patterns;
     }
-
 }

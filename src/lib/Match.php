@@ -2,10 +2,8 @@
 
 namespace Phinder;
 
-
 final class Match
 {
-
     public $path;
 
     public $xml;
@@ -18,5 +16,4 @@ final class Match
         $this->xml = $xml;
         $this->rule = $rule;
     }
-
 }

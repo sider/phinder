@@ -4,19 +4,19 @@ namespace Phinder\Parser;
 
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Yaml\Exception\ParseException;
-use Phinder\Error\{InvalidPattern,InvalidRule,InvalidYaml};
+use Phinder\Error\InvalidPattern;
+use Phinder\Error\InvalidRule;
+use Phinder\Error\InvalidYaml;
 use Phinder\Rule;
 use function Funct\Strings\endsWith;
 
-
 final class RuleParser extends FileParser
 {
-
     private $_patternParser;
 
     public function __construct()
     {
-        $this->_patternParser = new PatternParser;
+        $this->_patternParser = new PatternParser();
     }
 
     protected function support($path)
@@ -41,7 +41,7 @@ final class RuleParser extends FileParser
             $rules = $rules['rule'];
         }
 
-        for ($i=0; $i<\count($rules); $i++) {
+        for ($i = 0; $i < \count($rules); ++$i) {
             $arr = $rules[$i];
 
             try {
@@ -95,10 +95,10 @@ final class RuleParser extends FileParser
             throw new InvalidRule('test.fail');
         }
 
-        $pats = \is_array($pattern)? $pattern : [$pattern];
-        $jsts = \is_array($justification)? $justification : [$justification];
-        $ppats = \is_array($pass)? $pass : [$pass];
-        $fpats = \is_array($fail)? $fail : [$fail];
+        $pats = \is_array($pattern) ? $pattern : [$pattern];
+        $jsts = \is_array($justification) ? $justification : [$justification];
+        $ppats = \is_array($pass) ? $pass : [$pass];
+        $fpats = \is_array($fail) ? $fail : [$fail];
 
         try {
             foreach ($this->_patternParser->parse($pats) as $xpath) {
@@ -109,5 +109,4 @@ final class RuleParser extends FileParser
             throw $e;
         }
     }
-
 }

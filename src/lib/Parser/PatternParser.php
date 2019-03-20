@@ -39,39 +39,13 @@ final class PatternParser
         if (\is_array($ast)) {
             $len = count($ast);
             if (0 < $len) {
-                $cnt = 0;
-                $vlen = false;
-
-                $xp = '';
-                foreach ($ast as $i => $a) {
-                    $xp .= "/item$i".static::_buildXPath($a).'/..';
-
-                    if ($a instanceof Arg) {
-                        if ($a->value instanceof WildcardN) {
-                            $vlen = true;
-                        } else {
-                            ++$cnt;
-                        }
-                    } elseif ($a instanceof ArrayItem) {
-                        if ($a->value instanceof WildcardN) {
-                            $vlen = true;
-                        } else {
-                            ++$cnt;
-                        }
-                    } else {
-                        ++$cnt;
-                    }
-                }
-
-                if ($cnt == 0) {
-                    return '[count(*)>=0]';
-                } else {
-                    return ($vlen ? "[count(*)>=$cnt]" : "[count(*)=$cnt]").$xp;
-                }
+                return static::_buildArrXPath($ast);
             } else {
                 return '[count(*)=0]';
             }
         } elseif ($ast instanceof Wildcard) {
+            return '';
+        } elseif ($ast instanceof WildcardN) {
             return '';
         } elseif ($ast instanceof ConstFetch) {
             if ($ast->name->parts[0] == '_') {
@@ -94,6 +68,40 @@ final class PatternParser
             return "[@class='$t']".$xp;
         } else {
             return "[.='$ast']";
+        }
+    }
+
+    private static function _buildArrXPath($ast)
+    {
+        $cnt = 0;
+        $vlen = false;
+
+        $xp = '';
+        foreach ($ast as $i => $a) {
+            if ($a instanceof Arg) {
+                $xp .= "/item$i".static::_buildXPath($a).'/..';
+
+                if ($a->value instanceof WildcardN) {
+                    $vlen = true;
+                } else {
+                    ++$cnt;
+                }
+            } elseif ($a instanceof ArrayItem) {
+                if ($a->value instanceof WildcardN) {
+                    $vlen = true;
+                } else {
+                    $xp .= "/item$i".static::_buildXPath($a).'/..';
+                    ++$cnt;
+                }
+            } else {
+                ++$cnt;
+            }
+        }
+
+        if ($cnt == 0) {
+            return '[count(*)>=0]';
+        } else {
+            return ($vlen ? "[count(*)>=$cnt]" : "[count(*)=$cnt]").$xp;
         }
     }
 }

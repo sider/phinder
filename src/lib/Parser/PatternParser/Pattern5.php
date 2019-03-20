@@ -2410,10 +2410,10 @@ class Pattern5 extends \PhpParser\ParserAbstract
                  $this->semValue = array($this->semStack[$stackPos-(1-1)]);
             },
             490 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(3-3)], $this->semStack[$stackPos-(3-1)], false, $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $this->semValue = new ArrayItem($this->semStack[$stackPos-(3-3)], $this->semStack[$stackPos-(3-1)], false, $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             491 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             492 => function ($stackPos) {
                  $this->semValue = $this->semStack[$stackPos-(1-1)];
@@ -2530,10 +2530,10 @@ class Pattern5 extends \PhpParser\ParserAbstract
                  $this->semValue = array($this->semStack[$stackPos-(1-1)]);
             },
             530 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             531 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             532 => function ($stackPos) {
                  $this->semValue = null;
@@ -2551,22 +2551,22 @@ class Pattern5 extends \PhpParser\ParserAbstract
                  $this->semValue = array($this->semStack[$stackPos-(1-1)]);
             },
             537 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(3-3)], $this->semStack[$stackPos-(3-1)], false, $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
+                 $this->semValue = new ArrayItem($this->semStack[$stackPos-(3-3)], $this->semStack[$stackPos-(3-1)], false, $this->startAttributeStack[$stackPos-(3-1)] + $this->endAttributes);
             },
             538 => function ($stackPos) {
                  $this->semValue = new ArrayItem($this->semStack[$stackPos-(6-5)], $this->semStack[$stackPos-(6-3)], false, $this->startAttributeStack[$stackPos-(6-1)] + $this->endAttributes); $this->semValue->negate();
             },
             539 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new ArrayItem($this->semStack[$stackPos-(1-1)], null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             540 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem(new WildcardN($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes), null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
+                 $this->semValue = new ArrayItem(new WildcardN($this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes), null, false, $this->startAttributeStack[$stackPos-(1-1)] + $this->endAttributes);
             },
             541 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(4-4)], $this->semStack[$stackPos-(4-1)], true, $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
+                 $this->semValue = new ArrayItem($this->semStack[$stackPos-(4-4)], $this->semStack[$stackPos-(4-1)], true, $this->startAttributeStack[$stackPos-(4-1)] + $this->endAttributes);
             },
             542 => function ($stackPos) {
-                 $this->semValue = new Expr\ArrayItem($this->semStack[$stackPos-(2-2)], null, true, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
+                 $this->semValue = new ArrayItem($this->semStack[$stackPos-(2-2)], null, true, $this->startAttributeStack[$stackPos-(2-1)] + $this->endAttributes);
             },
             543 => function ($stackPos) {
                  $this->semStack[$stackPos-(2-1)][] = $this->semStack[$stackPos-(2-2)]; $this->semValue = $this->semStack[$stackPos-(2-1)];

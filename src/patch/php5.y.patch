@@ -1,5 +1,5 @@
 --- ../vendor/nikic/php-parser/grammar/php5.y	2018-10-10 18:24:14.000000000 +0900
-+++ grammar/php5.y	2019-03-20 19:24:50.000000000 +0900
++++ grammar/php5.y	2019-03-20 19:51:33.000000000 +0900
 @@ -6,7 +6,7 @@
  %%
  
@@ -33,6 +33,17 @@
      | T_REQUIRE expr                                        { $$ = Expr\Include_[$2, Expr\Include_::TYPE_REQUIRE]; }
      | T_REQUIRE_ONCE expr                                   { $$ = Expr\Include_[$2, Expr\Include_::TYPE_REQUIRE_ONCE]; }
      | T_INT_CAST expr                                       { $$ = Expr\Cast\Int_    [$2]; }
+@@ -873,8 +874,8 @@
+ ;
+ 
+ static_array_pair:
+-      static_scalar T_DOUBLE_ARROW static_scalar            { $$ = Expr\ArrayItem[$3, $1,   false]; }
+-    | static_scalar                                         { $$ = Expr\ArrayItem[$1, null, false]; }
++      static_scalar T_DOUBLE_ARROW static_scalar            { $$ = ArrayItem[$3, $1,   false]; }
++    | static_scalar                                         { $$ = ArrayItem[$1, null, false]; }
+ ;
+ 
+ variable:
 @@ -882,6 +883,7 @@
      | base_variable                                         { $$ = $1; }
      | function_call                                         { $$ = $1; }
@@ -41,13 +52,31 @@
  ;
  
  new_expr_array_deref:
-@@ -981,7 +983,9 @@
+@@ -964,8 +966,8 @@
+ ;
+ 
+ list_expr_element:
+-      variable                                              { $$ = Expr\ArrayItem[$1, null, false]; }
+-    | list_expr                                             { $$ = Expr\ArrayItem[$1, null, false]; }
++      variable                                              { $$ = ArrayItem[$1, null, false]; }
++    | list_expr                                             { $$ = ArrayItem[$1, null, false]; }
+     | /* empty */                                           { $$ = null; }
+ ;
+ 
+@@ -980,10 +982,12 @@
+ ;
  
  array_pair:
-       expr T_DOUBLE_ARROW expr                              { $$ = Expr\ArrayItem[$3, $1,   false]; }
+-      expr T_DOUBLE_ARROW expr                              { $$ = Expr\ArrayItem[$3, $1,   false]; }
+-    | expr                                                  { $$ = Expr\ArrayItem[$1, null, false]; }
+-    | expr T_DOUBLE_ARROW '&' variable                      { $$ = Expr\ArrayItem[$4, $1,   true]; }
+-    | '&' variable                                          { $$ = Expr\ArrayItem[$2, null, true]; }
++      expr T_DOUBLE_ARROW expr                              { $$ = ArrayItem[$3, $1,   false]; }
 +    | '!' '(' expr T_DOUBLE_ARROW expr ')'                  { $$ = ArrayItem[$5, $3,   false]; $$->negate(); }
-     | expr                                                  { $$ = Expr\ArrayItem[$1, null, false]; }
-+    | T_ELLIPSIS                                            { $$ = Expr\ArrayItem[WildcardN[], null, false]; }
-     | expr T_DOUBLE_ARROW '&' variable                      { $$ = Expr\ArrayItem[$4, $1,   true]; }
-     | '&' variable                                          { $$ = Expr\ArrayItem[$2, null, true]; }
++    | expr                                                  { $$ = ArrayItem[$1, null, false]; }
++    | T_ELLIPSIS                                            { $$ = ArrayItem[WildcardN[], null, false]; }
++    | expr T_DOUBLE_ARROW '&' variable                      { $$ = ArrayItem[$4, $1,   true]; }
++    | '&' variable                                          { $$ = ArrayItem[$2, null, true]; }
  ;
+ 
+ encaps_list:

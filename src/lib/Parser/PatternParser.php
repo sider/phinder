@@ -74,23 +74,19 @@ final class PatternParser
     private static function _buildArrXPath($ast)
     {
         $cnt = 0;
-        $vlen = false;
+        $vlen = static::_isVarLen($ast);
 
         $xp = '';
         foreach ($ast as $i => $a) {
             if ($a instanceof Arg) {
                 $xp .= "/item$i".static::_buildXPath($a).'/..';
-
-                if ($a->value instanceof WildcardN) {
-                    $vlen = true;
-                } else {
+                if (!($a->value instanceof WildcardN)) {
                     ++$cnt;
                 }
             } elseif ($a instanceof ArrayItem) {
-                if ($a->value instanceof WildcardN) {
-                    $vlen = true;
-                } else {
-                    $xp .= "/item$i".static::_buildXPath($a).'/..';
+                if (!($a->value instanceof WildcardN)) {
+                    $head = $vlen ? '*' : "item$i";
+                    $xp .= "/$head".static::_buildXPath($a).'/..';
                     ++$cnt;
                 }
             } else {
@@ -103,5 +99,18 @@ final class PatternParser
         } else {
             return ($vlen ? "[count(*)>=$cnt]" : "[count(*)=$cnt]").$xp;
         }
+    }
+
+    private static function _isVarLen($ast)
+    {
+        foreach ($ast as $a) {
+            if ($a instanceof ArrayItem || $a instanceof Arg) {
+                if ($a->value instanceof WildcardN) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

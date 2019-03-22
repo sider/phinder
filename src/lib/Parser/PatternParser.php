@@ -93,8 +93,8 @@ final class PatternParser
                             .')]/..';
                     } else {
                         $xp .= "/$head".static::_buildXPath($a).'/..';
+                        ++$cnt;
                     }
-                    ++$cnt;
                 }
             } else {
                 ++$cnt;

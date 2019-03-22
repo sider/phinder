@@ -6,10 +6,10 @@ use Phinder\Error\InvalidPattern;
 use Phinder\Parser\PatternParser\ParserFactory;
 use Phinder\Wildcard;
 use Phinder\WildcardN;
+use Phinder\ArrayItem;
 use PhpParser\Error;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\ConstFetch;
-use PhpParser\Node\Expr\ArrayItem;
 
 final class PatternParser
 {
@@ -27,7 +27,8 @@ final class PatternParser
         foreach ($arr as $p) {
             try {
                 $ast = $this->patternParser->parse("<?php $p");
-                yield '//*'.static::_buildXPath($ast);
+                $xpath = '//*'.static::_buildXPath($ast);
+                yield $xpath;
             } catch (Error $e) {
                 throw new InvalidPattern($p, $e);
             }
@@ -39,39 +40,13 @@ final class PatternParser
         if (\is_array($ast)) {
             $len = count($ast);
             if (0 < $len) {
-                $cnt = 0;
-                $vlen = false;
-
-                $xp = '';
-                foreach ($ast as $i => $a) {
-                    $xp .= "/item$i".static::_buildXPath($a).'/..';
-
-                    if ($a instanceof Arg) {
-                        if ($a->value instanceof WildcardN) {
-                            $vlen = true;
-                        } else {
-                            ++$cnt;
-                        }
-                    } elseif ($a instanceof ArrayItem) {
-                        if ($a->value instanceof WildcardN) {
-                            $vlen = true;
-                        } else {
-                            ++$cnt;
-                        }
-                    } else {
-                        ++$cnt;
-                    }
-                }
-
-                if ($cnt == 0) {
-                    return '[count(*)>=0]';
-                } else {
-                    return ($vlen ? "[count(*)>=$cnt]" : "[count(*)=$cnt]").$xp;
-                }
+                return static::_buildArrXPath($ast);
             } else {
                 return '[count(*)=0]';
             }
         } elseif ($ast instanceof Wildcard) {
+            return '';
+        } elseif ($ast instanceof WildcardN) {
             return '';
         } elseif ($ast instanceof ConstFetch) {
             if ($ast->name->parts[0] == '_') {
@@ -95,5 +70,54 @@ final class PatternParser
         } else {
             return "[.='$ast']";
         }
+    }
+
+    private static function _buildArrXPath($ast)
+    {
+        $cnt = 0;
+        $vlen = static::_isVarLen($ast);
+
+        $xp = '';
+        foreach ($ast as $i => $a) {
+            if ($a instanceof Arg) {
+                $xp .= "/item$i".static::_buildXPath($a).'/..';
+                if (!($a->value instanceof WildcardN)) {
+                    ++$cnt;
+                }
+            } elseif ($a instanceof ArrayItem) {
+                if (!($a->value instanceof WildcardN)) {
+                    $head = $vlen ? '*' : "item$i";
+                    if ($a->negation) {
+                        $xp .= "/${head}[not(../${head}"
+                            .static::_buildXPath($a)
+                            .')]/..';
+                    } else {
+                        $xp .= "/$head".static::_buildXPath($a).'/..';
+                        ++$cnt;
+                    }
+                }
+            } else {
+                ++$cnt;
+            }
+        }
+
+        if ($cnt == 0) {
+            return '[count(*)>=0]';
+        } else {
+            return ($vlen ? "[count(*)>=$cnt]" : "[count(*)=$cnt]").$xp;
+        }
+    }
+
+    private static function _isVarLen($ast)
+    {
+        foreach ($ast as $a) {
+            if ($a instanceof ArrayItem || $a instanceof Arg) {
+                if ($a->value instanceof WildcardN) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

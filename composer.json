@@ -19,7 +19,7 @@
   ],
   "require": {
     "php": ">=7.0",
-    "nikic/php-parser": "4.1.0",
+    "nikic/php-parser": "^4.1",
     "funct/funct": "^1.4",
     "symfony/yaml": ">=3.2"
   },

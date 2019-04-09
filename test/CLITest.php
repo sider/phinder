@@ -1,49 +1,38 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Console\Tester\CommandTester;
+use Phinder\Cli\Main;
 
-class CLITest extends TestCase
+abstract class CliTest extends TestCase
 {
-    public function testInit()
+    private $_tester;
+
+    protected static $commandName = null;
+
+    public function setUp()
     {
-        $work_dir = getcwd();
-        try {
-            chdir(__DIR__.'/res');
-
-            $this->assertFileNotExists('phinder.yml');
-            exec(__DIR__.'/../bin/phinder init');
-            $this->assertFileExists('phinder.yml');
-
-            $expected = file_get_contents(__DIR__.'/../sample/phinder.yml');
-            $got = file_get_contents('phinder.yml');
-            $this->assertSame($expected, $got);
-        } finally {
-            if (file_exists('phinder.yml')) {
-                unlink('phinder.yml');
-            }
-            chdir($work_dir);
-        }
+        $command = (new Main())->find(static::$commandName);
+        $this->_tester = new CommandTester($command);
     }
 
-    public function testInitWhenConfigAlreadyExists()
+    public function tearDown()
     {
-        $work_dir = getcwd();
-        try {
-            chdir(__DIR__.'/res');
-            touch('phinder.yml');
+        $this->_tester = null;
+    }
 
-            $this->assertFileExists('phinder.yml');
-            exec(__DIR__.'/../bin/phinder init');
-            $this->assertFileExists('phinder.yml');
+    protected function exec($input = array(), $options = array())
+    {
+        $this->_tester->execute($input, $options);
+    }
 
-            $expected = file_get_contents(__DIR__.'/../sample/phinder.yml');
-            $got = file_get_contents('phinder.yml');
-            $this->assertNotSame($expected, $got);
-        } finally {
-            if (file_exists('phinder.yml')) {
-                unlink('phinder.yml');
-            }
-            chdir($work_dir);
-        }
+    protected function getDisplay()
+    {
+        return $this->_tester->getDisplay(true);
+    }
+
+    protected function getStatusCode()
+    {
+        return $this->_tester->getStatusCode();
     }
 }

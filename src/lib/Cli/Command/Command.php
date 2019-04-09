@@ -43,7 +43,8 @@ abstract class Command extends SymfonyCommand
     {
         $this->_input = $input;
         $this->_output = $output;
-        $this->main();
+
+        return $this->main();
     }
 
     protected function getPath()
@@ -73,6 +74,10 @@ abstract class Command extends SymfonyCommand
 
     protected function getErrorOutput()
     {
-        return $this->_output->getErrorOutput();
+        if ($this->_output instanceof ConsoleOutputInterface) {
+            return $this->_output->getErrorOutput();
+        } else {
+            return $this->_output;
+        }
     }
 }

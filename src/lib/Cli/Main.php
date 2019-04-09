@@ -30,6 +30,11 @@ class Main
         $this->_application->run();
     }
 
+    public function find($name)
+    {
+        return $this->_application->find($name);
+    }
+
     private function _configureCommands()
     {
         foreach (self::$_commands as $command) {

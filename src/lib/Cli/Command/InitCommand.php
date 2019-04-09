@@ -26,13 +26,7 @@ class InitCommand extends Command
             return 1;
         }
 
-        if (!copy(self::$_SAMPLE_CONFIG, $config)) {
-            $this->getErrorOutput()->writeln(
-                "Cannot generate $config: failed to copy"
-            );
-
-            return 1;
-        }
+        copy(self::$_SAMPLE_CONFIG, $config);
 
         $this->getOutput()->writeln("`$config` has been created successfully");
 

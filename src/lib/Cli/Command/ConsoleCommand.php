@@ -3,8 +3,6 @@
 namespace Phinder\Cli\Command;
 
 use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
 class ConsoleCommand extends Command
@@ -18,31 +16,39 @@ class ConsoleCommand extends Command
             ->addOption(...self::$formatOptDef);
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function main()
     {
         $helper = $this->getHelper('question');
         $question = new Question('pattern> ');
         while (true) {
-            $pattern = trim($helper->ask($input, $output, $question));
+            $pattern = trim(
+                $helper->ask(
+                    $this->getInput(),
+                    $this->getOutput(),
+                    $question
+                )
+            );
             if ($pattern !== '') {
                 $tmp = tmpfile();
                 $config = stream_get_meta_data($tmp)['uri'];
                 fwrite($tmp, "- id: ''\n  pattern: $pattern\n  message: ''");
-                $errorCode = $this->_runFind($config, $input, $output);
+                $errorCode = $this->_runFind($config);
             }
         }
     }
 
-    private function _runFind($path, $input, $output)
+    private function _runFind($path)
     {
         $command = $this->getApplication()->find('find');
-        $arguments = [
-            'command' => 'find',
-            '--config' => $path,
-            'path' => $input->getArgument('path'),
-        ];
-        $input = new ArrayInput($arguments);
 
-        return $command->run($input, $output);
+        $input = new ArrayInput(
+            [
+                'command' => 'find',
+                '--config' => $path,
+                'path' => $this->getPath(),
+            ]
+        );
+
+        return $command->run($input, $this->getOutput());
     }
 }

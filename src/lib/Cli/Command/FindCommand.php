@@ -2,8 +2,6 @@
 
 namespace Phinder\Cli\Command;
 
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Phinder\API;
 
 class FindCommand extends Command
@@ -18,11 +16,11 @@ class FindCommand extends Command
             ->addOption(...self::$formatOptDef);
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function main()
     {
-        $config = $input->getOption('config');
-        $phpPath = $input->getArgument('path');
-        $jsonOutput = $input->getOption('format') === 'json';
+        $config = $this->getConfig();
+        $phpPath = $this->getPath();
+        $jsonOutput = $this->getFormat() === 'json';
         $violationCount = 0;
         $errorCount = 0;
 
@@ -88,8 +86,9 @@ class FindCommand extends Command
                     $outputBuffer['result'][] = $obj;
                 } else {
                     $m = trim(str_replace(["\n", "\r"], ' ', $message));
-                    echo "$path:$startLine:$startPos\t\033[31m$code\033[0m\t";
-                    echo ($id === '') ? "\n" : "$m ($id)\n";
+                    $msg = "$path:$startLine:$startPos\t\033[31m$code\033[0m\t";
+                    $msg .= ($id === '') ? '' : "$m ($id)";
+                    $this->getOutput()->writeln($msg);
                 }
             } catch (FileNotFound $e) {
                 ++$errorCount;
@@ -101,7 +100,7 @@ class FindCommand extends Command
                         'message' => $msg,
                     ];
                 } else {
-                    fwrite(STDERR, "$msg\n");
+                    $this->getErrorOutput()->writeln($msg);
 
                     return 1;
                 }
@@ -116,7 +115,7 @@ class FindCommand extends Command
                         'message' => $msg,
                     ];
                 } else {
-                    fwrite(STDERR, "$msg\n");
+                    $this->getErrorOutput()->writeln($msg);
 
                     return 1;
                 }
@@ -133,7 +132,7 @@ class FindCommand extends Command
                         'message' => $msg,
                     ];
                 } else {
-                    fwrite(STDERR, "$msg\n");
+                    $this->getErrorOutput()->writeln($msg);
 
                     return 1;
                 }
@@ -148,7 +147,7 @@ class FindCommand extends Command
                         'message' => $msg,
                     ];
                 } else {
-                    fwrite(STDERR, "$msg\n");
+                    $this->getErrorOutput()->writeln($msg);
 
                     return 1;
                 }
@@ -163,13 +162,15 @@ class FindCommand extends Command
                         'message' => $msg,
                     ];
                 } else {
-                    fwrite(STDERR, "\033[31m$msg\033[0m\n");
+                    $this->getErrorOutput()->writeln("\033[31m$msg\033[0m");
                 }
             }
         }
 
         if ($jsonOutput) {
-            echo json_encode($outputBuffer, JSON_UNESCAPED_SLASHES);
+            $this->getOutput()->writeln(
+                json_encode($outputBuffer, JSON_UNESCAPED_SLASHES)
+            );
         }
 
         if ($errorCount !== 0 || $violationCount !== 0) {

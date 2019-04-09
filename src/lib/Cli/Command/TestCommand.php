@@ -2,8 +2,6 @@
 
 namespace Phinder\Cli\Command;
 
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Phinder\API;
 use Phinder\Parser\PHPParser;
 
@@ -18,17 +16,21 @@ class TestCommand extends Command
             ->addOption(...self::$formatOptDef);
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function main()
     {
         $errorCount = 0;
-        $config = $input->getOption('config');
+
+        $config = $this->getConfig();
 
         $phpParser = new PHPParser();
+
         foreach (API::parseRule($config) as $r) {
             foreach ($r->fail_patterns as $p) {
                 $xml = $phpParser->parseStr("<?php $p;");
                 if (0 === count($xml->xpath($r->xpath))) {
-                    echo "`$p` does not match the rule {$r->id} but should match that rule.\n";
+                    $msg = "`$p` does not match the rule {$r->id}";
+                    $msg .= ' but should match that rule.';
+                    $this->getOutput()->writeln($msg);
                     ++$errorCount;
                 }
             }
@@ -36,14 +38,16 @@ class TestCommand extends Command
             foreach ($r->pass_patterns as $p) {
                 $xml = $phpParser->parseStr("<?php $p;");
                 if (0 < count($xml->xpath($r->xpath))) {
-                    echo "`$p` matches the rule {$r->id} but should not match that rule.\n";
+                    $msg = "`$p` matches the rule {$r->id}";
+                    $msg .= ' but should not match that rule.';
+                    $this->getOutput()->writeln($msg);
                     ++$errorCount;
                 }
             }
         }
 
         if ($errorCount === 0) {
-            fwrite(STDERR, "No error\n");
+            $this->getErrorOutput()->writeln('No error');
 
             return 0;
         } else {

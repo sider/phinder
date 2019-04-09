@@ -5,8 +5,10 @@ namespace Phinder\Cli\Command;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
-class Command extends SymfonyCommand
+abstract class Command extends SymfonyCommand
 {
     protected static $pathArgDef = [
         'path',
@@ -30,4 +32,47 @@ class Command extends SymfonyCommand
         'Output format',
         'text',
     ];
+
+    abstract protected function main();
+
+    private $_input;
+
+    private $_output;
+
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $this->_input = $input;
+        $this->_output = $output;
+        $this->main();
+    }
+
+    protected function getPath()
+    {
+        return $this->_input->getArgument(self::$pathArgDef[0]);
+    }
+
+    protected function getConfig()
+    {
+        return $this->_input->getOption(self::$configOptDef[0]);
+    }
+
+    protected function getFormat()
+    {
+        return $this->_input->getOption(self::$formatOptDef[0]);
+    }
+
+    protected function getInput()
+    {
+        return $this->_input;
+    }
+
+    protected function getOutput()
+    {
+        return $this->_output;
+    }
+
+    protected function getErrorOutput()
+    {
+        return $this->_output->getErrorOutput();
+    }
 }

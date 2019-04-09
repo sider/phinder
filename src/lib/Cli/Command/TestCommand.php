@@ -2,10 +2,7 @@
 
 namespace Phinder\Cli\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Phinder\API;
 use Phinder\Parser\PHPParser;
@@ -17,26 +14,8 @@ class TestCommand extends Command
         $this
             ->setName('test')
             ->setDescription('Test pattern(s)')
-            ->setDefinition(
-                new InputDefinition(
-                    [
-                        new InputOption(
-                            'config',
-                            'c',
-                            InputOption::VALUE_REQUIRED,
-                            'Path to configration file',
-                            'phinder.yml'
-                        ),
-                        new InputOption(
-                            'format',
-                            'f',
-                            InputOption::VALUE_REQUIRED,
-                            'Output format',
-                            'text'
-                        ),
-                    ]
-                )
-            );
+            ->addOption(...self::$configOptDef)
+            ->addOption(...self::$formatOptDef);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

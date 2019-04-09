@@ -2,10 +2,7 @@
 
 namespace Phinder\Cli\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class InitCommand extends Command
@@ -15,19 +12,7 @@ class InitCommand extends Command
         $this
             ->setName('init')
             ->setDescription('Create sample phinder.yml')
-            ->setDefinition(
-                new InputDefinition(
-                    [
-                        new InputOption(
-                            'config',
-                            'c',
-                            InputOption::VALUE_REQUIRED,
-                            'Path to configration file',
-                            'phinder.yml'
-                        ),
-                    ]
-                )
-            );
+            ->addOption(...self::$configOptDef);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

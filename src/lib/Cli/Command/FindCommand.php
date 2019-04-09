@@ -2,11 +2,7 @@
 
 namespace Phinder\Cli\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Phinder\API;
 
@@ -17,32 +13,9 @@ class FindCommand extends Command
         $this
             ->setName('find')
             ->setDescription('Find pattern(s)')
-            ->setDefinition(
-                new InputDefinition(
-                    [
-                        new InputArgument(
-                            'path',
-                            InputArgument::OPTIONAL,
-                            'Path to the target file/dir',
-                            '.'
-                        ),
-                        new InputOption(
-                            'config',
-                            'c',
-                            InputOption::VALUE_REQUIRED,
-                            'Path to configration file',
-                            'phinder.yml'
-                        ),
-                        new InputOption(
-                            'format',
-                            'f',
-                            InputOption::VALUE_REQUIRED,
-                            'Output format',
-                            'text'
-                        ),
-                    ]
-                )
-            );
+            ->addArgument(...self::$pathArgDef)
+            ->addOption(...self::$configOptDef)
+            ->addOption(...self::$formatOptDef);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

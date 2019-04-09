@@ -84,6 +84,9 @@ final class PatternParser
                 if (!($a->value instanceof WildcardN)) {
                     ++$cnt;
                 }
+            } elseif (is_string($a)) {
+                $xp .= "/item$i".static::_buildXPath($a).'/..';
+                ++$cnt;
             } elseif ($a instanceof ArrayItem) {
                 if (!($a->value instanceof WildcardN)) {
                     $head = $vlen ? '*' : "item$i";

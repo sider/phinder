@@ -3,16 +3,19 @@
 namespace Phinder\Cli;
 
 use Symfony\Component\Console\Application;
-use Phinder\Cli\Command\ConsoleCommand;
-use Phinder\Cli\Command\InitCommand;
-use Phinder\Cli\Command\FindCommand;
-use Phinder\Cli\Command\TestCommand;
 
 class Main
 {
     private static $_name = 'phinder';
 
     private static $_version = '0.8.0';
+
+    private static $_commands = [
+        'Command\ConsoleCommand',
+        'Command\InitCommand',
+        'Command\FindCommand',
+        'Command\TestCommand',
+    ];
 
     private $_application;
 
@@ -29,9 +32,9 @@ class Main
 
     private function _configureCommands()
     {
-        $this->_application->add(new ConsoleCommand());
-        $this->_application->add(new InitCommand());
-        $this->_application->add(new FindCommand());
-        $this->_application->add(new TestCommand());
+        foreach (self::$_commands as $command) {
+            $class = __NAMESPACE__.'\\'.$command;
+            $this->_application->add(new $class());
+        }
     }
 }

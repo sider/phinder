@@ -1,0 +1,22 @@
+{
+    "result": [
+        {
+            "path": "test/res/find-classes/sample.php",
+            "rule": {
+                "id": "test.find-classes",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    7,
+                    1
+                ],
+                "end": [
+                    7,
+                    14
+                ]
+            }
+        }
+    ],
+    "errors": []
+}

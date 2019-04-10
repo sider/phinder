@@ -76,6 +76,7 @@ final class PatternParser
     {
         $cnt = 0;
         $vlen = static::_isVarLen($ast);
+        $hasNegArrayItem = false;
 
         $xp = '';
         foreach ($ast as $i => $a) {
@@ -94,6 +95,7 @@ final class PatternParser
                         $xp .= "/${head}[not(../${head}"
                             .static::_buildXPath($a)
                             .')]/..';
+                        $hasNegArrayItem = true;
                     } else {
                         $xp .= "/$head".static::_buildXPath($a).'/..';
                         ++$cnt;
@@ -104,7 +106,15 @@ final class PatternParser
             }
         }
 
-        return ($vlen ? "[count(*)>=$cnt]" : "[count(*)=$cnt]").$xp;
+        if ($cnt == 0) {
+            if ($hasNegArrayItem) {
+                return '[count(*)>=0]'.$xp;
+            } else {
+                return '[count(*)>=0]';
+            }
+        } else {
+            return ($vlen ? "[count(*)>=$cnt]" : "[count(*)=$cnt]").$xp;
+        }
     }
 
     private static function _isVarLen($ast)

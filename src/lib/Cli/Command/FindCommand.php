@@ -21,6 +21,7 @@ class FindCommand extends Command
         $config = $this->getConfig();
         $phpPath = $this->getPath();
         $jsonOutput = $this->getFormat() === 'json';
+        $outputBuffer = ['result' => [], 'errors' => []];
         $violationCount = 0;
         $errorCount = 0;
 

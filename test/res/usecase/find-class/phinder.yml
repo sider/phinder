@@ -1,5 +1,5 @@
 rule:
   -
-    id: test.find-classes
+    id: test.find-class
     pattern: MyClass
     message: --

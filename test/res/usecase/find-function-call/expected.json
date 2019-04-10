@@ -1,9 +1,9 @@
 {
     "result": [
         {
-            "path": "test/res/find-function-calls/sample.php",
+            "path": "test/res/usecase/find-function-call/sample.php",
             "rule": {
-                "id": "test.find-function-calls1",
+                "id": "test.find-function-call1",
                 "message": "--"
             },
             "location": {
@@ -18,9 +18,9 @@
             }
         },
         {
-            "path": "test/res/find-function-calls/sample.php",
+            "path": "test/res/usecase/find-function-call/sample.php",
             "rule": {
-                "id": "test.find-function-calls2",
+                "id": "test.find-function-call2",
                 "message": "--"
             },
             "location": {
@@ -35,9 +35,9 @@
             }
         },
         {
-            "path": "test/res/find-function-calls/sample.php",
+            "path": "test/res/usecase/find-function-call/sample.php",
             "rule": {
-                "id": "test.find-function-calls2",
+                "id": "test.find-function-call2",
                 "message": "--"
             },
             "location": {
@@ -52,9 +52,9 @@
             }
         },
         {
-            "path": "test/res/find-function-calls/sample.php",
+            "path": "test/res/usecase/find-function-call/sample.php",
             "rule": {
-                "id": "test.find-function-calls2",
+                "id": "test.find-function-call2",
                 "message": "--"
             },
             "location": {
@@ -69,9 +69,9 @@
             }
         },
         {
-            "path": "test/res/find-function-calls/sample.php",
+            "path": "test/res/usecase/find-function-call/sample.php",
             "rule": {
-                "id": "test.find-function-calls3",
+                "id": "test.find-function-call3",
                 "message": "--"
             },
             "location": {
@@ -86,9 +86,9 @@
             }
         },
         {
-            "path": "test/res/find-function-calls/sample.php",
+            "path": "test/res/usecase/find-function-call/sample.php",
             "rule": {
-                "id": "test.find-function-calls3",
+                "id": "test.find-function-call3",
                 "message": "--"
             },
             "location": {

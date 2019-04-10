@@ -1,15 +1,15 @@
 rule:
   -
-    id: test.find-function-calls1
+    id: test.find-function-call1
     pattern: f(_)
     message: --
 
   -
-    id: test.find-function-calls2
+    id: test.find-function-call2
     pattern: f(...)
     message: --
 
   -
-    id: test.find-function-calls3
+    id: test.find-function-call3
     pattern: f(_, ...)
     message: --

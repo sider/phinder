@@ -1,0 +1,6 @@
+- id: sample
+  pattern: func(?)
+  message: message
+  test:
+    pass: func(100, 200)
+    fail: 100

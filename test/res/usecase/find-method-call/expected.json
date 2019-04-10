@@ -1,9 +1,9 @@
 {
     "result": [
         {
-            "path": "test/res/find-method-calls/sample.php",
+            "path": "test/res/usecase/find-method-call/sample.php",
             "rule": {
-                "id": "test.find-method-calls1",
+                "id": "test.find-method-call1",
                 "message": "--"
             },
             "location": {
@@ -18,9 +18,9 @@
             }
         },
         {
-            "path": "test/res/find-method-calls/sample.php",
+            "path": "test/res/usecase/find-method-call/sample.php",
             "rule": {
-                "id": "test.find-method-calls1",
+                "id": "test.find-method-call1",
                 "message": "--"
             },
             "location": {
@@ -35,9 +35,9 @@
             }
         },
         {
-            "path": "test/res/find-method-calls/sample.php",
+            "path": "test/res/usecase/find-method-call/sample.php",
             "rule": {
-                "id": "test.find-method-calls2",
+                "id": "test.find-method-call2",
                 "message": "--"
             },
             "location": {

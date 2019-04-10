@@ -1,9 +1,9 @@
 {
     "result": [
         {
-            "path": "test/res/find-classes/sample.php",
+            "path": "test/res/usecase/find-class/sample.php",
             "rule": {
-                "id": "test.find-classes",
+                "id": "test.find-class",
                 "message": "--"
             },
             "location": {

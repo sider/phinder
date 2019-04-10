@@ -1,8 +1,8 @@
 rule:
-  - id: test.find-missing-keys1
+  - id: test.find-missing-key1
     pattern: f([!("important" => _), ...])
     message: --
 
-  - id: test.find-missing-keys2
+  - id: test.find-missing-key2
     pattern: f(['trivial' => _, !('important' => _), ...])
     message: --

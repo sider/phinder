@@ -3,7 +3,7 @@
         {
             "path": "test/res/sample/sample.php",
             "rule": {
-                "id": "sample.var_dump",
+                "id": "test.sample",
                 "message": "Do not use var_dump."
             },
             "location": {

@@ -1,0 +1,106 @@
+{
+    "result": [
+        {
+            "path": "test/res/find-function-calls/sample.php",
+            "rule": {
+                "id": "test.find-function-calls1",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    7,
+                    1
+                ],
+                "end": [
+                    7,
+                    5
+                ]
+            }
+        },
+        {
+            "path": "test/res/find-function-calls/sample.php",
+            "rule": {
+                "id": "test.find-function-calls2",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    7,
+                    1
+                ],
+                "end": [
+                    7,
+                    5
+                ]
+            }
+        },
+        {
+            "path": "test/res/find-function-calls/sample.php",
+            "rule": {
+                "id": "test.find-function-calls2",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    9,
+                    1
+                ],
+                "end": [
+                    9,
+                    8
+                ]
+            }
+        },
+        {
+            "path": "test/res/find-function-calls/sample.php",
+            "rule": {
+                "id": "test.find-function-calls2",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    11,
+                    1
+                ],
+                "end": [
+                    11,
+                    11
+                ]
+            }
+        },
+        {
+            "path": "test/res/find-function-calls/sample.php",
+            "rule": {
+                "id": "test.find-function-calls3",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    9,
+                    1
+                ],
+                "end": [
+                    9,
+                    8
+                ]
+            }
+        },
+        {
+            "path": "test/res/find-function-calls/sample.php",
+            "rule": {
+                "id": "test.find-function-calls3",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    11,
+                    1
+                ],
+                "end": [
+                    11,
+                    11
+                ]
+            }
+        }
+    ]
+}

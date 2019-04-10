@@ -102,7 +102,9 @@ final class PatternParser
                     }
                 }
             } else {
-                ++$cnt;
+                // @codeCoverageIgnoreStart
+                throw new Exception();
+                // @codeCoverageIgnoreEnd
             }
         }
 

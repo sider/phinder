@@ -104,11 +104,7 @@ final class PatternParser
             }
         }
 
-        if ($cnt == 0) {
-            return '[count(*)>=0]';
-        } else {
-            return ($vlen ? "[count(*)>=$cnt]" : "[count(*)=$cnt]").$xp;
-        }
+        return ($vlen ? "[count(*)>=$cnt]" : "[count(*)=$cnt]").$xp;
     }
 
     private static function _isVarLen($ast)

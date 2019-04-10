@@ -23,3 +23,4 @@ update:
 	diff -u ../vendor/nikic/php-parser/grammar/rebuildParsers.php grammar/rebuildParsers.php > patch/rebuildParsers.php.patch; exit 0
 	diff -u ../vendor/nikic/php-parser/grammar/tokens.template grammar/tokens.template > patch/tokens.template.patch; exit 0
 	diff -u ../vendor/nikic/php-parser/grammar/tokens.y grammar/tokens.y > patch/tokens.y.patch; exit 0
+	diff -u ../vendor/nikic/php-parser/lib/PhpParser/ParserFactory.php lib/Parser/PatternParser/ParserFactory.php > patch/ParserFactory.php.patch; exit 0

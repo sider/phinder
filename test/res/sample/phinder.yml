@@ -1,5 +1,0 @@
-rule:
-  -
-    id: test.sample
-    pattern: var_dump(...)
-    message: Do not use var_dump.

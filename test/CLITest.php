@@ -35,4 +35,9 @@ abstract class CliTest extends TestCase
     {
         return $this->_tester->getStatusCode();
     }
+
+    protected function getDisplayJson()
+    {
+        return json_decode($this->getDisplay(), true);
+    }
 }

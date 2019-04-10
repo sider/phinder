@@ -4,13 +4,19 @@ namespace Phinder;
 
 final class Wildcard extends \PhpParser\Node\Expr
 {
+    /**
+     * @codeCoverageIgnore
+     */
     public function getSubNodeNames(): array
     {
-        return [];
+        throw new Exception();
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getType(): string
     {
-        return 'Expr_Wildcard';
+        throw new Exception();
     }
 }

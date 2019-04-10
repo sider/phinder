@@ -1,0 +1,39 @@
+{
+    "result": [
+        {
+            "path": "test/res/find-missing-keys/sample.php",
+            "rule": {
+                "id": "test.find-missing-keys1",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    7,
+                    1
+                ],
+                "end": [
+                    7,
+                    20
+                ]
+            }
+        },
+        {
+            "path": "test/res/find-missing-keys/sample.php",
+            "rule": {
+                "id": "test.find-missing-keys2",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    7,
+                    1
+                ],
+                "end": [
+                    7,
+                    20
+                ]
+            }
+        }
+    ],
+    "errors": []
+}

@@ -14,8 +14,7 @@ class API
         foreach ($phpParser->parse($phpPath) as $xml) {
             foreach ($rules as $rule) {
                 foreach ($xml->xpath($rule->xpath) as $match) {
-                    $elem = static::_getActualElement($match);
-                    yield new Match($xml['path'], $elem, $rule);
+                    yield new Match($xml['path'], $match, $rule);
                 }
             }
         }
@@ -30,21 +29,5 @@ class API
         }
 
         return $rules;
-    }
-
-    private static function _getActualElement($xml)
-    {
-        if ($xml['startLine'] === null) {
-            foreach ($xml->children() as $child) {
-                $elem = getActualElement($child);
-                if ($elem !== null) {
-                    return $elem;
-                }
-            }
-
-            return null;
-        } else {
-            return $xml;
-        }
     }
 }

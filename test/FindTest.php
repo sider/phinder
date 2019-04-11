@@ -114,7 +114,7 @@ class FindTest extends CliTest
         $this->exec(
             [
                 '--config' => 'sample/phinder.yml',
-                'path' => 'test/res/invalid.badphp',
+                'path' => 'test/res/invalid.php_',
             ]
         );
     }

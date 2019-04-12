@@ -30,17 +30,17 @@ class PatternParseTest extends TestCase
      */
     public function testParseSuccess($pattern)
     {
-        $ast = $this->_parser->parse($pattern);
-        $this->assertNotSame($ast, null);
+        $status = $this->_parser->parse($pattern);
+        $this->assertSame($status, 0);
     }
 
     /**
-     * @dataProvider      badPatternProvider
-     * @expectedException \Phinder\PatternParser\PatternParseError
+     * @dataProvider badPatternProvider
      */
     public function testParseFail($pattern)
     {
-        $this->_parser->parse($pattern);
+        $status = $this->_parser->parse($pattern);
+        $this->assertSame($status, 1);
     }
 
     public function goodPatternProvider()

@@ -30,7 +30,7 @@ class PatternParser
 
     private $_stringReader = null;
 
-    private $_yytranslate = array(
+    private $_yytranslate = [
             0,    3,    3,    3,    3,    3,    3,    3,    3,    3,
             3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
             3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
@@ -57,45 +57,45 @@ class PatternParser
             3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
             3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
             3,    3,    3,    3,    3,    3,    1
-    );
+    ];
 
-    private $_yyaction = array(
+    private $_yyaction = [
             3,    0
-    );
+    ];
 
-    private $_yycheck = array(
+    private $_yycheck = [
             2,    0
-    );
+    ];
 
-    private $_yybase = array(
+    private $_yybase = [
            -2,    1
-    );
+    ];
 
-    private $_yydefault = array(
+    private $_yydefault = [
         32767,32767
-    );
+    ];
 
-    private $_yygoto = array(
-    );
+    private $_yygoto = [
+    ];
 
-    private $_yygcheck = array(
-    );
+    private $_yygcheck = [
+    ];
 
-    private $_yygbase = array(
+    private $_yygbase = [
             0,    0
-    );
+    ];
 
-    private $_yygdefault = array(
+    private $_yygdefault = [
         -32768,    1
-    );
+    ];
 
-    private $_yylhs = array(
+    private $_yylhs = [
             0,    1
-    );
+    ];
 
-    private $_yylen = array(
+    private $_yylen = [
             1,    1
-    );
+    ];
 
     public static function create()
     {
@@ -105,6 +105,7 @@ class PatternParser
     public function parse($string)
     {
         $this->_stringReader = new StringReader($string);
+
         return $this->_yyparse();
     }
 
@@ -165,14 +166,15 @@ class PatternParser
             while (true) {
                 if ($yyn == 0) {
                     $this->_yyflush();
+
                     return 0;
-                } else if ($yyn != self::YYUNEXPECTED) {
+                } elseif ($yyn != self::YYUNEXPECTED) {
                     $yyl = $this->_yylen[$yyn];
-                    $n = $yysp-$yyl+1;
+                    $n = $yysp - $yyl + 1;
                     $yyval = isset($yyastk[$n]) ? $yyastk[$n] : null;
-                    switch($yyn) {
+                    switch ($yyn) {
                     case 1:
-                        $yyval = $yyastk[$yysp-(1-1)]; 
+                         $yyval = $yyastk[$yysp - (1 - 1)]; 
                         break;
                     }
                     $yysp -= $yyl;
@@ -186,14 +188,15 @@ class PatternParser
                         $yystate = $this->_yygdefault[$yyn];
                     }
 
-                    $yysp++;
+                    ++$yysp;
 
                     $yysstk[$yysp] = $yystate;
                     $yyastk[$yysp] = $yyval;
                 } else {
                     switch ($yyerrflag) {
                     case 0:
-                        $this->_yyerror("syntax error");
+                        $this->_yyerror('syntax error');
+                        // no break
                     case 1:
                     case 2:
                         $yyerrflag = 3;
@@ -207,6 +210,7 @@ class PatternParser
                         ) {
                             if ($yysp <= 0) {
                                 $this->_yyflush();
+
                                 return 1;
                             }
                             $yystate = $yysstk[--$yysp];
@@ -218,6 +222,7 @@ class PatternParser
                     case 3:
                         if ($yychar == 0) {
                             $this->_yyflush();
+
                             return 1;
                         }
                         $yychar = -1;
@@ -246,6 +251,7 @@ class PatternParser
 
         $ret = ord($this->_lexbuf);
         $this->_lexbuf = substr($this->_lexbuf, 1);
+
         return $ret;
     }
 

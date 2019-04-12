@@ -1,4 +1,9 @@
 <?php
+$meta @
+@semval($) $yyval
+@semval($,%t) $yyval
+@semval(%n) $yyastk[$yysp-(%l-%n)]
+@semval(%n,%t) $yyastk[$yysp-(%l-%n)]
 
 namespace Phinder\PatternParser;
 

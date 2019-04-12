@@ -1,9 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-
-require_once __DIR__.'/../src/lib/PatternParser/PatternParser.php';
-require_once __DIR__.'/../src/lib/PatternParser/StringReader.php';
+use Phinder\PatternParser\PatternParser;
 
 class PatternParseTest extends TestCase
 {
@@ -12,28 +10,55 @@ class PatternParseTest extends TestCase
     ];
 
     private static $_BAD_PATTERNS = [
-        'a',
+        '?',
     ];
 
-    /**
-     * @dataProvider patternProvider
-     */
-    public function testParse($pattern, $success)
+    private $_parser;
+
+    public function setUp()
     {
-        yyinput($pattern);
-        $this->assertSame(yyparse(), $success ? 0 : 1);
+        $this->_parser = PatternParser::create();
     }
 
-    public function patternProvider()
+    public function tearDown()
+    {
+        $this->_parser = null;
+    }
+
+    /**
+     * @dataProvider goodPatternProvider
+     */
+    public function testParseSuccess($pattern)
+    {
+        $ast = $this->_parser->parse($pattern);
+        $this->assertNotSame($ast, null);
+    }
+
+    /**
+     * @dataProvider      badPatternProvider
+     * @expectedException \Phinder\PatternParser\PatternParseError
+     */
+    public function testParseFail($pattern)
+    {
+        $this->_parser->parse($pattern);
+    }
+
+    public function goodPatternProvider()
+    {
+        return self::_patternProvider(self::$_GOOD_PATTERNS);
+    }
+
+    public function badPatternProvider()
+    {
+        return self::_patternProvider(self::$_BAD_PATTERNS);
+    }
+
+    private static function _patternProvider($array)
     {
         $patterns = [];
 
-        foreach (self::$_GOOD_PATTERNS as $p) {
-            $patterns[] = [$p, true];
-        }
-
-        foreach (self::$_BAD_PATTERNS as $p) {
-            $patterns[] = [$p, false];
+        foreach ($array as $p) {
+            $patterns[] = [$p];
         }
 
         return $patterns;

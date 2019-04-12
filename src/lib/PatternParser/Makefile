@@ -1,7 +1,9 @@
-PHPY := grammar.phpy
-TMPL := grammar.template
-NAME := PatternParser
+.PHONY:	all
+all: clean PatternParser.php
 
-PatternParser.php: $(PHPY) $(TMPL)
-	kmyacc -l -m $(TMPL) -p $(NAME) $(PHPY)
-	mv $(PHPY:y=) $(NAME).php
+.PHONY:	clean
+clean:
+	rm -f PatternParser.php
+
+PatternParser.php: PatternParser.phpy PatternParser.template
+	kmyacc -l -m PatternParser.template PatternParser.phpy

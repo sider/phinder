@@ -1,11 +1,7 @@
-%pure_parser
-
-%token WILDCARD '_'
-
 %%
 
 start:
-    WILDCARD { $$ = $1; }
+    '_' {}
 ;
 
 %%

@@ -2,19 +2,24 @@
 
 namespace Phinder\PatternParser;
 
+use Phinder\PatternParser\Node\Conjunction;
+use Phinder\PatternParser\Node\Disjunction;
+use Phinder\PatternParser\Node\Not;
+use Phinder\PatternParser\Node\Wildcard;
+
 class PatternParser
 {
     const YYERRTOK = 256;
 
-    const YYBADCH = 3;
+    const YYBADCH = 8;
 
     const YYMAXLEX = 257;
 
-    const YYLAST = 2;
+    const YYLAST = 11;
 
-    const YY2TBLSTATE = 0;
+    const YY2TBLSTATE = 4;
 
-    const YYNLSTATES = 2;
+    const YYNLSTATES = 9;
 
     const YYINTERRTOK = 1;
 
@@ -22,7 +27,7 @@ class PatternParser
 
     const YYDEFAULT = -32766;
 
-    const YYGLAST = 0;
+    const YYGLAST = 5;
 
     private $_yylval = null;
 
@@ -31,70 +36,77 @@ class PatternParser
     private $_stringReader = null;
 
     private $_yytranslate = [
-            0,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    2,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-            3,    3,    3,    3,    3,    3,    1
+            0,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    4,    8,    8,    8,    8,    3,    8,
+            5,    6,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    7,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    2,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+            8,    8,    8,    8,    8,    8,    1
     ];
 
     private $_yyaction = [
-            3,    0
+            1,    0,   19,    4,    2,    0,    3,    0,    0,    0,
+           18
     ];
 
     private $_yycheck = [
-            2,    0
+            5,    0,    7,    4,    2,   -1,    3,   -1,   -1,   -1,
+            6
     ];
 
     private $_yybase = [
-           -2,    1
+           -1,   -1,   -1,   -1,   -5,    1,    2,    3,    4,   -5,
+           -5,   -5,   -5
     ];
 
     private $_yydefault = [
-        32767,32767
+        32767,32767,32767,32767,32767,32767,    2,    4,32767
     ];
 
     private $_yygoto = [
+            8,   12,   16,    0,   14
     ];
 
     private $_yygcheck = [
+            2,    2,    5,   -1,    3
     ];
 
     private $_yygbase = [
-            0,    0
+            0,    0,   -1,    1,    0,   -2,    0
     ];
 
     private $_yygdefault = [
-        -32768,    1
+        -32768,    5,   10,    6,    7,   15,   17
     ];
 
     private $_yylhs = [
-            0,    1
+            0,    1,    2,    2,    3,    3,    4,    4,    5,    5,
+            6
     ];
 
     private $_yylen = [
-            1,    1
+            1,    1,    1,    3,    1,    3,    1,    2,    1,    3,
+            1
     ];
 
     public static function create()
@@ -175,6 +187,33 @@ class PatternParser
                     switch ($yyn) {
                     case 1:
                          $yyval = $yyastk[$yysp - (1 - 1)]; 
+                        break;
+                    case 2:
+                         $yyval = $yyastk[$yysp - (1 - 1)]; 
+                        break;
+                    case 3:
+                         $yyval = new Disjunction($yyastk[$yysp - (3 - 1)], $yyastk[$yysp - (3 - 3)]); 
+                        break;
+                    case 4:
+                         $yyval = $yyastk[$yysp - (1 - 1)]; 
+                        break;
+                    case 5:
+                         $yyval = new Conjunction($yyastk[$yysp - (3 - 1)], $yyastk[$yysp - (3 - 3)]); 
+                        break;
+                    case 6:
+                         $yyval = $yyastk[$yysp - (1 - 1)]; 
+                        break;
+                    case 7:
+                         $yyval = new Not($yyastk[$yysp - (2 - 1)]); 
+                        break;
+                    case 8:
+                         $yyval = $yyastk[$yysp - (1 - 1)]; 
+                        break;
+                    case 9:
+                         $yyval = $yyastk[$yysp - (3 - 2)]; 
+                        break;
+                    case 10:
+                         $yyval = new Wildcard(); 
                         break;
                     }
                     $yysp -= $yyl;
@@ -257,11 +296,6 @@ class PatternParser
 
     private function _yyerror()
     {
-    }
-
-    private function _yyprintln($msg)
-    {
-        echo "$msg\n";
     }
 
     private function _yyflush()

@@ -1,7 +1,31 @@
 %%
 
 start:
-  '_' { $$ = $1; }
+  expression { $$ = $1; }
+;
+
+expression:
+    term { $$ = $1; }
+  | term '|' expression { $$ = new Disjunction($1, $3); }
+;
+
+term:
+    factor { $$ = $1; }
+  | factor '&' term { $$ = new Conjunction($1, $3); }
+;
+
+factor:
+    element { $$ = $1; }
+  | '!' element { $$ = new Not($1); }
+;
+
+element:
+    atom { $$ = $1; }
+  | '(' expression ')' { $$ = $2; }
+;
+
+atom:
+    '_' { $$ = new Wildcard(); }
 ;
 
 %%

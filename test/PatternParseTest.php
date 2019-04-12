@@ -7,10 +7,19 @@ class PatternParseTest extends TestCase
 {
     private static $_GOOD_PATTERNS = [
         '_',
+        '_ | _',
+        '_ & _',
+        '(_ | _) & _',
+        '!_',
+        '((_))',
     ];
 
     private static $_BAD_PATTERNS = [
         '?',
+        '!',
+        '(',
+        '_ &',
+        '_ |',
     ];
 
     private $_parser;

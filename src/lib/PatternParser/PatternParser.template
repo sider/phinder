@@ -6,6 +6,11 @@ $meta @
 @semval(%n,%t) $yyastk[$yysp - (%l - %n)]
 
 namespace Phinder\PatternParser;
+
+use Phinder\PatternParser\Node\Conjunction;
+use Phinder\PatternParser\Node\Disjunction;
+use Phinder\PatternParser\Node\Not;
+use Phinder\PatternParser\Node\Wildcard;
 @include;
 
 class PatternParser
@@ -244,11 +249,6 @@ class PatternParser
 
     private function _yyerror()
     {
-    }
-
-    private function _yyprintln($msg)
-    {
-        echo "$msg\n";
     }
 
     private function _yyflush()

@@ -2,7 +2,9 @@
 
 namespace Phinder\PatternParser\Node;
 
-class IntegerLiteral extends AbstractNode
+use Phinder\PatternParser\Node;
+
+class IntegerLiteral extends Node
 {
     private $_value;
 

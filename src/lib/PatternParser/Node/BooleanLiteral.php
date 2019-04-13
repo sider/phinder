@@ -2,7 +2,9 @@
 
 namespace Phinder\PatternParser\Node;
 
-class BooleanLiteral extends AbstractNode
+use Phinder\PatternParser\Node;
+
+class BooleanLiteral extends Node
 {
     private $_value;
 

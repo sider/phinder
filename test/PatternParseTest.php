@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Phinder\PatternParser\PatternParser;
+use Phinder\PatternParser\Parser;
 
 class PatternParseTest extends TestCase
 {
@@ -33,7 +33,7 @@ class PatternParseTest extends TestCase
 
     public function setUp()
     {
-        $this->_parser = PatternParser::create();
+        $this->_parser = Parser::create();
     }
 
     public function tearDown()

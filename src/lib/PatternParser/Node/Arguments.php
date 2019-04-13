@@ -2,7 +2,9 @@
 
 namespace Phinder\PatternParser\Node;
 
-class Arguments extends AbstractNode
+use Phinder\PatternParser\Node;
+
+class Arguments extends Node
 {
     private $_head;
 

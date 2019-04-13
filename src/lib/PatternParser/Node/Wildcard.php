@@ -2,7 +2,9 @@
 
 namespace Phinder\PatternParser\Node;
 
-class Wildcard extends AbstractNode
+use Phinder\PatternParser\Node;
+
+class Wildcard extends Node
 {
     private $_varlen;
 

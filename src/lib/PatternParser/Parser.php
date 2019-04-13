@@ -10,7 +10,7 @@ use Phinder\PatternParser\Node\Invocation;
 use Phinder\PatternParser\Node\Not;
 use Phinder\PatternParser\Node\Wildcard;
 
-class PatternParser
+class Parser
 {
     const YYERRTOK = 256;
 
@@ -143,7 +143,7 @@ class PatternParser
 
     public static function create()
     {
-        return new PatternParser();
+        return new Parser();
     }
 
     public function parse($string)

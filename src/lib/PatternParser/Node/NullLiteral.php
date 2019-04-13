@@ -2,7 +2,9 @@
 
 namespace Phinder\PatternParser\Node;
 
-class NullLiteral extends AbstractNode
+use Phinder\PatternParser\Node;
+
+class NullLiteral extends Node
 {
     public function __construct()
     {

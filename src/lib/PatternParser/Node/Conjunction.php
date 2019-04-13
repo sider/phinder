@@ -2,7 +2,9 @@
 
 namespace Phinder\PatternParser\Node;
 
-class Conjunction extends AbstractNode
+use Phinder\PatternParser\Node;
+
+class Conjunction extends Node
 {
     private $_patternNode1;
 

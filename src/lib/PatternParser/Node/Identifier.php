@@ -2,7 +2,9 @@
 
 namespace Phinder\PatternParser\Node;
 
-class Identifier extends AbstractNode
+use Phinder\PatternParser\Node;
+
+class Identifier extends Node
 {
     private $_text;
 

@@ -1,9 +1,9 @@
 .PHONY:	all
-all: clean PatternParser.php
+all: clean Parser.php
 
 .PHONY:	clean
 clean:
-	rm -f PatternParser.php
+	rm -f Parser.php
 
-PatternParser.php: PatternParser.phpy PatternParser.template
-	kmyacc -l -m PatternParser.template PatternParser.phpy
+Parser.php: Parser.phpy Parser.template
+	kmyacc -l -m Parser.template Parser.phpy

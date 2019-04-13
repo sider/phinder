@@ -2,7 +2,9 @@
 
 namespace Phinder\PatternParser\Node;
 
-class StringLiteral extends AbstractNode
+use Phinder\PatternParser\Node;
+
+class StringLiteral extends Node
 {
     private $_value;
 

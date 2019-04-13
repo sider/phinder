@@ -2,7 +2,9 @@
 
 namespace Phinder\PatternParser\Node;
 
-class Not extends AbstractNode
+use Phinder\PatternParser\Node;
+
+class Not extends Node
 {
     private $_patternNode;
 

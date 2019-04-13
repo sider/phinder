@@ -2,7 +2,9 @@
 
 namespace Phinder\PatternParser\Node;
 
-class Invocation extends AbstractNode
+use Phinder\PatternParser\Node;
+
+class Invocation extends Node
 {
     private $_name;
 

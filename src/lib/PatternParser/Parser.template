@@ -16,7 +16,7 @@ use Phinder\PatternParser\Node\Not;
 use Phinder\PatternParser\Node\Wildcard;
 @include;
 
-class PatternParser
+class Parser
 {
 @tokenval
     const %s = %n;
@@ -92,7 +92,7 @@ class PatternParser
 
     public static function create()
     {
-        return new PatternParser();
+        return new Parser();
     }
 
     public function parse($string)

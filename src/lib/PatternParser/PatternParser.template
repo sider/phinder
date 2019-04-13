@@ -7,8 +7,11 @@ $meta @
 
 namespace Phinder\PatternParser;
 
+use Phinder\PatternParser\Node\Arguments;
 use Phinder\PatternParser\Node\Conjunction;
 use Phinder\PatternParser\Node\Disjunction;
+use Phinder\PatternParser\Node\Identifier;
+use Phinder\PatternParser\Node\Invocation;
 use Phinder\PatternParser\Node\Not;
 use Phinder\PatternParser\Node\Wildcard;
 @include;
@@ -17,8 +20,8 @@ class PatternParser
 {
 @tokenval
     const %s = %n;
-@endtokenval
 
+@endtokenval
     const YYBADCH = @(YYBADCH);
 
     const YYMAXLEX = @(YYMAXLEX);
@@ -261,13 +264,23 @@ class PatternParser
 
     private function _readToken()
     {
-        if ( starting with name ) {
-
-        } else {
-            $ret = ord($this->_lexbuf);
-            $this->_lexbuf = substr($this->_lexbuf, 1);
-
-            return $ret;
+        if ((strpos($this->_lexbuf, '...') === 0)) {
+            $this->_lexbuf = substr($this->_lexbuf, strlen('...'));
+            return self::ELLIPSIS;
         }
+
+        if (preg_match('/^([a-z_][a-z0-9_]*)/', $this->_lexbuf, $matches)) {
+            if ($matches[1] !== '_') {
+                $this->_yylval = $matches[1];
+                $this->_lexbuf = substr($this->_lexbuf, strlen($matches[1]));
+
+                return self::IDENTIFIER;
+            }
+        }
+
+        $ret = ord($this->_lexbuf);
+        $this->_lexbuf = substr($this->_lexbuf, 1);
+
+        return $ret;
     }
 }

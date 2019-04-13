@@ -12,6 +12,13 @@ class PatternParseTest extends TestCase
         '(_ | _) & _',
         '!_',
         '((_))',
+        'f',
+        '_f',
+        'f()',
+        'f(f())',
+        'f(f(), f())',
+        'f(...)',
+        'f(_, ..., _)',
     ];
 
     private static $_BAD_PATTERNS = [

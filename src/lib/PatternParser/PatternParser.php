@@ -33,7 +33,7 @@ class PatternParser
 
     private $_lexbuf = '';
 
-    private $_stringReader = null;
+    private $_inputLines = null;
 
     private $_yytranslate = [
             0,    8,    8,    8,    8,    8,    8,    8,    8,    8,
@@ -116,7 +116,7 @@ class PatternParser
 
     public function parse($string)
     {
-        $this->_stringReader = new StringReader($string);
+        $this->_inputLines = explode("\n", $string);
 
         return $this->_yyparse();
     }
@@ -284,21 +284,33 @@ class PatternParser
             if ($this->_lexbuf) {
                 break;
             }
-        } while ($this->_lexbuf = $this->_stringReader->readLine());
+        } while ($this->_lexbuf = $this->_readLine());
 
         $this->_lexbuf = str_replace(PHP_EOL, "\n", $this->_lexbuf);
 
-        $ret = ord($this->_lexbuf);
-        $this->_lexbuf = substr($this->_lexbuf, 1);
-
-        return $ret;
+        return $this->_readToken();
     }
 
-    private function _yyerror()
+    private function _yyerror($msg)
     {
     }
 
     private function _yyflush()
     {
+    }
+
+    private function _readLine()
+    {
+        $line = array_shift($this->_inputLines);
+
+        return $line === null ? false : $line;
+    }
+
+    private function _readToken()
+    {
+        $ret = ord($this->_lexbuf);
+        $this->_lexbuf = substr($this->_lexbuf, 1);
+
+        return $ret;
     }
 }

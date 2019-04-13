@@ -300,6 +300,5 @@ class PatternParser
 
     private function _yyflush()
     {
-        return;
     }
 }

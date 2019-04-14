@@ -7,8 +7,37 @@ use Phinder\PhpParser;
 class PatternMatchTest extends TestCase
 {
     private static $_CASES = [
-        '_' => [
-            true => ['var_dump(1);'],
+        'null' => [
+            true => ['echo null;'],
+            false => ['echo false;'],
+        ],
+        'true' => [
+            true => ['echo true;'],
+            false => ['echo false;'],
+        ],
+        'false' => [
+            true => ['echo false;'],
+            false => ['echo true;'],
+        ],
+        ':bool:' => [
+            true => ['echo false;', 'echo true;'],
+            false => ['echo 1;'],
+        ],
+        '1' => [
+            true => ['echo 1;'],
+            false => ['echo 100;'],
+        ],
+        ':int:' => [
+            true => ['echo 1;', 'echo 100;'],
+            false => ['echo 1.0;'],
+        ],
+        '1.0' => [
+            true => ['echo 1.0;', 'echo 1.00;'],
+            false => ['echo 1;'],
+        ],
+        ':float:' => [
+            true => ['echo 1.0;', 'echo 1.00;'],
+            false => ['echo 1;'],
         ],
     ];
 

@@ -13,12 +13,12 @@ class Identifier extends Node
         $this->_text = $text;
     }
 
-    public function match($phpNode)
+    protected function matchPhpNode($phpNode)
     {
         return true;
     }
 
-    public function getChildrenArray()
+    protected function getChildrenArray()
     {
         return [$this->_text];
     }

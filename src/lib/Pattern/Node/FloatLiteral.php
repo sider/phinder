@@ -6,6 +6,8 @@ use Phinder\Pattern\Node;
 
 class FloatLiteral extends Node
 {
+    protected static $targetClassNames = ['Scalar\DNumber'];
+
     private $_value;
 
     public function __construct($value = null)
@@ -17,12 +19,16 @@ class FloatLiteral extends Node
         }
     }
 
-    public function match($phpNode)
+    protected function matchPhpNode($phpNode)
     {
-        return true;
+        if ($this->_value === null) {
+            return true;
+        }
+
+        return $this->_value === $phpNode->value;
     }
 
-    public function getChildrenArray()
+    protected function getChildrenArray()
     {
         return [$this->_value];
     }

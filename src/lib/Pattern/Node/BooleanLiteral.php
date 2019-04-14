@@ -6,6 +6,8 @@ use Phinder\Pattern\Node;
 
 class BooleanLiteral extends Node
 {
+    protected static $targetClassNames = ['Expr\ConstFetch'];
+
     private $_value;
 
     public function __construct($value = null)
@@ -13,16 +15,34 @@ class BooleanLiteral extends Node
         if ($value === null) {
             $this->_value = null;
         } else {
-            $this->_value = $value === 'true';
+            $this->_value = (bool) ($value === 'true');
         }
     }
 
-    public function match($phpNode)
+    protected function matchPhpNode($phpNode)
     {
-        return true;
+        $value = strtolower($phpNode->name->parts[0]);
+
+        if ($value !== 'true' && $value !== 'false') {
+            return false;
+        }
+
+        if ($this->_value === null) {
+            return true;
+        }
+
+        if ($value === 'true' && $this->_value) {
+            return true;
+        }
+
+        if ($value === 'false' && !$this->_value) {
+            return true;
+        }
+
+        return false;
     }
 
-    public function getChildrenArray()
+    protected function getChildrenArray()
     {
         return [$this->_value];
     }

@@ -6,16 +6,20 @@ use Phinder\Pattern\Node;
 
 class NullLiteral extends Node
 {
+    protected static $targetClassNames = ['Expr\ConstFetch'];
+
     public function __construct()
     {
     }
 
-    public function match($phpNode)
+    protected function matchPhpNode($phpNode)
     {
-        return true;
+        $value = strtolower($phpNode->name->parts[0]);
+
+        return $value === 'null';
     }
 
-    public function getChildrenArray()
+    protected function getChildrenArray()
     {
         return [];
     }

@@ -16,13 +16,13 @@ class Disjunction extends Node
         $this->_patternNode2 = $patternNode2;
     }
 
-    public function match($phpNode)
+    protected function matchPhpNode($phpNode)
     {
         return $this->_patternNode1->match($phpNode)
         || $this->_patternNode2->match($phpNode);
     }
 
-    public function getChildrenArray()
+    protected function getChildrenArray()
     {
         return [
             $this->_patternNode1->toArray(),

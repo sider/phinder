@@ -16,12 +16,12 @@ class Invocation extends Node
         $this->_arguments = $arguments;
     }
 
-    public function match($phpNode)
+    protected function matchPhpNode($phpNode)
     {
         return true;
     }
 
-    public function getChildrenArray()
+    protected function getChildrenArray()
     {
         return [
             $this->_name,

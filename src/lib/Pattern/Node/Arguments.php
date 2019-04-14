@@ -16,12 +16,12 @@ class Arguments extends Node
         $this->_tail = $tail;
     }
 
-    public function match($phpNode)
+    protected function matchPhpNode($phpNode)
     {
         return true;
     }
 
-    public function getChildrenArray()
+    protected function getChildrenArray()
     {
         $array = [];
 

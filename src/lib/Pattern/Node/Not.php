@@ -13,12 +13,12 @@ class Not extends Node
         $this->_patternNode = $patternNode;
     }
 
-    public function match($phpNode)
+    protected function matchPhpNode($phpNode)
     {
         return !$this->_patternNode->match($phpNode);
     }
 
-    public function getChildrenArray()
+    protected function getChildrenArray()
     {
         return [$this->_patternNode->toArray()];
     }

@@ -101,8 +101,8 @@ class Parser
 
     private $_yyaction = [
             3,   41,    7,   32,    6,   42,   43,   45,   44,   46,
-            0,    4,    6,    5,    2,    0,    0,    1,    0,   34,
-           23
+            0,    4,    6,    5,    2,    0,    0,    1,    0,   23,
+           34
     ];
 
     private $_yycheck = [
@@ -113,7 +113,7 @@ class Parser
 
     private $_yybase = [
             7,   -1,   -1,    7,    7,    7,   -6,   11,   10,    8,
-            9,   13,   12,    4,   -6,   -6,   -6,   -6,   -6,   -6
+            9,   12,   13,    4,   -6,   -6,   -6,   -6,   -6,   -6
     ];
 
     private $_yydefault = [
@@ -407,3 +407,4 @@ class Parser
         return $line === null ? false : $line;
     }
 }
+

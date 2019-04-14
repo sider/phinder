@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Phinder\PatternParser\Parser;
+use Phinder\Pattern\Parser;
 
 class PatternParseTest extends TestCase
 {

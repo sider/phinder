@@ -1,14 +1,14 @@
 <?php
 
-namespace Phinder\PatternParser;
+namespace Phinder\Pattern;
 
-use Phinder\PatternParser\Node\Arguments;
-use Phinder\PatternParser\Node\Conjunction;
-use Phinder\PatternParser\Node\Disjunction;
-use Phinder\PatternParser\Node\Identifier;
-use Phinder\PatternParser\Node\Invocation;
-use Phinder\PatternParser\Node\Not;
-use Phinder\PatternParser\Node\Wildcard;
+use Phinder\Pattern\Node\Arguments;
+use Phinder\Pattern\Node\Conjunction;
+use Phinder\Pattern\Node\Disjunction;
+use Phinder\Pattern\Node\Identifier;
+use Phinder\Pattern\Node\Invocation;
+use Phinder\Pattern\Node\Not;
+use Phinder\Pattern\Node\Wildcard;
 
 class Parser
 {

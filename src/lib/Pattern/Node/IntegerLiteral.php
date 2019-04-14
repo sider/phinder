@@ -1,10 +1,10 @@
 <?php
 
-namespace Phinder\PatternParser\Node;
+namespace Phinder\Pattern\Node;
 
-use Phinder\PatternParser\Node;
+use Phinder\Pattern\Node;
 
-class FloatLiteral extends Node
+class IntegerLiteral extends Node
 {
     private $_value;
 

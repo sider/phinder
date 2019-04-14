@@ -1,6 +1,6 @@
 <?php
 
-namespace Phinder\PatternParser;
+namespace Phinder\Pattern;
 
 class Lexer
 {

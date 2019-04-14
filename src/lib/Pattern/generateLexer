@@ -88,7 +88,7 @@ $regex = buildRegex($tokens);
 
 echo "<?php\n\n";
 ?>
-namespace Phinder\PatternParser;
+namespace Phinder\Pattern;
 
 class Lexer
 {

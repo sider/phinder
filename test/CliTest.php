@@ -16,11 +16,6 @@ abstract class CliTest extends TestCase
         $this->_tester = new CommandTester($command);
     }
 
-    public function tearDown()
-    {
-        $this->_tester = null;
-    }
-
     protected function exec($input = array(), $options = array())
     {
         $this->_tester->execute($input, $options);

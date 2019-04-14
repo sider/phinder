@@ -146,12 +146,7 @@ class PatternParseTest extends TestCase
 
     public function setUp()
     {
-        $this->_parser = Parser::create();
-    }
-
-    public function tearDown()
-    {
-        $this->_parser = null;
+        $this->_parser = new Parser();
     }
 
     /**

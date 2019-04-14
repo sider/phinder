@@ -99,11 +99,6 @@ class Parser
         @listvar yylen
     ];
 
-    public static function create()
-    {
-        return new Parser();
-    }
-
     public function parse($string)
     {
         $this->_lexer = new Lexer($string);

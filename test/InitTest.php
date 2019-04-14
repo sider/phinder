@@ -22,7 +22,6 @@ class InitTest extends CliTest
             unlink(self::$_customYamlName);
         }
         chdir('..');
-        parent::tearDown();
     }
 
     public function testInit()

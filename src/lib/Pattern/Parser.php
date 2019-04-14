@@ -189,11 +189,6 @@ class Parser
             0,    1,    1,    3,    1,    1,    3
     ];
 
-    public static function create()
-    {
-        return new Parser();
-    }
-
     public function parse($string)
     {
         $this->_lexer = new Lexer($string);

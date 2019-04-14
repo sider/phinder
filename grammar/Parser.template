@@ -8,11 +8,15 @@ $meta @
 namespace Phinder\Pattern;
 
 use Phinder\Pattern\Node\Arguments;
+use Phinder\Pattern\Node\BooleanLiteral;
 use Phinder\Pattern\Node\Conjunction;
 use Phinder\Pattern\Node\Disjunction;
+use Phinder\Pattern\Node\FloatLiteral;
 use Phinder\Pattern\Node\Identifier;
 use Phinder\Pattern\Node\Invocation;
 use Phinder\Pattern\Node\Not;
+use Phinder\Pattern\Node\NullLiteral;
+use Phinder\Pattern\Node\StringLiteral;
 use Phinder\Pattern\Node\Wildcard;
 @include;
 

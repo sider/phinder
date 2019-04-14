@@ -3,54 +3,66 @@
 namespace Phinder\Pattern;
 
 use Phinder\Pattern\Node\Arguments;
+use Phinder\Pattern\Node\BooleanLiteral;
 use Phinder\Pattern\Node\Conjunction;
 use Phinder\Pattern\Node\Disjunction;
+use Phinder\Pattern\Node\FloatLiteral;
 use Phinder\Pattern\Node\Identifier;
 use Phinder\Pattern\Node\Invocation;
 use Phinder\Pattern\Node\Not;
+use Phinder\Pattern\Node\NullLiteral;
+use Phinder\Pattern\Node\StringLiteral;
 use Phinder\Pattern\Node\Wildcard;
 
 class Parser
 {
     const YYERRTOK = 256;
 
-    const T_ARROW = 257;
+    const T_COMMA = 257;
 
-    const T_DOUBLE_ARROW = 258;
+    const T_ARROW = 258;
 
-    const T_ELLIPSIS = 259;
+    const T_DOUBLE_ARROW = 259;
 
-    const T_VERTICAL_BAR = 260;
+    const T_ELLIPSIS = 260;
 
-    const T_AMPERSAND = 261;
+    const T_VERTICAL_BAR = 261;
 
-    const T_EXCLAMATION = 262;
+    const T_AMPERSAND = 262;
 
-    const T_LEFT_PAREN = 263;
+    const T_EXCLAMATION = 263;
 
-    const T_RIGHT_PAREN = 264;
+    const T_LEFT_PAREN = 264;
 
-    const T_IDENTIFIER = 265;
+    const T_RIGHT_PAREN = 265;
 
-    const T_UNSERSCORE = 266;
+    const T_NULL = 266;
 
-    const T_COMMA = 267;
+    const T_BOOLEAN = 267;
 
-    const T_NULL = 268;
+    const T_INTEGER = 268;
 
-    const T_BOOLEAN = 269;
+    const T_FLOAT = 269;
 
-    const T_FLOAT = 270;
+    const T_STRING = 270;
 
-    const T_INTEGER = 271;
+    const T_BOOLEAN_LITERAL = 271;
 
-    const T_STRING = 272;
+    const T_FLOAT_LITERAL = 272;
 
-    const YYBADCH = 16;
+    const T_INTEGER_LITERAL = 273;
 
-    const YYMAXLEX = 273;
+    const T_STRING_LITERAL = 274;
 
-    const YYLAST = 21;
+    const T_IDENTIFIER = 275;
+
+    const T_UNSERSCORE = 276;
+
+    const YYBADCH = 20;
+
+    const YYMAXLEX = 277;
+
+    const YYLAST = 25;
 
     const YY2TBLSTATE = 6;
 
@@ -69,51 +81,51 @@ class Parser
     private $_lexer = null;
 
     private $_yytranslate = [
-            0,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,   16,   16,   16,   16,
-           16,   16,   16,   16,   16,   16,    1,   16,   16,    2,
+            0,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
+           20,   20,   20,   20,   20,   20,    1,    2,   20,   20,
             3,    4,    5,    6,    7,    8,    9,   10,   11,   12,
-           13,   14,   15
+           13,   14,   15,   16,   17,   18,   19
     ];
 
     private $_yyaction = [
-            3,   41,    7,   32,    6,   42,   43,   45,   44,   46,
-            0,    4,    6,    5,    2,    0,    0,    1,    0,   23,
-           34
+            3,    0,   42,   44,   46,   48,   50,   43,   47,   45,
+           49,    7,   32,   41,    2,    4,    6,   23,    5,    0,
+            6,    0,    1,    0,   34
     ];
 
     private $_yycheck = [
-            6,    2,    8,    9,    5,   11,   12,   13,   14,   15,
-            0,    3,    5,    4,   10,   -1,   -1,    6,   -1,    7,
-            7
+            7,    0,    9,   10,   11,   12,   13,   14,   15,   16,
+           17,   18,   19,    3,    2,    4,    6,    8,    5,   -1,
+            6,   -1,    7,   -1,    8
     ];
 
     private $_yybase = [
-            7,   -1,   -1,    7,    7,    7,   -6,   11,   10,    8,
-            9,   12,   13,    4,   -6,   -6,   -6,   -6,   -6,   -6
+           14,   10,   10,   14,   14,   14,   -7,   15,    1,   11,
+           13,    9,   16,   12,   -7,   -7,   -7,   -7,   -7,   -7
     ];
 
     private $_yydefault = [
@@ -143,14 +155,14 @@ class Parser
             0,    1,    2,    2,    3,    3,    4,    4,    5,    5,
             6,    6,    6,    6,    6,    6,    6,    6,    7,    8,
             9,   15,   15,   16,   16,   17,   17,   18,   10,   11,
-           12,   13,   14
+           11,   12,   12,   13,   13,   14,   14
     ];
 
     private $_yylen = [
             1,    1,    1,    3,    1,    3,    1,    2,    1,    3,
             1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
             4,    0,    1,    1,    3,    1,    1,    1,    1,    1,
-            1,    1,    1
+            1,    1,    1,    1,    1,    1,    1
     ];
 
     public static function create()
@@ -317,13 +329,25 @@ class Parser
                          $yyval = new BooleanLiteral($yyastk[$yysp - (1 - 1)]); 
                         break;
                     case 30:
-                         $yyval = new IntegerLiteral($yyastk[$yysp - (1 - 1)]); 
+                         $yyval = new BooleanLiteral(); 
                         break;
                     case 31:
-                         $yyval = new FloatLiteral($yyastk[$yysp - (1 - 1)]); 
+                         $yyval = new IntegerLiteral($yyastk[$yysp - (1 - 1)]); 
                         break;
                     case 32:
+                         $yyval = new IntegerLiteral(); 
+                        break;
+                    case 33:
+                         $yyval = new FloatLiteral($yyastk[$yysp - (1 - 1)]); 
+                        break;
+                    case 34:
+                         $yyval = new FloatLiteral(); 
+                        break;
+                    case 35:
                          $yyval = new StringLiteral($yyastk[$yysp - (1 - 1)]); 
+                        break;
+                    case 36:
+                         $yyval = new StringLiteral(); 
                         break;
                     }
                     $yysp -= $yyl;

@@ -1,3 +1,4 @@
+%token T_COMMA ','
 %token T_ARROW '->'
 %token T_DOUBLE_ARROW '=>'
 %token T_ELLIPSIS '\.\.\.'
@@ -6,14 +7,17 @@
 %token T_EXCLAMATION '!'
 %token T_LEFT_PAREN '\('
 %token T_RIGHT_PAREN '\)'
+%token T_NULL 'null'
+%token T_BOOLEAN ':bool:'
+%token T_INTEGER ':int:'
+%token T_FLOAT ':float:'
+%token T_STRING ':string:'
+%token T_BOOLEAN_LITERAL 'true|false'
+%token T_FLOAT_LITERAL '[0-9]+\.[0-9]+'
+%token T_INTEGER_LITERAL '[1-9][0-9]*'
+%token T_STRING_LITERAL '\'.*?\'|".*?"'
 %token T_IDENTIFIER '[a-z_][a-z0-9_]*'
 %token T_UNSERSCORE '_'
-%token T_COMMA ','
-%token T_NULL 'null'
-%token T_BOOLEAN 'true|false'
-%token T_FLOAT '[0-9]+\.[0-9]+'
-%token T_INTEGER '[1-9][0-9]*'
-%token T_STRING '\'.*?\'|".*?"'
 
 %%
 
@@ -77,6 +81,7 @@ non_empty_arguments:
 argument:
     expression { $$ = $1; }
   | varlen_wildcard { $$ = $1; }
+;
 
 varlen_wildcard:
     T_ELLIPSIS { $$ = new Wildcard(true); }
@@ -87,19 +92,23 @@ null_literal:
 ;
 
 boolean_literal:
-    T_BOOLEAN { $$ = new BooleanLiteral($1); }
+    T_BOOLEAN_LITERAL { $$ = new BooleanLiteral($1); }
+  | T_BOOLEAN { $$ = new BooleanLiteral(); }
 ;
 
 integer_literal:
-    T_INTEGER { $$ = new IntegerLiteral($1); }
+    T_INTEGER_LITERAL { $$ = new IntegerLiteral($1); }
+  | T_INTEGER { $$ = new IntegerLiteral(); }
 ;
 
 float_literal:
-    T_FLOAT { $$ = new FloatLiteral($1); }
+    T_FLOAT_LITERAL { $$ = new FloatLiteral($1); }
+  | T_FLOAT { $$ = new FloatLiteral(); }
 ;
 
 string_literal:
-    T_STRING { $$ = new StringLiteral($1); }
+    T_STRING_LITERAL { $$ = new StringLiteral($1); }
+  | T_STRING { $$ = new StringLiteral(); }
 ;
 
 // TODO: array (old-style), array (new-style), method_invocation

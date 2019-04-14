@@ -4,7 +4,7 @@ namespace Phinder\Pattern;
 
 class Lexer
 {
-    private static $_regex = "/^(\t+|\s+|(?<T_ARROW>->)|(?<T_DOUBLE_ARROW>=>)|(?<T_ELLIPSIS>\.\.\.)|(?<T_VERTICAL_BAR>\|)|(?<T_AMPERSAND>&)|(?<T_EXCLAMATION>!)|(?<T_LEFT_PAREN>\()|(?<T_RIGHT_PAREN>\))|(?<T_IDENTIFIER>[a-z_][a-z0-9_]*)|(?<T_UNSERSCORE>_)|(?<T_COMMA>,)|(?<T_NULL>null)|(?<T_BOOLEAN>true|false)|(?<T_FLOAT>[0-9]+\.[0-9]+)|(?<T_INTEGER>[1-9][0-9]*)|(?<T_STRING>'.*?'|\".*?\"))/";
+    private static $_regex = "/^(\t+|\s+|(?<T_COMMA>,)|(?<T_ARROW>->)|(?<T_DOUBLE_ARROW>=>)|(?<T_ELLIPSIS>\.\.\.)|(?<T_VERTICAL_BAR>\|)|(?<T_AMPERSAND>&)|(?<T_EXCLAMATION>!)|(?<T_LEFT_PAREN>\()|(?<T_RIGHT_PAREN>\))|(?<T_NULL>null)|(?<T_BOOLEAN>:bool:)|(?<T_INTEGER>:int:)|(?<T_FLOAT>:float:)|(?<T_STRING>:string:)|(?<T_BOOLEAN_LITERAL>true|false)|(?<T_FLOAT_LITERAL>[0-9]+\.[0-9]+)|(?<T_INTEGER_LITERAL>[1-9][0-9]*)|(?<T_STRING_LITERAL>'.*?'|\".*?\")|(?<T_IDENTIFIER>[a-z_][a-z0-9_]*)|(?<T_UNSERSCORE>_))/";
 
     private $_string;
 
@@ -25,6 +25,12 @@ class Lexer
                 if (strlen(trim($matches[0])) === 0) {
                     $this->_string = substr($this->_string, strlen($matches[0]));
                     continue;
+                }
+                if ($matches['T_COMMA'] !== '') {
+                    $val = $matches['T_COMMA'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_COMMA;
                 }
                 if ($matches['T_ARROW'] !== '') {
                     $val = $matches['T_ARROW'];
@@ -74,24 +80,6 @@ class Lexer
 
                     return Parser::T_RIGHT_PAREN;
                 }
-                if ($matches['T_IDENTIFIER'] !== '') {
-                    $val = $matches['T_IDENTIFIER'];
-                    $this->_string = substr($this->_string, strlen($val));
-
-                    return Parser::T_IDENTIFIER;
-                }
-                if ($matches['T_UNSERSCORE'] !== '') {
-                    $val = $matches['T_UNSERSCORE'];
-                    $this->_string = substr($this->_string, strlen($val));
-
-                    return Parser::T_UNSERSCORE;
-                }
-                if ($matches['T_COMMA'] !== '') {
-                    $val = $matches['T_COMMA'];
-                    $this->_string = substr($this->_string, strlen($val));
-
-                    return Parser::T_COMMA;
-                }
                 if ($matches['T_NULL'] !== '') {
                     $val = $matches['T_NULL'];
                     $this->_string = substr($this->_string, strlen($val));
@@ -104,23 +92,59 @@ class Lexer
 
                     return Parser::T_BOOLEAN;
                 }
-                if ($matches['T_FLOAT'] !== '') {
-                    $val = $matches['T_FLOAT'];
-                    $this->_string = substr($this->_string, strlen($val));
-
-                    return Parser::T_FLOAT;
-                }
                 if ($matches['T_INTEGER'] !== '') {
                     $val = $matches['T_INTEGER'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_INTEGER;
                 }
+                if ($matches['T_FLOAT'] !== '') {
+                    $val = $matches['T_FLOAT'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_FLOAT;
+                }
                 if ($matches['T_STRING'] !== '') {
                     $val = $matches['T_STRING'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_STRING;
+                }
+                if ($matches['T_BOOLEAN_LITERAL'] !== '') {
+                    $val = $matches['T_BOOLEAN_LITERAL'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_BOOLEAN_LITERAL;
+                }
+                if ($matches['T_FLOAT_LITERAL'] !== '') {
+                    $val = $matches['T_FLOAT_LITERAL'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_FLOAT_LITERAL;
+                }
+                if ($matches['T_INTEGER_LITERAL'] !== '') {
+                    $val = $matches['T_INTEGER_LITERAL'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_INTEGER_LITERAL;
+                }
+                if ($matches['T_STRING_LITERAL'] !== '') {
+                    $val = $matches['T_STRING_LITERAL'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_STRING_LITERAL;
+                }
+                if ($matches['T_IDENTIFIER'] !== '') {
+                    $val = $matches['T_IDENTIFIER'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_IDENTIFIER;
+                }
+                if ($matches['T_UNSERSCORE'] !== '') {
+                    $val = $matches['T_UNSERSCORE'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_UNSERSCORE;
                 }
             }
 

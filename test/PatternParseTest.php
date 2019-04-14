@@ -30,12 +30,6 @@ class PatternParseTest extends TestCase
             ['Arguments'],
         ],
 
-        'a(_)' => [
-            'Invocation',
-            'a',
-            ['Arguments', ['Wildcard', false]],
-        ],
-
         'a(_, _)' => [
             'Invocation',
             'a',

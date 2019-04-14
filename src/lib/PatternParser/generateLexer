@@ -109,13 +109,13 @@ class Lexer
             }
 
             $matches = [];
-            if (preg_match(self::$_regex, $this->_string, $matches, PREG_UNMATCHED_AS_NULL)) {
+            if (preg_match(self::$_regex, $this->_string, $matches)) {
                 if (strlen(trim($matches[0])) === 0) {
                     $this->_string = substr($this->_string, strlen($matches[0]));
                     continue;
                 }
 <?php foreach ($tokens as $token): ?>
-                if ($matches['<?php echo $token['name']; ?>'] !== null) {
+                if ($matches['<?php echo $token['name']; ?>'] !== '') {
                     $val = $matches['<?php echo $token['name']; ?>'];
                     $this->_string = substr($this->_string, strlen($val));
 

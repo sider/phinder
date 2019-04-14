@@ -21,102 +21,102 @@ class Lexer
             }
 
             $matches = [];
-            if (preg_match(self::$_regex, $this->_string, $matches, PREG_UNMATCHED_AS_NULL)) {
+            if (preg_match(self::$_regex, $this->_string, $matches)) {
                 if (strlen(trim($matches[0])) === 0) {
                     $this->_string = substr($this->_string, strlen($matches[0]));
                     continue;
                 }
-                if ($matches['T_ARROW'] !== null) {
+                if ($matches['T_ARROW'] !== '') {
                     $val = $matches['T_ARROW'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_ARROW;
                 }
-                if ($matches['T_DOUBLE_ARROW'] !== null) {
+                if ($matches['T_DOUBLE_ARROW'] !== '') {
                     $val = $matches['T_DOUBLE_ARROW'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_DOUBLE_ARROW;
                 }
-                if ($matches['T_ELLIPSIS'] !== null) {
+                if ($matches['T_ELLIPSIS'] !== '') {
                     $val = $matches['T_ELLIPSIS'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_ELLIPSIS;
                 }
-                if ($matches['T_VERTICAL_BAR'] !== null) {
+                if ($matches['T_VERTICAL_BAR'] !== '') {
                     $val = $matches['T_VERTICAL_BAR'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_VERTICAL_BAR;
                 }
-                if ($matches['T_AMPERSAND'] !== null) {
+                if ($matches['T_AMPERSAND'] !== '') {
                     $val = $matches['T_AMPERSAND'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_AMPERSAND;
                 }
-                if ($matches['T_EXCLAMATION'] !== null) {
+                if ($matches['T_EXCLAMATION'] !== '') {
                     $val = $matches['T_EXCLAMATION'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_EXCLAMATION;
                 }
-                if ($matches['T_LEFT_PAREN'] !== null) {
+                if ($matches['T_LEFT_PAREN'] !== '') {
                     $val = $matches['T_LEFT_PAREN'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_LEFT_PAREN;
                 }
-                if ($matches['T_RIGHT_PAREN'] !== null) {
+                if ($matches['T_RIGHT_PAREN'] !== '') {
                     $val = $matches['T_RIGHT_PAREN'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_RIGHT_PAREN;
                 }
-                if ($matches['T_IDENTIFIER'] !== null) {
+                if ($matches['T_IDENTIFIER'] !== '') {
                     $val = $matches['T_IDENTIFIER'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_IDENTIFIER;
                 }
-                if ($matches['T_UNSERSCORE'] !== null) {
+                if ($matches['T_UNSERSCORE'] !== '') {
                     $val = $matches['T_UNSERSCORE'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_UNSERSCORE;
                 }
-                if ($matches['T_COMMA'] !== null) {
+                if ($matches['T_COMMA'] !== '') {
                     $val = $matches['T_COMMA'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_COMMA;
                 }
-                if ($matches['T_NULL'] !== null) {
+                if ($matches['T_NULL'] !== '') {
                     $val = $matches['T_NULL'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_NULL;
                 }
-                if ($matches['T_BOOLEAN'] !== null) {
+                if ($matches['T_BOOLEAN'] !== '') {
                     $val = $matches['T_BOOLEAN'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_BOOLEAN;
                 }
-                if ($matches['T_FLOAT'] !== null) {
+                if ($matches['T_FLOAT'] !== '') {
                     $val = $matches['T_FLOAT'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_FLOAT;
                 }
-                if ($matches['T_INTEGER'] !== null) {
+                if ($matches['T_INTEGER'] !== '') {
                     $val = $matches['T_INTEGER'];
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_INTEGER;
                 }
-                if ($matches['T_STRING'] !== null) {
+                if ($matches['T_STRING'] !== '') {
                     $val = $matches['T_STRING'];
                     $this->_string = substr($this->_string, strlen($val));
 

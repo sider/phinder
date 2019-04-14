@@ -3,7 +3,7 @@
 namespace Phinder\Pattern;
 
 use PhpParser\NodeTraverser as PhpNodeTraverser;
-use PhpParser\NodeVisitorAbstract as PhpNodeVisitorAbstract;
+use PhpParser\NodeVisitor as PhpNodeVisitor;
 
 abstract class Node
 {
@@ -41,7 +41,7 @@ abstract class Node
 
     private static function _createVisitor()
     {
-        return new class(static::$targetClassNames) extends PhpNodeVisitorAbstract {
+        return new class(static::$targetClassNames) implements PhpNodeVisitor {
             public $targetNodes;
 
             private $_targetClassNames;
@@ -64,6 +64,21 @@ abstract class Node
                     return PhpNodeTraverser::DONT_TRAVERSE_CHILDREN;
                 }
 
+                return null;
+            }
+
+            public function beforeTraverse($nodes)
+            {
+                return null;
+            }
+
+            public function leaveNode($node)
+            {
+                return null;
+            }
+
+            public function afterTraverse($nodes)
+            {
                 return null;
             }
         };

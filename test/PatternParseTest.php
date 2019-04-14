@@ -46,6 +46,12 @@ class PatternParseTest extends TestCase
             ],
         ],
 
+        '_->a()' => [
+            'MethodInvocation',
+            ['Wildcard', false],
+            ['Invocation', 'a', ['Arguments']],
+        ],
+
         'null' => [
             'NullLiteral',
         ],
@@ -98,6 +104,41 @@ class PatternParseTest extends TestCase
         ':string:' => [
             'StringLiteral',
             null,
+        ],
+
+        'array()' => [
+            'ArrayLiteral',
+            false,
+            ['ArrayElements'],
+        ],
+
+        '[]' => [
+            'ArrayLiteral',
+            true,
+            ['ArrayElements'],
+        ],
+
+        '[_, _]' => [
+            'ArrayLiteral',
+            true,
+            [
+                'ArrayElements',
+                ['Wildcard', false],
+                ['ArrayElements', ['Wildcard', false]],
+            ],
+        ],
+
+        '[_ => _]' => [
+            'ArrayLiteral',
+            true,
+            [
+                'ArrayElements',
+                [
+                    'KeyValuePair',
+                    ['Wildcard', false],
+                    ['Wildcard', false],
+                ],
+            ],
         ],
     ];
 

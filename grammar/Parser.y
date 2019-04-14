@@ -1,5 +1,6 @@
 %token T_COMMA ','
 %token T_ARROW '->'
+%token T_ARRAY 'array'
 %token T_DOUBLE_ARROW '=>'
 %token T_ELLIPSIS '\.\.\.'
 %token T_VERTICAL_BAR '\|'
@@ -7,6 +8,8 @@
 %token T_EXCLAMATION '!'
 %token T_LEFT_PAREN '\('
 %token T_RIGHT_PAREN '\)'
+%token T_LEFT_BRACKET '\['
+%token T_RIGHT_BRACKET '\]'
 %token T_NULL 'null'
 %token T_BOOLEAN ':bool:'
 %token T_INTEGER ':int:'
@@ -47,11 +50,13 @@ element:
 atom:
     identifier { $$ = $1; }
   | invocation { $$ = $1; }
+  | method_invocation { $$ = $1; }
   | null_literal { $$ = $1; }
   | boolean_literal { $$ = $1; }
   | integer_literal { $$ = $1; }
   | float_literal { $$ = $1; }
   | string_literal { $$ = $1; }
+  | array_literal { $$ = $1; }
 ;
 
 identifier:
@@ -60,6 +65,10 @@ identifier:
 
 invocation:
     T_IDENTIFIER T_LEFT_PAREN arguments T_RIGHT_PAREN { $$ = new Invocation($1, $3); }
+;
+
+method_invocation:
+    expression T_ARROW invocation { $$ = new MethodInvocation($1, $3); }
 ;
 
 arguments:
@@ -105,6 +114,25 @@ string_literal:
   | T_STRING { $$ = new StringLiteral(); }
 ;
 
-// TODO: array (old-style), array (new-style), method_invocation
+array_literal:
+    T_ARRAY T_LEFT_PAREN array_elements T_RIGHT_PAREN { $$ = new ArrayLiteral(false, $3); }
+  | T_LEFT_BRACKET array_elements T_RIGHT_BRACKET { $$ = new ArrayLiteral(true, $2); }
+;
+
+array_elements:
+    /* empty */ { $$ = new ArrayElements(); }
+  | non_empty_array_elements { $$ = $1; }
+;
+
+non_empty_array_elements:
+    array_element { $$ = new ArrayElements($1); }
+  | array_element T_COMMA non_empty_array_elements { $$ = new ArrayElements($1, $3); }
+;
+
+array_element:
+    expression { $$ = $1; }
+  | varlen_wildcard { $$ = $1; }
+  | expression T_DOUBLE_ARROW expression { $$ = new KeyValuePair($1, $3); }
+;
 
 %%

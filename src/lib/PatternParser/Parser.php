@@ -14,29 +14,29 @@ class Parser
 {
     const YYERRTOK = 256;
 
-    const IDENTIFIER = 257;
+    const ARROW = 257;
 
-    const ELLIPSIS = 258;
+    const DOUBLE_ARROW = 258;
 
-    const NULL = 259;
+    const ELLIPSIS = 259;
 
-    const BOOLEAN = 260;
+    const NULL = 260;
 
-    const INTEGER = 261;
+    const BOOLEAN = 261;
 
-    const FLOAT = 262;
+    const IDENTIFIER = 262;
 
-    const STRING = 263;
+    const FLOAT = 263;
 
-    const ARROW = 264;
+    const INTEGER = 264;
 
-    const DOUBLE_ARROW = 265;
+    const STRING = 265;
 
     const YYBADCH = 21;
 
     const YYMAXLEX = 266;
 
-    const YYLAST = 29;
+    const YYLAST = 31;
 
     const YY2TBLSTATE = 6;
 
@@ -52,9 +52,7 @@ class Parser
 
     private $_yylval = null;
 
-    private $_lexbuf = '';
-
-    private $_inputLines = null;
+    private $_lexer = null;
 
     private $_yytranslate = [
             0,   21,   21,   21,   21,   21,   21,   21,   21,   21,
@@ -82,26 +80,28 @@ class Parser
            21,   21,   21,   21,   21,   21,   21,   21,   21,   21,
            21,   21,   21,   21,   21,   21,   21,   21,   21,   21,
            21,   21,   21,   21,   21,   21,   21,   21,   21,   21,
-           21,   21,   21,   21,   21,   21,    1,    2,    3,    4,
-            5,    6,    7,    8,   21,   21
+           21,   21,   21,   21,   21,   21,    1,   21,   21,    2,
+            3,    4,    5,    6,    7,    8
     ];
 
     private $_yyaction = [
-            8,    0,   47,   48,   50,   52,   54,   46,    6,   28,
-            3,    4,   37,    5,    7,    6,   13,   14,   15,   16,
-            1,    2,   39,   49,    0,    0,   53,   51,   55
+           47,   48,    8,   52,   50,   54,    0,    6,    4,    3,
+           46,   37,    5,    7,   28,   13,   14,   15,   16,    6,
+           39,    1,    0,    0,    0,    2,    0,   49,   53,   51,
+           55
     ];
 
     private $_yycheck = [
-            2,    0,    4,    5,    6,    7,    8,    3,   11,   13,
-           12,    9,   14,   10,   16,   11,   17,   18,   19,   20,
-           12,   15,   13,   16,   -1,   -1,   16,   16,   16
+            3,    4,    5,    6,    7,    8,    0,   11,    9,   12,
+            2,   14,   10,   16,   13,   17,   18,   19,   20,   11,
+           13,   12,   -1,   -1,   -1,   15,   -1,   16,   16,   16,
+           16
     ];
 
     private $_yybase = [
-           -3,    4,    4,   -3,   -3,   -3,   -2,   -1,    8,    1,
-            2,    3,   -4,    7,   11,   10,   12,    9,    6,   -2,
-           -2,   -2,   -2,   -2,   -2
+           -4,    8,    8,   -4,   -4,   -4,   -3,   -2,    9,    6,
+           -1,    2,    1,   11,   13,   12,   14,    7,   10,   -3,
+           -3,   -3,   -3,   -3,   -3
     ];
 
     private $_yydefault = [
@@ -148,7 +148,7 @@ class Parser
 
     public function parse($string)
     {
-        $this->_inputLines = explode("\n", $string);
+        $this->_lexer = new Lexer($string);
 
         return $this->_yyparse();
     }
@@ -389,16 +389,7 @@ class Parser
 
     private function _yylex()
     {
-        do {
-            $this->_lexbuf = preg_replace('/^[\t ]+/', '', $this->_lexbuf);
-            if ($this->_lexbuf) {
-                break;
-            }
-        } while ($this->_lexbuf = $this->_readLine());
-
-        $this->_lexbuf = str_replace(PHP_EOL, "\n", $this->_lexbuf);
-
-        return $this->_readToken();
+        return $this->getToken($this->_yylval);
     }
 
     private function _yyerror($msg)
@@ -414,27 +405,5 @@ class Parser
         $line = array_shift($this->_inputLines);
 
         return $line === null ? false : $line;
-    }
-
-    private function _readToken()
-    {
-        if ((strpos($this->_lexbuf, '...') === 0)) {
-            $this->_lexbuf = substr($this->_lexbuf, strlen('...'));
-            return self::ELLIPSIS;
-        }
-
-        if (preg_match('/^([a-z_][a-z0-9_]*)/', $this->_lexbuf, $matches)) {
-            if ($matches[1] !== '_') {
-                $this->_yylval = $matches[1];
-                $this->_lexbuf = substr($this->_lexbuf, strlen($matches[1]));
-
-                return self::IDENTIFIER;
-            }
-        }
-
-        $ret = ord($this->_lexbuf);
-        $this->_lexbuf = substr($this->_lexbuf, 1);
-
-        return $ret;
     }
 }

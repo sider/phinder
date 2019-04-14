@@ -42,9 +42,7 @@ class Parser
 
     private $_yylval = null;
 
-    private $_lexbuf = '';
-
-    private $_inputLines = null;
+    private $_lexer = null;
 
     private $_yytranslate = [
         @listvar yytranslate
@@ -97,7 +95,7 @@ class Parser
 
     public function parse($string)
     {
-        $this->_inputLines = explode("\n", $string);
+        $this->_lexer = new Lexer($string);
 
         return $this->_yyparse();
     }
@@ -235,16 +233,7 @@ class Parser
 
     private function _yylex()
     {
-        do {
-            $this->_lexbuf = preg_replace('/^[\t ]+/', '', $this->_lexbuf);
-            if ($this->_lexbuf) {
-                break;
-            }
-        } while ($this->_lexbuf = $this->_readLine());
-
-        $this->_lexbuf = str_replace(PHP_EOL, "\n", $this->_lexbuf);
-
-        return $this->_readToken();
+        return $this->getToken($this->_yylval);
     }
 
     private function _yyerror($msg)
@@ -260,27 +249,5 @@ class Parser
         $line = array_shift($this->_inputLines);
 
         return $line === null ? false : $line;
-    }
-
-    private function _readToken()
-    {
-        if ((strpos($this->_lexbuf, '...') === 0)) {
-            $this->_lexbuf = substr($this->_lexbuf, strlen('...'));
-            return self::ELLIPSIS;
-        }
-
-        if (preg_match('/^([a-z_][a-z0-9_]*)/', $this->_lexbuf, $matches)) {
-            if ($matches[1] !== '_') {
-                $this->_yylval = $matches[1];
-                $this->_lexbuf = substr($this->_lexbuf, strlen($matches[1]));
-
-                return self::IDENTIFIER;
-            }
-        }
-
-        $ret = ord($this->_lexbuf);
-        $this->_lexbuf = substr($this->_lexbuf, 1);
-
-        return $ret;
     }
 }

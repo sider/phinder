@@ -1,9 +1,12 @@
 .PHONY:	all
-all: clean Parser.php
+all: clean Parser.php Lexer.php
 
 .PHONY:	clean
 clean:
-	rm -f Parser.php
+	rm -f Parser.php Lexer.php
 
 Parser.php: Parser.phpy Parser.template
 	kmyacc -l -m Parser.template Parser.phpy
+
+Lexer.php: Parser.phpy generateLexer.php
+	php -f generateLexer.php > Lexer.php

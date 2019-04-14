@@ -1,13 +1,12 @@
-%token IDENTIFIER
-%token ELLIPSIS
-%token NULL
-%token BOOLEAN
-%token INTEGER
-%token FLOAT
-%token STRING
-
-%token ARROW
-%token DOUBLE_ARROW
+%token ARROW '->'
+%token DOUBLE_ARROW '=>'
+%token ELLIPSIS ' \.\.\.'
+%token NULL 'null'
+%token BOOLEAN 'true|false'
+%token IDENTIFIER '[a-z_][a-z0-9_]*'
+%token FLOAT '[0-9]+\.[0-9]+'
+%token INTEGER '[1-9][0-9]*'
+%token STRING '\'.*?\'|".*?"'
 
 %%
 

@@ -17,4 +17,9 @@ class Identifier extends Node
     {
         return true;
     }
+
+    public function getChildrenArray()
+    {
+        return [$this->_text];
+    }
 }

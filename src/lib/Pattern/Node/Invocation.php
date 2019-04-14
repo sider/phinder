@@ -20,4 +20,12 @@ class Invocation extends Node
     {
         return true;
     }
+
+    public function getChildrenArray()
+    {
+        return [
+            $this->_name,
+            $this->_arguments->toArray(),
+        ];
+    }
 }

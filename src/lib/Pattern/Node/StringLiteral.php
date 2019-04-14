@@ -10,11 +10,20 @@ class StringLiteral extends Node
 
     public function __construct($value = null)
     {
-        $this->_value = $value;
+        if ($value === null) {
+            $this->_value = null;
+        } else {
+            $this->_value = substr($value, 1, strlen($value) - 2);
+        }
     }
 
     public function match($phpNode)
     {
         return true;
+    }
+
+    public function getChildrenArray()
+    {
+        return [$this->_value];
     }
 }

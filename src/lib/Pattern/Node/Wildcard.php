@@ -17,4 +17,9 @@ class Wildcard extends Node
     {
         return true;
     }
+
+    public function getChildrenArray()
+    {
+        return [$this->_varlen];
+    }
 }

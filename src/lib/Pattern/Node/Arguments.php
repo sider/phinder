@@ -20,4 +20,19 @@ class Arguments extends Node
     {
         return true;
     }
+
+    public function getChildrenArray()
+    {
+        $array = [];
+
+        if ($this->_head) {
+            $array[] = $this->_head->toArray();
+        }
+
+        if ($this->_tail) {
+            $array[] = $this->_tail->toArray();
+        }
+
+        return $array;
+    }
 }

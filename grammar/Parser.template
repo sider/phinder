@@ -2,8 +2,8 @@
 $meta @
 @semval($) $yyval
 @semval($,%t) $yyval
-@semval(%n) $yyastk[$yysp - (%l - %n)]
-@semval(%n,%t) $yyastk[$yysp - (%l - %n)]
+@semval(%n) $this->_yyastk[$yysp - (%l - %n)]
+@semval(%n,%t) $this->_yyastk[$yysp - (%l - %n)]
 
 namespace Phinder\Pattern;
 
@@ -13,6 +13,7 @@ use Phinder\Pattern\Node\Conjunction;
 use Phinder\Pattern\Node\Disjunction;
 use Phinder\Pattern\Node\FloatLiteral;
 use Phinder\Pattern\Node\Identifier;
+use Phinder\Pattern\Node\IntegerLiteral;
 use Phinder\Pattern\Node\Invocation;
 use Phinder\Pattern\Node\Not;
 use Phinder\Pattern\Node\NullLiteral;
@@ -47,6 +48,8 @@ class Parser
     private $_yylval = null;
 
     private $_lexer = null;
+
+    private $_yyastk = null;
 
     private $_yytranslate = [
         @listvar yytranslate
@@ -100,13 +103,18 @@ class Parser
     public function parse($string)
     {
         $this->_lexer = new Lexer($string);
+        $status = $this->_yyparse();
 
-        return $this->_yyparse();
+        if ($status === 0) {
+            return $this->_yyastk[1];
+        }
+
+        return null;
     }
 
     private function _yyparse()
     {
-        $yyastk = [];
+        $this->_yyastk = [];
         $yysstk = [];
         $yyn = 0;
         $yyl = 0;
@@ -139,7 +147,7 @@ class Parser
                     if ($yyn > 0) {
                         ++$yysp;
                         $yysstk[$yysp] = $yystate = $yyn;
-                        $yyastk[$yysp] = $this->_yylval;
+                        $this->_yyastk[$yysp] = $this->_yylval;
                         $yychar = -1;
 
                         if ($yyerrflag > 0) {
@@ -166,7 +174,7 @@ class Parser
                 } elseif ($yyn != self::YYUNEXPECTED) {
                     $yyl = $this->_yylen[$yyn];
                     $n = $yysp - $yyl + 1;
-                    $yyval = isset($yyastk[$n]) ? $yyastk[$n] : null;
+                    $yyval = isset($this->_yyastk[$n]) ? $this->_yyastk[$n] : null;
                     switch ($yyn) {
 @reduce
                     case %n:
@@ -188,7 +196,7 @@ class Parser
                     ++$yysp;
 
                     $yysstk[$yysp] = $yystate;
-                    $yyastk[$yysp] = $yyval;
+                    $this->_yyastk[$yysp] = $yyval;
                 } else {
                     switch ($yyerrflag) {
                     case 0:

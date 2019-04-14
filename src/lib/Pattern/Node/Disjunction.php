@@ -21,4 +21,12 @@ class Disjunction extends Node
         return $this->_patternNode1->match($phpNode)
         || $this->_patternNode2->match($phpNode);
     }
+
+    public function getChildrenArray()
+    {
+        return [
+            $this->_patternNode1->toArray(),
+            $this->_patternNode2->toArray(),
+        ];
+    }
 }

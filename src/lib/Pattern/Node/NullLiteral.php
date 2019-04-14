@@ -14,4 +14,9 @@ class NullLiteral extends Node
     {
         return true;
     }
+
+    public function getChildrenArray()
+    {
+        return [];
+    }
 }

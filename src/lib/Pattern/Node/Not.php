@@ -17,4 +17,9 @@ class Not extends Node
     {
         return !$this->_patternNode->match($phpNode);
     }
+
+    public function getChildrenArray()
+    {
+        return [$this->_patternNode->toArray()];
+    }
 }

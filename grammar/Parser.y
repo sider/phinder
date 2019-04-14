@@ -17,7 +17,6 @@
 %token T_INTEGER_LITERAL '[1-9][0-9]*'
 %token T_STRING_LITERAL '\'.*?\'|".*?"'
 %token T_IDENTIFIER '[a-z_][a-z0-9_]*'
-%token T_UNSERSCORE '_'
 
 %%
 
@@ -37,7 +36,7 @@ term:
 
 factor:
     element { $$ = $1; }
-  | T_EXCLAMATION element { $$ = new Not($1); }
+  | T_EXCLAMATION element { $$ = new Not($2); }
 ;
 
 element:
@@ -46,8 +45,7 @@ element:
 ;
 
 atom:
-    wildcard { $$ = $1; }
-  | identifier { $$ = $1; }
+    identifier { $$ = $1; }
   | invocation { $$ = $1; }
   | null_literal { $$ = $1; }
   | boolean_literal { $$ = $1; }
@@ -56,12 +54,8 @@ atom:
   | string_literal { $$ = $1; }
 ;
 
-wildcard:
-    T_UNSERSCORE { $$ = new Wildcard(); }
-;
-
 identifier:
-    T_IDENTIFIER { $$ = new Identifier($1); }
+    T_IDENTIFIER { $$ = ($1 === '_') ? new Wildcard() : new Identifier($1); }
 ;
 
 invocation:

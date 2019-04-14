@@ -4,6 +4,7 @@ namespace Phinder\Pattern;
 
 use PhpParser\NodeTraverser as PhpNodeTraverser;
 use PhpParser\NodeVisitor as PhpNodeVisitor;
+use PhpParser\Node as PhpNode;
 
 abstract class Node
 {
@@ -67,17 +68,17 @@ abstract class Node
                 return null;
             }
 
-            public function beforeTraverse($nodes)
+            public function beforeTraverse(array $nodes)
             {
                 return null;
             }
 
-            public function leaveNode($node)
+            public function leaveNode(PhpNode $node)
             {
                 return null;
             }
 
-            public function afterTraverse($nodes)
+            public function afterTraverse(array $nodes)
             {
                 return null;
             }

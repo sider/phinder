@@ -39,6 +39,18 @@ class PatternMatchTest extends TestCase
             true => ['echo 1.0;', 'echo 1.00;'],
             false => ['echo 1;'],
         ],
+        '"a"' => [
+            true => ['echo "a";', "echo 'a';"],
+            false => ['echo $a;'],
+        ],
+        "'a'" => [
+            true => ['echo "a";', "echo 'a';"],
+            false => ['echo $a;'],
+        ],
+        ':string:' => [
+            true => ['echo "a";', "echo 'a';"],
+            false => ['echo $a;'],
+        ],
     ];
 
     private $_patternParser;

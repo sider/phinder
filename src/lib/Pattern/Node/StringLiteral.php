@@ -6,6 +6,8 @@ use Phinder\Pattern\Node;
 
 class StringLiteral extends Node
 {
+    protected static $targetClassNames = ['Scalar\String_'];
+
     private $_value;
 
     public function __construct($value = null)
@@ -19,7 +21,11 @@ class StringLiteral extends Node
 
     protected function matchPhpNode($phpNode)
     {
-        return true;
+        if ($this->_value === null) {
+            return true;
+        }
+
+        return $this->_value === $phpNode->value;
     }
 
     protected function getChildrenArray()

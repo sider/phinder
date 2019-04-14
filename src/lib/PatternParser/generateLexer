@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 function getGrammar()
@@ -91,7 +92,7 @@ namespace Phinder\PatternParser;
 
 class Lexer
 {
-    private static $_regex = "<?php echo $regex; ?>";
+    private static $_regex = "/<?php echo $regex; ?>/";
 
     private $_string;
 
@@ -102,16 +103,28 @@ class Lexer
 
     public function getToken(&$val)
     {
-        $matches = [];
-        if (preg_match(self::$_regex, $string, $matches, PREG_UNMATCHED_AS_NULL)) {
-<?php foreach ($tokens as $token): ?>
-            if ($matches['<?php echo $token['name']; ?>'] !== null) {
-                $val = $matches['<?php echo $token['name']; ?>'];
-                $this->_string = substr($this-_string, strlen($val));
-                return Parser::<?php echo $token['name']; ?>;
+        while (true) {
+            if ($this->_string == "") {
+                return false;
             }
+
+            $matches = [];
+            if (preg_match(self::$_regex, $this->_string, $matches, PREG_UNMATCHED_AS_NULL)) {
+                if (strlen(trim($matches[0])) === 0) {
+                    $this->_string = substr($this->_string, strlen($matches[0]));
+                    continue;
+                }
+<?php foreach ($tokens as $token): ?>
+                if ($matches['<?php echo $token['name']; ?>'] !== null) {
+                    $val = $matches['<?php echo $token['name']; ?>'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::<?php echo $token['name']; ?>;
+                }
 <?php endforeach; ?>
+            }
+
+            return Parser::YYERRTOK;
         }
-        return Parser::YYERRTOK;
     }
 }

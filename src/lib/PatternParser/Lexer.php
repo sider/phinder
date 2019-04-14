@@ -4,7 +4,7 @@ namespace Phinder\PatternParser;
 
 class Lexer
 {
-    private static $_regex = "^(\t+|\s+|(?<ARROW>->)|(?<DOUBLE_ARROW>=>)|(?<ELLIPSIS>\.\.\.)|(?<NULL>null)|(?<BOOLEAN>true|false)|(?<IDENTIFIER>[a-z_][a-z0-9_]*)|(?<FLOAT>[0-9]+\.[0-9]+)|(?<INTEGER>[1-9][0-9]*)|(?<STRING>'.*?'|\".*?\"))";
+    private static $_regex = "/^(\t+|\s+|(?<T_ARROW>->)|(?<T_DOUBLE_ARROW>=>)|(?<T_ELLIPSIS>\.\.\.)|(?<T_VERTICAL_BAR>\|)|(?<T_AMPERSAND>&)|(?<T_EXCLAMATION>!)|(?<T_LEFT_PAREN>\()|(?<T_RIGHT_PAREN>\))|(?<T_IDENTIFIER>[a-z_][a-z0-9_]*)|(?<T_UNSERSCORE>_)|(?<T_COMMA>,)|(?<T_NULL>null)|(?<T_BOOLEAN>true|false)|(?<T_FLOAT>[0-9]+\.[0-9]+)|(?<T_INTEGER>[1-9][0-9]*)|(?<T_STRING>'.*?'|\".*?\"))/";
 
     private $_string;
 
@@ -15,54 +15,116 @@ class Lexer
 
     public function getToken(&$val)
     {
-        $matches = [];
-        if (preg_match(self::$_regex, $string, $matches, PREG_UNMATCHED_AS_NULL)) {
-            if ($matches['ARROW'] !== null) {
-                $val = $matches['ARROW'];
-                $this->_string = substr($this-_string, strlen($val));
-                return Parser::ARROW;
+        while (true) {
+            if ($this->_string == "") {
+                return false;
             }
-            if ($matches['DOUBLE_ARROW'] !== null) {
-                $val = $matches['DOUBLE_ARROW'];
-                $this->_string = substr($this-_string, strlen($val));
-                return Parser::DOUBLE_ARROW;
+
+            $matches = [];
+            if (preg_match(self::$_regex, $this->_string, $matches, PREG_UNMATCHED_AS_NULL)) {
+                if (strlen(trim($matches[0])) === 0) {
+                    $this->_string = substr($this->_string, strlen($matches[0]));
+                    continue;
+                }
+                if ($matches['T_ARROW'] !== null) {
+                    $val = $matches['T_ARROW'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_ARROW;
+                }
+                if ($matches['T_DOUBLE_ARROW'] !== null) {
+                    $val = $matches['T_DOUBLE_ARROW'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_DOUBLE_ARROW;
+                }
+                if ($matches['T_ELLIPSIS'] !== null) {
+                    $val = $matches['T_ELLIPSIS'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_ELLIPSIS;
+                }
+                if ($matches['T_VERTICAL_BAR'] !== null) {
+                    $val = $matches['T_VERTICAL_BAR'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_VERTICAL_BAR;
+                }
+                if ($matches['T_AMPERSAND'] !== null) {
+                    $val = $matches['T_AMPERSAND'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_AMPERSAND;
+                }
+                if ($matches['T_EXCLAMATION'] !== null) {
+                    $val = $matches['T_EXCLAMATION'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_EXCLAMATION;
+                }
+                if ($matches['T_LEFT_PAREN'] !== null) {
+                    $val = $matches['T_LEFT_PAREN'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_LEFT_PAREN;
+                }
+                if ($matches['T_RIGHT_PAREN'] !== null) {
+                    $val = $matches['T_RIGHT_PAREN'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_RIGHT_PAREN;
+                }
+                if ($matches['T_IDENTIFIER'] !== null) {
+                    $val = $matches['T_IDENTIFIER'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_IDENTIFIER;
+                }
+                if ($matches['T_UNSERSCORE'] !== null) {
+                    $val = $matches['T_UNSERSCORE'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_UNSERSCORE;
+                }
+                if ($matches['T_COMMA'] !== null) {
+                    $val = $matches['T_COMMA'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_COMMA;
+                }
+                if ($matches['T_NULL'] !== null) {
+                    $val = $matches['T_NULL'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_NULL;
+                }
+                if ($matches['T_BOOLEAN'] !== null) {
+                    $val = $matches['T_BOOLEAN'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_BOOLEAN;
+                }
+                if ($matches['T_FLOAT'] !== null) {
+                    $val = $matches['T_FLOAT'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_FLOAT;
+                }
+                if ($matches['T_INTEGER'] !== null) {
+                    $val = $matches['T_INTEGER'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_INTEGER;
+                }
+                if ($matches['T_STRING'] !== null) {
+                    $val = $matches['T_STRING'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_STRING;
+                }
             }
-            if ($matches['ELLIPSIS'] !== null) {
-                $val = $matches['ELLIPSIS'];
-                $this->_string = substr($this-_string, strlen($val));
-                return Parser::ELLIPSIS;
-            }
-            if ($matches['NULL'] !== null) {
-                $val = $matches['NULL'];
-                $this->_string = substr($this-_string, strlen($val));
-                return Parser::NULL;
-            }
-            if ($matches['BOOLEAN'] !== null) {
-                $val = $matches['BOOLEAN'];
-                $this->_string = substr($this-_string, strlen($val));
-                return Parser::BOOLEAN;
-            }
-            if ($matches['IDENTIFIER'] !== null) {
-                $val = $matches['IDENTIFIER'];
-                $this->_string = substr($this-_string, strlen($val));
-                return Parser::IDENTIFIER;
-            }
-            if ($matches['FLOAT'] !== null) {
-                $val = $matches['FLOAT'];
-                $this->_string = substr($this-_string, strlen($val));
-                return Parser::FLOAT;
-            }
-            if ($matches['INTEGER'] !== null) {
-                $val = $matches['INTEGER'];
-                $this->_string = substr($this-_string, strlen($val));
-                return Parser::INTEGER;
-            }
-            if ($matches['STRING'] !== null) {
-                $val = $matches['STRING'];
-                $this->_string = substr($this-_string, strlen($val));
-                return Parser::STRING;
-            }
+
+            return Parser::YYERRTOK;
         }
-        return Parser::YYERRTOK;
     }
 }

@@ -8,5 +8,5 @@ clean:
 Parser.php: Parser.phpy Parser.template
 	kmyacc -l -m Parser.template Parser.phpy
 
-Lexer.php: Parser.phpy generateLexer.php
-	php -f generateLexer.php > Lexer.php
+Lexer.php: Parser.phpy generateLexer
+	./generateLexer > Lexer.php

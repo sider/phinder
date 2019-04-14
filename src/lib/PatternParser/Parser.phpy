@@ -1,12 +1,19 @@
-%token ARROW '->'
-%token DOUBLE_ARROW '=>'
-%token ELLIPSIS ' \.\.\.'
-%token NULL 'null'
-%token BOOLEAN 'true|false'
-%token IDENTIFIER '[a-z_][a-z0-9_]*'
-%token FLOAT '[0-9]+\.[0-9]+'
-%token INTEGER '[1-9][0-9]*'
-%token STRING '\'.*?\'|".*?"'
+%token T_ARROW '->'
+%token T_DOUBLE_ARROW '=>'
+%token T_ELLIPSIS ' \.\.\.'
+%token T_VERTICAL_BAR ' \|'
+%token T_AMPERSAND '&'
+%token T_EXCLAMATION '!'
+%token T_LEFT_PAREN ' \('
+%token T_RIGHT_PAREN ' \)'
+%token T_IDENTIFIER '[a-z_][a-z0-9_]*'
+%token T_UNSERSCORE '_'
+%token T_COMMA ','
+%token T_NULL 'null'
+%token T_BOOLEAN 'true|false'
+%token T_FLOAT '[0-9]+\.[0-9]+'
+%token T_INTEGER '[1-9][0-9]*'
+%token T_STRING '\'.*?\'|".*?"'
 
 %%
 
@@ -16,22 +23,22 @@ start:
 
 expression:
     term { $$ = $1; }
-  | term '|' expression { $$ = new Disjunction($1, $3); }
+  | term T_VERTICAL_BAR expression { $$ = new Disjunction($1, $3); }
 ;
 
 term:
     factor { $$ = $1; }
-  | factor '&' term { $$ = new Conjunction($1, $3); }
+  | factor T_AMPERSAND term { $$ = new Conjunction($1, $3); }
 ;
 
 factor:
     element { $$ = $1; }
-  | '!' element { $$ = new Not($1); }
+  | T_EXCLAMATION element { $$ = new Not($1); }
 ;
 
 element:
     atom { $$ = $1; }
-  | '(' expression ')' { $$ = $2; }
+  | T_LEFT_PAREN expression T_RIGHT_PAREN { $$ = $2; }
 ;
 
 atom:
@@ -46,15 +53,15 @@ atom:
 ;
 
 wildcard:
-    '_' { $$ = new Wildcard(); }
+    T_UNSERSCORE { $$ = new Wildcard(); }
 ;
 
 identifier:
-    IDENTIFIER { $$ = new Identifier($1); }
+    T_IDENTIFIER { $$ = new Identifier($1); }
 ;
 
 invocation:
-    IDENTIFIER '(' arguments ')' { $$ = new Invocation($1, $3); }
+    T_IDENTIFIER T_LEFT_PAREN arguments T_RIGHT_PAREN { $$ = new Invocation($1, $3); }
 ;
 
 arguments:
@@ -64,7 +71,7 @@ arguments:
 
 non_empty_arguments:
     argument { $$ = new Arguments($1); }
-  | argument ',' non_empty_arguments { $$ = new Arguments($1, $3); }
+  | argument T_COMMA non_empty_arguments { $$ = new Arguments($1, $3); }
 ;
 
 argument:
@@ -72,31 +79,27 @@ argument:
   | varlen_wildcard { $$ = $1; }
 
 varlen_wildcard:
-    ELLIPSIS { $$ = new Wildcard(true); }
+    T_ELLIPSIS { $$ = new Wildcard(true); }
 ;
 
 null_literal:
-    NULL { $$ = new NullLiteral(); }
+    T_NULL { $$ = new NullLiteral(); }
 ;
 
 boolean_literal:
-    BOOLEAN { $$ = new BooleanLiteral($1); }
-  | ':' 'bool' ':' { $$ = new BooleanLiteral(); }
+    T_BOOLEAN { $$ = new BooleanLiteral($1); }
 ;
 
 integer_literal:
-    INTEGER { $$ = new IntegerLiteral($1); }
-  | ':' 'int' ':' { $$ = new IntegerLiteral(); }
+    T_INTEGER { $$ = new IntegerLiteral($1); }
 ;
 
 float_literal:
-    FLOAT { $$ = new FloatLiteral($1); }
-  | ':' 'float' ':' { $$ = new FloatLiteral(); }
+    T_FLOAT { $$ = new FloatLiteral($1); }
 ;
 
 string_literal:
-    STRING { $$ = new StringLiteral($1); }
-  | ':' 'string' ':' { $$ = new StringLiteral(); }
+    T_STRING { $$ = new StringLiteral($1); }
 ;
 
 // TODO: array (old-style), array (new-style), method_invocation

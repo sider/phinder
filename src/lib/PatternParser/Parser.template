@@ -233,7 +233,7 @@ class Parser
 
     private function _yylex()
     {
-        return $this->getToken($this->_yylval);
+        return $this->_lexer->getToken($this->_yylval);
     }
 
     private function _yyerror($msg)

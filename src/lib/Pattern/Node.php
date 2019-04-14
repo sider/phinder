@@ -57,7 +57,7 @@ abstract class Node
                 }
             }
 
-            public function enterNode($node)
+            public function enterNode(PhpNode $node)
             {
                 if (in_array(get_class($node), $this->_targetClassNames, true)) {
                     $this->targetNodes[] = $node;

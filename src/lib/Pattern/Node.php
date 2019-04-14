@@ -8,7 +8,7 @@ use PhpParser\Node as PhpNode;
 
 abstract class Node
 {
-    protected static $targetClassNames = [];
+    protected static $targetClassNames = null;
 
     abstract protected function matchPhpNode($phpNode);
 
@@ -50,16 +50,12 @@ abstract class Node
             public function __construct($targetClassNames)
             {
                 $this->targetNodes = [];
-                $this->_targetClassNames = [];
-
-                foreach ($targetClassNames as $name) {
-                    $this->_targetClassNames[] = "PhpParser\Node\\$name";
-                }
+                $this->_setTargetClassNames($targetClassNames);
             }
 
             public function enterNode(PhpNode $node)
             {
-                if (in_array(get_class($node), $this->_targetClassNames, true)) {
+                if ($this->_isTarget($node)) {
                     $this->targetNodes[] = $node;
 
                     return PhpNodeTraverser::DONT_TRAVERSE_CHILDREN;
@@ -81,6 +77,27 @@ abstract class Node
             public function afterTraverse(array $nodes)
             {
                 return null;
+            }
+
+            private function _isTarget($node)
+            {
+                if ($this->_targetClassNames === null) {
+                    return true;
+                }
+
+                return in_array(get_class($node), $this->_targetClassNames, true);
+            }
+
+            private function _setTargetClassNames($targetClassNames)
+            {
+                if ($targetClassNames === null) {
+                    $this->_targetClassNames = null;
+                } else {
+                    $this->_targetClassNames = [];
+                    foreach ($targetClassNames as $name) {
+                        $this->_targetClassNames[] = "PhpParser\Node\\$name";
+                    }
+                }
             }
         };
     }

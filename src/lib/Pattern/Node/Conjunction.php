@@ -19,7 +19,7 @@ class Conjunction extends Node
     protected function matchPhpNode($phpNode)
     {
         return $this->_patternNode1->match($phpNode)
-        && $this->_patternNode2->match($phpNode);
+            && $this->_patternNode2->match($phpNode);
     }
 
     protected function getChildrenArray()

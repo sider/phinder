@@ -6,13 +6,13 @@ use Phinder\Pattern\Node;
 
 class Invocation extends Node
 {
-    private $_name;
+    private $_identifier;
 
     private $_arguments;
 
-    public function __construct($name, $arguments)
+    public function __construct($identifier, $arguments)
     {
-        $this->_name = $name;
+        $this->_identifier = $identifier;
         $this->_arguments = $arguments;
     }
 
@@ -24,7 +24,7 @@ class Invocation extends Node
     protected function getChildrenArray()
     {
         return [
-            $this->_name,
+            $this->_identifier->toArray(),
             $this->_arguments->toArray(),
         ];
     }

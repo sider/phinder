@@ -64,7 +64,7 @@ identifier:
 ;
 
 invocation:
-    T_IDENTIFIER T_LEFT_PAREN arguments T_RIGHT_PAREN { $$ = new Invocation($1, $3); }
+    identifier T_LEFT_PAREN arguments T_RIGHT_PAREN { $$ = new Invocation($1, $3); }
 ;
 
 method_invocation:

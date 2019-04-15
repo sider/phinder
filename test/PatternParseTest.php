@@ -26,13 +26,13 @@ class PatternParseTest extends TestCase
 
         'a()' => [
             'Invocation',
-            'a',
+            ['Identifier', 'a'],
             ['Arguments'],
         ],
 
         'a(_, _)' => [
             'Invocation',
-            'a',
+            ['Identifier', 'a'],
             [
                 'Arguments',
                 ['Wildcard', false],
@@ -43,7 +43,7 @@ class PatternParseTest extends TestCase
         '_->a()' => [
             'MethodInvocation',
             ['Wildcard', false],
-            ['Invocation', 'a', ['Arguments']],
+            ['Invocation', ['Identifier', 'a'], ['Arguments']],
         ],
 
         'null' => [

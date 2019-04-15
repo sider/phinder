@@ -60,7 +60,7 @@ atom:
 ;
 
 identifier:
-    T_IDENTIFIER { $$ = ($1 === '_') ? new Wildcard() : new Identifier($1); }
+    T_IDENTIFIER { $$ = new Identifier($1); }
 ;
 
 invocation:
@@ -83,11 +83,11 @@ non_empty_arguments:
 
 argument:
     expression { $$ = $1; }
-  | varlen_wildcard { $$ = $1; }
+  | ellipsis { $$ = $1; }
 ;
 
-varlen_wildcard:
-    T_ELLIPSIS { $$ = new Wildcard(true); }
+ellipsis:
+    T_ELLIPSIS { $$ = new Ellipsis(); }
 ;
 
 null_literal:
@@ -131,7 +131,7 @@ non_empty_array_elements:
 
 array_element:
     expression { $$ = $1; }
-  | varlen_wildcard { $$ = $1; }
+  | ellipsis { $$ = $1; }
   | expression T_DOUBLE_ARROW expression { $$ = new KeyValuePair($1, $3); }
 ;
 

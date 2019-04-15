@@ -8,6 +8,7 @@ use Phinder\Pattern\Node\ArrayLiteral;
 use Phinder\Pattern\Node\BooleanLiteral;
 use Phinder\Pattern\Node\Conjunction;
 use Phinder\Pattern\Node\Disjunction;
+use Phinder\Pattern\Node\Ellipsis;
 use Phinder\Pattern\Node\FloatLiteral;
 use Phinder\Pattern\Node\Identifier;
 use Phinder\Pattern\Node\IntegerLiteral;
@@ -17,7 +18,6 @@ use Phinder\Pattern\Node\MethodInvocation;
 use Phinder\Pattern\Node\Not;
 use Phinder\Pattern\Node\NullLiteral;
 use Phinder\Pattern\Node\StringLiteral;
-use Phinder\Pattern\Node\Wildcard;
 
 class Parser
 {
@@ -322,7 +322,7 @@ class Parser
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
                         break;
                     case 19:
-                         $yyval = ($this->_yyastk[$yysp - (1 - 1)] === '_') ? new Wildcard() : new Identifier($this->_yyastk[$yysp - (1 - 1)]); 
+                         $yyval = new Identifier($this->_yyastk[$yysp - (1 - 1)]); 
                         break;
                     case 20:
                          $yyval = new Invocation($this->_yyastk[$yysp - (4 - 1)], $this->_yyastk[$yysp - (4 - 3)]); 
@@ -349,7 +349,7 @@ class Parser
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
                         break;
                     case 28:
-                         $yyval = new Wildcard(true); 
+                         $yyval = new Ellipsis(); 
                         break;
                     case 29:
                          $yyval = new NullLiteral(); 

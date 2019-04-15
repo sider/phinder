@@ -6,22 +6,22 @@ use Phinder\Pattern\Parser;
 class PatternParseTest extends TestCase
 {
     private static $_PATTERNS = [
-        '_' => ['Wildcard', false],
+        '_' => ['Identifier', '_'],
 
-        '!_' => ['Not', ['Wildcard', false]],
+        '!_' => ['Not', ['Identifier', '_']],
 
         'a' => ['Identifier', 'a'],
 
         '_ & _' => [
             'Conjunction',
-            ['Wildcard', false],
-            ['Wildcard', false],
+            ['Identifier', '_'],
+            ['Identifier', '_'],
         ],
 
         '_ | _' => [
             'Disjunction',
-            ['Wildcard', false],
-            ['Wildcard', false],
+            ['Identifier', '_'],
+            ['Identifier', '_'],
         ],
 
         'a()' => [
@@ -35,14 +35,23 @@ class PatternParseTest extends TestCase
             ['Identifier', 'a'],
             [
                 'Arguments',
-                ['Wildcard', false],
-                ['Arguments', ['Wildcard', false]],
+                ['Identifier', '_'],
+                ['Arguments', ['Identifier', '_']],
+            ],
+        ],
+
+        'a(...)' => [
+            'Invocation',
+            ['Identifier', 'a'],
+            [
+                'Arguments',
+                ['Ellipsis'],
             ],
         ],
 
         '_->a()' => [
             'MethodInvocation',
-            ['Wildcard', false],
+            ['Identifier', '_'],
             ['Invocation', ['Identifier', 'a'], ['Arguments']],
         ],
 
@@ -117,8 +126,8 @@ class PatternParseTest extends TestCase
             true,
             [
                 'ArrayElements',
-                ['Wildcard', false],
-                ['ArrayElements', ['Wildcard', false]],
+                ['Identifier', '_'],
+                ['ArrayElements', ['Identifier', '_']],
             ],
         ],
 
@@ -129,8 +138,8 @@ class PatternParseTest extends TestCase
                 'ArrayElements',
                 [
                     'KeyValuePair',
-                    ['Wildcard', false],
-                    ['Wildcard', false],
+                    ['Identifier', '_'],
+                    ['Identifier', '_'],
                 ],
             ],
         ],

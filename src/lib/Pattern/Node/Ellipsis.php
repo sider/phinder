@@ -4,13 +4,10 @@ namespace Phinder\Pattern\Node;
 
 use Phinder\Pattern\Node;
 
-class Wildcard extends Node
+class Ellipsis extends Node
 {
-    private $_varlen;
-
-    public function __construct($varlen = false)
+    public function __construct()
     {
-        $this->_varlen = $varlen;
     }
 
     protected function matchPhpNode($phpNode)
@@ -20,6 +17,6 @@ class Wildcard extends Node
 
     protected function getChildrenArray()
     {
-        return [$this->_varlen];
+        return [];
     }
 }

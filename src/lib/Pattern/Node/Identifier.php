@@ -6,6 +6,8 @@ use Phinder\Pattern\Node;
 
 class Identifier extends Node
 {
+    protected static $targetClassNames = ['Name'];
+
     private $_text;
 
     public function __construct($text)

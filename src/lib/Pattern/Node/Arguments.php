@@ -4,7 +4,7 @@ namespace Phinder\Pattern\Node;
 
 use Phinder\Pattern\Node;
 
-class Arguments extends Node
+final class Arguments extends Node
 {
     private $_head;
 
@@ -16,20 +16,20 @@ class Arguments extends Node
         $this->_tail = $tail;
     }
 
-    protected function matchPhpNode($phpNode)
+    protected function match($phpNode)
     {
         return true;
     }
 
-    protected function getChildrenArray()
+    public function toArray()
     {
-        $array = [];
+        $array = [$this->getShortName()];
 
-        if ($this->_head) {
+        if ($this->_head !== null) {
             $array[] = $this->_head->toArray();
         }
 
-        if ($this->_tail) {
+        if ($this->_tail !== null) {
             $array[] = $this->_tail->toArray();
         }
 

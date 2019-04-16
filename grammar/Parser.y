@@ -39,7 +39,7 @@ term:
 
 factor:
     element { $$ = $1; }
-  | T_EXCLAMATION element { $$ = new Not($2); }
+  | T_EXCLAMATION element { $$ = new Negation($2); }
 ;
 
 element:

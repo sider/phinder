@@ -16,14 +16,15 @@ class ArrayLiteral extends Node
         $this->_elements = $elements;
     }
 
-    protected function matchPhpNode($phpNode)
+    protected function match($phpNode)
     {
         return true;
     }
 
-    protected function getChildrenArray()
+    public function toArray()
     {
         return [
+            $this->getShortName(),
             $this->_isNewStyle,
             $this->_elements->toArray(),
         ];

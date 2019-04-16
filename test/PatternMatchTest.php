@@ -70,7 +70,7 @@ class PatternMatchTest extends TestCase
     {
         $patAst = $this->_patternParser->parse($pattern);
         $phpAst = $this->_phpParser->parse("<?php $php");
-        $this->assertSame($patAst->match($phpAst), $match);
+        $this->assertSame($patAst($phpAst), $match);
     }
 
     public function provider()

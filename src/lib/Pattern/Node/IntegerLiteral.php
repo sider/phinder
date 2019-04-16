@@ -6,7 +6,9 @@ use Phinder\Pattern\Node;
 
 class IntegerLiteral extends Node
 {
-    protected static $targetClassNames = ['Scalar\LNumber'];
+    protected static $targetTypes = [
+        'Scalar_LNumber',
+    ];
 
     private $_value;
 
@@ -19,7 +21,7 @@ class IntegerLiteral extends Node
         }
     }
 
-    protected function matchPhpNode($phpNode)
+    protected function match($phpNode)
     {
         if ($this->_value === null) {
             return true;
@@ -28,8 +30,11 @@ class IntegerLiteral extends Node
         return $this->_value === $phpNode->value;
     }
 
-    protected function getChildrenArray()
+    public function toArray()
     {
-        return [$this->_value];
+        return [
+            $this->getShortName(),
+            $this->_value,
+        ];
     }
 }

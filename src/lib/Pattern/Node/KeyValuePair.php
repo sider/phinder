@@ -16,14 +16,10 @@ class KeyValuePair extends Node
         $this->_value = $value;
     }
 
-    protected function matchPhpNode($phpNode)
-    {
-        return true;
-    }
-
-    protected function getChildrenArray()
+    public function toArray()
     {
         return [
+            $this->getShortName(),
             $this->_key->toArray(),
             $this->_value->toArray(),
         ];

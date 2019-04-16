@@ -6,8 +6,6 @@ use Phinder\Pattern\Node;
 
 class Identifier extends Node
 {
-    protected static $targetClassNames = ['Name'];
-
     private $_text;
 
     public function __construct($text)
@@ -15,13 +13,16 @@ class Identifier extends Node
         $this->_text = $text;
     }
 
-    protected function matchPhpNode($phpNode)
+    protected function match($phpNode)
     {
         return true;
     }
 
-    protected function getChildrenArray()
+    public function toArray()
     {
-        return [$this->_text];
+        return [
+            $this->getShortName(),
+            $this->_text,
+        ];
     }
 }

@@ -16,14 +16,10 @@ class MethodInvocation extends Node
         $this->_invocation = $invocation;
     }
 
-    protected function matchPhpNode($phpNode)
-    {
-        return true;
-    }
-
-    protected function getChildrenArray()
+    public function toArray()
     {
         return [
+            $this->getShortName(),
             $this->_receiver->toArray(),
             $this->_invocation->toArray(),
         ];

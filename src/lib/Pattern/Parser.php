@@ -2,12 +2,13 @@
 
 namespace Phinder\Pattern;
 
+use Phinder\Pattern\Node\LogicalOperation\Conjunction;
+use Phinder\Pattern\Node\LogicalOperation\Disjunction;
+use Phinder\Pattern\Node\LogicalOperation\Negation;
 use Phinder\Pattern\Node\Arguments;
 use Phinder\Pattern\Node\ArrayElements;
 use Phinder\Pattern\Node\ArrayLiteral;
 use Phinder\Pattern\Node\BooleanLiteral;
-use Phinder\Pattern\Node\Conjunction;
-use Phinder\Pattern\Node\Disjunction;
 use Phinder\Pattern\Node\Ellipsis;
 use Phinder\Pattern\Node\FloatLiteral;
 use Phinder\Pattern\Node\Identifier;
@@ -15,7 +16,6 @@ use Phinder\Pattern\Node\IntegerLiteral;
 use Phinder\Pattern\Node\Invocation;
 use Phinder\Pattern\Node\KeyValuePair;
 use Phinder\Pattern\Node\MethodInvocation;
-use Phinder\Pattern\Node\Not;
 use Phinder\Pattern\Node\NullLiteral;
 use Phinder\Pattern\Node\StringLiteral;
 
@@ -286,7 +286,7 @@ class Parser
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
                         break;
                     case 7:
-                         $yyval = new Not($this->_yyastk[$yysp - (2 - 2)]); 
+                         $yyval = new Negation($this->_yyastk[$yysp - (2 - 2)]); 
                         break;
                     case 8:
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 

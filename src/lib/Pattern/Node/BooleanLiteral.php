@@ -6,7 +6,9 @@ use Phinder\Pattern\Node;
 
 class BooleanLiteral extends Node
 {
-    protected static $targetClassNames = ['Expr\ConstFetch'];
+    protected static $targetTypes = [
+        'Expr_ConstFetch',
+    ];
 
     private $_value;
 
@@ -19,7 +21,7 @@ class BooleanLiteral extends Node
         }
     }
 
-    protected function matchPhpNode($phpNode)
+    protected function match($phpNode)
     {
         $value = strtolower($phpNode->name->parts[0]);
 
@@ -42,8 +44,11 @@ class BooleanLiteral extends Node
         return false;
     }
 
-    protected function getChildrenArray()
+    public function toArray()
     {
-        return [$this->_value];
+        return [
+            $this->getShortName(),
+            $this->_value,
+        ];
     }
 }

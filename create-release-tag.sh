@@ -7,4 +7,10 @@ if ! [[ $version =~ ^[0-9]\.[0-9]\.[0-9]$ ]]; then
   exit 1
 fi
 
-git tag "v$version"
+if git diff-index --quiet HEAD; then
+  git tag "v$version"
+  echo "Created v$version"
+else
+  echo 'Invalid git status' >&2
+  exit 1
+fi

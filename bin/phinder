@@ -100,7 +100,7 @@ while ($argv) {
             // no break
         case '-v':
         case '--version':
-            fwrite(STDOUT, "phinder version 0.7.2\n");
+            fwrite(STDOUT, "phinder version 0.7.3\n");
             exit();
 
         default:

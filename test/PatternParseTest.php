@@ -57,16 +57,17 @@ class PatternParseTest extends TestCase
 
         'null' => [
             'NullLiteral',
+            'null',
         ],
 
         'true' => [
             'BooleanLiteral',
-            true,
+            'true',
         ],
 
         'false' => [
             'BooleanLiteral',
-            false,
+            'false',
         ],
 
         ':bool:' => [

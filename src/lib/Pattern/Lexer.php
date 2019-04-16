@@ -4,7 +4,7 @@ namespace Phinder\Pattern;
 
 class Lexer
 {
-    private static $_regex = "/^(\t+|\s+|(?<T_COMMA>,)|(?<T_ARROW>->)|(?<T_ARRAY>array)|(?<T_DOUBLE_ARROW>=>)|(?<T_ELLIPSIS>\.\.\.)|(?<T_VERTICAL_BAR>\|)|(?<T_AMPERSAND>&)|(?<T_EXCLAMATION>!)|(?<T_LEFT_PAREN>\()|(?<T_RIGHT_PAREN>\))|(?<T_LEFT_BRACKET>\[)|(?<T_RIGHT_BRACKET>\])|(?<T_NULL>null)|(?<T_BOOLEAN>:bool:)|(?<T_INTEGER>:int:)|(?<T_FLOAT>:float:)|(?<T_STRING>:string:)|(?<T_BOOLEAN_LITERAL>true|false)|(?<T_FLOAT_LITERAL>[0-9]+\.[0-9]+)|(?<T_INTEGER_LITERAL>[1-9][0-9]*)|(?<T_STRING_LITERAL>'.*?'|\".*?\")|(?<T_IDENTIFIER>[a-z_][a-z0-9_]*))/";
+    private static $_regex = "/^(\t+|\s+|(?<T_COMMA>,)|(?<T_ARROW>->)|(?<T_ARRAY>array)|(?<T_DOUBLE_ARROW>=>)|(?<T_ELLIPSIS>\.\.\.)|(?<T_TRIPLE_VERTICAL_BAR>\|\|\|)|(?<T_TRIPLE_AMPERSAND>&&&)|(?<T_EXCLAMATION>!)|(?<T_LEFT_PAREN>\()|(?<T_RIGHT_PAREN>\))|(?<T_LEFT_BRACKET>\[)|(?<T_RIGHT_BRACKET>\])|(?<T_NULL>null)|(?<T_BOOLEAN>:bool:)|(?<T_INTEGER>:int:)|(?<T_FLOAT>:float:)|(?<T_STRING>:string:)|(?<T_BOOLEAN_LITERAL>true|false)|(?<T_FLOAT_LITERAL>[0-9]+\.[0-9]+)|(?<T_INTEGER_LITERAL>[1-9][0-9]*)|(?<T_STRING_LITERAL>'.*?'|\".*?\")|(?<T_IDENTIFIER>[a-z_][a-z0-9_]*))/";
 
     private $_string;
 
@@ -56,17 +56,17 @@ class Lexer
 
                     return Parser::T_ELLIPSIS;
                 }
-                if ($matches['T_VERTICAL_BAR'] !== '') {
-                    $val = $matches['T_VERTICAL_BAR'];
+                if ($matches['T_TRIPLE_VERTICAL_BAR'] !== '') {
+                    $val = $matches['T_TRIPLE_VERTICAL_BAR'];
                     $this->_string = substr($this->_string, strlen($val));
 
-                    return Parser::T_VERTICAL_BAR;
+                    return Parser::T_TRIPLE_VERTICAL_BAR;
                 }
-                if ($matches['T_AMPERSAND'] !== '') {
-                    $val = $matches['T_AMPERSAND'];
+                if ($matches['T_TRIPLE_AMPERSAND'] !== '') {
+                    $val = $matches['T_TRIPLE_AMPERSAND'];
                     $this->_string = substr($this->_string, strlen($val));
 
-                    return Parser::T_AMPERSAND;
+                    return Parser::T_TRIPLE_AMPERSAND;
                 }
                 if ($matches['T_EXCLAMATION'] !== '') {
                     $val = $matches['T_EXCLAMATION'];

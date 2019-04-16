@@ -12,13 +12,13 @@ class PatternParseTest extends TestCase
 
         'a' => ['Identifier', 'a'],
 
-        '_ & _' => [
+        '_ &&& _' => [
             'Conjunction',
             ['Identifier', '_'],
             ['Identifier', '_'],
         ],
 
-        '_ | _' => [
+        '_ ||| _' => [
             'Disjunction',
             ['Identifier', '_'],
             ['Identifier', '_'],

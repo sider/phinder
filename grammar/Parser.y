@@ -3,8 +3,8 @@
 %token T_ARRAY 'array'
 %token T_DOUBLE_ARROW '=>'
 %token T_ELLIPSIS '\.\.\.'
-%token T_VERTICAL_BAR '\|'
-%token T_AMPERSAND '&'
+%token T_TRIPLE_VERTICAL_BAR '\|\|\|'
+%token T_TRIPLE_AMPERSAND '&&&'
 %token T_EXCLAMATION '!'
 %token T_LEFT_PAREN '\('
 %token T_RIGHT_PAREN '\)'
@@ -29,12 +29,12 @@ start:
 
 expression:
     term { $$ = $1; }
-  | term T_VERTICAL_BAR expression { $$ = new Disjunction($1, $3); }
+  | term T_TRIPLE_VERTICAL_BAR expression { $$ = new Disjunction($1, $3); }
 ;
 
 term:
     factor { $$ = $1; }
-  | factor T_AMPERSAND term { $$ = new Conjunction($1, $3); }
+  | factor T_TRIPLE_AMPERSAND term { $$ = new Conjunction($1, $3); }
 ;
 
 factor:

@@ -33,9 +33,9 @@ class Parser
 
     const T_ELLIPSIS = 261;
 
-    const T_VERTICAL_BAR = 262;
+    const T_TRIPLE_VERTICAL_BAR = 262;
 
-    const T_AMPERSAND = 263;
+    const T_TRIPLE_AMPERSAND = 263;
 
     const T_EXCLAMATION = 264;
 

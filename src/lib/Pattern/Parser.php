@@ -331,16 +331,16 @@ class Parser
                          $yyval = new MethodInvocation($this->_yyastk[$yysp - (3 - 1)], $this->_yyastk[$yysp - (3 - 3)]); 
                         break;
                     case 22:
-                         $yyval = new Arguments(); 
+                         $yyval = []; 
                         break;
                     case 23:
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
                         break;
                     case 24:
-                         $yyval = new Arguments($this->_yyastk[$yysp - (1 - 1)]); 
+                         $yyval = [$this->_yyastk[$yysp - (1 - 1)]]; 
                         break;
                     case 25:
-                         $yyval = new Arguments($this->_yyastk[$yysp - (3 - 1)], $this->_yyastk[$yysp - (3 - 3)]); 
+                         $yyval = array_merge([$this->_yyastk[$yysp - (3 - 1)]], $this->_yyastk[$yysp - (3 - 3)]); 
                         break;
                     case 26:
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
@@ -385,16 +385,16 @@ class Parser
                          $yyval = new ArrayLiteral(true, $this->_yyastk[$yysp - (3 - 2)]); 
                         break;
                     case 40:
-                         $yyval = new Elements(); 
+                         $yyval = []; 
                         break;
                     case 41:
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
                         break;
                     case 42:
-                         $yyval = new Elements($this->_yyastk[$yysp - (1 - 1)]); 
+                         $yyval = [$this->_yyastk[$yysp - (1 - 1)]]; 
                         break;
                     case 43:
-                         $yyval = new Elements($this->_yyastk[$yysp - (3 - 1)], $this->_yyastk[$yysp - (3 - 3)]); 
+                         $yyval = array_merge([$this->_yyastk[$yysp - (3 - 1)]], $this->_yyastk[$yysp - (3 - 3)]); 
                         break;
                     case 44:
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 

@@ -72,13 +72,13 @@ method_invocation:
 ;
 
 arguments:
-    /* empty */ { $$ = new Arguments(); }
+    /* empty */ { $$ = []; }
   | non_empty_arguments { $$ = $1; }
 ;
 
 non_empty_arguments:
-    argument { $$ = new Arguments($1); }
-  | argument T_COMMA non_empty_arguments { $$ = new Arguments($1, $3); }
+    argument { $$ = [$1]; }
+  | argument T_COMMA non_empty_arguments { $$ = array_merge([$1], $3); }
 ;
 
 argument:
@@ -120,13 +120,13 @@ array_literal:
 ;
 
 array_elements:
-    /* empty */ { $$ = new Elements(); }
+    /* empty */ { $$ = []; }
   | non_empty_array_elements { $$ = $1; }
 ;
 
 non_empty_array_elements:
-    array_element { $$ = new Elements($1); }
-  | array_element T_COMMA non_empty_array_elements { $$ = new Elements($1, $3); }
+    array_element { $$ = [$1]; }
+  | array_element T_COMMA non_empty_array_elements { $$ = array_merge([$1], $3); }
 ;
 
 array_element:

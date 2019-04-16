@@ -26,7 +26,12 @@ class ArrayLiteral extends Node
         return [
             $this->getShortName(),
             $this->_isNewStyle,
-            $this->_elements->toArray(),
+            array_map(
+                function ($e) {
+                    return $e->toArray();
+                },
+                $this->_elements
+            ),
         ];
     }
 }

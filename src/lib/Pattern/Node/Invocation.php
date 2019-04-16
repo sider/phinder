@@ -21,7 +21,12 @@ class Invocation extends Node
         return [
             $this->getShortName(),
             $this->_identifier->toArray(),
-            $this->_arguments->toArray(),
+            array_map(
+                function ($a) {
+                    return $a->toArray();
+                },
+                $this->_arguments
+            ),
         ];
     }
 }

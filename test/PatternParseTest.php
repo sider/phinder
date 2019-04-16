@@ -27,16 +27,15 @@ class PatternParseTest extends TestCase
         'a()' => [
             'Invocation',
             ['Identifier', 'a'],
-            ['Arguments'],
+            [],
         ],
 
         'a(_, _)' => [
             'Invocation',
             ['Identifier', 'a'],
             [
-                'Arguments',
                 ['Identifier', '_'],
-                ['Arguments', ['Identifier', '_']],
+                ['Identifier', '_'],
             ],
         ],
 
@@ -44,7 +43,6 @@ class PatternParseTest extends TestCase
             'Invocation',
             ['Identifier', 'a'],
             [
-                'Arguments',
                 ['Ellipsis'],
             ],
         ],
@@ -52,7 +50,7 @@ class PatternParseTest extends TestCase
         '_->a()' => [
             'MethodInvocation',
             ['Identifier', '_'],
-            ['Invocation', ['Identifier', 'a'], ['Arguments']],
+            ['Invocation', ['Identifier', 'a'], []],
         ],
 
         'null' => [
@@ -113,22 +111,21 @@ class PatternParseTest extends TestCase
         'array()' => [
             'ArrayLiteral',
             false,
-            ['Elements'],
+            [],
         ],
 
         '[]' => [
             'ArrayLiteral',
             true,
-            ['Elements'],
+            [],
         ],
 
         '[_, _]' => [
             'ArrayLiteral',
             true,
             [
-                'Elements',
                 ['Identifier', '_'],
-                ['Elements', ['Identifier', '_']],
+                ['Identifier', '_'],
             ],
         ],
 
@@ -136,7 +133,6 @@ class PatternParseTest extends TestCase
             'ArrayLiteral',
             true,
             [
-                'Elements',
                 [
                     'KeyValuePair',
                     ['Identifier', '_'],

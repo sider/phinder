@@ -4,7 +4,7 @@ namespace Phinder\Pattern\Node;
 
 use Phinder\Pattern\Node;
 
-final class ArrayElements extends Node
+final class Elements extends Node
 {
     private $_head;
 

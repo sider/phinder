@@ -113,22 +113,22 @@ class PatternParseTest extends TestCase
         'array()' => [
             'ArrayLiteral',
             false,
-            ['ArrayElements'],
+            ['Elements'],
         ],
 
         '[]' => [
             'ArrayLiteral',
             true,
-            ['ArrayElements'],
+            ['Elements'],
         ],
 
         '[_, _]' => [
             'ArrayLiteral',
             true,
             [
-                'ArrayElements',
+                'Elements',
                 ['Identifier', '_'],
-                ['ArrayElements', ['Identifier', '_']],
+                ['Elements', ['Identifier', '_']],
             ],
         ],
 
@@ -136,7 +136,7 @@ class PatternParseTest extends TestCase
             'ArrayLiteral',
             true,
             [
-                'ArrayElements',
+                'Elements',
                 [
                     'KeyValuePair',
                     ['Identifier', '_'],

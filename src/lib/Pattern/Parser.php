@@ -11,7 +11,7 @@ use Phinder\Pattern\Node\Scalar\StringLiteral;
 use Phinder\Pattern\Node\CaselessConstant\BooleanLiteral;
 use Phinder\Pattern\Node\CaselessConstant\NullLiteral;
 use Phinder\Pattern\Node\Arguments;
-use Phinder\Pattern\Node\ArrayElements;
+use Phinder\Pattern\Node\Elements;
 use Phinder\Pattern\Node\ArrayLiteral;
 use Phinder\Pattern\Node\Ellipsis;
 use Phinder\Pattern\Node\Identifier;
@@ -385,16 +385,16 @@ class Parser
                          $yyval = new ArrayLiteral(true, $this->_yyastk[$yysp - (3 - 2)]); 
                         break;
                     case 40:
-                         $yyval = new ArrayElements(); 
+                         $yyval = new Elements(); 
                         break;
                     case 41:
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
                         break;
                     case 42:
-                         $yyval = new ArrayElements($this->_yyastk[$yysp - (1 - 1)]); 
+                         $yyval = new Elements($this->_yyastk[$yysp - (1 - 1)]); 
                         break;
                     case 43:
-                         $yyval = new ArrayElements($this->_yyastk[$yysp - (3 - 1)], $this->_yyastk[$yysp - (3 - 3)]); 
+                         $yyval = new Elements($this->_yyastk[$yysp - (3 - 1)], $this->_yyastk[$yysp - (3 - 3)]); 
                         break;
                     case 44:
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 

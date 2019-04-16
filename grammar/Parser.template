@@ -16,7 +16,7 @@ use Phinder\Pattern\Node\Scalar\StringLiteral;
 use Phinder\Pattern\Node\CaselessConstant\BooleanLiteral;
 use Phinder\Pattern\Node\CaselessConstant\NullLiteral;
 use Phinder\Pattern\Node\Arguments;
-use Phinder\Pattern\Node\ArrayElements;
+use Phinder\Pattern\Node\Elements;
 use Phinder\Pattern\Node\ArrayLiteral;
 use Phinder\Pattern\Node\Ellipsis;
 use Phinder\Pattern\Node\Identifier;

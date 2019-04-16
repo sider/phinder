@@ -120,13 +120,13 @@ array_literal:
 ;
 
 array_elements:
-    /* empty */ { $$ = new ArrayElements(); }
+    /* empty */ { $$ = new Elements(); }
   | non_empty_array_elements { $$ = $1; }
 ;
 
 non_empty_array_elements:
-    array_element { $$ = new ArrayElements($1); }
-  | array_element T_COMMA non_empty_array_elements { $$ = new ArrayElements($1, $3); }
+    array_element { $$ = new Elements($1); }
+  | array_element T_COMMA non_empty_array_elements { $$ = new Elements($1, $3); }
 ;
 
 array_element:

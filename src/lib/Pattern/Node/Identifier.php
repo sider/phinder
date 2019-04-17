@@ -4,30 +4,43 @@ namespace Phinder\Pattern\Node;
 
 use Phinder\Pattern\Node;
 
-class Identifier extends Node
+final class Identifier extends Node
 {
-    protected static $targetTypes = [
-        'Name',
-    ];
+    protected $name;
 
-    private $_text;
-
-    public function __construct($text)
+    public function __construct($name)
     {
-        $this->_text = $text;
+        $this->name = $name;
     }
 
-    protected function match($phpNode)
+    protected function matchNode($phpNode)
     {
-        return $this->_text === null
-            || in_array($this->_text, $phpNode->parts);
+        if ($this->name === '_') {
+            return true;
+        }
+
+        if ($phpNode->getType() === 'Name') {
+            return in_array($this->name, $phpNode->parts);
+        }
+
+        if ($phpNode->getType() === 'Identifier') {
+            return $this->name === $phpNode->name;
+        }
+
+        // @codeCoverageIgnoreStart
+        throw new \Exception();
+        // @codeCoverageIgnoreEnd
     }
 
-    public function toArray()
+    protected function getSubNodeNames()
     {
-        return [
-            $this->getShortName(),
-            $this->_text,
-        ];
+        return ['name'];
+    }
+
+    protected function isTargetType($phpNodeType)
+    {
+        return $this->name === '_'
+            || $phpNodeType === 'Name'
+            || $phpNodeType === 'Identifier';
     }
 }

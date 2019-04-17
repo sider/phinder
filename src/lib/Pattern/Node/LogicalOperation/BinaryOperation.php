@@ -2,9 +2,9 @@
 
 namespace Phinder\Pattern\Node\LogicalOperation;
 
-use Phinder\Pattern\Node;
+use Phinder\Pattern\Node\LogicalOperation;
 
-abstract class BinaryOperation extends Node
+abstract class BinaryOperation extends LogicalOperation
 {
     protected $node1;
 
@@ -16,12 +16,8 @@ abstract class BinaryOperation extends Node
         $this->node2 = $node2;
     }
 
-    final public function toArray()
+    final protected function getSubNodeNames()
     {
-        return [
-            $this->getShortName(),
-            $this->node1->toArray(),
-            $this->node2->toArray(),
-        ];
+        return ['node1', 'node2'];
     }
 }

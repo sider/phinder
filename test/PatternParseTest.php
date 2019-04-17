@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Phinder\Pattern\Parser;
+use Phinder\Pattern\Node;
 
 class PatternParseTest extends TestCase
 {
@@ -25,32 +26,31 @@ class PatternParseTest extends TestCase
         ],
 
         'a()' => [
-            'Invocation',
+            'FunctionCall',
             ['Identifier', 'a'],
             [],
         ],
 
         'a(_, _)' => [
-            'Invocation',
+            'FunctionCall',
             ['Identifier', 'a'],
             [
-                ['Identifier', '_'],
-                ['Identifier', '_'],
+                ['Argument', ['Identifier', '_']],
+                ['Argument', ['Identifier', '_']],
             ],
         ],
 
         'a(...)' => [
-            'Invocation',
+            'FunctionCall',
             ['Identifier', 'a'],
-            [
-                ['Ellipsis'],
-            ],
+            [Node::ELLIPSIS],
         ],
 
         '_->a()' => [
-            'MethodInvocation',
+            'MethodCall',
             ['Identifier', '_'],
-            ['Invocation', ['Identifier', 'a'], []],
+            ['Identifier', 'a'],
+            [],
         ],
 
         'null' => [
@@ -109,32 +109,28 @@ class PatternParseTest extends TestCase
         ],
 
         'array()' => [
-            'ArrayLiteral',
-            false,
+            'ArrayCall',
             [],
         ],
 
         '[]' => [
-            'ArrayLiteral',
-            true,
+            'ArrayCall',
             [],
         ],
 
         '[_, _]' => [
-            'ArrayLiteral',
-            true,
+            'ArrayCall',
             [
-                ['Identifier', '_'],
-                ['Identifier', '_'],
+                ['ArrayArgument', null, ['Identifier', '_']],
+                ['ArrayArgument', null, ['Identifier', '_']],
             ],
         ],
 
         '[_ => _]' => [
-            'ArrayLiteral',
-            true,
+            'ArrayCall',
             [
                 [
-                    'KeyValuePair',
+                    'ArrayArgument',
                     ['Identifier', '_'],
                     ['Identifier', '_'],
                 ],

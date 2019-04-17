@@ -2,14 +2,17 @@
 
 namespace Phinder\Pattern\Node\Scalar;
 
-class IntegerLiteral extends Scalar
-{
-    protected static $targetTypes = [
-        'Scalar_LNumber',
-    ];
+use Phinder\Pattern\Node\Scalar;
 
+final class IntegerLiteral extends Scalar
+{
     protected static function preprocess($text)
     {
         return (int) $text;
+    }
+
+    protected function isTargetType($phpNodeType)
+    {
+        return $phpNodeType === 'Scalar_LNumber';
     }
 }

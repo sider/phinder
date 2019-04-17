@@ -7,22 +7,21 @@ $meta @
 
 namespace Phinder\Pattern;
 
-use Phinder\Pattern\Node\LogicalOperation\Conjunction;
-use Phinder\Pattern\Node\LogicalOperation\Disjunction;
+use Phinder\Pattern\Node\Call\ArrayCall;
+use Phinder\Pattern\Node\Call\FunctionCall;
+use Phinder\Pattern\Node\Call\MethodCall;
+use Phinder\Pattern\Node\CaselessConstant\BooleanLiteral;
+use Phinder\Pattern\Node\CaselessConstant\NullLiteral;
+use Phinder\Pattern\Node\LogicalOperation\BinaryOperation\Conjunction;
+use Phinder\Pattern\Node\LogicalOperation\BinaryOperation\Disjunction;
 use Phinder\Pattern\Node\LogicalOperation\Negation;
 use Phinder\Pattern\Node\Scalar\FloatLiteral;
 use Phinder\Pattern\Node\Scalar\IntegerLiteral;
 use Phinder\Pattern\Node\Scalar\StringLiteral;
-use Phinder\Pattern\Node\CaselessConstant\BooleanLiteral;
-use Phinder\Pattern\Node\CaselessConstant\NullLiteral;
-use Phinder\Pattern\Node\Arguments;
-use Phinder\Pattern\Node\Elements;
-use Phinder\Pattern\Node\ArrayLiteral;
-use Phinder\Pattern\Node\Ellipsis;
+use Phinder\Pattern\Node\Argument;
+use Phinder\Pattern\Node\ArrayArgument;
 use Phinder\Pattern\Node\Identifier;
-use Phinder\Pattern\Node\Invocation;
-use Phinder\Pattern\Node\KeyValuePair;
-use Phinder\Pattern\Node\MethodInvocation;
+use Phinder\Pattern\Node;
 @include;
 
 class Parser

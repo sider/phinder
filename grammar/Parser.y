@@ -17,7 +17,7 @@
 %token T_STRING ':string:'
 %token T_BOOLEAN_LITERAL 'true|false'
 %token T_FLOAT_LITERAL '[0-9]+\.[0-9]+'
-%token T_INTEGER_LITERAL '[1-9][0-9]*'
+%token T_INTEGER_LITERAL '0|[1-9][0-9]*'
 %token T_STRING_LITERAL '\'.*?\'|".*?"'
 %token T_IDENTIFIER '[a-z_][a-z0-9_]*'
 
@@ -49,26 +49,26 @@ element:
 
 atom:
     identifier { $$ = $1; }
-  | invocation { $$ = $1; }
-  | method_invocation { $$ = $1; }
+  | function_call { $$ = $1; }
+  | method_call { $$ = $1; }
+  | array_call { $$ = $1; }
   | null_literal { $$ = $1; }
   | boolean_literal { $$ = $1; }
   | integer_literal { $$ = $1; }
   | float_literal { $$ = $1; }
   | string_literal { $$ = $1; }
-  | array_literal { $$ = $1; }
 ;
 
 identifier:
     T_IDENTIFIER { $$ = new Identifier($1); }
 ;
 
-invocation:
-    identifier T_LEFT_PAREN arguments T_RIGHT_PAREN { $$ = new Invocation($1, $3); }
+function_call:
+    identifier T_LEFT_PAREN arguments T_RIGHT_PAREN { $$ = new FunctionCall($1, $3); }
 ;
 
-method_invocation:
-    expression T_ARROW invocation { $$ = new MethodInvocation($1, $3); }
+method_call:
+    expression T_ARROW identifier T_LEFT_PAREN arguments T_RIGHT_PAREN { $$ = new MethodCall($1, $3, $5); }
 ;
 
 arguments:
@@ -82,12 +82,12 @@ non_empty_arguments:
 ;
 
 argument:
-    expression { $$ = $1; }
+    expression { $$ = new Argument($1); }
   | ellipsis { $$ = $1; }
 ;
 
 ellipsis:
-    T_ELLIPSIS { $$ = new Ellipsis(); }
+    T_ELLIPSIS { $$ = Node::ELLIPSIS; }
 ;
 
 null_literal:
@@ -114,25 +114,25 @@ string_literal:
   | T_STRING { $$ = new StringLiteral(); }
 ;
 
-array_literal:
-    T_ARRAY T_LEFT_PAREN array_elements T_RIGHT_PAREN { $$ = new ArrayLiteral(false, $3); }
-  | T_LEFT_BRACKET array_elements T_RIGHT_BRACKET { $$ = new ArrayLiteral(true, $2); }
+array_call:
+    T_ARRAY T_LEFT_PAREN array_arguments T_RIGHT_PAREN { $$ = new ArrayCall($3); }
+  | T_LEFT_BRACKET array_arguments T_RIGHT_BRACKET { $$ = new ArrayCall($2); }
 ;
 
-array_elements:
+array_arguments:
     /* empty */ { $$ = []; }
-  | non_empty_array_elements { $$ = $1; }
+  | non_empty_array_arguments { $$ = $1; }
 ;
 
-non_empty_array_elements:
-    array_element { $$ = [$1]; }
-  | array_element T_COMMA non_empty_array_elements { $$ = array_merge([$1], $3); }
+non_empty_array_arguments:
+    array_argument { $$ = [$1]; }
+  | array_argument T_COMMA non_empty_array_arguments { $$ = array_merge([$1], $3); }
 ;
 
-array_element:
-    expression { $$ = $1; }
+array_argument:
+    expression { $$ = new ArrayArgument($1); }
   | ellipsis { $$ = $1; }
-  | expression T_DOUBLE_ARROW expression { $$ = new KeyValuePair($1, $3); }
+  | expression T_DOUBLE_ARROW expression { $$ = new ArrayArgument($3, $1); }
 ;
 
 %%

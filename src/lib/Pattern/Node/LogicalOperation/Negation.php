@@ -2,27 +2,24 @@
 
 namespace Phinder\Pattern\Node\LogicalOperation;
 
-use Phinder\Pattern\Node;
+use Phinder\Pattern\Node\LogicalOperation;
 
-final class Negation extends Node
+final class Negation extends LogicalOperation
 {
-    private $_node;
+    protected $node;
 
     public function __construct($node)
     {
-        $this->_node = $node;
+        $this->node = $node;
     }
 
-    protected function match($phpNode)
+    protected function matchNode($phpNode)
     {
-        return !$this->_node->match($phpNode);
+        return !$this->node->visit([$phpNode]);
     }
 
-    public function toArray()
+    protected function getSubNodeNames()
     {
-        return [
-            $this->getShortName(),
-            $this->_node->toArray(),
-        ];
+        return ['node'];
     }
 }

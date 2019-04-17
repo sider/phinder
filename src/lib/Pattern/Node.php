@@ -3,40 +3,84 @@
 namespace Phinder\Pattern;
 
 use PhpParser\NodeTraverser as PhpNodeTraverser;
+use PhpParser\Node as PhpNode;
+use PhpParser\NodeVisitor as PhpNodeVisitor;
 
-abstract class Node
+abstract class Node implements PhpNodeVisitor
 {
-    protected static $targetTypes = null;
+    const ELLIPSIS = 'ELLIPSIS';
 
-    final public function __invoke($phpNode)
+    abstract protected function matchNode($phpNode);
+
+    abstract protected function getSubNodeNames();
+
+    abstract protected function isTargetType($phpNodeType);
+
+    private $_matches = [];
+
+    final public function match($phpNode)
+    {
+        return $this->isTargetType($phpNode->getType())
+            && $this->matchNode($phpNode);
+    }
+
+    final public function visit($phpNode)
     {
         $traverser = new PhpNodeTraverser();
-        $visitor = new Visitor(static::$targetTypes);
-
-        $traverser->addVisitor($visitor);
+        $traverser->addVisitor($this);
         $traverser->traverse($phpNode);
 
-        foreach ($visitor->nodes as $node) {
-            if ($this->match($node)) {
-                return true;
+        return $this->_matches;
+    }
+
+    final public function beforeTraverse(array $nodes)
+    {
+        return null;
+    }
+
+    final public function enterNode(PhpNode $node)
+    {
+        if ($this->match($node)) {
+            $this->_matches[] = $node;
+        }
+
+        return null;
+    }
+
+    final public function leaveNode(PhpNode $node)
+    {
+        return null;
+    }
+
+    final public function afterTraverse(array $nodes)
+    {
+        return null;
+    }
+
+    final public function toArray()
+    {
+        $array = [(new \ReflectionClass($this))->getShortName()];
+
+        foreach ($this->getSubNodeNames() as $name) {
+            $subNode = $this->$name;
+            if (is_array($subNode)) {
+                $array[] = array_map(
+                    function ($n) {
+                        if (is_subclass_of($n, 'Phinder\Pattern\Node')) {
+                            return $n->toArray();
+                        } else {
+                            return $n;
+                        }
+                    },
+                    $subNode
+                );
+            } elseif (is_subclass_of($subNode, 'Phinder\Pattern\Node')) {
+                $array[] = $subNode->toArray();
+            } else {
+                $array[] = $subNode;
             }
         }
 
-        return false;
-    }
-
-    public function toArray()
-    {
-        return [$this->getShortName()];
-    }
-
-    protected function match($phpNode)
-    {
-        return false;
-    }
-
-    final protected function getShortName()
-    {
-        return (new \ReflectionClass($this))->getShortName();
+        return $array;
     }
 }

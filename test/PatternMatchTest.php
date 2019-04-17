@@ -51,6 +51,46 @@ class PatternMatchTest extends TestCase
             true => ['echo "a";', "echo 'a';"],
             false => ['echo $a;'],
         ],
+        'f(_)' => [
+            true => ['f(1);', 'f($a);', 'f(a);'],
+            false => ['f();', 'f(1, 2);', 'g(1);'],
+        ],
+        'f(...)' => [
+            true => ['f();', 'f(1);', 'f(1, 2);', 'f(1, 2, 3);'],
+            false => ['g();'],
+        ],
+        'f(_, ...)' => [
+            true => ['f(1);', 'f(1, 2);', 'f(1, 2, 3);'],
+            false => ['f();'],
+        ],
+        'f(..., null, ...)' => [
+            true => ['f(null);', 'f(1, null);', 'f(1, null, 2);'],
+            false => ['f(1, 2);'],
+        ],
+        '[1]' => [
+            true => ['print_r([1]);'],
+            false => ['print_r(["1"]);', 'print_r([1 => 1]);'],
+        ],
+        '[1 => _]' => [
+            true => ['print_r([1 => 1]);'],
+            false => ['print_r([1]);'],
+        ],
+        '_->f()' => [
+            true => ['$a->f();'],
+            false => ['f();'],
+        ],
+        'f(!true)' => [
+            true => ['f(false);', 'f(1);'],
+            false => ['f(true);'],
+        ],
+        'f(false) ||| f(0)' => [
+            true => ['f(false);', 'f(0);'],
+            false => ['f([]);'],
+        ],
+        'f(..., true) &&& f(false, ...)' => [
+            true => ['f(false, true);', 'f(false, 1, true);'],
+            false => ['f();'],
+        ],
     ];
 
     private $_patternParser;
@@ -70,7 +110,12 @@ class PatternMatchTest extends TestCase
     {
         $patAst = $this->_patternParser->parse($pattern);
         $phpAst = $this->_phpParser->parse("<?php $php");
-        $this->assertSame($patAst($phpAst), $match);
+        $matches = $patAst->visit($phpAst);
+        if ($match) {
+            $this->assertNotSame(count($matches), 0);
+        } else {
+            $this->assertSame(count($matches), 0);
+        }
     }
 
     public function provider()

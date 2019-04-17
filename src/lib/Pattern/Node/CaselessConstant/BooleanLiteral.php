@@ -2,7 +2,8 @@
 
 namespace Phinder\Pattern\Node\CaselessConstant;
 
-class BooleanLiteral extends CaselessConstant
+use Phinder\Pattern\Node\CaselessConstant;
+
+final class BooleanLiteral extends CaselessConstant
 {
-    private $_name;
 }

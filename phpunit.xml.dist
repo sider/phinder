@@ -5,10 +5,7 @@
   </testsuite>
   <filter>
     <whitelist processUncoveredFilesFromWhitelist="true">
-      <directory suffix=".php">./src/lib</directory>
-      <exclude>
-        <directory suffix=".php">./src/lib/Parser/PatternParser</directory>
-      </exclude>
+      <directory suffix=".php">./src</directory>
     </whitelist>
   </filter>
   <logging>

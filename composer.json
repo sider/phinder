@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Phinder\\": "src/lib"
+      "Phinder\\": "src"
     }
   },
   "bin": [
@@ -20,7 +20,6 @@
   "require": {
     "php": ">=7.0",
     "nikic/php-parser": "4.1.0",
-    "funct/funct": "^1.4",
     "symfony/console": "^3.4",
     "symfony/yaml": "^3.2"
   },

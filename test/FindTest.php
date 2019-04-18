@@ -103,11 +103,7 @@ class FindTest extends CliTest
     }
 
     /**
-     * @
-     */
-
-    /**
-     * @expectedException \Phinder\Error\InvalidPHP
+     * @expectedException \PhpParser\Error
      */
     public function testInvalidPHP()
     {
@@ -126,7 +122,7 @@ class FindTest extends CliTest
     {
         $this->exec(
             [
-                '--config' => $dir,
+                '--config' => "$dir/phinder.yml",
                 '--format' => 'json',
                 'path' => $dir,
             ]
@@ -148,6 +144,12 @@ class FindTest extends CliTest
         $this->assertTrue($expectedJson !== null);
 
         $jsonDiff = new JsonDiff($outputJson, $expectedJson);
+
+        if ($jsonDiff->getDiffCnt() !== 0) {
+            foreach ($outputJson['result'] as $r) {
+                var_dump($r);
+            }
+        }
         $this->assertSame($jsonDiff->getDiffCnt(), 0);
     }
 

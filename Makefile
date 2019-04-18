@@ -10,7 +10,7 @@ clean:
 	git clean -dfX .
 
 .PHONY:	test
-test: vendor src/lib/Pattern/Parser.php src/lib/Pattern/Lexer.php
+test: vendor src/Pattern/Parser.php src/Pattern/Lexer.php
 	./vendor/bin/phpunit
 
 # Composer-related targets
@@ -30,9 +30,9 @@ php-yacc:
 	cd php-yacc && git reset --hard 6e86fc490c2633c78650ad04c0de88a6044bef0b
 	cd php-yacc && composer install
 
-src/lib/Pattern/Parser.php: php-yacc grammar/Parser.template grammar/Parser.y
+src/Pattern/Parser.php: php-yacc grammar/Parser.template grammar/Parser.y
 	./php-yacc/bin/phpyacc -m grammar/Parser.template grammar/Parser.y
-	mv grammar/Parser. src/lib/Pattern/Parser.php
+	mv grammar/Parser. src/Pattern/Parser.php
 
-src/lib/Pattern/Lexer.php: grammar/Parser.y
-	./php-lex/bin/phplex grammar/Parser.y > src/lib/Pattern/Lexer.php
+src/Pattern/Lexer.php: grammar/Parser.y
+	./php-lex/bin/phplex grammar/Parser.y > src/Pattern/Lexer.php

@@ -121,8 +121,8 @@ class PatternParseTest extends TestCase
         '[_, _]' => [
             'ArrayCall',
             [
-                ['ArrayArgument', null, ['Identifier', '_']],
-                ['ArrayArgument', null, ['Identifier', '_']],
+                ['ArrayArgument', null, ['Identifier', '_'], false],
+                ['ArrayArgument', null, ['Identifier', '_'], false],
             ],
         ],
 
@@ -133,6 +133,19 @@ class PatternParseTest extends TestCase
                     'ArrayArgument',
                     ['Identifier', '_'],
                     ['Identifier', '_'],
+                    false,
+                ],
+            ],
+        ],
+
+        '[!(_ => _)]' => [
+            'ArrayCall',
+            [
+                [
+                    'ArrayArgument',
+                    ['Identifier', '_'],
+                    ['Identifier', '_'],
+                    true,
                 ],
             ],
         ],

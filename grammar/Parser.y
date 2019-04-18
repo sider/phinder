@@ -19,7 +19,7 @@
 %token T_FLOAT_LITERAL '[0-9]+\.[0-9]+'
 %token T_INTEGER_LITERAL '0|[1-9][0-9]*'
 %token T_STRING_LITERAL '\'.*?\'|".*?"'
-%token T_IDENTIFIER '[a-z_][a-z0-9_]*'
+%token T_IDENTIFIER '[a-zA-Z_][a-zA-Z0-9_]*'
 
 %%
 
@@ -133,6 +133,7 @@ array_argument:
     expression { $$ = new ArrayArgument($1); }
   | ellipsis { $$ = $1; }
   | expression T_DOUBLE_ARROW expression { $$ = new ArrayArgument($3, $1); }
+  | T_EXCLAMATION T_LEFT_PAREN expression T_DOUBLE_ARROW expression T_RIGHT_PAREN { $$ = new ArrayArgument($5, $3, true); }
 ;
 
 %%

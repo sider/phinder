@@ -7,6 +7,7 @@ $meta @
 
 namespace Phinder\Pattern;
 
+use Phinder\Error\InvalidPattern;
 use Phinder\Pattern\Node\Call\ArrayCall;
 use Phinder\Pattern\Node\Call\FunctionCall;
 use Phinder\Pattern\Node\Call\MethodCall;
@@ -107,7 +108,7 @@ class Parser
             return $this->_yyastk[1];
         }
 
-        return null;
+        throw new InvalidPattern($string);
     }
 
     private function _yyparse()

@@ -8,12 +8,29 @@
             },
             "location": {
                 "start": [
+                    3,
+                    7
+                ],
+                "end": [
+                    3,
+                    14
+                ]
+            }
+        },
+        {
+            "path": "test/res/usecase/find-class/sample.php",
+            "rule": {
+                "id": "test.find-class",
+                "message": "--"
+            },
+            "location": {
+                "start": [
                     7,
-                    1
+                    5
                 ],
                 "end": [
                     7,
-                    14
+                    12
                 ]
             }
         }

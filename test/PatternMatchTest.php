@@ -109,7 +109,7 @@ class PatternMatchTest extends TestCase
     public function testMatch($pattern, $php, $match)
     {
         $patAst = $this->_patternParser->parse($pattern);
-        $phpAst = $this->_phpParser->parse("<?php $php");
+        $phpAst = $this->_phpParser->parseString("<?php $php");
         $matches = $patAst->visit($phpAst);
         if ($match) {
             $this->assertNotSame(count($matches), 0);

@@ -15,11 +15,7 @@ class Lexer
 
     public function getToken(&$val)
     {
-        while (true) {
-            if ($this->_string == "") {
-                return false;
-            }
-
+        while ($this->_string != "") {
             $matches = [];
             if (preg_match(self::$_regex, $this->_string, $matches)) {
                 if (strlen(trim($matches[0])) === 0) {
@@ -162,5 +158,6 @@ class Lexer
 
             return Parser::YYERRTOK;
         }
+        return false;
     }
 }

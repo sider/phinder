@@ -485,12 +485,5 @@ class Parser
     private function _yyflush()
     {
     }
-
-    private function _readLine()
-    {
-        $line = array_shift($this->_inputLines);
-
-        return $line === null ? false : $line;
-    }
 }
 

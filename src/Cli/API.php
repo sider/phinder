@@ -2,7 +2,7 @@
 
 namespace Phinder\Cli;
 
-use Phinder\PhpParser;
+use Phinder\Php\Parser as PhpParser;
 use Phinder\RuleParser;
 use Phinder\Match;
 
@@ -10,7 +10,7 @@ class API
 {
     public static function phind($rulePath, $phpPath)
     {
-        $phpParser = new PHPParser();
+        $phpParser = new PhpParser();
         $rules = static::parseRule($rulePath);
         foreach ($phpParser->parseFilesInDirectory($phpPath) as $phpFile) {
             foreach ($rules as $rule) {

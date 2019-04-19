@@ -1,14 +1,15 @@
 <?php
 
-namespace Phinder;
+namespace Phinder\Php;
 
 use PhpParser\Lexer;
 use PhpParser\ParserFactory;
 use RecursiveIteratorIterator as RecItrItr;
 use RecursiveDirectoryIterator as RecDirItr;
 use Phinder\Error\FileNotFound;
+use Phinder\Utility;
 
-final class PhpParser
+final class Parser
 {
     private $_phpParser = null;
 
@@ -40,7 +41,7 @@ final class PhpParser
     {
         $ast = $this->parseString(Utility::fileGetContents($path));
 
-        return new PhpFile($path, $ast);
+        return new File($path, $ast);
     }
 
     public function parseString($string)

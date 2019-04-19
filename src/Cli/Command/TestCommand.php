@@ -3,8 +3,7 @@
 namespace Phinder\Cli\Command;
 
 use Phinder\Cli\API;
-use Phinder\PhpParser;
-
+use Phinder\Php\Parser as PhpParser;
 use Phinder\Cli\Command;
 
 class TestCommand extends Command

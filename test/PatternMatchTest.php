@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Phinder\Pattern\Parser as PatternParser;
-use Phinder\PhpParser;
+use Phinder\Php\Parser as PhpParser;
 
 class PatternMatchTest extends TestCase
 {

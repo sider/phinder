@@ -1,8 +1,8 @@
 <?php
 
-namespace Phinder;
+namespace Phinder\Php;
 
-final class PhpFile
+final class File
 {
     public $path;
 

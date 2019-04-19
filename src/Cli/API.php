@@ -2,9 +2,9 @@
 
 namespace Phinder\Cli;
 
+use Phinder\Config\Parser as ConfigParser;
 use Phinder\Php\Parser as PhpParser;
-use Phinder\RuleParser;
-use Phinder\Match;
+use Phinder\Pattern\Match;
 
 class API
 {
@@ -23,7 +23,7 @@ class API
 
     public static function parseRule($path)
     {
-        $ruleParser = new RuleParser();
+        $ruleParser = new ConfigParser();
         $rules = [];
         foreach ($ruleParser->parse($path) as $r) {
             $rules[] = $r;

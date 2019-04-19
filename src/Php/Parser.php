@@ -7,7 +7,6 @@ use PhpParser\ParserFactory;
 use RecursiveIteratorIterator as RecItrItr;
 use RecursiveDirectoryIterator as RecDirItr;
 use Phinder\Error\FileNotFound;
-use Phinder\Utility;
 
 final class Parser
 {
@@ -39,7 +38,12 @@ final class Parser
 
     public function parseFile($path)
     {
-        $ast = $this->parseString(Utility::fileGetContents($path));
+        $content = @file_get_contents($path);
+        if ($content === false) {
+            throw new FileNotFound($path);
+        }
+
+        $ast = $this->parseString($content);
 
         return new File($path, $ast);
     }

@@ -1,16 +1,16 @@
 <?php
 
-namespace Phinder;
+namespace Phinder\Config;
 
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Yaml\Exception\ParseException;
+use Phinder\Error\FileNotFound;
 use Phinder\Error\InvalidPattern;
 use Phinder\Error\InvalidRule;
 use Phinder\Error\InvalidYaml;
 use Phinder\Pattern\Parser as PatternParser;
-use Phinder\Config\Rule;
 
-final class RuleParser
+final class Parser
 {
     private $_patternParser;
 
@@ -21,9 +21,13 @@ final class RuleParser
 
     public function parse($path)
     {
-        $code = Utility::fileGetContents($path);
+        $content = @file_get_contents($path);
+        if ($content === false) {
+            throw new FileNotFound($path);
+        }
+
         try {
-            $rules = Yaml::parse($code);
+            $rules = Yaml::parse($content);
         } catch (ParseException $e) {
             throw new InvalidYaml($path);
         }

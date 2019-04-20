@@ -2,8 +2,10 @@
 
 namespace Phinder\Cli\Command;
 
-use Phinder\Cli\API;
 use Phinder\Cli\Command;
+use Phinder\Config\Parser as ConfigParser;
+use Phinder\Php\Parser as PhpParser;
+use Phinder\Pattern\Match;
 
 class FindCommand extends Command
 {
@@ -26,7 +28,7 @@ class FindCommand extends Command
         $violationCount = 0;
         $errorCount = 0;
 
-        $generator = API::phind($config, $phpPath);
+        $generator = $this->_run($config, $phpPath);
         while (true) {
             try {
                 if (!$generator->valid()) {
@@ -180,5 +182,20 @@ class FindCommand extends Command
         }
 
         return 0;
+    }
+
+    private function _run($rulePath, $phpPath)
+    {
+        $phpParser = new PhpParser();
+        $configParser = new ConfigParser();
+
+        $rules = $configParser->parse($rulePath);
+        foreach ($phpParser->parseFilesInDirectory($phpPath) as $phpFile) {
+            foreach ($rules as $rule) {
+                foreach ($rule->pattern->visit($phpFile->ast) as $match) {
+                    yield new Match($phpFile->path, $match, $rule);
+                }
+            }
+        }
     }
 }

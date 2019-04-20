@@ -27,9 +27,7 @@ final class Identifier extends Node
             return $this->name === $phpNode->name;
         }
 
-        // @codeCoverageIgnoreStart
         throw new \Exception();
-        // @codeCoverageIgnoreEnd
     }
 
     protected function getSubNodeNames()

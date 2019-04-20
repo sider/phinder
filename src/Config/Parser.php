@@ -21,6 +21,11 @@ final class Parser
 
     public function parse($path)
     {
+        return iterator_to_array($this->_parse($path));
+    }
+
+    private function _parse($path)
+    {
         $content = @file_get_contents($path);
         if ($content === false) {
             throw new FileNotFound($path);
@@ -44,9 +49,7 @@ final class Parser
             $arr = $rules[$i];
 
             try {
-                foreach (static::_parseArray($arr, $i, $path) as $r) {
-                    yield $r;
-                }
+                yield static::_parseArray($arr, $i, $path);
             } catch (InvalidPattern $e) {
                 $e->path = $path;
                 throw $e;
@@ -102,7 +105,8 @@ final class Parser
         try {
             $expr = implode(' ||| ', $pats);
             $pattern = $this->_patternParser->parse($expr);
-            yield new Rule($id, $pattern, $message, $jsts, $ppats, $fpats);
+
+            return new Rule($id, $pattern, $message, $jsts, $ppats, $fpats);
         } catch (InvalidPattern $e) {
             $e->id = $id;
             throw $e;

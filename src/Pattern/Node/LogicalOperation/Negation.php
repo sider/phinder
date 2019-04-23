@@ -15,7 +15,7 @@ final class Negation extends LogicalOperation
 
     protected function matchNode($phpNode)
     {
-        return !$this->node->visit([$phpNode]);
+        return !$this->node->match($phpNode);
     }
 
     protected function getSubNodeNames()

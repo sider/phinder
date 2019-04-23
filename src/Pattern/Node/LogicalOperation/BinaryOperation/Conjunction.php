@@ -8,7 +8,7 @@ final class Conjunction extends BinaryOperation
 {
     protected function matchNode($phpNode)
     {
-        return $this->node1->visit([$phpNode])
-            && $this->node2->visit([$phpNode]);
+        return $this->node1->match($phpNode)
+            && $this->node2->match($phpNode);
     }
 }

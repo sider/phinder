@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=$(./bin/phinder -v | cut -d' ' -f3)
+version=$(./bin/phinder -V | cut -d' ' -f2)
 
 if ! [[ $version =~ ^[0-9]\.[0-9]\.[0-9]$ ]]; then
   echo "Invalid version value found: $version" >&2

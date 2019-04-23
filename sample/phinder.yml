@@ -12,7 +12,8 @@
   # Exceptions that can ignore this violation.
   justification: Allowed when debugging
 
-- id: sample.in_array_without_3rd_param
+-
+  id: sample.in_array_without_3rd_param
   # `_` pattern mattches any single expression.
   # This means the pattern always matches `in_array` function call with any two arguments.
   pattern: in_array(_, _)

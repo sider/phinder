@@ -1,0 +1,56 @@
+{
+    "result": [
+        {
+            "path": "test/res/usecase/find-method-call/sample.php",
+            "rule": {
+                "id": "test.find-method-call1",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    10,
+                    1
+                ],
+                "end": [
+                    10,
+                    15
+                ]
+            }
+        },
+        {
+            "path": "test/res/usecase/find-method-call/sample.php",
+            "rule": {
+                "id": "test.find-method-call1",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    11,
+                    1
+                ],
+                "end": [
+                    11,
+                    16
+                ]
+            }
+        },
+        {
+            "path": "test/res/usecase/find-method-call/sample.php",
+            "rule": {
+                "id": "test.find-method-call2",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    10,
+                    1
+                ],
+                "end": [
+                    10,
+                    15
+                ]
+            }
+        }
+    ],
+    "errors": []
+}

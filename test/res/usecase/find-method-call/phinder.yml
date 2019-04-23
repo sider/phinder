@@ -1,0 +1,10 @@
+rule:
+  -
+    id: test.find-method-call1
+    pattern: _->m(...)
+    message: --
+
+  -
+    id: test.find-method-call2
+    pattern: _->m()
+    message: --

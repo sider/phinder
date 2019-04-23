@@ -1,0 +1,124 @@
+{
+    "result": [
+        {
+            "path": "test/res/usecase/find-function-call/sample.php",
+            "rule": {
+                "id": "test.find-function-call1",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    7,
+                    1
+                ],
+                "end": [
+                    7,
+                    5
+                ]
+            }
+        },
+        {
+            "path": "test/res/usecase/find-function-call/sample.php",
+            "rule": {
+                "id": "test.find-function-call2",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    7,
+                    1
+                ],
+                "end": [
+                    7,
+                    5
+                ]
+            }
+        },
+        {
+            "path": "test/res/usecase/find-function-call/sample.php",
+            "rule": {
+                "id": "test.find-function-call2",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    9,
+                    1
+                ],
+                "end": [
+                    9,
+                    8
+                ]
+            }
+        },
+        {
+            "path": "test/res/usecase/find-function-call/sample.php",
+            "rule": {
+                "id": "test.find-function-call2",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    11,
+                    1
+                ],
+                "end": [
+                    11,
+                    11
+                ]
+            }
+        },
+        {
+            "path": "test/res/usecase/find-function-call/sample.php",
+            "rule": {
+                "id": "test.find-function-call3",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    7,
+                    1
+                ],
+                "end": [
+                    7,
+                    5
+                ]
+            }
+        },
+        {
+            "path": "test/res/usecase/find-function-call/sample.php",
+            "rule": {
+                "id": "test.find-function-call3",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    9,
+                    1
+                ],
+                "end": [
+                    9,
+                    8
+                ]
+            }
+        },
+        {
+            "path": "test/res/usecase/find-function-call/sample.php",
+            "rule": {
+                "id": "test.find-function-call3",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    11,
+                    1
+                ],
+                "end": [
+                    11,
+                    11
+                ]
+            }
+        }
+    ],
+    "errors": []
+}

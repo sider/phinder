@@ -1,4 +1,6 @@
+composer-setup.php
 composer.lock
 composer.phar
-vendor
 cov/
+php-yacc/
+vendor/

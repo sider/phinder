@@ -1,0 +1,5 @@
+rule:
+  -
+    id: test.find-class
+    pattern: MyClass
+    message: --

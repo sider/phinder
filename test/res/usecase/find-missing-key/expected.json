@@ -1,0 +1,39 @@
+{
+    "result": [
+        {
+            "path": "test/res/usecase/find-missing-key/sample.php",
+            "rule": {
+                "id": "test.find-missing-key1",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    7,
+                    1
+                ],
+                "end": [
+                    7,
+                    20
+                ]
+            }
+        },
+        {
+            "path": "test/res/usecase/find-missing-key/sample.php",
+            "rule": {
+                "id": "test.find-missing-key2",
+                "message": "--"
+            },
+            "location": {
+                "start": [
+                    7,
+                    1
+                ],
+                "end": [
+                    7,
+                    20
+                ]
+            }
+        }
+    ],
+    "errors": []
+}

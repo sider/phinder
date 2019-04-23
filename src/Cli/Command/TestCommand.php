@@ -2,7 +2,7 @@
 
 namespace Phinder\Cli\Command;
 
-use Phinder\Cli\API;
+use Phinder\Config\Parser as ConfigParser;
 use Phinder\Php\Parser as PhpParser;
 use Phinder\Cli\Command;
 
@@ -23,12 +23,14 @@ class TestCommand extends Command
 
         $config = $this->getConfig();
 
-        $phpParser = new PHPParser();
+        $phpParser = new PhpParser();
 
-        foreach (API::parseRule($config) as $r) {
-            foreach ($r->fail_patterns as $p) {
-                $xml = $phpParser->parseStr("<?php $p;");
-                if (0 === count($xml->xpath($r->xpath))) {
+        $configParser = new ConfigParser();
+
+        foreach ($configParser->parse($config) as $r) {
+            foreach ($r->failPatterns as $p) {
+                $phpAst = $phpParser->parseString("<?php $p");
+                if (count($r->pattern->visit($phpAst)) === 0) {
                     $msg = "`$p` does not match the rule {$r->id}";
                     $msg .= ' but should match that rule.';
                     $this->getOutput()->writeln($msg);
@@ -36,9 +38,9 @@ class TestCommand extends Command
                 }
             }
 
-            foreach ($r->pass_patterns as $p) {
-                $xml = $phpParser->parseStr("<?php $p;");
-                if (0 < count($xml->xpath($r->xpath))) {
+            foreach ($r->passPatterns as $p) {
+                $phpAst = $phpParser->parseString("<?php $p");
+                if (count($r->pattern->visit($phpAst)) !== 0) {
                     $msg = "`$p` matches the rule {$r->id}";
                     $msg .= ' but should not match that rule.';
                     $this->getOutput()->writeln($msg);

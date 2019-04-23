@@ -1,0 +1,10 @@
+rule:
+  -
+    id: test.success
+    pattern: f(_, _)
+    message: --
+    test:
+      fail:
+        - f(1, 2); # PHP code that matches the pattern
+      pass:
+        - f(1); # PHP code that does NOT match the pattern

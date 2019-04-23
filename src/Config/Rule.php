@@ -12,23 +12,23 @@ final class Rule
 
     public $justifications;
 
-    public $fail_patterns;
+    public $failPatterns;
 
-    public $pass_patterns;
+    public $passPatterns;
 
     public function __construct(
         $id,
         $pattern,
         $message,
         $justifications,
-        $pass_patterns,
-        $fail_patterns
+        $passPatterns,
+        $failPatterns
     ) {
         $this->id = $id;
         $this->pattern = $pattern;
         $this->message = $message;
         $this->justifications = $justifications;
-        $this->pass_patterns = $pass_patterns;
-        $this->fail_patterns = $fail_patterns;
+        $this->passPatterns = $passPatterns;
+        $this->failPatterns = $failPatterns;
     }
 }

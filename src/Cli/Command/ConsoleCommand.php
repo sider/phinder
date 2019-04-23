@@ -19,21 +19,41 @@ class ConsoleCommand extends Command
 
     protected function main()
     {
+        $this->_printHeader();
+        $this->_printHelp();
+
         $helper = $this->getHelper('question');
-        $question = new Question('pattern> ');
+        $question = new Question('> ');
         while (true) {
-            $pattern = trim(
+            $input = trim(
                 $helper->ask(
                     $this->getInput(),
                     $this->getOutput(),
                     $question
                 )
             );
-            if ($pattern !== '') {
-                $tmp = tmpfile();
-                $config = stream_get_meta_data($tmp)['uri'];
-                fwrite($tmp, "- id: ''\n  pattern: $pattern\n  message: ''");
-                $errorCode = $this->_runFind($config);
+
+            if ($input === '') {
+                continue;
+            }
+
+            if ($input === 'exit') {
+                break;
+            }
+
+            if (preg_match('/^find\s+(.+)$/', $input, $pattern)) {
+                try {
+                    $pattern = $pattern[1];
+                    $tmp = tmpfile();
+                    $config = stream_get_meta_data($tmp)['uri'];
+                    fwrite($tmp, "- id: ''\n  pattern: $pattern\n  message: ''");
+                    $errorCode = $this->_runFind($config);
+                } catch (\Exception $e) {
+                    echo $e->getTraceAsString()."\n";
+                }
+            } else {
+                echo "Unknown command: $input\n";
+                $this->_printHelp();
             }
         }
     }
@@ -51,5 +71,19 @@ class ConsoleCommand extends Command
         );
 
         return $command->run($input, $this->getOutput());
+    }
+
+    private function _printHeader()
+    {
+        echo "Phinder console\n";
+    }
+
+    private function _printHelp()
+    {
+        echo "\n";
+        echo "Available commands:\n";
+        echo "  - find <pattern>  Find <pattern>\n";
+        echo "  - exit            Exit\n";
+        echo "\n";
     }
 }

@@ -8,88 +8,88 @@ class PatternMatchTest extends TestCase
 {
     private static $_CASES = [
         'null' => [
-            true => ['echo null;'],
-            false => ['echo false;'],
+            0 => ['echo false;'],
+            1 => ['echo null;'],
         ],
         'true' => [
-            true => ['echo true;'],
-            false => ['echo false;'],
+            0 => ['echo false;'],
+            1 => ['echo true;'],
         ],
         'false' => [
-            true => ['echo false;'],
-            false => ['echo true;'],
+            0 => ['echo true;'],
+            1 => ['echo false;'],
         ],
         ':bool:' => [
-            true => ['echo false;', 'echo true;'],
-            false => ['echo 1;'],
+            0 => ['echo 1;'],
+            1 => ['echo false;', 'echo true;'],
         ],
         '1' => [
-            true => ['echo 1;'],
-            false => ['echo 100;'],
+            0 => ['echo 100;'],
+            1 => ['echo 1;'],
         ],
         ':int:' => [
-            true => ['echo 1;', 'echo 100;'],
-            false => ['echo 1.0;'],
+            0 => ['echo 1.0;'],
+            1 => ['echo 1;', 'echo 100;'],
         ],
         '1.0' => [
-            true => ['echo 1.0;', 'echo 1.00;'],
-            false => ['echo 1;'],
+            0 => ['echo 1;'],
+            1 => ['echo 1.0;', 'echo 1.00;'],
         ],
         ':float:' => [
-            true => ['echo 1.0;', 'echo 1.00;'],
-            false => ['echo 1;'],
+            0 => ['echo 1;'],
+            1 => ['echo 1.0;', 'echo 1.00;'],
         ],
         '"a"' => [
-            true => ['echo "a";', "echo 'a';"],
-            false => ['echo $a;'],
+            0 => ['echo $a;'],
+            1 => ['echo "a";', "echo 'a';"],
         ],
         "'a'" => [
-            true => ['echo "a";', "echo 'a';"],
-            false => ['echo $a;'],
+            0 => ['echo $a;'],
+            1 => ['echo "a";', "echo 'a';"],
         ],
         ':string:' => [
-            true => ['echo "a";', "echo 'a';"],
-            false => ['echo $a;'],
+            0 => ['echo $a;'],
+            1 => ['echo "a";', "echo 'a';"],
         ],
         'f(_)' => [
-            true => ['f(1);', 'f($a);', 'f(a);'],
-            false => ['f();', 'f(1, 2);', 'g(1);'],
+            0 => ['f();', 'f(1, 2);', 'g(1);'],
+            1 => ['f(1);', 'f($a);', 'f(a);'],
         ],
         'f(...)' => [
-            true => ['f();', 'f(1);', 'f(1, 2);', 'f(1, 2, 3);'],
-            false => ['g();'],
+            0 => ['g();'],
+            1 => ['f();', 'f(1);', 'f(1, 2);', 'f(1, 2, 3);'],
         ],
         'f(_, ...)' => [
-            true => ['f(1);', 'f(1, 2);', 'f(1, 2, 3);'],
-            false => ['f();'],
+            0 => ['f();'],
+            1 => ['f(1);', 'f(1, 2);', 'f(1, 2, 3);'],
         ],
         'f(..., null, ...)' => [
-            true => ['f(null);', 'f(1, null);', 'f(1, null, 2);'],
-            false => ['f(1, 2);'],
+            0 => ['f(1, 2);'],
+            1 => ['f(null);', 'f(1, null);', 'f(1, null, 2);'],
         ],
         '[1]' => [
-            true => ['print_r([1]);'],
-            false => ['print_r(["1"]);', 'print_r([1 => 1]);'],
+            0 => ['print_r(["1"]);', 'print_r([1 => 1]);'],
+            1 => ['print_r([1]);'],
         ],
         '[1 => _]' => [
-            true => ['print_r([1 => 1]);'],
-            false => ['print_r([1]);'],
+            0 => ['print_r([1]);'],
+            1 => ['print_r([1 => 1]);'],
         ],
         '_->f()' => [
-            true => ['$a->f();'],
-            false => ['f();'],
+            0 => ['f();'],
+            1 => ['$a->f();'],
         ],
         'f(!true)' => [
-            true => ['f(false);', 'f(1);'],
-            false => ['f(true);'],
+            0 => ['f(true);'],
+            1 => ['f(false);', 'f(1);'],
         ],
         'f(false) ||| f(0)' => [
-            true => ['f(false);', 'f(0);'],
-            false => ['f([]);'],
+            0 => ['f([]);'],
+            1 => ['f(false);', 'f(0);'],
         ],
         'f(..., true) &&& f(false, ...)' => [
-            true => ['f(false, true);', 'f(false, 1, true);'],
-            false => ['f();'],
+            0 => ['f();'],
+            1 => ['f(false, true);', 'f(false, 1, true);'],
         ],
     ];
 
@@ -106,16 +106,12 @@ class PatternMatchTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function testMatch($pattern, $php, $match)
+    public function testMatch($pattern, $php, $matchCount)
     {
         $patAst = $this->_patternParser->parse($pattern);
         $phpAst = $this->_phpParser->parseString("<?php $php");
         $matches = $patAst->visit($phpAst);
-        if ($match) {
-            $this->assertNotSame(count($matches), 0);
-        } else {
-            $this->assertSame(count($matches), 0);
-        }
+        $this->assertSame(count($matches), $matchCount);
     }
 
     public function provider()
@@ -123,9 +119,9 @@ class PatternMatchTest extends TestCase
         $array = [];
 
         foreach (self::$_CASES as $pattern => $tests) {
-            foreach ($tests as $match => $phps) {
+            foreach ($tests as $matchCount => $phps) {
                 foreach ($phps as $php) {
-                    $array[] = [$pattern, $php, $match ? true : false];
+                    $array[] = [$pattern, $php, $matchCount];
                 }
             }
         }

@@ -16,7 +16,7 @@ abstract class Node implements PhpNodeVisitor
 
     abstract protected function isTargetType($phpNodeType);
 
-    private $_matches = [];
+    private $_matches;
 
     final public function match($phpNode)
     {
@@ -26,6 +26,8 @@ abstract class Node implements PhpNodeVisitor
 
     final public function visit($phpNode)
     {
+        $this->_matches = [];
+
         $traverser = new PhpNodeTraverser();
         $traverser->addVisitor($this);
         $traverser->traverse($phpNode);

@@ -9,6 +9,14 @@ use Phinder\Pattern\Match;
 
 class FindCommand extends Command
 {
+    private static $_ECODE_SUCCESS = 0;
+
+    private static $_ECODE_ERROR = 1;
+
+    private static $_ECODE_VIOLATION = 2;
+
+    private static $_ECODE_ERROR_VIOLATION = 3;
+
     protected function configure()
     {
         $this
@@ -177,11 +185,19 @@ class FindCommand extends Command
             );
         }
 
-        if ($errorCount !== 0 || $violationCount !== 0) {
-            return 1;
+        if ($errorCount !== 0 && $violationCount !== 0) {
+            return self::$_ECODE_ERROR_VIOLATION;
         }
 
-        return 0;
+        if ($errorCount !== 0) {
+            return self::$_ECODE_ERROR;
+        }
+
+        if ($violationCount !== 0) {
+            return self::$_ECODE_VIOLATION;
+        }
+
+        return self::$_ECODE_SUCCESS;
     }
 
     private function _run($rulePath, $phpPath)

@@ -136,7 +136,7 @@ class FindTest extends CliTest
         $this->assertTrue(is_array($results));
 
         $resultCount = count($results);
-        $this->assertSame($this->getStatusCode(), $resultCount === 0 ? 0 : 1);
+        $this->assertSame($this->getStatusCode(), $resultCount === 0 ? 0 : 2);
 
         $expectedJsonPath = $dir.'/expected.json';
         $expectedJsonStr = @file_get_contents($dir.'/expected.json');

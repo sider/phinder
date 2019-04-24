@@ -125,7 +125,7 @@ class FindCommand extends Command
                 ++$errorCount;
 
                 $msg = 'Invalid pattern found';
-                $msg += " in {$e->id} in {$e->path}: {$e->pattern}";
+                $msg .= " in {$e->id} in {$e->path}: {$e->pattern}";
                 if ($jsonOutput) {
                     $outputBuffer['errors'][] = [
                         'type' => 'InvalidPattern',
@@ -168,14 +168,14 @@ class FindCommand extends Command
 
                     return 1;
                 }
-            } catch (InvalidPHP $e) {
+            } catch (InvalidPhp $e) {
                 ++$errorCount;
 
                 $msg = "PHP parse error in {$e->path}: {$e->error->getRawMessage()}";
 
                 if ($jsonOutput) {
                     $outputBuffer['errors'][] = [
-                        'type' => 'InvalidPHP',
+                        'type' => 'InvalidPhp',
                         'message' => $msg,
                     ];
                 } else {

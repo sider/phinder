@@ -2,6 +2,8 @@
 
 namespace Phinder\Config;
 
+use RecursiveIteratorIterator as RecItrItr;
+use RecursiveDirectoryIterator as RecDirItr;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Phinder\Error\FileNotFound;
@@ -19,7 +21,33 @@ final class Parser
         $this->_patternParser = new PatternParser();
     }
 
-    public function parse($path)
+    public function parseFilesInDirectory($path)
+    {
+        $rules = [];
+        foreach ($this->_parseFilesInDirectory($path) as $rs) {
+            $rules = array_merge($rules, $rs);
+        }
+
+        return $rules;
+    }
+
+    private function _parseFilesInDirectory($path)
+    {
+        if (is_dir($path)) {
+            foreach (new RecItrItr(new RecDirItr($path)) as $itr) {
+                $ext = $itr->getExtension();
+                if ($ext === 'yml') {
+                    yield $this->_parseFile($itr->getPathname());
+                }
+            }
+        } elseif (is_file($path)) {
+            yield $this->_parseFile($path);
+        } else {
+            throw new FileNotFound($path);
+        }
+    }
+
+    private function _parseFile($path)
     {
         return iterator_to_array($this->_parse($path));
     }

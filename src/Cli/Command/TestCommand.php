@@ -27,7 +27,7 @@ class TestCommand extends Command
 
         $configParser = new ConfigParser();
 
-        foreach ($configParser->parse($config) as $r) {
+        foreach ($configParser->parseFilesInDirectory($config) as $r) {
             foreach ($r->failPatterns as $p) {
                 $phpAst = $phpParser->parseString("<?php $p");
                 if (count($r->pattern->visit($phpAst)) === 0) {

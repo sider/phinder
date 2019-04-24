@@ -189,7 +189,7 @@ class FindCommand extends Command
         $phpParser = new PhpParser();
         $configParser = new ConfigParser();
 
-        $rules = $configParser->parse($rulePath);
+        $rules = $configParser->parseFilesInDirectory($rulePath);
         foreach ($phpParser->parseFilesInDirectory($phpPath) as $phpFile) {
             foreach ($rules as $rule) {
                 foreach ($rule->pattern->visit($phpFile->ast) as $match) {

@@ -122,7 +122,7 @@ class FindTest extends CliTest
     {
         $this->exec(
             [
-                '--config' => "$dir/phinder.yml",
+                '--config' => "$dir",
                 '--format' => 'json',
                 'path' => $dir,
             ]

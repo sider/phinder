@@ -14,13 +14,13 @@ use Phinder\Error\InvalidYaml;
 
 class FindCommand extends Command
 {
-    private const ECODE_SUCCESS = 0;
+    const ECODE_SUCCESS = 0;
 
-    private const ECODE_ERROR = 1;
+    const ECODE_ERROR = 1;
 
-    private const ECODE_VIOLATION = 2;
+    const ECODE_VIOLATION = 2;
 
-    private const ECODE_ERROR_VIOLATION = 3;
+    const ECODE_ERROR_VIOLATION = 3;
 
     protected function configure()
     {

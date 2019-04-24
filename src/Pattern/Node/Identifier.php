@@ -6,6 +6,8 @@ use Phinder\Pattern\Node;
 
 final class Identifier extends Node
 {
+    private static $_WILDCARDS = ['_', '?'];
+
     protected $name;
 
     public function __construct($name)
@@ -15,7 +17,7 @@ final class Identifier extends Node
 
     protected function matchNode($phpNode)
     {
-        if ($this->name === '_') {
+        if (in_array($this->name, self::$_WILDCARDS, true)) {
             return true;
         }
 
@@ -37,7 +39,7 @@ final class Identifier extends Node
 
     protected function isTargetType($phpNodeType)
     {
-        return $this->name === '_'
+        return in_array($this->name, self::$_WILDCARDS, true)
             || $phpNodeType === 'Name'
             || $phpNodeType === 'Identifier';
     }

@@ -9,6 +9,8 @@ class PatternParseTest extends TestCase
     private static $_PATTERNS = [
         '_' => ['Identifier', '_'],
 
+        '?' => ['Identifier', '?'],
+
         '((_))' => ['Identifier', '_'],
 
         '!_' => ['Negation', ['Identifier', '_']],

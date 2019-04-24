@@ -9,13 +9,13 @@ use Phinder\Pattern\Match;
 
 class FindCommand extends Command
 {
-    private static $_ECODE_SUCCESS = 0;
+    private const ECODE_SUCCESS = 0;
 
-    private static $_ECODE_ERROR = 1;
+    private const ECODE_ERROR = 1;
 
-    private static $_ECODE_VIOLATION = 2;
+    private const ECODE_VIOLATION = 2;
 
-    private static $_ECODE_ERROR_VIOLATION = 3;
+    private const ECODE_ERROR_VIOLATION = 3;
 
     protected function configure()
     {
@@ -186,18 +186,18 @@ class FindCommand extends Command
         }
 
         if ($errorCount !== 0 && $violationCount !== 0) {
-            return self::$_ECODE_ERROR_VIOLATION;
+            return self::ECODE_ERROR_VIOLATION;
         }
 
         if ($errorCount !== 0) {
-            return self::$_ECODE_ERROR;
+            return self::ECODE_ERROR;
         }
 
         if ($violationCount !== 0) {
-            return self::$_ECODE_VIOLATION;
+            return self::ECODE_VIOLATION;
         }
 
-        return self::$_ECODE_SUCCESS;
+        return self::ECODE_SUCCESS;
     }
 
     private function _run($rulePath, $phpPath)

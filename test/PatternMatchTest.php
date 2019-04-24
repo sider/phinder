@@ -75,7 +75,7 @@ class PatternMatchTest extends TestCase
             0 => ['print_r([1]);'],
             1 => ['print_r([1 => 1]);'],
         ],
-        '_->f()' => [
+        '?->f()' => [
             0 => ['f();'],
             1 => ['$a->f();'],
         ],

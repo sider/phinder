@@ -6,6 +6,11 @@ use Phinder\Cli\Command;
 use Phinder\Config\Parser as ConfigParser;
 use Phinder\Php\Parser as PhpParser;
 use Phinder\Pattern\Match;
+use Phinder\Error\FileNotFound;
+use Phinder\Error\InvalidPattern;
+use Phinder\Error\InvalidPhp;
+use Phinder\Error\InvalidRule;
+use Phinder\Error\InvalidYaml;
 
 class FindCommand extends Command
 {
@@ -205,7 +210,7 @@ class FindCommand extends Command
         $phpParser = new PhpParser();
         $configParser = new ConfigParser();
 
-        $rules = $configParser->parse($rulePath);
+        $rules = $configParser->parseFilesInDirectory($rulePath);
         foreach ($phpParser->parseFilesInDirectory($phpPath) as $phpFile) {
             foreach ($rules as $rule) {
                 foreach ($rule->pattern->visit($phpFile->ast) as $match) {

@@ -27,9 +27,9 @@ class TestCommand extends Command
 
         $configParser = new ConfigParser();
 
-        foreach ($configParser->parse($config) as $r) {
+        foreach ($configParser->parseFilesInDirectory($config) as $r) {
             foreach ($r->failPatterns as $p) {
-                $phpAst = $phpParser->parseString("<?php $p");
+                $phpAst = $phpParser->parseString("<?php $p;");
                 if (count($r->pattern->visit($phpAst)) === 0) {
                     $msg = "`$p` does not match the rule {$r->id}";
                     $msg .= ' but should match that rule.';
@@ -39,7 +39,7 @@ class TestCommand extends Command
             }
 
             foreach ($r->passPatterns as $p) {
-                $phpAst = $phpParser->parseString("<?php $p");
+                $phpAst = $phpParser->parseString("<?php $p;");
                 if (count($r->pattern->visit($phpAst)) !== 0) {
                     $msg = "`$p` matches the rule {$r->id}";
                     $msg .= ' but should not match that rule.';

@@ -6,6 +6,11 @@ use Phinder\Cli\Command;
 use Phinder\Config\Parser as ConfigParser;
 use Phinder\Php\Parser as PhpParser;
 use Phinder\Pattern\Match;
+use Phinder\Error\FileNotFound;
+use Phinder\Error\InvalidPattern;
+use Phinder\Error\InvalidPhp;
+use Phinder\Error\InvalidRule;
+use Phinder\Error\InvalidYaml;
 
 class FindCommand extends Command
 {

@@ -4,9 +4,11 @@ namespace Phinder\Php;
 
 use PhpParser\Lexer;
 use PhpParser\ParserFactory;
+use PhpParser\Error as ParseError;
 use RecursiveIteratorIterator as RecItrItr;
 use RecursiveDirectoryIterator as RecDirItr;
 use Phinder\Error\FileNotFound;
+use Phinder\Error\InvalidPhp;
 
 final class Parser
 {
@@ -43,9 +45,13 @@ final class Parser
             throw new FileNotFound($path);
         }
 
-        $ast = $this->parseString($content);
+        try {
+            $ast = $this->parseString($content);
 
-        return new File($path, $ast);
+            return new File($path, $ast);
+        } catch (ParseError $e) {
+            throw new InvalidPhp($path, $e);
+        }
     }
 
     public function parseString($string)

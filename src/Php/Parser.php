@@ -25,7 +25,7 @@ final class Parser
         if (is_dir($path)) {
             foreach (new RecItrItr(new RecDirItr($path)) as $itr) {
                 $ext = $itr->getExtension();
-                if ($ext === 'php') {
+                if ($ext === 'php' || $ext === 'ctp') {
                     yield $this->parseFile($itr->getPathname());
                 }
             }

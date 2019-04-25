@@ -8,7 +8,7 @@ class Main
 {
     private static $_name = 'phinder';
 
-    private static $_version = '0.8.0';
+    private static $_version = '0.8.1';
 
     private static $_commands = [
         'Command\ConsoleCommand',

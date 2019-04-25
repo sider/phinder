@@ -6,112 +6,72 @@ class FindTest extends CliTest
 {
     protected static $commandName = 'find';
 
-    /**
-     * @expectedException \Phinder\Error\InvalidRule
-     */
     public function testInvalidId()
     {
-        $this->_execInvalidConfig('invalid-id');
+        $this->_execInvalidConfig('invalid-id', 'InvalidRule');
     }
 
-    /**
-     * @expectedException \Phinder\Error\InvalidRule
-     */
     public function testInvalidJustification()
     {
-        $this->_execInvalidConfig('invalid-justification');
+        $this->_execInvalidConfig('invalid-justification', 'InvalidRule');
     }
 
-    /**
-     * @expectedException \Phinder\Error\InvalidRule
-     */
     public function testInvalidMessage()
     {
-        $this->_execInvalidConfig('invalid-message');
+        $this->_execInvalidConfig('invalid-message', 'InvalidRule');
     }
 
-    /**
-     * @expectedException \Phinder\Error\InvalidPattern
-     */
     public function testInvalidPattern()
     {
-        $this->_execInvalidConfig('invalid-pattern');
+        $this->_execInvalidConfig('invalid-pattern', 'InvalidPattern');
     }
 
-    /**
-     * @expectedException \Phinder\Error\InvalidYaml
-     */
     public function testInvalidRule()
     {
-        $this->_execInvalidConfig('invalid-rule');
+        $this->_execInvalidConfig('invalid-rule', 'InvalidYaml');
     }
 
-    /**
-     * @expectedException \Phinder\Error\InvalidRule
-     */
     public function testInvalidTestFail()
     {
-        $this->_execInvalidConfig('invalid-test-fail');
+        $this->_execInvalidConfig('invalid-test-fail', 'InvalidRule');
     }
 
-    /**
-     * @expectedException \Phinder\Error\InvalidRule
-     */
     public function testInvalidTestPass()
     {
-        $this->_execInvalidConfig('invalid-test-pass');
+        $this->_execInvalidConfig('invalid-test-pass', 'InvalidRule');
     }
 
-    /**
-     * @expectedException \Phinder\Error\InvalidYaml
-     */
     public function testInvalid()
     {
-        $this->_execInvalidConfig('invalid-yaml');
+        $this->_execInvalidConfig('invalid-yaml', 'InvalidYaml');
     }
 
-    /**
-     * @expectedException \Phinder\Error\InvalidRule
-     */
     public function testNoId()
     {
-        $this->_execInvalidConfig('no-id');
+        $this->_execInvalidConfig('no-id', 'InvalidRule');
     }
 
-    /**
-     * @expectedException \Phinder\Error\InvalidRule
-     */
     public function testNoMessage()
     {
-        $this->_execInvalidConfig('no-message');
+        $this->_execInvalidConfig('no-message', 'InvalidRule');
     }
 
-    /**
-     * @expectedException \Phinder\Error\InvalidRule
-     */
     public function testNoPattern()
     {
-        $this->_execInvalidConfig('no-pattern');
+        $this->_execInvalidConfig('no-pattern', 'InvalidRule');
     }
 
-    /**
-     * @expectedException \Phinder\Error\FileNotFound
-     */
     public function testNonExistent()
     {
-        $this->_execInvalidConfig('non-existent');
+        $this->_execInvalidConfig('non-existent', 'FileNotFound');
     }
 
-    /**
-     * @expectedException \PhpParser\Error
-     */
-    public function testInvalidPHP()
+    public function testInvalidPhp()
     {
-        $this->exec(
-            [
-                '--config' => 'sample/phinder.yml',
-                'path' => 'test/res/invalid.php_',
-            ]
+        $this->_execInvalidConfig(
+            '../../../sample/phinder',
+            'InvalidPhp',
+            'test/res/invalid.php_'
         );
     }
 
@@ -136,7 +96,7 @@ class FindTest extends CliTest
         $this->assertTrue(is_array($results));
 
         $resultCount = count($results);
-        $this->assertSame($this->getStatusCode(), $resultCount === 0 ? 0 : 1);
+        $this->assertSame($this->getStatusCode(), $resultCount === 0 ? 0 : 2);
 
         $expectedJsonPath = $dir.'/expected.json';
         $expectedJsonStr = @file_get_contents($dir.'/expected.json');
@@ -153,6 +113,26 @@ class FindTest extends CliTest
         $this->assertSame($jsonDiff->getDiffCnt(), 0);
     }
 
+    private function _execInvalidConfig($fileName, $errorName, $path = 'test/res/')
+    {
+        $this->exec(
+            [
+                '--config' => "test/res/invalid-config/$fileName.yml",
+                '--format' => 'json',
+                'path' => $path,
+            ]
+        );
+
+        $outputJson = $this->getDisplayJson();
+        $this->assertNotSame($outputJson, null);
+        $this->assertTrue(array_key_exists('errors', $outputJson));
+
+        $errors = $outputJson['errors'];
+        $this->assertTrue(is_array($errors));
+        $this->assertSame($this->getStatusCode(), 1);
+        $this->assertSame($errors[0]['type'], $errorName);
+    }
+
     public function useCaseProvider()
     {
         $useCases = [];
@@ -163,10 +143,5 @@ class FindTest extends CliTest
         }
 
         return $useCases;
-    }
-
-    private function _execInvalidConfig($name)
-    {
-        $this->exec(['--config' => "test/res/invalid-config/$name.yml"]);
     }
 }

@@ -14,6 +14,14 @@ use Phinder\Error\InvalidYaml;
 
 class FindCommand extends Command
 {
+    const ECODE_SUCCESS = 0;
+
+    const ECODE_ERROR = 1;
+
+    const ECODE_VIOLATION = 2;
+
+    const ECODE_ERROR_VIOLATION = 3;
+
     protected function configure()
     {
         $this
@@ -117,7 +125,7 @@ class FindCommand extends Command
                 ++$errorCount;
 
                 $msg = 'Invalid pattern found';
-                $msg += " in {$e->id} in {$e->path}: {$e->pattern}";
+                $msg .= " in {$e->id} in {$e->path}: {$e->pattern}";
                 if ($jsonOutput) {
                     $outputBuffer['errors'][] = [
                         'type' => 'InvalidPattern',
@@ -160,14 +168,14 @@ class FindCommand extends Command
 
                     return 1;
                 }
-            } catch (InvalidPHP $e) {
+            } catch (InvalidPhp $e) {
                 ++$errorCount;
 
                 $msg = "PHP parse error in {$e->path}: {$e->error->getRawMessage()}";
 
                 if ($jsonOutput) {
                     $outputBuffer['errors'][] = [
-                        'type' => 'InvalidPHP',
+                        'type' => 'InvalidPhp',
                         'message' => $msg,
                     ];
                 } else {
@@ -182,11 +190,19 @@ class FindCommand extends Command
             );
         }
 
-        if ($errorCount !== 0 || $violationCount !== 0) {
-            return 1;
+        if ($errorCount !== 0 && $violationCount !== 0) {
+            return self::ECODE_ERROR_VIOLATION;
         }
 
-        return 0;
+        if ($errorCount !== 0) {
+            return self::ECODE_ERROR;
+        }
+
+        if ($violationCount !== 0) {
+            return self::ECODE_VIOLATION;
+        }
+
+        return self::ECODE_SUCCESS;
     }
 
     private function _run($rulePath, $phpPath)

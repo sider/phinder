@@ -8,6 +8,10 @@ use Phinder\Cli\Command;
 
 class TestCommand extends Command
 {
+    const ECODE_SUCCESS = 0;
+
+    const ECODE_FAILURE = 2;
+
     protected function configure()
     {
         $this
@@ -33,7 +37,7 @@ class TestCommand extends Command
                 if (count($r->pattern->visit($phpAst)) === 0) {
                     $msg = "`$p` does not match the rule {$r->id}";
                     $msg .= ' but should match that rule.';
-                    $this->getOutput()->writeln($msg);
+                    $this->getErrorOutput()->writeln($msg);
                     ++$errorCount;
                 }
             }
@@ -43,18 +47,16 @@ class TestCommand extends Command
                 if (count($r->pattern->visit($phpAst)) !== 0) {
                     $msg = "`$p` matches the rule {$r->id}";
                     $msg .= ' but should not match that rule.';
-                    $this->getOutput()->writeln($msg);
+                    $this->getErrorOutput()->writeln($msg);
                     ++$errorCount;
                 }
             }
         }
 
         if ($errorCount === 0) {
-            $this->getErrorOutput()->writeln('No error');
-
-            return 0;
+            return self::ECODE_SUCCESS;
         } else {
-            return 1;
+            return self::ECODE_FAILURE;
         }
     }
 }

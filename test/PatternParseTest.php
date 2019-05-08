@@ -153,6 +153,12 @@ class PatternParseTest extends TestCase
                 ],
             ],
         ],
+
+        '_ . _' => [
+            'StringConcatenation',
+            ['Identifier', '_'],
+            ['Identifier', '_'],
+        ],
     ];
 
     private $_parser;

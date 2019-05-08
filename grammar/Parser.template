@@ -8,6 +8,7 @@ $meta @
 namespace Phinder\Pattern;
 
 use Phinder\Error\InvalidPattern;
+use Phinder\Pattern\Node\BinaryOperation\StringConcatenation;
 use Phinder\Pattern\Node\Call\ArrayCall;
 use Phinder\Pattern\Node\Call\FunctionCall;
 use Phinder\Pattern\Node\Call\MethodCall;

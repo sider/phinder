@@ -91,6 +91,11 @@ class PatternMatchTest extends TestCase
             0 => ['f();'],
             1 => ['f(false, true);', 'f(false, 1, true);'],
         ],
+        '_ . _' => [
+            0 => ['X + Y;'],
+            1 => ['X . Y;'],
+            2 => ['X . Y . Z;'],
+        ],
     ];
 
     private $_patternParser;

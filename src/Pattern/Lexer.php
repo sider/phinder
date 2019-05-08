@@ -4,7 +4,7 @@ namespace Phinder\Pattern;
 
 class Lexer
 {
-    private static $_regex = "/^(\t+|\s+|(?<T_COMMA>,)|(?<T_ARROW>->)|(?<T_ARRAY>array)|(?<T_DOUBLE_ARROW>=>)|(?<T_ELLIPSIS>\.\.\.)|(?<T_TRIPLE_VERTICAL_BAR>\|\|\|)|(?<T_TRIPLE_AMPERSAND>&&&)|(?<T_EXCLAMATION>!)|(?<T_LEFT_PAREN>\()|(?<T_RIGHT_PAREN>\))|(?<T_LEFT_BRACKET>\[)|(?<T_RIGHT_BRACKET>\])|(?<T_NULL>null)|(?<T_BOOLEAN>:bool:)|(?<T_INTEGER>:int:)|(?<T_FLOAT>:float:)|(?<T_STRING>:string:)|(?<T_BOOLEAN_LITERAL>true|false)|(?<T_FLOAT_LITERAL>[0-9]+\.[0-9]+)|(?<T_INTEGER_LITERAL>0|[1-9][0-9]*)|(?<T_STRING_LITERAL>'.*?'|\".*?\")|(?<T_IDENTIFIER>\?|[a-zA-Z_][a-zA-Z0-9_]*))/";
+    private static $_regex = "/^(\t+|\s+|(?<T_COMMA>,)|(?<T_ARROW>->)|(?<T_ARRAY>array)|(?<T_DOUBLE_ARROW>=>)|(?<T_ELLIPSIS>\.\.\.)|(?<T_DOT>\.)|(?<T_TRIPLE_VERTICAL_BAR>\|\|\|)|(?<T_TRIPLE_AMPERSAND>&&&)|(?<T_EXCLAMATION>!)|(?<T_LEFT_PAREN>\()|(?<T_RIGHT_PAREN>\))|(?<T_LEFT_BRACKET>\[)|(?<T_RIGHT_BRACKET>\])|(?<T_NULL>null)|(?<T_BOOLEAN>:bool:)|(?<T_INTEGER>:int:)|(?<T_FLOAT>:float:)|(?<T_STRING>:string:)|(?<T_BOOLEAN_LITERAL>true|false)|(?<T_FLOAT_LITERAL>[0-9]+\.[0-9]+)|(?<T_INTEGER_LITERAL>0|[1-9][0-9]*)|(?<T_STRING_LITERAL>'.*?'|\".*?\")|(?<T_IDENTIFIER>\?|[a-zA-Z_][a-zA-Z0-9_]*))/";
 
     private $_string;
 
@@ -51,6 +51,12 @@ class Lexer
                     $this->_string = substr($this->_string, strlen($val));
 
                     return Parser::T_ELLIPSIS;
+                }
+                if ($matches['T_DOT'] !== '') {
+                    $val = $matches['T_DOT'];
+                    $this->_string = substr($this->_string, strlen($val));
+
+                    return Parser::T_DOT;
                 }
                 if ($matches['T_TRIPLE_VERTICAL_BAR'] !== '') {
                     $val = $matches['T_TRIPLE_VERTICAL_BAR'];

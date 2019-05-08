@@ -3,6 +3,7 @@
 %token T_ARRAY 'array'
 %token T_DOUBLE_ARROW '=>'
 %token T_ELLIPSIS '\.\.\.'
+%token T_DOT '\.'
 %token T_TRIPLE_VERTICAL_BAR '\|\|\|'
 %token T_TRIPLE_AMPERSAND '&&&'
 %token T_EXCLAMATION '!'
@@ -57,6 +58,7 @@ atom:
   | integer_literal { $$ = $1; }
   | float_literal { $$ = $1; }
   | string_literal { $$ = $1; }
+  | string_concatenation { $$ = $1; }
 ;
 
 identifier:
@@ -112,6 +114,10 @@ float_literal:
 string_literal:
     T_STRING_LITERAL { $$ = new StringLiteral($1); }
   | T_STRING { $$ = new StringLiteral(); }
+;
+
+string_concatenation:
+  expression T_DOT expression { $$ = new StringConcatenation($1, $3); }
 ;
 
 array_call:

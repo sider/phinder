@@ -1,6 +1,6 @@
 %token T_COMMA ','
 %token T_ARROW '->'
-%token T_ARRAY 'array'
+%token T_ARRAY 'array(?![a-zA-Z0-9_\x80-\xff])'
 %token T_DOUBLE_ARROW '=>'
 %token T_ELLIPSIS '\.\.\.'
 %token T_DOT '\.'
@@ -20,7 +20,7 @@
 %token T_FLOAT_LITERAL '[0-9]+\.[0-9]+'
 %token T_INTEGER_LITERAL '0|[1-9][0-9]*'
 %token T_STRING_LITERAL '\'.*?\'|".*?"'
-%token T_IDENTIFIER '\?|[a-zA-Z_][a-zA-Z0-9_]*'
+%token T_IDENTIFIER '\?|[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*'
 
 %%
 

@@ -50,6 +50,18 @@ class PatternParseTest extends TestCase
             [Node::ELLIPSIS],
         ],
 
+        'array_merge(...)' => [
+            'FunctionCall',
+            ['Identifier', 'array_merge'],
+            [Node::ELLIPSIS],
+        ],
+
+        'in_array(...)' => [
+            'FunctionCall',
+            ['Identifier', 'in_array'],
+            [Node::ELLIPSIS],
+        ],
+
         '_->a()' => [
             'MethodCall',
             ['Identifier', '_'],

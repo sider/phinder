@@ -124,6 +124,11 @@ class PatternParseTest extends TestCase
             null,
         ],
 
+        'array()' => [
+            'ArrayCall',
+            [],
+        ],
+
         '[]' => [
             'ArrayCall',
             [],

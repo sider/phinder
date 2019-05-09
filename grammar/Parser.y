@@ -1,6 +1,6 @@
 %token T_COMMA ','
 %token T_ARROW '->'
-%token T_ARRAY 'array'
+%token T_ARRAY 'array(?![a-zA-Z0-9_])'
 %token T_DOUBLE_ARROW '=>'
 %token T_ELLIPSIS '\.\.\.'
 %token T_DOT '\.'

@@ -1,3 +1,4 @@
+%token T_THIS '\\\$this'
 %token T_COMMA ','
 %token T_ARROW '->'
 %token T_ARRAY 'array(?![a-zA-Z0-9_\x80-\xff])'
@@ -50,8 +51,10 @@ element:
 
 atom:
     identifier { $$ = $1; }
+  | this { $$ = $1; }
   | function_call { $$ = $1; }
   | method_call { $$ = $1; }
+  | property_access { $$ = $1; }
   | array_call { $$ = $1; }
   | null_literal { $$ = $1; }
   | boolean_literal { $$ = $1; }
@@ -65,12 +68,20 @@ identifier:
     T_IDENTIFIER { $$ = new Identifier($1); }
 ;
 
+this:
+    T_THIS { $$ = new This(); }
+;
+
 function_call:
     identifier T_LEFT_PAREN arguments T_RIGHT_PAREN { $$ = new FunctionCall($1, $3); }
 ;
 
 method_call:
     expression T_ARROW identifier T_LEFT_PAREN arguments T_RIGHT_PAREN { $$ = new MethodCall($1, $3, $5); }
+;
+
+property_access:
+    expression T_ARROW identifier { $$ = new PropertyAccess($1, $3); }
 ;
 
 arguments:

@@ -23,6 +23,8 @@ use Phinder\Pattern\Node\Scalar\StringLiteral;
 use Phinder\Pattern\Node\Argument;
 use Phinder\Pattern\Node\ArrayArgument;
 use Phinder\Pattern\Node\Identifier;
+use Phinder\Pattern\Node\PropertyAccess;
+use Phinder\Pattern\Node\This;
 use Phinder\Pattern\Node;
 @include;
 

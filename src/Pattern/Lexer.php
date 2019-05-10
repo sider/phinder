@@ -4,7 +4,7 @@ namespace Phinder\Pattern;
 
 class Lexer
 {
-    private static $_regex = "/^(\t+|\s+|(?<T_THIS>\\\$this)|(?<T_COMMA>,)|(?<T_ARROW>->)|(?<T_ARRAY>array(?![a-zA-Z0-9_\x80-\xff]))|(?<T_DOUBLE_ARROW>=>)|(?<T_ELLIPSIS>\.\.\.)|(?<T_DOT>\.)|(?<T_TRIPLE_VERTICAL_BAR>\|\|\|)|(?<T_TRIPLE_AMPERSAND>&&&)|(?<T_EXCLAMATION>!)|(?<T_LEFT_PAREN>\()|(?<T_RIGHT_PAREN>\))|(?<T_LEFT_BRACKET>\[)|(?<T_RIGHT_BRACKET>\])|(?<T_NULL>null)|(?<T_BOOLEAN>:bool:)|(?<T_INTEGER>:int:)|(?<T_FLOAT>:float:)|(?<T_STRING>:string:)|(?<T_BOOLEAN_LITERAL>true|false)|(?<T_FLOAT_LITERAL>[0-9]+\.[0-9]+)|(?<T_INTEGER_LITERAL>0|[1-9][0-9]*)|(?<T_STRING_LITERAL>'.*?'|\".*?\")|(?<T_IDENTIFIER>\?|[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*))/";
+    private static $_regex = "/^(\t+|\s+|(?<T_VARIABLE>\\\$[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*)|(?<T_COMMA>,)|(?<T_ARROW>->)|(?<T_ARRAY>array(?![a-zA-Z0-9_\x80-\xff]))|(?<T_DOUBLE_ARROW>=>)|(?<T_ELLIPSIS>\.\.\.)|(?<T_DOT>\.)|(?<T_TRIPLE_VERTICAL_BAR>\|\|\|)|(?<T_TRIPLE_AMPERSAND>&&&)|(?<T_EXCLAMATION>!)|(?<T_LEFT_PAREN>\()|(?<T_RIGHT_PAREN>\))|(?<T_LEFT_BRACKET>\[)|(?<T_RIGHT_BRACKET>\])|(?<T_NULL>null)|(?<T_BOOLEAN>:bool:)|(?<T_INTEGER>:int:)|(?<T_FLOAT>:float:)|(?<T_STRING>:string:)|(?<T_BOOLEAN_LITERAL>true|false)|(?<T_FLOAT_LITERAL>[0-9]+\.[0-9]+)|(?<T_INTEGER_LITERAL>0|[1-9][0-9]*)|(?<T_STRING_LITERAL>'.*?'|\".*?\")|(?<T_IDENTIFIER>\?|[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*))/";
 
     private $_string;
 
@@ -22,11 +22,11 @@ class Lexer
                     $this->_string = substr($this->_string, strlen($matches[0]));
                     continue;
                 }
-                if ($matches['T_THIS'] !== '') {
-                    $val = $matches['T_THIS'];
+                if ($matches['T_VARIABLE'] !== '') {
+                    $val = $matches['T_VARIABLE'];
                     $this->_string = substr($this->_string, strlen($val));
 
-                    return Parser::T_THIS;
+                    return Parser::T_VARIABLE;
                 }
                 if ($matches['T_COMMA'] !== '') {
                     $val = $matches['T_COMMA'];

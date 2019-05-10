@@ -19,14 +19,14 @@ use Phinder\Pattern\Node\Argument;
 use Phinder\Pattern\Node\ArrayArgument;
 use Phinder\Pattern\Node\Identifier;
 use Phinder\Pattern\Node\PropertyAccess;
-use Phinder\Pattern\Node\This;
+use Phinder\Pattern\Node\Variable;
 use Phinder\Pattern\Node;
 
 class Parser
 {
     const YYERRTOK = 256;
 
-    const T_THIS = 257;
+    const T_VARIABLE = 257;
 
     const T_COMMA = 258;
 
@@ -349,7 +349,7 @@ class Parser
                          $yyval = new Identifier($this->_yyastk[$yysp - (1 - 1)]); 
                         break;
                     case 23:
-                         $yyval = new This(); 
+                         $yyval = new Variable($this->_yyastk[$yysp - (1 - 1)]); 
                         break;
                     case 24:
                          $yyval = new FunctionCall($this->_yyastk[$yysp - (4 - 1)], $this->_yyastk[$yysp - (4 - 3)]); 

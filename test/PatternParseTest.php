@@ -176,7 +176,7 @@ class PatternParseTest extends TestCase
             'MethodCall',
             [
                 'PropertyAccess',
-                ['This'],
+                ['Variable', 'this'],
                 ['Identifier', 'Html'],
             ],
             ['Identifier', 'image'],

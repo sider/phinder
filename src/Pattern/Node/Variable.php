@@ -4,11 +4,18 @@ namespace Phinder\Pattern\Node;
 
 use Phinder\Pattern\Node;
 
-final class This extends Node
+final class Variable extends Node
 {
+    protected $name;
+
+    public function __construct($name)
+    {
+        $this->name = substr($name, 1);
+    }
+
     protected function matchNode($phpNode)
     {
-        return $phpNode->name === 'this';
+        return $this->name === $phpNode->name;
     }
 
     protected function isTargetType($phpNodeType)
@@ -18,6 +25,6 @@ final class This extends Node
 
     protected function getSubNodeNames()
     {
-        return [];
+        return ['name'];
     }
 }

@@ -96,6 +96,10 @@ class PatternMatchTest extends TestCase
             1 => ['X . Y;'],
             2 => ['X . Y . Z;'],
         ],
+        '$this->Html->image(...)' => [
+            0 => ['$this->image(1);'],
+            1 => ['$this->Html->image(1);'],
+        ],
     ];
 
     private $_patternParser;

@@ -171,6 +171,17 @@ class PatternParseTest extends TestCase
             ['Identifier', '_'],
             ['Identifier', '_'],
         ],
+
+        '$this->Html->image(...)' => [
+            'MethodCall',
+            [
+                'PropertyAccess',
+                ['Variable', 'this'],
+                ['Identifier', 'Html'],
+            ],
+            ['Identifier', 'image'],
+            [Node::ELLIPSIS],
+        ],
     ];
 
     private $_parser;

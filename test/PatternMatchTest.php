@@ -100,6 +100,10 @@ class PatternMatchTest extends TestCase
             0 => ['$this->image(1);'],
             1 => ['$this->Html->image(1);'],
         ],
+        'Response::forge(...)' => [
+            0 => ['$response->forge(1);'],
+            1 => ['Response::forge(1);'],
+        ],
     ];
 
     private $_patternParser;

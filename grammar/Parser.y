@@ -22,6 +22,7 @@
 %token T_INTEGER_LITERAL '0|[1-9][0-9]*'
 %token T_STRING_LITERAL '\'.*?\'|".*?"'
 %token T_IDENTIFIER '\?|[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*'
+%token T_DOUBLE_COLON '::'
 
 %%
 
@@ -54,6 +55,7 @@ atom:
   | this { $$ = $1; }
   | function_call { $$ = $1; }
   | method_call { $$ = $1; }
+  | static_method_call { $$ = $1; }
   | property_access { $$ = $1; }
   | array_call { $$ = $1; }
   | null_literal { $$ = $1; }
@@ -78,6 +80,10 @@ function_call:
 
 method_call:
     expression T_ARROW identifier T_LEFT_PAREN arguments T_RIGHT_PAREN { $$ = new MethodCall($1, $3, $5); }
+;
+
+static_method_call:
+    expression T_DOUBLE_COLON identifier T_LEFT_PAREN arguments T_RIGHT_PAREN { $$ = new StaticMethodCall($1, $3, $5); }
 ;
 
 property_access:

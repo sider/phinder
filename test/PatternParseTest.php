@@ -182,6 +182,13 @@ class PatternParseTest extends TestCase
             ['Identifier', 'image'],
             [Node::ELLIPSIS],
         ],
+
+        'Response::forge(...)' => [
+            'StaticMethodCall',
+            ['Identifier', 'Response'],
+            ['Identifier', 'forge'],
+            [Node::ELLIPSIS],
+        ],
     ];
 
     private $_parser;

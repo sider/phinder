@@ -12,6 +12,7 @@ use Phinder\Pattern\Node\BinaryOperation\StringConcatenation;
 use Phinder\Pattern\Node\Call\ArrayCall;
 use Phinder\Pattern\Node\Call\FunctionCall;
 use Phinder\Pattern\Node\Call\MethodCall;
+use Phinder\Pattern\Node\Call\StaticMethodCall;
 use Phinder\Pattern\Node\CaselessConstant\BooleanLiteral;
 use Phinder\Pattern\Node\CaselessConstant\NullLiteral;
 use Phinder\Pattern\Node\LogicalOperation\BinaryOperation\Conjunction;

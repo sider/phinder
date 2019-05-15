@@ -6,8 +6,13 @@ use Phinder\Pattern\Node\CaselessConstant;
 
 final class NullLiteral extends CaselessConstant
 {
-    public function __construct()
+    protected function matchName($name)
     {
-        parent::__construct('null');
+        return $name === 'null';
+    }
+
+    protected function getSubNodeNames()
+    {
+        return [];
     }
 }

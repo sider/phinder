@@ -114,7 +114,7 @@ null_literal:
 ;
 
 boolean_literal:
-    T_BOOLEAN_LITERAL { $$ = new BooleanLiteral($1); }
+    T_BOOLEAN_LITERAL { $$ = new BooleanLiteral($1 === 'true'); }
   | T_BOOLEAN { $$ = new BooleanLiteral(); }
 ;
 

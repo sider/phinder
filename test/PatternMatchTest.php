@@ -20,7 +20,7 @@ class PatternMatchTest extends TestCase
             1 => ['echo false;'],
         ],
         ':bool:' => [
-            0 => ['echo 1;'],
+            0 => ['echo 1;', 'echo $this;', 'echo null;', 'echo CONSTANT;'],
             1 => ['echo false;', 'echo true;'],
         ],
         '1' => [

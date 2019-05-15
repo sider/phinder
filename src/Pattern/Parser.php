@@ -396,7 +396,7 @@ class Parser
                          $yyval = new NullLiteral(); 
                         break;
                     case 37:
-                         $yyval = new BooleanLiteral($this->_yyastk[$yysp - (1 - 1)]); 
+                         $yyval = new BooleanLiteral($this->_yyastk[$yysp - (1 - 1)] === 'true'); 
                         break;
                     case 38:
                          $yyval = new BooleanLiteral(); 

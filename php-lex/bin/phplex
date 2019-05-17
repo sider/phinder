@@ -19,7 +19,7 @@ namespace Phinder\Pattern;
 
 class Lexer
 {
-    private static $_regex = "/<?php echo $regex; ?>/";
+    private static $_regex = '/<?php echo $regex; ?>/';
 
     private $_string;
 

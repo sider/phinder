@@ -23,6 +23,7 @@
 %token T_STRING_LITERAL '\'.*?\'|".*?"'
 %token T_IDENTIFIER '\?|[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*'
 %token T_DOUBLE_COLON '::'
+%token T_BACKSLASH '\\\\\\'
 
 %%
 

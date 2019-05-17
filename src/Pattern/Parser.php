@@ -77,9 +77,11 @@ class Parser
 
     const T_DOUBLE_COLON = 281;
 
+    const T_BACKSLASH = 282;
+
     const YYBADCH = 27;
 
-    const YYMAXLEX = 282;
+    const YYMAXLEX = 283;
 
     const YYLAST = 55;
 
@@ -130,7 +132,7 @@ class Parser
            27,   27,   27,   27,   27,   27,    1,    2,    3,    4,
             5,    6,    7,    8,    9,   10,   11,   12,   13,   14,
            15,   16,   17,   18,   19,   20,   21,   22,   23,   24,
-           25,   26
+           25,   26,   27
     ];
 
     private $_yyaction = [

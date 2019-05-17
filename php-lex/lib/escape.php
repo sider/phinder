@@ -7,7 +7,7 @@ function unescape($string, $escapedChar)
         $cur = $string[$i];
         if ($cur === '\\') {
             $next = $string[$i + 1];
-            if ($next === $escapedChar) {
+            if ($next === $escapedChar || $next === '\\') {
                 $result .= $next;
                 ++$i;
             } else {

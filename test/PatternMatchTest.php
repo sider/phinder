@@ -104,6 +104,18 @@ class PatternMatchTest extends TestCase
             0 => ['$response->forge(1);'],
             1 => ['Response::forge(1);'],
         ],
+        '\\Security::fetch_token()' => [
+            0 => ['Security::fetch_token()'],
+            1 => ['\\Security::fetch_token()'],
+        ],
+        'g\\f()' => [
+            0 => ['f();'],
+            1 => ['g\\f();', 'h\\g\\f();', '\\g\\f();'],
+        ],
+        '\\g\\f()' => [
+            0 => ['g\\f();', 'h\\g\\f();'],
+            1 => ['\\g\\f();'],
+        ],
     ];
 
     private $_patternParser;

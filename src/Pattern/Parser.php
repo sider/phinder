@@ -79,15 +79,15 @@ class Parser
 
     const T_BACKSLASH = 282;
 
-    const YYBADCH = 27;
+    const YYBADCH = 28;
 
     const YYMAXLEX = 283;
 
-    const YYLAST = 55;
+    const YYLAST = 56;
 
     const YY2TBLSTATE = 23;
 
-    const YYNLSTATES = 45;
+    const YYNLSTATES = 48;
 
     const YYINTERRTOK = 1;
 
@@ -95,7 +95,7 @@ class Parser
 
     const YYDEFAULT = -32766;
 
-    const YYGLAST = 27;
+    const YYGLAST = 28;
 
     private $_yylval = null;
 
@@ -104,113 +104,114 @@ class Parser
     private $_yyastk = null;
 
     private $_yytranslate = [
-            0,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-           27,   27,   27,   27,   27,   27,    1,    2,    3,    4,
+            0,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
+           28,   28,   28,   28,   28,   28,    1,    2,    3,    4,
             5,    6,    7,    8,    9,   10,   11,   12,   13,   14,
            15,   16,   17,   18,   19,   20,   21,   22,   23,   24,
            25,   26,   27
     ];
 
     private $_yyaction = [
-           69,   16,    0,   31,    6,   15,    7,   13,   54,    8,
-            9,   80,    1,   68,   81,   83,   85,   87,   89,   82,
-           86,   84,   88,   68,   -6,   12,    2,   -2,   -6,   -6,
-           -6,   -2,   29,   80,    3,    0,   11,   10,   91,    4,
-            0,    5,   14,    0,   70,   71,   -6,   72,   54,   -2,
-          100,   92,    0,    0,   30
+           75,   16,    0,   33,    6,   15,    7,   13,   57,    8,
+            9,   86,    1,   34,   87,   89,   91,   93,   95,   88,
+           92,   90,   94,   34,   -6,   29,   12,   -2,   -6,   -6,
+           -6,   -2,   31,   86,    2,   30,   11,   10,   97,    3,
+            0,    4,    5,   14,    0,   76,   -6,   77,   78,   -2,
+           57,  106,    0,    0,   32,   98
     ];
 
     private $_yycheck = [
             2,    6,    0,    5,    3,    6,    3,   10,   13,   11,
            12,    7,   14,   25,   16,   17,   18,   19,   20,   21,
-           22,   23,   24,   25,    4,    9,   12,    4,    8,    9,
-           10,    8,    4,    7,   12,   -1,    8,   11,   13,   12,
-           -1,   12,   12,   -1,   13,   13,   26,   13,   13,   26,
-           13,   15,   -1,   -1,   26
+           22,   23,   24,   25,    4,   27,    9,    4,    8,    9,
+           10,    8,    4,    7,   12,   27,    8,   11,   13,   12,
+           -1,   12,   12,   12,   -1,   13,   26,   13,   13,   26,
+           13,   13,   -1,   -1,   26,   15
     ];
 
     private $_yybase = [
            -2,   26,   26,    4,    4,    4,   26,    4,   -2,   -2,
-           30,   -2,   -2,   -2,   -2,   -2,   -2,   20,   -5,   35,
-           -1,   23,   37,   28,   28,   28,   28,   28,   28,  -12,
-          -12,   14,    2,   16,   -3,   22,   36,    1,   25,   27,
-           29,   31,    3,   32,   34,    0,   -2,   -2,   -2,   -2,
-           -2,   -2,   -2,    0,    0,   -2,    0,    0,    0,    0,
-            0,    0,    0,   28,   28,   28,   16,   28
+           31,   -2,   -2,   -2,   -2,   -2,   -2,   20,   -5,   37,
+           -1,   23,   38,   28,   28,   28,   28,   28,   28,  -12,
+          -12,  -12,  -12,   22,    8,    2,   17,   -3,   27,   40,
+            1,   25,   29,   30,   32,    3,   34,   35,    0,   -2,
+           -2,   -2,   -2,   -2,   -2,   -2,    0,    0,   -2,    0,
+            0,    0,    0,    0,    0,    0,   28,   28,   28,   17,
+           28
     ];
 
     private $_yydefault = [
-        32767,   48,   48,   29,   29,   29,32767,32767,32767,32767,
+        32767,   51,   51,   32,   32,   32,32767,32767,32767,32767,
         32767,32767,32767,32767,32767,32767,32767,    7,32767,32767,
-           52,    5,32767,    1,32767,   45,    3,   33,   54,32767,
-        32767,32767,32767,    2,    4,   10,32767,   50,32767,   28,
-        32767,32767,   31,32767,32767
+           55,    5,32767,    1,32767,   48,    3,   36,   57,32767,
+        32767,32767,32767,32767,   24,32767,    2,    4,   10,32767,
+           53,32767,   31,32767,32767,   34,32767,32767
     ];
 
     private $_yygoto = [
-           38,   23,   20,   20,   17,   96,   17,   20,    0,   24,
-           19,   24,   25,   26,   24,   18,   28,   22,   98,   98,
-           43,   44,   77,   98,   39,   40,   21
+           41,   23,   20,   20,   17,  102,   17,   20,   21,   24,
+           19,   24,   25,   26,   24,   18,   28,   22,   74,   73,
+           42,   43,  104,  104,   46,   47,   83,  104
     ];
 
     private $_yygcheck = [
-           24,    2,    2,    2,    5,   25,    5,    2,   -1,    2,
-            2,    2,    2,    2,    2,    2,    2,    2,   23,   23,
-           20,   20,   21,   23,    7,    7,    3
+           25,    2,    2,    2,    5,   26,    5,    2,    3,    2,
+            2,    2,    2,    2,    2,    2,    2,    2,    7,    7,
+            7,    7,   24,   24,   21,   21,   22,   24
     ];
 
     private $_yygbase = [
-            0,    0,    1,   13,    0,   -4,    0,   -5,    0,    0,
+            0,    0,    1,   -5,    0,   -4,    0,  -11,    0,    0,
             0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-           16,   15,    0,   17,   -2,   -1,    0
+            0,   20,   19,    0,   21,   -2,   -1,    0
     ];
 
     private $_yygdefault = [
-        -32768,   32,   27,   33,   34,   51,   53,   35,   56,   57,
-           58,   59,   60,   61,   62,   63,   64,   65,   66,   67,
-           41,   75,   42,   79,   36,   94,   37
+        -32768,   35,   27,   36,   37,   54,   56,   38,   59,   60,
+           61,   62,   63,   64,   65,   66,   67,   68,   69,   70,
+           71,   44,   81,   45,   85,   39,  100,   40
     ];
 
     private $_yylhs = [
             0,    1,    2,    2,    3,    3,    4,    4,    5,    5,
             6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-            6,    6,    6,    7,    8,    9,   10,   11,   12,   20,
-           20,   21,   21,   22,   22,   23,   14,   15,   15,   16,
-           16,   17,   17,   18,   18,   19,   13,   13,   24,   24,
-           25,   25,   26,   26,   26,   26
+            6,    6,    6,    6,    7,    7,    8,    9,   10,   11,
+           12,   13,   21,   21,   22,   22,   23,   23,   24,   15,
+           16,   16,   17,   17,   18,   18,   19,   19,   20,   14,
+           14,   25,   25,   26,   26,   27,   27,   27,   27
     ];
 
     private $_yylen = [
             1,    1,    1,    3,    1,    3,    1,    2,    1,    3,
             1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-            1,    1,    1,    1,    1,    4,    6,    6,    3,    0,
-            1,    1,    3,    1,    1,    1,    1,    1,    1,    1,
-            1,    1,    1,    1,    1,    3,    4,    3,    0,    1,
-            1,    3,    1,    1,    3,    6
+            1,    1,    1,    1,    1,    3,    2,    1,    4,    6,
+            6,    3,    0,    1,    1,    3,    1,    1,    1,    1,
+            1,    1,    1,    1,    1,    1,    1,    1,    3,    4,
+            3,    0,    1,    1,    3,    1,    1,    3,    6
     ];
 
     public function parse($string)
@@ -356,102 +357,111 @@ class Parser
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
                         break;
                     case 23:
-                         $yyval = new Identifier($this->_yyastk[$yysp - (1 - 1)]); 
+                         $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
                         break;
                     case 24:
-                         $yyval = new Variable($this->_yyastk[$yysp - (1 - 1)]); 
+                         $yyval = new Identifier($this->_yyastk[$yysp - (1 - 1)]); 
                         break;
                     case 25:
-                         $yyval = new FunctionCall($this->_yyastk[$yysp - (4 - 1)], $this->_yyastk[$yysp - (4 - 3)]); 
+                         $yyval = new Identifier($this->_yyastk[$yysp - (3 - 1)], $this->_yyastk[$yysp - (3 - 3)]); 
                         break;
                     case 26:
-                         $yyval = new MethodCall($this->_yyastk[$yysp - (6 - 1)], $this->_yyastk[$yysp - (6 - 3)], $this->_yyastk[$yysp - (6 - 5)]); 
+                         $yyval = $this->_yyastk[$yysp - (2 - 2)]->makeFullyQualified(); 
                         break;
                     case 27:
-                         $yyval = new StaticMethodCall($this->_yyastk[$yysp - (6 - 1)], $this->_yyastk[$yysp - (6 - 3)], $this->_yyastk[$yysp - (6 - 5)]); 
+                         $yyval = new Variable($this->_yyastk[$yysp - (1 - 1)]); 
                         break;
                     case 28:
-                         $yyval = new PropertyAccess($this->_yyastk[$yysp - (3 - 1)], $this->_yyastk[$yysp - (3 - 3)]); 
+                         $yyval = new FunctionCall($this->_yyastk[$yysp - (4 - 1)], $this->_yyastk[$yysp - (4 - 3)]); 
                         break;
                     case 29:
-                         $yyval = []; 
+                         $yyval = new MethodCall($this->_yyastk[$yysp - (6 - 1)], $this->_yyastk[$yysp - (6 - 3)], $this->_yyastk[$yysp - (6 - 5)]); 
                         break;
                     case 30:
-                         $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
+                         $yyval = new StaticMethodCall($this->_yyastk[$yysp - (6 - 1)], $this->_yyastk[$yysp - (6 - 3)], $this->_yyastk[$yysp - (6 - 5)]); 
                         break;
                     case 31:
-                         $yyval = [$this->_yyastk[$yysp - (1 - 1)]]; 
+                         $yyval = new PropertyAccess($this->_yyastk[$yysp - (3 - 1)], $this->_yyastk[$yysp - (3 - 3)]); 
                         break;
                     case 32:
-                         $yyval = array_merge([$this->_yyastk[$yysp - (3 - 1)]], $this->_yyastk[$yysp - (3 - 3)]); 
-                        break;
-                    case 33:
-                         $yyval = new Argument($this->_yyastk[$yysp - (1 - 1)]); 
-                        break;
-                    case 34:
-                         $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
-                        break;
-                    case 35:
-                         $yyval = Node::ELLIPSIS; 
-                        break;
-                    case 36:
-                         $yyval = new NullLiteral(); 
-                        break;
-                    case 37:
-                         $yyval = new BooleanLiteral($this->_yyastk[$yysp - (1 - 1)] === 'true'); 
-                        break;
-                    case 38:
-                         $yyval = new BooleanLiteral(); 
-                        break;
-                    case 39:
-                         $yyval = new IntegerLiteral($this->_yyastk[$yysp - (1 - 1)]); 
-                        break;
-                    case 40:
-                         $yyval = new IntegerLiteral(); 
-                        break;
-                    case 41:
-                         $yyval = new FloatLiteral($this->_yyastk[$yysp - (1 - 1)]); 
-                        break;
-                    case 42:
-                         $yyval = new FloatLiteral(); 
-                        break;
-                    case 43:
-                         $yyval = new StringLiteral($this->_yyastk[$yysp - (1 - 1)]); 
-                        break;
-                    case 44:
-                         $yyval = new StringLiteral(); 
-                        break;
-                    case 45:
-                         $yyval = new StringConcatenation($this->_yyastk[$yysp - (3 - 1)], $this->_yyastk[$yysp - (3 - 3)]); 
-                        break;
-                    case 46:
-                         $yyval = new ArrayCall($this->_yyastk[$yysp - (4 - 3)]); 
-                        break;
-                    case 47:
-                         $yyval = new ArrayCall($this->_yyastk[$yysp - (3 - 2)]); 
-                        break;
-                    case 48:
                          $yyval = []; 
                         break;
-                    case 49:
+                    case 33:
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
                         break;
-                    case 50:
+                    case 34:
                          $yyval = [$this->_yyastk[$yysp - (1 - 1)]]; 
                         break;
-                    case 51:
+                    case 35:
                          $yyval = array_merge([$this->_yyastk[$yysp - (3 - 1)]], $this->_yyastk[$yysp - (3 - 3)]); 
                         break;
-                    case 52:
-                         $yyval = new ArrayArgument($this->_yyastk[$yysp - (1 - 1)]); 
+                    case 36:
+                         $yyval = new Argument($this->_yyastk[$yysp - (1 - 1)]); 
                         break;
-                    case 53:
+                    case 37:
                          $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
                         break;
+                    case 38:
+                         $yyval = Node::ELLIPSIS; 
+                        break;
+                    case 39:
+                         $yyval = new NullLiteral(); 
+                        break;
+                    case 40:
+                         $yyval = new BooleanLiteral($this->_yyastk[$yysp - (1 - 1)] === 'true'); 
+                        break;
+                    case 41:
+                         $yyval = new BooleanLiteral(); 
+                        break;
+                    case 42:
+                         $yyval = new IntegerLiteral($this->_yyastk[$yysp - (1 - 1)]); 
+                        break;
+                    case 43:
+                         $yyval = new IntegerLiteral(); 
+                        break;
+                    case 44:
+                         $yyval = new FloatLiteral($this->_yyastk[$yysp - (1 - 1)]); 
+                        break;
+                    case 45:
+                         $yyval = new FloatLiteral(); 
+                        break;
+                    case 46:
+                         $yyval = new StringLiteral($this->_yyastk[$yysp - (1 - 1)]); 
+                        break;
+                    case 47:
+                         $yyval = new StringLiteral(); 
+                        break;
+                    case 48:
+                         $yyval = new StringConcatenation($this->_yyastk[$yysp - (3 - 1)], $this->_yyastk[$yysp - (3 - 3)]); 
+                        break;
+                    case 49:
+                         $yyval = new ArrayCall($this->_yyastk[$yysp - (4 - 3)]); 
+                        break;
+                    case 50:
+                         $yyval = new ArrayCall($this->_yyastk[$yysp - (3 - 2)]); 
+                        break;
+                    case 51:
+                         $yyval = []; 
+                        break;
+                    case 52:
+                         $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
+                        break;
+                    case 53:
+                         $yyval = [$this->_yyastk[$yysp - (1 - 1)]]; 
+                        break;
                     case 54:
-                         $yyval = new ArrayArgument($this->_yyastk[$yysp - (3 - 3)], $this->_yyastk[$yysp - (3 - 1)]); 
+                         $yyval = array_merge([$this->_yyastk[$yysp - (3 - 1)]], $this->_yyastk[$yysp - (3 - 3)]); 
                         break;
                     case 55:
+                         $yyval = new ArrayArgument($this->_yyastk[$yysp - (1 - 1)]); 
+                        break;
+                    case 56:
+                         $yyval = $this->_yyastk[$yysp - (1 - 1)]; 
+                        break;
+                    case 57:
+                         $yyval = new ArrayArgument($this->_yyastk[$yysp - (3 - 3)], $this->_yyastk[$yysp - (3 - 1)]); 
+                        break;
+                    case 58:
                          $yyval = new ArrayArgument($this->_yyastk[$yysp - (6 - 5)], $this->_yyastk[$yysp - (6 - 3)], true); 
                         break;
                     }

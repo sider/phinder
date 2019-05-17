@@ -53,6 +53,7 @@ element:
 
 atom:
     identifier { $$ = $1; }
+  | fully_qualified_identifier { $$ = $1; }
   | this { $$ = $1; }
   | function_call { $$ = $1; }
   | method_call { $$ = $1; }
@@ -69,6 +70,11 @@ atom:
 
 identifier:
     T_IDENTIFIER { $$ = new Identifier($1); }
+  | T_IDENTIFIER T_BACKSLASH identifier { $$ = new Identifier($1, $3); }
+;
+
+fully_qualified_identifier:
+    T_BACKSLASH identifier { $$ = $2->makeFullyQualified(); }
 ;
 
 this:

@@ -10,9 +10,22 @@ final class Identifier extends Node
 
     protected $name;
 
-    public function __construct($name)
+    protected $parent;
+
+    protected $isFullyQualified;
+
+    public function __construct($name, $parent = null)
     {
+        $this->isFullyQualified = false;
         $this->name = $name;
+        $this->parent = $parent;
+    }
+
+    public function makeFullyQualified()
+    {
+        $this->isFullyQualified = true;
+
+        return $this;
     }
 
     protected function matchNode($phpNode)
@@ -21,7 +34,7 @@ final class Identifier extends Node
             return true;
         }
 
-        if ($phpNode->getType() === 'Name') {
+        if ($phpNode->getType() === 'Name' || $phpNode->getType() === 'Name_FullyQualified') {
             return in_array($this->name, $phpNode->parts);
         }
 
@@ -34,13 +47,14 @@ final class Identifier extends Node
 
     protected function getSubNodeNames()
     {
-        return ['name'];
+        return ['name', 'parent', 'isFullyQualified'];
     }
 
     protected function isTargetType($phpNodeType)
     {
         return in_array($this->name, self::$_WILDCARDS, true)
             || $phpNodeType === 'Name'
-            || $phpNodeType === 'Identifier';
+            || $phpNodeType === 'Identifier'
+            || $phpNodeType === 'Name_FullyQualified';
     }
 }

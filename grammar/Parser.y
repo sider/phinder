@@ -1,4 +1,4 @@
-%token T_VARIABLE '\\\$[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*'
+%token T_VARIABLE '\\$[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*'
 %token T_COMMA ','
 %token T_ARROW '->'
 %token T_ARRAY 'array(?![a-zA-Z0-9_\x80-\xff])'

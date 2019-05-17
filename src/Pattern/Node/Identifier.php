@@ -8,53 +8,72 @@ final class Identifier extends Node
 {
     private static $_WILDCARDS = ['_', '?'];
 
-    protected $name;
-
-    protected $parent;
+    protected $parts;
 
     protected $isFullyQualified;
 
-    public function __construct($name, $parent = null)
+    public function __construct($isFullyQualified, $parts)
     {
-        $this->isFullyQualified = false;
-        $this->name = $name;
-        $this->parent = $parent;
-    }
-
-    public function makeFullyQualified()
-    {
-        $this->isFullyQualified = true;
-
-        return $this;
+        $this->isFullyQualified = $isFullyQualified;
+        $this->parts = $parts;
     }
 
     protected function matchNode($phpNode)
     {
-        if (in_array($this->name, self::$_WILDCARDS, true)) {
+        if ($this->_isWildcard()) {
             return true;
         }
 
-        if ($phpNode->getType() === 'Name' || $phpNode->getType() === 'Name_FullyQualified') {
-            return in_array($this->name, $phpNode->parts);
+        $type = $phpNode->getType();
+
+        if ($type === 'Identifier') {
+            return $this->_matchParts([$phpNode->name]);
         }
 
-        if ($phpNode->getType() === 'Identifier') {
-            return $this->name === $phpNode->name;
+        if ($this->isFullyQualified) {
+            return $type === 'Name_FullyQualified'
+                && $this->_matchParts($phpNode->parts);
         }
 
-        throw new \Exception();
+        return $this->_matchParts($phpNode->parts);
     }
 
     protected function getSubNodeNames()
     {
-        return ['name', 'parent', 'isFullyQualified'];
+        return ['isFullyQualified', 'parts'];
     }
 
     protected function isTargetType($phpNodeType)
     {
-        return in_array($this->name, self::$_WILDCARDS, true)
+        return $this->_isWildcard()
             || $phpNodeType === 'Name'
-            || $phpNodeType === 'Identifier'
-            || $phpNodeType === 'Name_FullyQualified';
+            || $phpNodeType === 'Name_FullyQualified'
+            || $phpNodeType === 'Identifier';
+    }
+
+    private function _isWildcard()
+    {
+        return $this->isFullyQualified === false
+            && count($this->parts) === 1
+            && in_array($this->parts[0], self::$_WILDCARDS, true);
+    }
+
+    private function _matchParts($parts)
+    {
+        if (count($parts) < count($this->parts)) {
+            return false;
+        }
+
+        $parts1 = array_reverse($this->parts);
+        $parts2 = array_reverse($parts);
+        for ($i = 0; $i < count($parts1); ++$i) {
+            $p1 = $parts1[$i];
+            $p2 = $parts2[$i];
+            if (!in_array($p1, self::$_WILDCARDS) && $p1 !== $p2) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

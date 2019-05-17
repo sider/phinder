@@ -105,8 +105,8 @@ class PatternMatchTest extends TestCase
             1 => ['Response::forge(1);'],
         ],
         '\\Security::fetch_token()' => [
-            0 => ['Security::fetch_token()'],
-            1 => ['\\Security::fetch_token()'],
+            0 => ['Security::fetch_token();'],
+            1 => ['\\Security::fetch_token();'],
         ],
         'g\\f()' => [
             0 => ['f();'],

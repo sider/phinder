@@ -11,7 +11,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install Phinder
-ENV PHINDER_VERSION 0.8.6
+ENV PHINDER_VERSION 0.8.7
 RUN composer global require "sider/phinder:${PHINDER_VERSION}"
 
 RUN apk del .build-deps

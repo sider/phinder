@@ -68,7 +68,17 @@ atom:
 ;
 
 identifier:
-    T_IDENTIFIER { $$ = new Identifier($1); }
+    qualified_identifier { $$ = new Identifier(false, $1); }
+  | fully_qualified_identifier { $$ = new Identifier(true, $1); }
+;
+
+qualified_identifier:
+    T_IDENTIFIER { $$ = [$1]; }
+  | T_IDENTIFIER T_BACKSLASH qualified_identifier { $$ = array_merge([$1], $3); }
+;
+
+fully_qualified_identifier:
+    T_BACKSLASH qualified_identifier { $$ = $2; }
 ;
 
 this:

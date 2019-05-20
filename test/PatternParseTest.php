@@ -7,65 +7,67 @@ use Phinder\Pattern\Node;
 class PatternParseTest extends TestCase
 {
     private static $_PATTERNS = [
-        '_' => ['Identifier', '_'],
+        '_' => ['Identifier', false, ['_']],
 
-        '?' => ['Identifier', '?'],
+        '\_' => ['Identifier', true, ['_']],
 
-        '((_))' => ['Identifier', '_'],
+        '?' => ['Identifier', false, ['?']],
 
-        '!_' => ['Negation', ['Identifier', '_']],
+        '((_))' => ['Identifier', false, ['_']],
 
-        'a' => ['Identifier', 'a'],
+        '!_' => ['Negation', ['Identifier', false, ['_']]],
+
+        'a' => ['Identifier', false, ['a']],
 
         '_ &&& _' => [
             'Conjunction',
-            ['Identifier', '_'],
-            ['Identifier', '_'],
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
         ],
 
         '_ ||| _' => [
             'Disjunction',
-            ['Identifier', '_'],
-            ['Identifier', '_'],
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
         ],
 
         'a()' => [
             'FunctionCall',
-            ['Identifier', 'a'],
+            ['Identifier', false, ['a']],
             [],
         ],
 
         'a(_, _)' => [
             'FunctionCall',
-            ['Identifier', 'a'],
+            ['Identifier', false, ['a']],
             [
-                ['Argument', ['Identifier', '_']],
-                ['Argument', ['Identifier', '_']],
+                ['Argument', ['Identifier', false, ['_']]],
+                ['Argument', ['Identifier', false, ['_']]],
             ],
         ],
 
         'a(...)' => [
             'FunctionCall',
-            ['Identifier', 'a'],
+            ['Identifier', false, ['a']],
             [Node::ELLIPSIS],
         ],
 
         'array_merge(...)' => [
             'FunctionCall',
-            ['Identifier', 'array_merge'],
+            ['Identifier', false, ['array_merge']],
             [Node::ELLIPSIS],
         ],
 
         'in_array(...)' => [
             'FunctionCall',
-            ['Identifier', 'in_array'],
+            ['Identifier', false, ['in_array']],
             [Node::ELLIPSIS],
         ],
 
         '_->a()' => [
             'MethodCall',
-            ['Identifier', '_'],
-            ['Identifier', 'a'],
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['a']],
             [],
         ],
 
@@ -136,8 +138,8 @@ class PatternParseTest extends TestCase
         '[_, _]' => [
             'ArrayCall',
             [
-                ['ArrayArgument', null, ['Identifier', '_'], false],
-                ['ArrayArgument', null, ['Identifier', '_'], false],
+                ['ArrayArgument', null, ['Identifier', false, ['_']], false],
+                ['ArrayArgument', null, ['Identifier', false, ['_']], false],
             ],
         ],
 
@@ -146,8 +148,8 @@ class PatternParseTest extends TestCase
             [
                 [
                     'ArrayArgument',
-                    ['Identifier', '_'],
-                    ['Identifier', '_'],
+                    ['Identifier', false, ['_']],
+                    ['Identifier', false, ['_']],
                     false,
                 ],
             ],
@@ -158,8 +160,8 @@ class PatternParseTest extends TestCase
             [
                 [
                     'ArrayArgument',
-                    ['Identifier', '_'],
-                    ['Identifier', '_'],
+                    ['Identifier', false, ['_']],
+                    ['Identifier', false, ['_']],
                     true,
                 ],
             ],
@@ -167,8 +169,8 @@ class PatternParseTest extends TestCase
 
         '_ . _' => [
             'StringConcatenation',
-            ['Identifier', '_'],
-            ['Identifier', '_'],
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
         ],
 
         '$this->Html->image(...)' => [
@@ -176,16 +178,16 @@ class PatternParseTest extends TestCase
             [
                 'PropertyAccess',
                 ['Variable', 'this'],
-                ['Identifier', 'Html'],
+                ['Identifier', false, ['Html']],
             ],
-            ['Identifier', 'image'],
+            ['Identifier', false, ['image']],
             [Node::ELLIPSIS],
         ],
 
         'Response::forge(...)' => [
             'StaticMethodCall',
-            ['Identifier', 'Response'],
-            ['Identifier', 'forge'],
+            ['Identifier', false, ['Response']],
+            ['Identifier', false, ['forge']],
             [Node::ELLIPSIS],
         ],
     ];

@@ -28,7 +28,7 @@ vendor: composer.phar
 php-yacc:
 	git clone -n https://github.com/ircmaxell/PHP-Yacc php-yacc
 	cd php-yacc && git reset --hard 6e86fc490c2633c78650ad04c0de88a6044bef0b
-	cd php-yacc && composer install
+	cd php-yacc && ../composer.phar install
 
 src/Pattern/Parser.php: php-yacc grammar/Parser.template grammar/Parser.y
 	./php-yacc/bin/phpyacc -m grammar/Parser.template grammar/Parser.y

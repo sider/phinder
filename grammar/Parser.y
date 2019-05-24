@@ -2,11 +2,19 @@
 %token T_COMMA ','
 %token T_ARROW '->'
 %token T_ARRAY 'array(?![a-zA-Z0-9_\x80-\xff])'
-%token T_DOUBLE_ARROW '=>'
+%token T_SPACESHIP '<=>'
+%token T_DOUBLE_ARROW_RIGHT '=>'
+%token T_DOUBLE_ARROW_LEFT '<='
 %token T_ELLIPSIS '\.\.\.'
 %token T_DOT '\.'
 %token T_TRIPLE_VERTICAL_BAR '\|\|\|'
+%token T_DOUBLE_VERTICAL_BAR '\|\|'
+%token T_VERTICAL_BAR '\|'
 %token T_TRIPLE_AMPERSAND '&&&'
+%token T_DOUBLE_AMPERSAND '&&'
+%token T_AMPERSAND '&'
+%token T_EXCLAMATION_DOUBLE_EQUAL '!=='
+%token T_EXCLAMATION_EQUAL '!='
 %token T_EXCLAMATION '!'
 %token T_LEFT_PAREN '\('
 %token T_RIGHT_PAREN '\)'
@@ -21,9 +29,27 @@
 %token T_FLOAT_LITERAL '[0-9]+\.[0-9]+'
 %token T_INTEGER_LITERAL '0|[1-9][0-9]*'
 %token T_STRING_LITERAL '\'.*?\'|".*?"'
+%token T_AND 'and'
+%token T_OR 'or'
+%token T_XOR 'xor'
+%token T_DOUBLE_QUESTION '\?\?'
 %token T_IDENTIFIER '\?|[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*'
 %token T_DOUBLE_COLON '::'
 %token T_BACKSLASH '\\\\\\'
+%token T_CARET '\^'
+%token T_SLASH '/'
+%token T_MINUS '\-'
+%token T_PLUS '\+'
+%token T_PERCENT '%'
+%token T_DOUBLE_ASTERISK '\*\*'
+%token T_ASTERISK '\*'
+%token T_TRIPLE_EQUAL '==='
+%token T_DOUBLE_EQUAL '=='
+%token T_DOUBLE_RIGHT_TBRACKET '>>'
+%token T_RIGHT_TBRACKET_EQUAL '>='
+%token T_RIGHT_TBRACKET '>'
+%token T_DOUBLE_LEFT_TBRACKET '<<'
+%token T_LEFT_TBRACKET '<'
 
 %%
 
@@ -64,7 +90,7 @@ atom:
   | integer_literal { $$ = $1; }
   | float_literal { $$ = $1; }
   | string_literal { $$ = $1; }
-  | string_concatenation { $$ = $1; }
+  | binary_operation { $$ = $1; }
 ;
 
 identifier:
@@ -144,10 +170,6 @@ string_literal:
   | T_STRING { $$ = new StringLiteral(); }
 ;
 
-string_concatenation:
-  expression T_DOT expression { $$ = new StringConcatenation($1, $3); }
-;
-
 array_call:
     T_ARRAY T_LEFT_PAREN array_arguments T_RIGHT_PAREN { $$ = new ArrayCall($3); }
   | T_LEFT_BRACKET array_arguments T_RIGHT_BRACKET { $$ = new ArrayCall($2); }
@@ -166,8 +188,43 @@ non_empty_array_arguments:
 array_argument:
     expression { $$ = new ArrayArgument($1); }
   | ellipsis { $$ = $1; }
-  | expression T_DOUBLE_ARROW expression { $$ = new ArrayArgument($3, $1); }
-  | T_EXCLAMATION T_LEFT_PAREN expression T_DOUBLE_ARROW expression T_RIGHT_PAREN { $$ = new ArrayArgument($5, $3, true); }
+  | expression T_DOUBLE_ARROW_RIGHT expression { $$ = new ArrayArgument($3, $1); }
+  | T_EXCLAMATION T_LEFT_PAREN expression T_DOUBLE_ARROW_RIGHT expression T_RIGHT_PAREN { $$ = new ArrayArgument($5, $3, true); }
 ;
+
+binary_operation:
+    expression T_AMPERSAND expression { $$ = new BitwiseAnd($1, $3); }
+  | expression T_VERTICAL_BAR expression { $$ = new BitwiseOr($1, $3); }
+  | expression T_CARET expression { $$ = new BitwiseXor($1, $3); }
+  | expression T_DOUBLE_AMPERSAND expression { $$ = new BooleanAnd($1, $3); }
+  | expression T_DOUBLE_VERTICAL_BAR expression { $$ = new BooleanOr($1, $3); }
+  | expression T_DOUBLE_QUESTION expression { $$ = new Coalesce($1, $3); }
+  | expression T_DOT expression { $$ = new Concat($1, $3); }
+  | expression T_SLASH expression { $$ = new Div($1, $3); }
+  | expression T_DOUBLE_EQUAL expression { $$ = new Equal($1, $3); }
+  | expression T_RIGHT_TBRACKET expression { $$ = new Greater($1, $3); }
+  | expression T_RIGHT_TBRACKET_EQUAL expression { $$ = new GreaterOrEqual($1, $3); }
+  | expression T_TRIPLE_EQUAL expression { $$ = new Identical($1, $3); }
+  | expression T_AND expression { $$ = new LogicalAnd($1, $3); }
+  | expression T_OR expression { $$ = new LogicalOr($1, $3); }
+  | expression T_XOR expression { $$ = new LogicalXor($1, $3); }
+  | expression T_MINUS expression { $$ = new Minus($1, $3); }
+  | expression T_PERCENT expression { $$ = new Mod($1, $3); }
+  | expression T_ASTERISK expression { $$ = new Mul($1, $3); }
+  | expression T_EXCLAMATION_EQUAL expression { $$ = new NotEqual($1, $3); }
+  | expression T_EXCLAMATION_DOUBLE_EQUAL expression { $$ = new NotIdentical($1, $3); }
+  | expression T_PLUS expression { $$ = new Plus($1, $3); }
+  | expression T_DOUBLE_ASTERISK expression { $$ = new Pow($1, $3); }
+  | expression T_DOUBLE_LEFT_TBRACKET expression { $$ = new ShiftLeft($1, $3); }
+  | expression T_DOUBLE_RIGHT_TBRACKET expression { $$ = new ShiftRight($1, $3); }
+  | expression T_LEFT_TBRACKET expression { $$ = new Smaller($1, $3); }
+  | expression T_DOUBLE_ARROW_LEFT expression { $$ = new SmallerOrEqual($1, $3); }
+  | expression T_SPACESHIP expression { $$ = new Spaceship($1, $3); }
+;
+
+string_concatenation:
+  expression T_DOT expression { $$ = new StringConcatenation($1, $3); }
+;
+
 
 %%

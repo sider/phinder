@@ -167,8 +167,152 @@ class PatternParseTest extends TestCase
             ],
         ],
 
+        '_ & _' => [
+            'BitwiseAnd',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ | _' => [
+            'BitwiseOr',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ ^ _' => [
+            'BitwiseXor',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ && _' => [
+            'BooleanAnd',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ || _' => [
+            'BooleanOr',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ ?? _' => [
+            'Coalesce',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
         '_ . _' => [
-            'StringConcatenation',
+            'Concat',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ / _' => [
+            'Div',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ == _' => [
+            'Equal',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ > _' => [
+            'Greater',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ >= _' => [
+            'GreaterOrEqual',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ === _' => [
+            'Identical',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ and _' => [
+            'LogicalAnd',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ or _' => [
+            'LogicalOr',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ xor _' => [
+            'LogicalXor',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ - _' => [
+            'Minus',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ != _' => [
+            'NotEqual',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ !== _' => [
+            'NotIdentical',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ + _' => [
+            'Plus',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ ** _' => [
+            'Pow',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ << _' => [
+            'ShiftLeft',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ >> _' => [
+            'ShiftRight',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ < _' => [
+            'Smaller',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ <= _' => [
+            'SmallerOrEqual',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['_']],
+        ],
+
+        '_ <=> _' => [
+            'Spaceship',
             ['Identifier', false, ['_']],
             ['Identifier', false, ['_']],
         ],

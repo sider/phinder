@@ -55,9 +55,6 @@ final class Parser
     private function _parse($path)
     {
         $content = @file_get_contents($path);
-        if ($content === false) {
-            throw new FileNotFound($path);
-        }
 
         try {
             $rules = Yaml::parse($content);

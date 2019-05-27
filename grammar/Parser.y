@@ -222,9 +222,4 @@ binary_operation:
   | expression T_SPACESHIP expression { $$ = new Spaceship($1, $3); }
 ;
 
-string_concatenation:
-  expression T_DOT expression { $$ = new StringConcatenation($1, $3); }
-;
-
-
 %%

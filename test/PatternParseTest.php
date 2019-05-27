@@ -363,4 +363,23 @@ class PatternParseTest extends TestCase
 
         return $patterns;
     }
+
+    /**
+     * @dataProvider      failPatternProvider
+     * @expectedException \Phinder\Error\InvalidPattern
+     */
+    public function testParseFail($pattern)
+    {
+        $ast = $this->_parser->parse($pattern);
+    }
+
+    public function failPatternProvider()
+    {
+        return [
+            [''],
+            [';'],
+            ['f('],
+            ['f)'],
+        ];
+    }
 }

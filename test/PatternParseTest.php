@@ -334,6 +334,31 @@ class PatternParseTest extends TestCase
             ['Identifier', false, ['forge']],
             [Node::ELLIPSIS],
         ],
+
+        '_->orderBy(...)' => [
+            'MethodCall',
+            ['Identifier', false, ['_']],
+            ['Identifier', false, ['orderBy']],
+            [Node::ELLIPSIS],
+        ],
+
+        'and_()' => [
+            'FunctionCall',
+            ['Identifier', false, ['and_']],
+            [],
+        ],
+
+        'xor_()' => [
+            'FunctionCall',
+            ['Identifier', false, ['xor_']],
+            [],
+        ],
+
+        'null_()' => [
+            'FunctionCall',
+            ['Identifier', false, ['null_']],
+            [],
+        ],
     ];
 
     private $_parser;

@@ -1,10 +1,12 @@
 ![phinder logo](https://github.com/sider/phinder/blob/master/logo/Phinder%20horizontal.png?raw=true)
+
 # Phinder: PHP Code Piece Finder
+
 [![CircleCI](https://circleci.com/gh/sider/phinder/tree/master.svg?style=svg)](https://circleci.com/gh/sider/phinder/tree/master)
 [![Latest Stable Version](https://poser.pugx.org/sider/phinder/v/stable)](https://packagist.org/packages/sider/phinder)
 [![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/sider/phinder/)
 
-Phinder is a tool to find code pieces (technically PHP expressions).
+Phinder is a tool to find code pieces.
 This tool aims mainly at speeding up your code review process, not static bug detection.
 
 ---
@@ -40,11 +42,12 @@ docker run --rm -t -v $(pwd):/workdir sider/phinder
 
 ## Quick start
 
-As a first step, you can run `phinder init` command to create an example `phinder.yml`:
+For the first step, you can run `phinder init` command to create an example `phinder.yml`:
 
 ```bash
 $ phinder init
 `phinder.yml` has been created successfully
+
 $ cat phinder.yaml
 # Feel free to add your own project rules to this YAML file.
 # The following example describes the rule syntax.
@@ -79,29 +82,22 @@ $ cat phinder.yaml
       - in_array(4, $arr, false)
 ```
 
-Next you can run `phinder` command to *phind* patterns against your code base.
+Next you can run `phinder` command to *phind* patterns against your code.
 
 ```bash
-$ phinder
+$ phinder find
 ```
 
-After understanding how a pattern matches your code, let's add more useful rules for a real your project. The possibilities are infinite!
+After understanding how a pattern matches your code, let's add more useful rules for your projects!
 
 ## Documentation
 
 - [Sample rule and its description](./doc/rule.md)
 
-- [Pattern syntax](./doc/pattern-syntax.md)
+- [Pattern syntax](./doc/pattern.md)
 
-- [Command line options](./doc/command-line-options.md)
+- [Testing](./doc/testing.md)
 
 ## Contributing
 
 Bug reports, feature request, and pull requests are welcome on GitHub at [https://github.com/sider/phinder](https://github.com/sider/phinder).
-
----
-
-**Acknowledgements**
-
-Phinder is inspired by [Querly](https://github.com/soutaro/querly/), [ast-grep](https://github.com/azz/ast-grep), and [ASTsearch](https://github.com/takluyver/astsearch).
-The implementation depends largely on [PHP-Parser](https://github.com/nikic/PHP-Parser) and [kmyacc-forked](https://github.com/moriyoshi/kmyacc-forked/).

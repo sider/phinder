@@ -3,9 +3,7 @@
 # Phinder: PHP Code Piece Finder
 
 [![CircleCI](https://circleci.com/gh/sider/phinder/tree/master.svg?style=svg)](https://circleci.com/gh/sider/phinder/tree/master)
-
 [![Latest Stable Version](https://poser.pugx.org/sider/phinder/v/stable)](https://packagist.org/packages/sider/phinder)
-
 [![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/sider/phinder/)
 
 Phinder is a tool to find code pieces.
@@ -49,6 +47,7 @@ For the first step, you can run `phinder init` command to create an example `phi
 ```bash
 $ phinder init
 `phinder.yml` has been created successfully
+
 $ cat phinder.yaml
 # Feel free to add your own project rules to this YAML file.
 # The following example describes the rule syntax.

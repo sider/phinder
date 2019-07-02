@@ -20,8 +20,8 @@ The following is an example of `phinder.yml` that prints `Do not use var_dump.` 
 
 - `id`: The id of the rule
 
-- `pattern`: See [Pattern syntax](./pattern-syntax.md)
+- `pattern`: See [Pattern syntax](./pattern.md)
 
 - `message`: The message to display when a violation is found
 
-- `test`: See [Test your patterns](./command-line-options.md#test-your-patterns)
+- `test`: See [Test your patterns](./testing.md)

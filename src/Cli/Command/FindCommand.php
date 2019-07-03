@@ -50,6 +50,24 @@ class FindCommand extends Command
                 $match = $generator->current();
                 $generator->next();
 
+                if ($match instanceof InvalidPhp) {
+                    $e = $match;
+                    ++$errorCount;
+
+                    $msg = "PHP parse error in {$e->path}:";
+                    $msg .= "{$e->error->getRawMessage()}";
+
+                    if ($jsonOutput) {
+                        $outputBuffer['errors'][] = [
+                            'type' => 'InvalidPhp',
+                            'message' => $msg,
+                        ];
+                    } else {
+                        $this->getErrorOutput()->writeln("\033[31m$msg\033[0m");
+                    }
+                    continue;
+                }
+
                 ++$violationCount;
 
                 $path = (string) $match->path;
@@ -168,19 +186,6 @@ class FindCommand extends Command
 
                     return 1;
                 }
-            } catch (InvalidPhp $e) {
-                ++$errorCount;
-
-                $msg = "PHP parse error in {$e->path}: {$e->error->getRawMessage()}";
-
-                if ($jsonOutput) {
-                    $outputBuffer['errors'][] = [
-                        'type' => 'InvalidPhp',
-                        'message' => $msg,
-                    ];
-                } else {
-                    $this->getErrorOutput()->writeln("\033[31m$msg\033[0m");
-                }
             }
         }
 
@@ -211,10 +216,14 @@ class FindCommand extends Command
         $configParser = new ConfigParser();
 
         $rules = $configParser->parseFilesInDirectory($rulePath);
-        foreach ($phpParser->parseFilesInDirectory($phpPath) as $phpFile) {
-            foreach ($rules as $rule) {
-                foreach ($rule->pattern->visit($phpFile->ast) as $match) {
-                    yield new Match($phpFile->path, $match, $rule);
+        foreach ($phpParser->parseFilesInDirectory($phpPath) as $result) {
+            if ($result instanceof InvalidPhp) {
+                yield $result;
+            } else {
+                foreach ($rules as $rule) {
+                    foreach ($rule->pattern->visit($result->ast) as $match) {
+                        yield new Match($result->path, $match, $rule);
+                    }
                 }
             }
         }

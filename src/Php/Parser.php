@@ -50,7 +50,7 @@ final class Parser
 
             return new File($path, $ast);
         } catch (ParseError $e) {
-            throw new InvalidPhp($path, $e);
+            return new InvalidPhp($path, $e);
         }
     }
 

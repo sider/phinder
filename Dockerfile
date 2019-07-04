@@ -3,7 +3,8 @@ FROM php:7.3-alpine
 # Setup environment
 RUN apk update && \
     apk add --virtual .build-deps --update --no-cache openssl ca-certificates && \
-    update-ca-certificates
+    update-ca-certificates && \
+    apk del .build-deps
 
 # Install Composer
 ENV COMPOSER_ALLOW_SUPERUSER=1 \
@@ -11,10 +12,10 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install Phinder
-ENV PHINDER_VERSION 0.9.2
-RUN composer global require "sider/phinder:${PHINDER_VERSION}"
-
-RUN apk del .build-deps
+RUN mkdir /phinder
+COPY . /phinder
+RUN composer global config repositories.phinder path /phinder && \
+    composer global require sider/phinder:dev-master
 
 WORKDIR /workdir
 

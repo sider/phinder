@@ -36,3 +36,7 @@ src/Pattern/Parser.php: php-yacc grammar/Parser.template grammar/Parser.y
 
 src/Pattern/Lexer.php: grammar/Parser.y
 	./php-lex/bin/phplex grammar/Parser.y > src/Pattern/Lexer.php
+
+.PHONY: docker
+docker:
+	docker build -t sider/phinder:dev .
